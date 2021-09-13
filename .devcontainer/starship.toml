@@ -1,0 +1,4 @@
+command_timeout = 750
+
+[nodejs]
+symbol = "⬢ "
