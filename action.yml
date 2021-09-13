@@ -1,5 +1,5 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: 'MS Teams Webhook Notification'
+description: 'GitHub Action to send an MS Teams notification via Incoming Webhook'
 inputs:
   milliseconds:  # id of input
     description: 'number of milliseconds to wait'
@@ -9,5 +9,5 @@ outputs:
   time: # output will be available to future steps
     description: 'The message to output'
 runs:
-  using: 'node12'
+  using: 'node14'
   main: 'dist/index.js'
