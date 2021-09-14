@@ -67,4 +67,5 @@ typings/
 .next
 
 # misc
+ncc-cache
 .history
