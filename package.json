@@ -1,37 +1,70 @@
 {
-  "name": "teams-notification-action",
+  "name": "teams-incoming-webhook-action",
   "version": "1.0.0",
   "description": "GitHub Action to send an MS Teams notification via Incoming Webhook",
   "main": "index.js",
   "scripts": {
     "lint": "eslint ./src",
     "prepare": "ncc build ./src/index.js -o dist --source-map --license licenses.txt",
-    "test": "jest ./src",
-    "all": "npm run lint && npm run prepare && npm run test"
+    "test": "echo \"No tests yet...\"",
+    "all": "npm run lint && npm run prepare"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mikesprague/teams-notification-action.git"
+    "url": "git+https://github.com/mikesprague/teams-incoming-webhook-action.git"
   },
   "keywords": [
     "GitHub",
     "Actions",
     "JavaScript"
   ],
-  "author": "",
+  "author": {
+    "name": "Michael Sprague",
+    "email": "mikesprague@gmail.com"
+  },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mikesprague/teams-notification-action/issues"
+    "url": "https://github.com/mikesprague/teams-incoming-webhook-action/issues"
   },
-  "homepage": "https://github.com/mikesprague/teams-notification-action#readme",
+  "homepage": "https://github.com/mikesprague/teams-incoming-webhook-action#readme",
   "dependencies": {
     "@actions/core": "^1.5.0",
+    "@octokit/rest": "18.10.0",
     "axios": "^0.21.4",
     "dayjs": "^1.10.7"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.31.1",
     "eslint": "^7.32.0",
-    "jest": "^27.2.0"
+    "prettier": "^2.4.0",
+    "prettier-eslint": "^13.0.0"
+  },
+  "eslintConfig": {
+    "env": {
+      "commonjs": true,
+      "es6": true,
+      "jest": true,
+      "node": true
+    },
+    "extends": "eslint:recommended",
+    "globals": {
+      "Atomics": "readonly",
+      "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+      "ecmaVersion": 2018
+    },
+    "rules": {},
+    "ignorePatterns": [
+      "dist/",
+      ".history/",
+      "node_modules/"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "semi": true,
+    "tabWidth": 2
   }
 }

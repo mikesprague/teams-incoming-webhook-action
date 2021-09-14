@@ -1,13 +1,27 @@
-name: 'MS Teams Webhook Notification'
+name: 'MS Teams Incoming Webhook Notification'
+author: 'mikesprague'
 description: 'GitHub Action to send an MS Teams notification via Incoming Webhook'
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  github-token:
+    description: 'GitHub Token'
     required: true
-    default: '1000'
-outputs:
-  time: # output will be available to future steps
-    description: 'The message to output'
+  webhook-url:
+    description: 'MS Teams Webhook URL'
+    required: true
+  title:
+    description: 'Message heading'
+    required: true
+  message:
+    description: 'Message to be sent'
+    required: false
+    default: ''
+  color:
+    description: 'Color of notification header line'
+    required: false
+    default: '17a2b8'
+# outputs:
+#   time: # output will be available to future steps
+#     description: 'The message to output'
 runs:
   using: 'node12'
   main: 'dist/index.js'
