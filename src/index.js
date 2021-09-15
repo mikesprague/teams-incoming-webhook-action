@@ -20,7 +20,7 @@ async function run() {
         required: false,
         trimWhitespace: true,
       }) || '17a2b8';
-    core.info(`isDeployCard: ${isDeployCard}`);
+    core.info(`Deploy Card: ${isDeployCard}`);
     core.info(`Title: ${title}`);
     core.info(`Message: ${message}`);
     core.info(`Color: ${color}`);
