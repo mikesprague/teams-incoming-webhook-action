@@ -8,6 +8,10 @@ inputs:
   webhook-url:
     description: 'MS Teams Webhook URL'
     required: true
+  is-deploy-card:
+    description: 'Build content dynamically from deply'
+    required: false
+    default: false
   title:
     description: 'Message heading'
     required: true
