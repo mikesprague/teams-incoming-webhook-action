@@ -12,10 +12,16 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: ./
-      with:
-        github-token: ${{ github.token }}
-        webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
-        title: 'Test Notification'
-        message: 'just doing some testing over here'
+      - name: 👷 Checkout repo
+        uses: actions/checkout@v2
+      
+      - name: 🏗️ Install dependencies/prepare action
+        run: npm install && npm run prepare
+      
+      - name: 🚀 Test Action
+        uses: ./
+        with:
+          github-token: ${{ github.token }}
+          webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
+          title: 'Test Notification'
+          message: 'just doing some testing over here'
