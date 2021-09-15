@@ -14,8 +14,13 @@ const { messageCard } = require('./lib/cards/message');
 
 async function run() {
   try {
-    const { GITHUB_REPOSITORY, GITHUB_SHA, GITHUB_RUN_ID, GITHUB_RUN_NUMBER } =
-      process.env;
+    const {
+      GITHUB_REPOSITORY,
+      GITHUB_SHA,
+      GITHUB_RUN_ID,
+      GITHUB_RUN_NUMBER,
+      GITHUB_REF,
+    } = process.env;
     const githubToken = core.getInput('github-token', {
       required: true,
       trimWhitespace: true,
@@ -57,12 +62,14 @@ async function run() {
       const repoUrl = `https://github.com/${repoName}`;
       const octokit = new Octokit({ auth: `token ${githubToken}` });
       const commit = await octokit.repos.getCommit(params);
+      const branch = GITHUB_REF.split('/')[GITHUB_REF.split('/').length - 1];
       const { author } = commit.data;
 
       messageToPost = await deployCard({
         title,
         color,
         commit,
+        branch,
         author,
         runNum,
         runId,

@@ -2,6 +2,7 @@ exports.deployCard = function ({
   title,
   color = '17a2b8',
   commit,
+  branch,
   author,
   runNum,
   runId,
@@ -18,7 +19,7 @@ exports.deployCard = function ({
     title: title,
     sections: [
       {
-        activityTitle: `**Workflow Run #${runNum} (commit ${sha.substr(
+        activityTitle: `**Workflow Run #${runNum} (${branch} | ${sha.substr(
           0,
           7,
         )})** on [${repoName}](${repoUrl})`,
