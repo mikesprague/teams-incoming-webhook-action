@@ -8,10 +8,14 @@ inputs:
   webhook-url:
     description: 'MS Teams Webhook URL'
     required: true
-  is-deploy-card:
-    description: 'Build content dynamically from deply'
+  deploy-card:
+    description: 'Send a GitHub deploy notification'
     required: false
-    default: false
+    default: true
+  color:
+    description: 'Notification header line color'
+    required: false
+    default: '808080'
   title:
     description: 'Message heading'
     required: true
@@ -19,13 +23,6 @@ inputs:
     description: 'Message to be sent'
     required: false
     default: ''
-  color:
-    description: 'Color of notification header line'
-    required: false
-    default: '17a2b8'
-# outputs:
-#   time: # output will be available to future steps
-#     description: 'The message to output'
 runs:
   using: 'node12'
   main: 'dist/index.js'

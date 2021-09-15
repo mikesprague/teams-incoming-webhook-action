@@ -18,10 +18,40 @@ jobs:
       - name: 🏗️ Install dependencies/prepare action
         run: npm install && npm run prepare
       
-      - name: 🚀 Test Action
+      - name: 🚀 Test Deploy Card Action
         uses: ./
         with:
           github-token: ${{ github.token }}
           webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
-          title: 'Test Notification'
-          message: 'just doing some testing over here'
+          deploy-card: true
+          title: 'Deployment Started'
+          color: '1919ff'
+      
+      - name: 💬 Test Message Action
+        uses: ./
+        with:
+          github-token: ${{ github.token }}
+          webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
+          deploy-card: false
+          title: 'Test Message'
+          message: 'Just testing out a non-deployemt message, nothing to see here'
+
+      - name: Failure Notification
+        if: ${{ failure() }}
+        uses: ./
+        with:
+          github-token: ${{ github.token }}
+          webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
+          deploy-card: true
+          title: 'Deployment Failed'
+          color: 'b20000'
+      
+      - name: Success Notification
+        if: ${{ success() }}
+        uses: ./
+        with:
+          github-token: ${{ github.token }}
+          webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
+          deploy-card: true
+          title: 'Deployment Successful'
+          color: '007300'
