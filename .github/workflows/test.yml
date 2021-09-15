@@ -15,43 +15,12 @@ jobs:
       - name: 👷 Checkout repo
         uses: actions/checkout@v2
       
-      - name: 🏗️ Install dependencies/prepare action
-        run: npm install && npm run prepare
-      
-      - name: 🚀 Test Deploy Card Action
+      - name: ✔️ Test Action
         uses: ./
         with:
           github-token: ${{ github.token }}
           webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
           deploy-card: true
-          title: 'Deployment Started'
-          color: '1919ff'
-      
-      - name: 💬 Test Message Action
-        uses: ./
-        with:
-          github-token: ${{ github.token }}
-          webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
-          deploy-card: false
-          title: 'Test Message'
-          message: 'Just testing out a non-deployemt message, nothing to see here'
-
-      - name: Failure Notification
-        if: ${{ failure() }}
-        uses: ./
-        with:
-          github-token: ${{ github.token }}
-          webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
-          deploy-card: true
-          title: 'Deployment Failed'
-          color: 'b20000'
-      
-      - name: Success Notification
-        if: ${{ success() }}
-        uses: ./
-        with:
-          github-token: ${{ github.token }}
-          webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
-          deploy-card: true
-          title: 'Deployment Successful'
+          title: 'Tests Passed'
           color: '007300'
+
