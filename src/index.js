@@ -11,6 +11,7 @@ dayjs.tz.setDefault('America/New_York');
 
 const { deployCard } = require('./lib/cards/deploy');
 const { messageCard } = require('./lib/cards/message');
+const { getHexForColorString } = require('./lib/helpers');
 
 async function run() {
   try {
@@ -42,11 +43,12 @@ async function run() {
       required: false,
       trimWhitespace: true,
     });
-    const color =
-      core.getInput('color', {
-        required: false,
-        trimWhitespace: true,
-      }) || '808080';
+    const color = core.getInput('color', {
+      required: false,
+      trimWhitespace: true,
+    });
+
+    const colorString = getHexForColorString(color);
 
     let messageToPost;
     if (isDeployCard) {
@@ -67,7 +69,7 @@ async function run() {
 
       messageToPost = await deployCard({
         title,
-        color,
+        colorString,
         commit,
         branch,
         author,
@@ -81,7 +83,7 @@ async function run() {
     } else {
       messageToPost = await messageCard({
         title,
-        color,
+        colorString,
         message,
       });
     }
