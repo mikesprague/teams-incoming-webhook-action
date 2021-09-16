@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - 'releases/*'
+      - "releases/*"
   workflow_dispatch:
 
 jobs:
@@ -14,13 +14,48 @@ jobs:
     steps:
       - name: 👷 Checkout repo
         uses: actions/checkout@v2
-      
+
       - name: ✔️ Test Action
         uses: ./
         with:
           github-token: ${{ github.token }}
           webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
           deploy-card: true
-          title: 'Tests Passed'
-          color: '007300'
+          title: "Tests Passed"
+          color: "success"
 
+      - name: 📤 Send Test Info Notification
+        uses: mikesprague/teams-incoming-webhook-action@v1
+        with:
+          github-token: ${{ github.token }}
+          webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
+          deploy-card: true
+          title: "Deployment Started"
+          color: "info"
+
+      - name: ⚠️ Send Test Cancelled Notification
+        uses: mikesprague/teams-incoming-webhook-action@v1
+        with:
+          github-token: ${{ github.token }}
+          webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
+          deploy-card: true
+          title: "Deployment Cancelled"
+          color: "warning"
+
+      - name: ⛔ Send Test Failure Notification
+        uses: mikesprague/teams-incoming-webhook-action@v1
+        with:
+          github-token: ${{ github.token }}
+          webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
+          deploy-card: true
+          title: "Deployment Failed"
+          color: "failure"
+
+      - name: 🎉 Send Test Success Notification
+        uses: mikesprague/teams-incoming-webhook-action@v1
+        with:
+          github-token: ${{ github.token }}
+          webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
+          deploy-card: true
+          title: "Deployment Successful"
+          color: "success"
