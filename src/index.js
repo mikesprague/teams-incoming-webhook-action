@@ -43,10 +43,11 @@ async function run() {
       required: false,
       trimWhitespace: true,
     });
-    const color = core.getInput('color', {
-      required: false,
-      trimWhitespace: true,
-    });
+    const color =
+      core.getInput('color', {
+        required: false,
+        trimWhitespace: true,
+      }) || '808080';
 
     const colorString = getHexForColorString(color);
 
