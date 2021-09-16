@@ -30,11 +30,10 @@ async function run() {
       required: true,
       trimWhitespace: true,
     });
-    const isDeployCard =
-      core.getBooleanInput('deploy-card', {
-        required: false,
-        trimWhitespace: true,
-      }) || true;
+    const isDeployCard = core.getBooleanInput('deploy-card', {
+      required: true,
+      trimWhitespace: true,
+    });
     const title =
       core.getInput('title', {
         required: false,
