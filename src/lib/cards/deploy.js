@@ -27,7 +27,7 @@ exports.deployCard = function ({
           },
           {
             name: 'Commit',
-            value: `[${sha.substr(0, 7)}](commit.data.commit.html_url)`,
+            value: `[${sha.substr(0, 7)}](${commit.data.commit.html_url})`,
           },
         ],
         activitySubtitle: `by ${commit.data.commit.author.name} [(@${author.login})](${author.html_url}) on ${timestamp}`,
