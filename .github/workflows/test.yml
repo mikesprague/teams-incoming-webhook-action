@@ -27,6 +27,15 @@ jobs:
           title: "Tests Passed"
           color: "success"
 
+      - name: 💬 Send Test Simple Notification
+        uses: ./
+        with:
+          github-token: ${{ github.token }}
+          webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
+          deploy-card: false
+          title: "Notification Test"
+          message: "This is an example of a simple notification with a title and a body"
+      
       - name: 📤 Send Test Info Notification
         uses: ./
         with:
