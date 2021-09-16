@@ -69,7 +69,7 @@ async function run() {
 
       messageToPost = await deployCard({
         title,
-        colorString,
+        color: colorString,
         commit,
         branch,
         author,
@@ -83,7 +83,7 @@ async function run() {
     } else {
       messageToPost = await messageCard({
         title,
-        colorString,
+        color: colorString,
         message,
       });
     }
