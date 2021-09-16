@@ -23,11 +23,11 @@ exports.deployCard = function ({
         facts: [
           {
             name: 'Branch:',
-            value: `[${branch}](${repoUrl}/tree/${branch})`,
+            value: `${branch}`,
           },
           {
             name: 'Commit',
-            value: `[${sha.substr(0, 7)}](${commit.data.commit.html_url})`,
+            value: `${sha.substr(0, 7)}`,
           },
         ],
         activitySubtitle: `by ${commit.data.commit.author.name} [(@${author.login})](${author.html_url}) on ${timestamp}`,
