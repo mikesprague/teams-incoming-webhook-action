@@ -19,11 +19,22 @@ exports.deployCard = function ({
     title: title,
     sections: [
       {
-        activityTitle: `**Workflow Run #${runNum} (${branch} | ${sha.substr(
-          0,
-          7,
-        )})** on [${repoName}](${repoUrl})`,
-        activitySubtitle: `by ${commit.data.commit.author.name} [(@${author.login})](${author.html_url}) on ${timestamp}`,
+        activityTitle: `**Workflow Run [#${runNum}](${repoUrl}/actions/runs/${runId})** on [${repoName}](${repoUrl})`,
+        facts: [
+          {
+            name: 'Branch:',
+            value: `[${branch}](${repoUrl}/tree/${branch})`,
+          },
+          {
+            name: 'Commit',
+            value: `${sha.substr(0, 7)}`,
+          },
+          {
+            name: 'Timestamp',
+            value: timestamp,
+          },
+        ],
+        activitySubtitle: `by ${commit.data.commit.author.name} [(@${author.login})](${author.html_url})`,
       },
     ],
     potentialAction: [
