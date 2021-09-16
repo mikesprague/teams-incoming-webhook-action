@@ -28,7 +28,7 @@ jobs:
           color: "success"
 
       - name: 📤 Send Test Info Notification
-        uses: mikesprague/teams-incoming-webhook-action@v1
+        uses: ./
         with:
           github-token: ${{ github.token }}
           webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
@@ -37,7 +37,7 @@ jobs:
           color: "info"
 
       - name: ⚠️ Send Test Cancelled Notification
-        uses: mikesprague/teams-incoming-webhook-action@v1
+        uses: ./
         with:
           github-token: ${{ github.token }}
           webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
@@ -46,7 +46,7 @@ jobs:
           color: "warning"
 
       - name: ⛔ Send Test Failure Notification
-        uses: mikesprague/teams-incoming-webhook-action@v1
+        uses: ./
         with:
           github-token: ${{ github.token }}
           webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
@@ -55,7 +55,7 @@ jobs:
           color: "failure"
 
       - name: 🎉 Send Test Success Notification
-        uses: mikesprague/teams-incoming-webhook-action@v1
+        uses: ./
         with:
           github-token: ${{ github.token }}
           webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
