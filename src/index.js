@@ -30,19 +30,21 @@ async function run() {
       required: true,
       trimWhitespace: true,
     });
-    const isDeployCard = core.getBooleanInput('deploy-card', {
-      required: false,
-      trimWhitespace: true,
-    });
-    console.log('isDeployCard: ', isDeployCard);
-    const title = core.getInput('title', {
-      required: true,
-      trimWhitespace: true,
-    });
-    const message = core.getInput('message', {
-      required: false,
-      trimWhitespace: true,
-    });
+    const isDeployCard =
+      core.getBooleanInput('deploy-card', {
+        required: false,
+        trimWhitespace: true,
+      }) || true;
+    const title =
+      core.getInput('title', {
+        required: false,
+        trimWhitespace: true,
+      }) || '';
+    const message =
+      core.getInput('message', {
+        required: false,
+        trimWhitespace: true,
+      }) || '';
     const color =
       core.getInput('color', {
         required: false,
@@ -53,9 +55,6 @@ async function run() {
 
     let messageToPost;
     if (isDeployCard) {
-      const timestamp = dayjs()
-        .tz('America/New_York')
-        .format('ddd, D MMM YYYY hh:mm:ss Z');
       const [owner, repo] = (GITHUB_REPOSITORY || '').split('/');
       const sha = GITHUB_SHA || '';
       const params = { owner, repo, ref: sha };
@@ -67,6 +66,9 @@ async function run() {
       const commit = await octokit.repos.getCommit(params);
       const branch = GITHUB_REF.split('/')[GITHUB_REF.split('/').length - 1];
       const { author } = commit.data;
+      const timestamp = dayjs(commit.data.commit.author.date)
+        .tz('America/New_York')
+        .format('ddd, D MMM YYYY hh:mm:ss Z');
 
       messageToPost = await deployCard({
         title,
