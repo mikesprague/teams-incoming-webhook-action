@@ -68,7 +68,7 @@ async function run() {
       const timestamp = dayjs()
         .tz('America/New_York')
         .format('ddd, D MMM YYYY hh:mm:ss Z');
-
+        
       messageToPost = await deployCard({
         title,
         color: colorString,
