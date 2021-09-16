@@ -66,7 +66,7 @@ async function run() {
       const commit = await octokit.repos.getCommit(params);
       const branch = GITHUB_REF.split('/')[GITHUB_REF.split('/').length - 1];
       const { author } = commit.data;
-      const timestamp = dayjs(commit.data.commit.author.date)
+      const timestamp = dayjs()
         .tz('America/New_York')
         .format('ddd, D MMM YYYY hh:mm:ss Z');
 
