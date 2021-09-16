@@ -15,6 +15,9 @@ jobs:
       - name: 👷 Checkout repo
         uses: actions/checkout@v2
 
+      - name: 🏗️ Install dependencies/prepare action
+        run: npm install && npm run prepare
+
       - name: ✔️ Test Action
         uses: ./
         with:
