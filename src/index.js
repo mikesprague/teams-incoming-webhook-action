@@ -49,6 +49,8 @@ async function run() {
     });
 
     const colorString = getHexForColorString(color);
+    console.log('color: ', color);
+    console.log('colorString: ', colorString);
 
     let messageToPost;
     if (isDeployCard) {
