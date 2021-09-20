@@ -10,7 +10,10 @@ exports.deployCard = function ({
   sha,
   repoUrl,
   timestamp,
+  pullRequests = null,
 }) {
+  const hasPullRequest =
+    pullRequests && pullRequests.data && pullRequests.data.length;
   const messageCard = {
     '@type': 'MessageCard',
     '@context': 'https://schema.org/extensions',
@@ -42,9 +45,11 @@ exports.deployCard = function ({
       },
       {
         '@context': 'http://schema.org',
-        target: [commit.data.html_url],
+        target: [
+          hasPullRequest ? pullRequests.data[0].html_url : commit.data.html_url,
+        ],
         '@type': 'ViewAction',
-        name: 'View Commit Changes',
+        name: hasPullRequest ? 'View Pull Request' : 'View Commit Changes',
       },
     ],
   };
