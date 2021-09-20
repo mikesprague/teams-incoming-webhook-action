@@ -63,12 +63,19 @@ async function run() {
       const repoUrl = `https://github.com/${repoName}`;
       const octokit = new Octokit({ auth: `token ${githubToken}` });
       const commit = await octokit.repos.getCommit(params);
+      const pullRequests =
+        await octokit.repos.listPullRequestsAssociatedWithCommit({
+          owner,
+          repo,
+          commit_sha: sha,
+        });
+      console.log(pullRequests);
       const branch = GITHUB_REF.split('/')[GITHUB_REF.split('/').length - 1];
       const { author } = commit.data;
       const timestamp = dayjs()
         .tz('America/New_York')
         .format('ddd, D MMM YYYY hh:mm:ss Z');
-        
+
       messageToPost = await deployCard({
         title,
         color: colorString,
