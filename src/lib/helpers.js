@@ -23,10 +23,12 @@ exports.getHexForColorString = function (colorString) {
         hexCode = 'b20000';
         break;
       default:
-        console.log('Invalid color string, using default color');
-        hexCode = '808080';
+        hexCode = colorString;
         break;
     }
     return hexCode;
+  } else {
+    console.log('Invalid color string, using default color');
+    return '808080';
   }
 };
