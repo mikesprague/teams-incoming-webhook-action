@@ -9192,9 +9192,9 @@ function wrappy (fn, cb) {
 /***/ 4424:
 /***/ ((__unused_webpack_module, exports) => {
 
-exports.deployCard = function ({
+exports.populateCard = ({
   title,
-  color = '17a2b8',
+  color,
   commit,
   branch,
   author,
@@ -9204,81 +9204,58 @@ exports.deployCard = function ({
   sha,
   repoUrl,
   timestamp,
-}) {
-  const messageCard = {
-    '@type': 'MessageCard',
-    '@context': 'https://schema.org/extensions',
-    summary: title,
-    themeColor: color,
-    title: title,
-    sections: [
-      {
-        activityTitle: `**Workflow Run [#${runNum}](${repoUrl}/actions/runs/${runId})** on [${repoName}](${repoUrl})`,
-        facts: [
-          {
-            name: 'Branch:',
-            value: `${branch}`,
-          },
-          {
-            name: 'Commit',
-            value: `${sha.substr(0, 7)}`,
-          },
-        ],
-        activitySubtitle: `by ${commit.data.commit.author.name} [(@${author.login})](${author.html_url}) on ${timestamp}`,
-      },
-    ],
-    potentialAction: [
-      {
-        '@context': 'http://schema.org',
-        target: [`${repoUrl}/actions/runs/${runId}`],
-        '@type': 'ViewAction',
-        name: 'View Workflow Run',
-      },
-      {
-        '@context': 'http://schema.org',
-        target: [commit.data.html_url],
-        '@type': 'ViewAction',
-        name: 'View Commit Changes',
-      },
-    ],
-  };
-  return messageCard;
-};
+}) => ({
+  '@type': 'MessageCard',
+  '@context': 'https://schema.org/extensions',
+  summary: title,
+  themeColor: color,
+  title: title,
+  sections: [
+    {
+      activityTitle: `**Workflow Run [#${runNum}](${repoUrl}/actions/runs/${runId})** on [${repoName}](${repoUrl})`,
+      facts: [
+        {
+          name: 'Branch:',
+          value: `${branch}`,
+        },
+        {
+          name: 'Commit',
+          value: `${sha.substr(0, 7)}`,
+        },
+      ],
+      activitySubtitle: `by ${commit.data.commit.author.name} [(@${author.login})](${author.html_url}) on ${timestamp}`,
+    },
+  ],
+  potentialAction: [
+    {
+      '@context': 'http://schema.org',
+      target: [`${repoUrl}/actions/runs/${runId}`],
+      '@type': 'ViewAction',
+      name: 'View Workflow Run',
+    },
+    {
+      '@context': 'http://schema.org',
+      target: [commit.data.html_url],
+      '@type': 'ViewAction',
+      name: 'View Commit Changes',
+    },
+  ],
+});
 
 
 /***/ }),
 
-/***/ 8045:
+/***/ 1076:
 /***/ ((__unused_webpack_module, exports) => {
 
-exports.messageCard = function ({
-  title,
-  message = '',
-  color = '17a2b8',
-  buttons = [],
-}) {
-  const messageCard = {
-    '@type': 'MessageCard',
-    '@context': 'https://schema.org/extensions',
-    summary: title,
-    themeColor: color,
-    title: title,
-    text: message,
-    potentialAction: [],
-  };
-  if (buttons.length) {
-    buttons.forEach(function (button) {
-      const buttonData = {
-        '@context': 'http://schema.org',
-        target: [button.url],
-        '@type': 'ViewAction',
-        name: `${button.title}`,
-      };
-      messageCard.potentialAction.push(buttonData);
-    });
-  }
-  return messageCard;
-};
+exports.populateCard = ({ title, message, color }) => ({
+  '@type': 'MessageCard',
+  '@context': 'https://schema.org/extensions',
+  summary: title,
+  themeColor: color,
+  title: title,
+  text: message,
+});
 
 
 /***/ }),
@@ -9296,7 +9273,7 @@ exports.validateColorString = function (colorString) {
 
 exports.getHexForColorString = function (colorString) {
   if (exports.validateColorString(colorString)) {
-    let hexCode;
+    let hexCode = colorString;
     switch (colorString) {
       case 'info':
         hexCode = '1919ff';
@@ -9311,7 +9288,6 @@ exports.getHexForColorString = function (colorString) {
         hexCode = 'b20000';
         break;
       default:
-        hexCode = colorString;
         break;
     }
     return hexCode;
@@ -9336,7 +9312,7 @@ module.exports = eval("require")("encoding");
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"_args":[["axios@0.21.4","/Users/ms388/Code/teams-incoming-webhook-action"]],"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"/Users/ms388/Code/teams-incoming-webhook-action","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
 
 /***/ }),
 
@@ -9476,15 +9452,9 @@ const dayjs = __nccwpck_require__(7401);
 const timezone = __nccwpck_require__(4761);
 const utc = __nccwpck_require__(4359);
 
-dayjs.extend(utc);
-dayjs.extend(timezone);
-dayjs.tz.setDefault('America/New_York');
-
-const { deployCard } = __nccwpck_require__(4424);
-const { messageCard } = __nccwpck_require__(8045);
 const { getHexForColorString } = __nccwpck_require__(1414);
 
-async function run() {
+const run = async () => {
   try {
     const {
       GITHUB_REPOSITORY,
@@ -9501,16 +9471,10 @@ async function run() {
       required: true,
       trimWhitespace: true,
     });
-    const isDeployCard =
-      core.getBooleanInput('deploy-card', {
-        required: false,
-        trimWhitespace: true,
-      }) || false;
-    const title =
-      core.getInput('title', {
-        required: false,
-        trimWhitespace: true,
-      }) || '';
+    const title = core.getInput('title', {
+      required: true,
+      trimWhitespace: true,
+    });
     const message =
       core.getInput('message', {
         required: false,
@@ -9521,11 +9485,26 @@ async function run() {
         required: false,
         trimWhitespace: true,
       }) || '808080';
+    const isDeployCard =
+      core.getBooleanInput('deploy-card', {
+        required: false,
+        trimWhitespace: true,
+      }) || false;
+    const timezoneString =
+      core.getInput('timezone', {
+        required: false,
+        trimWhitespace: true,
+      }) || 'America/New_York';
 
     const colorString = getHexForColorString(color);
 
+    dayjs.extend(utc);
+    dayjs.extend(timezone);
+    dayjs.tz.setDefault(timezoneString);
+
     let messageToPost;
     if (isDeployCard) {
+      const { populateCard } = __nccwpck_require__(4424);
       const [owner, repo] = (GITHUB_REPOSITORY || '').split('/');
       const sha = GITHUB_SHA || '';
       const params = { owner, repo, ref: sha };
@@ -9541,7 +9520,7 @@ async function run() {
         .tz('America/New_York')
         .format('ddd, D MMM YYYY hh:mm:ss Z');
 
-      messageToPost = await deployCard({
+      messageToPost = populateCard({
         title,
         color: colorString,
         commit,
@@ -9555,10 +9534,11 @@ async function run() {
         timestamp,
       });
     } else {
-      messageToPost = await messageCard({
+      const { populateCard } = __nccwpck_require__(1076);
+      messageToPost = populateCard({
         title,
-        color: colorString,
         message,
+        color: colorString,
       });
     }
     await axios
@@ -9575,7 +9555,7 @@ async function run() {
   } catch (error) {
     core.setFailed(error.message);
   }
-}
+};
 
 run();
 
