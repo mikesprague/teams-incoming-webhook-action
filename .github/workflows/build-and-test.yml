@@ -1,4 +1,4 @@
-name: "teams-incoming-webhook-action"
+name: "Build and Test"
 on:
   workflow_dispatch:
   pull_request:
