@@ -2,17 +2,59 @@
 
 Sends a notification to an [MS Teams Incoming Webhook](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook) from a GitHub Action Workflow
 
-- [Basic Usage](#basic-usage)
+- [Inputs](#inputs)
+- [Example Usage](#example-usage)
   - [Simple Notification](#simple-notification)
   - [Workflow Status Notifications](#workflow-status-notifications)
     - [Info Notification](#info-notification)
     - [Cancel Notification](#cancel-notification)
     - [Failure Notification](#failure-notification)
     - [Success Message](#success-message)
-- [Inputs](#inputs)
 - [Future Plans](#future-plans)
 
-## Basic Usage
+## Inputs
+
+- `github-token`
+  - **required:** true
+  - **type:** string
+  - **description:** GitHub Token for API operations (see examples for how to reference)
+  - **example:** `github-token: ${{ github.token }}`
+- `webhook-url`
+  - **required:** true
+  - **type:** string
+  - **description:** MS Teams Incoming Webhook URL
+  - **example:** `webhook-url: "https://subdomain.webhook.office.com/webhookb2/uuid@uuid/IncomingWebhook/id/uuid"`
+- `title`
+  - **required:** true
+  - **type:** string
+  - **description:** Message title or heading
+  - **example:** `title: "Test Message Heading"`
+- `message`
+  - **required:** false
+  - **type:** string
+  - **default:** `""`
+  - **description:** Message to be sent (not used for workflow status notifications)
+  - **example:** `message: "This is some test message content for a simple notification"`
+- `color`
+  - **required:** false
+  - **type:** string
+  - **default:** `"808080"`
+  - **description:** Color of the heading line in the message - accepts any hex color value (with or without `#`) or `info`, `success`, `failure`, `warning` as values
+  - **example:** `color: "info"`
+- `deploy-card`
+  - **required:** false
+  - **type:** boolean
+  - **default:** `false`
+  - **description:** Sends a workflow notification that is built dynamically from commit and repo info
+  - **example:** `deploy-card: true`
+- `timezone`
+  - **required:** false
+  - **type:** string
+  - **default:** `"America/New_York"`
+  - **description:** Timezone to use for timestamps in messages
+  - **example:** `timezone: "Europe/Rome"`
+
+## Example Usage
 
 This action requires a secret to be set up with your Teams Incoming Webhook URL named `MS_TEAMS_WEBHOOK_URL`
 
@@ -108,48 +150,6 @@ Include anywhere in steps to notify when workflow run is successful
 ```
 
 ![Deploy Notification Example - Success](./readme-images/deploy-success.png "Deploy Notification Example - Success")
-
-## Inputs
-
-- `github-token`
-  - **required:** true
-  - **type:** string
-  - **description:** GitHub Token for API operations (see examples for how to reference)
-  - **example:** `github-token: ${{ github.token }}`
-- `webhook-url`
-  - **required:** true
-  - **type:** string
-  - **description:** MS Teams Incoming Webhook URL
-  - **example:** `webhook-url: "https://subdomain.webhook.office.com/webhookb2/uuid@uuid/IncomingWebhook/id/uuid"`
-- `title`
-  - **required:** true
-  - **type:** string
-  - **description:** Message title or heading
-  - **example:** `title: "Test Message Heading"`
-- `message`
-  - **required:** false
-  - **type:** string
-  - **default:** `""`
-  - **description:** Message to be sent (not used for workflow status notifications)
-  - **example:** `message: "This is some test message content for a simple notification"`
-- `color`
-  - **required:** false
-  - **type:** string
-  - **default:** `"808080"`
-  - **description:** Color of the heading line in the message - accepts any hex color value (with or without `#`) or `info`, `success`, `failure`, `warning` as values
-  - **example:** `color: "info"`
-- `deploy-card`
-  - **required:** false
-  - **type:** boolean
-  - **default:** `false`
-  - **description:** Sends a workflow notification that is built dynamically from commit and repo info
-  - **example:** `deploy-card: true`
-- `timezone`
-  - **required:** false
-  - **type:** string
-  - **default:** `"America/New_York"`
-  - **description:** Timezone to use for timestamps in messages
-  - **example:** `timezone: "Europe/Rome"`
 
 ## Future Plans
 
