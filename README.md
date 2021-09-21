@@ -1,6 +1,6 @@
 # teams-incoming-webhook-action
 
-Sends a notification to an MS Teams Incoming Webhook from a GitHub Action Workflow
+Sends a notification to an [MS Teams Incoming Webhook](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook) from a GitHub Action Workflow
 
 ## Basic Usage
 
@@ -26,7 +26,7 @@ The following sends a simple notification with a title and message
 
 ![Simple Notification Example](./images/simple-notification.png "Simple Notification Example")
 
-### Deploy Status Notifications
+### Workflow Status Notifications
 
 The following examples show how to send notifications based on your workflow status
 
