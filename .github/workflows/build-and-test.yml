@@ -1,11 +1,16 @@
-name: "test-action"
+name: "teams-incoming-webhook-action"
 on:
+  workflow_dispatch:
   pull_request:
   push:
     branches:
       - main
       - "releases/*"
-  workflow_dispatch:
+    paths-ignore:
+      - "**.md"
+      - "**.png"
+      - ".vscode/**"
+      - ".devcontainer/**"
 
 jobs:
   # test action works running from the graph
@@ -35,7 +40,7 @@ jobs:
           deploy-card: false
           title: "Notification Test"
           message: "This is an example of a simple notification with a title and a body"
-      
+
       - name: 📤 Send Test Info Notification
         uses: ./
         with:
