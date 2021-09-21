@@ -9,11 +9,9 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.setDefault('America/New_York');
 
-const { deployCard } = require('./lib/cards/deploy');
-const { messageCard } = require('./lib/cards/message');
 const { getHexForColorString } = require('./lib/helpers');
 
-async function run() {
+const run = async () => {
   try {
     const {
       GITHUB_REPOSITORY,
@@ -30,16 +28,10 @@ async function run() {
       required: true,
       trimWhitespace: true,
     });
-    const isDeployCard =
-      core.getBooleanInput('deploy-card', {
-        required: false,
-        trimWhitespace: true,
-      }) || false;
-    const title =
-      core.getInput('title', {
-        required: false,
-        trimWhitespace: true,
-      }) || '';
+    const title = core.getInput('title', {
+      required: true,
+      trimWhitespace: true,
+    });
     const message =
       core.getInput('message', {
         required: false,
@@ -50,11 +42,17 @@ async function run() {
         required: false,
         trimWhitespace: true,
       }) || '808080';
+    const isDeployCard =
+      core.getBooleanInput('deploy-card', {
+        required: false,
+        trimWhitespace: true,
+      }) || false;
 
     const colorString = getHexForColorString(color);
 
     let messageToPost;
     if (isDeployCard) {
+      const { populateCard } = require('./lib/cards/deploy');
       const [owner, repo] = (GITHUB_REPOSITORY || '').split('/');
       const sha = GITHUB_SHA || '';
       const params = { owner, repo, ref: sha };
@@ -70,7 +68,7 @@ async function run() {
         .tz('America/New_York')
         .format('ddd, D MMM YYYY hh:mm:ss Z');
 
-      messageToPost = await deployCard({
+      messageToPost = populateCard({
         title,
         color: colorString,
         commit,
@@ -84,10 +82,11 @@ async function run() {
         timestamp,
       });
     } else {
-      messageToPost = await messageCard({
+      const { populateCard } = require('./lib/cards/simple');
+      messageToPost = populateCard({
         title,
-        color: colorString,
         message,
+        color: colorString,
       });
     }
     await axios
@@ -104,6 +103,6 @@ async function run() {
   } catch (error) {
     core.setFailed(error.message);
   }
-}
+};
 
 run();
