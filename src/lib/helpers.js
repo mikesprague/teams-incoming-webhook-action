@@ -8,7 +8,7 @@ exports.validateColorString = function (colorString) {
 
 exports.getHexForColorString = function (colorString) {
   if (exports.validateColorString(colorString)) {
-    let hexCode;
+    let hexCode = colorString;
     switch (colorString) {
       case 'info':
         hexCode = '1919ff';
@@ -23,7 +23,6 @@ exports.getHexForColorString = function (colorString) {
         hexCode = 'b20000';
         break;
       default:
-        hexCode = colorString;
         break;
     }
     return hexCode;
