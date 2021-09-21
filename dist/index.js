@@ -9501,10 +9501,11 @@ async function run() {
       required: true,
       trimWhitespace: true,
     });
-    const isDeployCard = core.getBooleanInput('deploy-card', {
-      required: true,
-      trimWhitespace: true,
-    });
+    const isDeployCard =
+      core.getBooleanInput('deploy-card', {
+        required: false,
+        trimWhitespace: true,
+      }) || false;
     const title =
       core.getInput('title', {
         required: false,
@@ -9535,12 +9536,6 @@ async function run() {
       const octokit = new Octokit({ auth: `token ${githubToken}` });
       const commit = await octokit.repos.getCommit(params);
       const branch = GITHUB_REF.split('/')[GITHUB_REF.split('/').length - 1];
-      const pullRequests =
-        await octokit.repos.listPullRequestsAssociatedWithCommit({
-          owner,
-          repo,
-          commit_sha: sha,
-        }).data;
       const { author } = commit.data;
       const timestamp = dayjs()
         .tz('America/New_York')
@@ -9558,7 +9553,6 @@ async function run() {
         sha,
         repoUrl,
         timestamp,
-        pullRequests,
       });
     } else {
       messageToPost = await messageCard({
