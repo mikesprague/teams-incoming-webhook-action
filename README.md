@@ -32,7 +32,7 @@ The following sends a simple notification with a title and message
     message: "This is an example of a simple notification with a title and a body"
 ```
 
-![Simple Notification Example](./images/simple-notification.png "Simple Notification Example")
+![Simple Notification Example](./readme-images/simple-notification.png "Simple Notification Example")
 
 ### Workflow Status Notifications
 
@@ -53,7 +53,7 @@ Include as first step in workflow to notify workflow run has started
     color: "info"
 ```
 
-![Deploy Notification Example - Info](./images/deploy-info.png "Deploy Notification Example - Info")
+![Deploy Notification Example - Info](./readme-images/deploy-info.png "Deploy Notification Example - Info")
 
 #### Cancel Notification
 
@@ -71,7 +71,7 @@ Include anywhere in steps to notify workflow run has been cancelled
     color: "warning"
 ```
 
-![Deploy Notification Example - Info](./images/deploy-cancel.png "Deploy Notification Example - Info")
+![Deploy Notification Example - Info](./readme-images/deploy-cancel.png "Deploy Notification Example - Info")
 
 #### Failure Notification
 
@@ -89,7 +89,7 @@ Include anywhere in steps to notify when a workflow run fails
     color: "failure"
 ```
 
-![Deploy Notification Example - Info](./images/deploy-fail.png "Deploy Notification Example - Info")
+![Deploy Notification Example - Info](./readme-images/deploy-fail.png "Deploy Notification Example - Info")
 
 #### Success Message
 
@@ -107,7 +107,7 @@ Include anywhere in steps to notify when workflow run is successful
     color: "success"
 ```
 
-![Deploy Notification Example - Success](./images/deploy-success.png "Deploy Notification Example - Success")
+![Deploy Notification Example - Success](./readme-images/deploy-success.png "Deploy Notification Example - Success")
 
 ## Inputs
 
