@@ -16,7 +16,7 @@ Sends a notification to an [MS Teams Incoming Webhook](https://docs.microsoft.co
 
 This action requires a secret to be set up with your Teams Incoming Webhook URL named `MS_TEAMS_WEBHOOK_URL`
 
-NOTE: see [official docs](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository) for adding secrets to your repo if neccessary
+NOTE: see [official docs](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository) for adding secrets to your repo if necessary
 
 ### Simple Notification
 
@@ -147,6 +147,6 @@ Include anywhere in steps to notify when workflow run is successful
 
 ## Future Plans
 
-Ideas for future enhacements and improvements
+Ideas for future enhancements and improvements
 
-- [ ] Support custom paylods/messages
+- [ ] Support custom payloads/messages
