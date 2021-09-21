@@ -23,6 +23,10 @@ inputs:
     description: "Send a GitHub deploy notification"
     required: false
     default: false
+  timezone:
+    description: "Timezone for message timestamps"
+    required: false
+    default: 'America/New_York'
 runs:
   using: "node12"
   main: "dist/index.js"

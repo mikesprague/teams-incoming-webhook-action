@@ -5,10 +5,6 @@ const dayjs = require('dayjs');
 const timezone = require('dayjs/plugin/timezone');
 const utc = require('dayjs/plugin/utc');
 
-dayjs.extend(utc);
-dayjs.extend(timezone);
-dayjs.tz.setDefault('America/New_York');
-
 const { getHexForColorString } = require('./lib/helpers');
 
 const run = async () => {
@@ -47,8 +43,17 @@ const run = async () => {
         required: false,
         trimWhitespace: true,
       }) || false;
+    const timezoneString =
+      core.getInput('timezone', {
+        required: false,
+        trimWhitespace: true,
+      }) || 'America/New_York';
 
     const colorString = getHexForColorString(color);
+
+    dayjs.extend(utc);
+    dayjs.extend(timezone);
+    dayjs.tz.setDefault(timezoneString);
 
     let messageToPost;
     if (isDeployCard) {

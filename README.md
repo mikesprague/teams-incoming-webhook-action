@@ -144,6 +144,12 @@ Include anywhere in steps to notify when workflow run is successful
   - **default:** `false`
   - **description:** Sends a workflow notification that is built dynamically from commit and repo info
   - **example:** `deploy-card: true`
+- `timezone`
+  - **required:** false
+  - **type:** string
+  - **default:** `"America/New_York"`
+  - **description:** Timezone to use for timestamps in messages
+  - **example:** `timezone: "Europe/Rome"`
 
 ## Future Plans
 
