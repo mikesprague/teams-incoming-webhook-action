@@ -18,7 +18,6 @@ The following sends a simple notification with a title and message
 - name: Send simple notification
   uses: mikesprague/teams-incoming-webhook-action@v1
   with:
-    deploy-card: false
     github-token: ${{ github.token }}
     webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
     title: "Notification Test"
