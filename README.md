@@ -136,7 +136,7 @@ Include anywhere in steps to notify when workflow run is successful
   - **required:** false
   - **type:** string
   - **default:** `"808080"`
-  - **description:** Color of the heading line in the message - accepts any hex color value (with or without `#`) or `info`, `success`, `failue`, `warning` as values
+  - **description:** Color of the heading line in the message - accepts any hex color value (with or without `#`) or `info`, `success`, `failure`, `warning` as values
   - **example:** `color: "info"`
 - `deploy-card`
   - **required:** false
