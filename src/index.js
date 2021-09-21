@@ -70,7 +70,7 @@ const run = async () => {
       const branch = GITHUB_REF.split('/')[GITHUB_REF.split('/').length - 1];
       const { author } = commit.data;
       const timestamp = dayjs()
-        .tz('America/New_York')
+        .tz(timezoneString)
         .format('ddd, D MMM YYYY hh:mm:ss Z');
 
       messageToPost = populateCard({
