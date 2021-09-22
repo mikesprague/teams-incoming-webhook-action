@@ -7,7 +7,7 @@ const utc = require('dayjs/plugin/utc');
 
 const { getHexForColorString } = require('./lib/helpers');
 
-const run = async () => {
+(async () => {
   try {
     const {
       GITHUB_REPOSITORY,
@@ -108,6 +108,4 @@ const run = async () => {
   } catch (error) {
     core.setFailed(error.message);
   }
-};
-
-run();
+})();
