@@ -23,7 +23,7 @@ Sends a notification to an [MS Teams Incoming Webhook](https://docs.microsoft.co
   - **required:** true
   - **type:** string
   - **description:** MS Teams Incoming Webhook URL
-  - **example:** `webhook-url: "https://subdomain.webhook.office.com/webhookb2/uuid@uuid/IncomingWebhook/id/uuid"`
+  - **example:** `webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}`
 - `title`
   - **required:** true
   - **type:** string
