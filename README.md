@@ -2,6 +2,8 @@
 
 Sends a notification to an [MS Teams Incoming Webhook](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook) from a GitHub Action Workflow
 
+This action requires a secret to be set up with your Teams Incoming Webhook URL named `MS_TEAMS_WEBHOOK_URL` ([official docs for creating secrets in your repo](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository))
+
 - [Inputs](#inputs)
 - [Example Usage](#example-usage)
   - [Simple Notification](#simple-notification)
@@ -56,9 +58,7 @@ Sends a notification to an [MS Teams Incoming Webhook](https://docs.microsoft.co
 
 ## Example Usage
 
-This action requires a secret to be set up with your Teams Incoming Webhook URL named `MS_TEAMS_WEBHOOK_URL`
-
-NOTE: see [official docs](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository) for adding secrets to your repo if necessary
+This action was built with the intention of sending workflow status notifications but also supports a simple message style
 
 ### Simple Notification
 
