@@ -21,7 +21,7 @@ RUN npm install -g npm n
 # and install some global dependencies
 RUN n 16 \
   && rm -rf /usr/bin/yarn \
-  && npm i -g npm gitmoji-cli npm-check-updates yarn
+  && npm i -g npm gitmoji-cli diff-so-fancy npm-check-updates yarn
 
 # install and customize oh-my-zsh
 RUN rm -rf /root/.oh-my-zsh \
@@ -54,4 +54,5 @@ RUN echo '\nalias la="ls -lah"\nalias cl="clear"\nalias npmgls="npm -g ls --dept
   && git config --global --add alias.lsd 'log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate' \
   && git config --global --add commit.gpgsign true \
   && git config --global --add tag.gpgsign true \
-  && git config --global --add tag.tag.forcesignannotated true
+  && git config --global --add tag.tag.forcesignannotated true \
+  && git config --global --add core.pager "diff-so-fancy | less --tabs=4 -RFX"
