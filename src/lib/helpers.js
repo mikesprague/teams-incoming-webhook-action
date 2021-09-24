@@ -8,24 +8,13 @@ exports.validateColorString = function (colorString) {
 
 exports.getHexForColorString = function (colorString) {
   if (exports.validateColorString(colorString)) {
-    let hexCode = colorString;
-    switch (colorString) {
-      case 'info':
-        hexCode = '1919ff';
-        break;
-      case 'warning':
-        hexCode = 'ffcc00';
-        break;
-      case 'success':
-        hexCode = '007300';
-        break;
-      case 'failure':
-        hexCode = 'b20000';
-        break;
-      default:
-        break;
-    }
-    return hexCode;
+    const colorStrings = {
+      info: '1919ff',
+      failure: 'b20000',
+      success: '007300',
+      warning: 'ffcc00',
+    };
+    return colorStrings[colorString] || colorString;
   } else {
     console.log('Invalid color string, using default color');
     return '808080';
