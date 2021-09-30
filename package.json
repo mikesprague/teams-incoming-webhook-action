@@ -1,13 +1,13 @@
 {
   "name": "teams-incoming-webhook-action",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "description": "GitHub Action to send an MS Teams notification via Incoming Webhook",
   "main": "index.js",
   "scripts": {
     "lint": "eslint ./src",
-    "prepare": "ncc build ./src/index.js -o dist --source-map --license licenses.txt",
+    "prepare": "rm -rf dist && ncc build ./src/index.js -o dist --source-map --license licenses.txt",
     "test": "echo \"No tests yet...\"",
-    "all": "npm run lint && npm run prepare"
+    "build": "npm run lint && npm run prepare"
   },
   "repository": {
     "type": "git",
