@@ -15,8 +15,7 @@ exports.getHexForColorString = function (colorString) {
       warning: 'ffcc00',
     };
     return colorStrings[colorString] || colorString;
-  } else {
-    console.log('Invalid color string, using default color');
-    return '808080';
   }
+  console.log('Invalid color string, using default color');
+  return '808080'; 
 };
