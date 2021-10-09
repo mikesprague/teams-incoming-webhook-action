@@ -2054,7 +2054,7 @@ exports.withCustomRequest = withCustomRequest;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 
-const VERSION = "2.16.8";
+const VERSION = "2.16.9";
 
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
@@ -3236,7 +3236,7 @@ const Endpoints = {
   }
 };
 
-const VERSION = "5.12.0";
+const VERSION = "5.12.1";
 
 function endpointsToMethods(octokit, endpointsMap) {
   const newMethods = {};
