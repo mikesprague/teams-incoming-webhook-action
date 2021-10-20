@@ -5,8 +5,6 @@ const dayjs = require('dayjs');
 const timezone = require('dayjs/plugin/timezone');
 const utc = require('dayjs/plugin/utc');
 
-const { getHexForColorString } = require('./lib/helpers');
-
 (async () => {
   try {
     const {
@@ -37,7 +35,7 @@ const { getHexForColorString } = require('./lib/helpers');
       core.getInput('color', {
         required: false,
         trimWhitespace: true,
-      }) || '808080';
+      }) || 'emphasis';
     const isDeployCard =
       core.getBooleanInput('deploy-card', {
         required: false,
@@ -48,8 +46,6 @@ const { getHexForColorString } = require('./lib/helpers');
         required: false,
         trimWhitespace: true,
       }) || 'America/New_York';
-
-    const colorString = getHexForColorString(color);
 
     dayjs.extend(utc);
     dayjs.extend(timezone);
@@ -75,7 +71,7 @@ const { getHexForColorString } = require('./lib/helpers');
 
       messageToPost = populateCard({
         title,
-        color: colorString,
+        color,
         commit,
         branch,
         author,
@@ -91,7 +87,7 @@ const { getHexForColorString } = require('./lib/helpers');
       messageToPost = populateCard({
         title,
         message,
-        color: colorString,
+        color,
       });
     }
     await axios
