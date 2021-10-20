@@ -20,7 +20,7 @@ const { getAdaptiveCardColorString } = require('./lib/helpers');
       required: true,
       trimWhitespace: true,
     });
-    const teamsWebhoookUrl = core.getInput('webhook-url', {
+    const teamsWebhookUrl = core.getInput('webhook-url', {
       required: true,
       trimWhitespace: true,
     });
@@ -95,7 +95,7 @@ const { getAdaptiveCardColorString } = require('./lib/helpers');
       });
     }
     await axios
-      .post(teamsWebhoookUrl, messageToPost)
+      .post(teamsWebhookUrl, messageToPost)
       .then(function (response) {
         // console.log(response);
         core.debug(response.data);
