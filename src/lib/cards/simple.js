@@ -1,4 +1,4 @@
-exports.messageCard = ({ title, text, color = 'emphasis' }) => ({
+exports.populateCard = ({ title, text, color = 'emphasis' }) => ({
   type: 'message',
   attachments: [
     {
@@ -27,7 +27,7 @@ exports.messageCard = ({ title, text, color = 'emphasis' }) => ({
           },
           {
             type: 'TextBlock',
-            text,
+            text: text,
             wrap: true,
             height: 'stretch',
           },
