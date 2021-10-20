@@ -90,7 +90,7 @@ const { getAdaptiveCardColorString } = require('./lib/helpers');
       const { populateCard } = require('./lib/cards/simple');
       messageToPost = populateCard({
         title,
-        message,
+        text: message,
         color: colorString,
       });
     }
