@@ -40,8 +40,8 @@ This action requires a secret to be set up with your Teams Incoming Webhook URL 
 - `color`
   - **required:** false
   - **type:** string
-  - **default:** `"808080"`
-  - **description:** Color of the heading line in the message - accepts any hex color value (with or without `#`) or `info`, `success`, `failure`, `warning` as values
+  - **default:** `"default"`
+  - **description:** Background color of the heading in the message - accepts `default`, `info`, `success`, `failure`, `warning` as values
   - **example:** `color: "info"`
 - `deploy-card`
   - **required:** false
