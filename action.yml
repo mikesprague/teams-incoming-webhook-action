@@ -18,7 +18,7 @@ inputs:
   color:
     description: "Notification header line color"
     required: false
-    default: "808080"
+    default: "default"
   deploy-card:
     description: "Send a GitHub deploy notification"
     required: false
@@ -26,7 +26,7 @@ inputs:
   timezone:
     description: "Timezone for message timestamps"
     required: false
-    default: 'America/New_York'
+    default: "America/New_York"
 runs:
   using: "node12"
   main: "dist/index.js"
