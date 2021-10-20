@@ -5,6 +5,8 @@ const dayjs = require('dayjs');
 const timezone = require('dayjs/plugin/timezone');
 const utc = require('dayjs/plugin/utc');
 
+const { getAdaptiveCardColorString } = require('./lib/helpers');
+
 (async () => {
   try {
     const {
@@ -35,7 +37,7 @@ const utc = require('dayjs/plugin/utc');
       core.getInput('color', {
         required: false,
         trimWhitespace: true,
-      }) || 'emphasis';
+      }) || 'default';
     const isDeployCard =
       core.getBooleanInput('deploy-card', {
         required: false,
@@ -50,6 +52,8 @@ const utc = require('dayjs/plugin/utc');
     dayjs.extend(utc);
     dayjs.extend(timezone);
     dayjs.tz.setDefault(timezoneString);
+
+    const colorString = getAdaptiveCardColorString(color);
 
     let messageToPost;
     if (isDeployCard) {
@@ -71,7 +75,7 @@ const utc = require('dayjs/plugin/utc');
 
       messageToPost = populateCard({
         title,
-        color,
+        color: colorString,
         commit,
         branch,
         author,
@@ -87,7 +91,7 @@ const utc = require('dayjs/plugin/utc');
       messageToPost = populateCard({
         title,
         message,
-        color,
+        color: colorString,
       });
     }
     await axios
