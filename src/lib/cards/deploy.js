@@ -39,7 +39,7 @@ exports.populateCard = ({
           },
           {
             type: 'TextBlock',
-            text: `**Workflow Run [#${runNum}](${repoUrl}/actions/runs/${runId})** on [${repoName}](${repoUrl})`,
+            text: `**Workflow Run #${runNum}** on [${repoName}](${repoUrl})`,
             wrap: true,
           },
           {
@@ -57,7 +57,7 @@ exports.populateCard = ({
           },
           {
             type: 'TextBlock',
-            text: `by ${commit.data.commit.author.name} [(@${author.login})](${author.html_url}) on ${timestamp}`,
+            text: `by ${commit.data.commit.author.name} (@${author.login}) on ${timestamp}`,
             wrap: true,
           },
           {
