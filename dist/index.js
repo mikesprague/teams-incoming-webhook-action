@@ -12326,39 +12326,74 @@ exports.populateCard = ({
   repoUrl,
   timestamp,
 }) => ({
-  '@type': 'MessageCard',
-  '@context': 'https://schema.org/extensions',
-  summary: title,
-  themeColor: color,
-  title: title,
-  sections: [
+  type: 'message',
+  attachments: [
     {
-      activityTitle: `**Workflow Run [#${runNum}](${repoUrl}/actions/runs/${runId})** on [${repoName}](${repoUrl})`,
-      facts: [
-        {
-          name: 'Branch:',
-          value: `${branch}`,
+      contentType: 'application/vnd.microsoft.card.adaptive',
+      content: {
+        type: 'AdaptiveCard',
+        $schema: 'http://adaptivecards.io/schemas/adaptive-card.json',
+        version: '1.3',
+        msteams: {
+          width: 'Full',
         },
-        {
-          name: 'Commit',
-          value: `${sha.substr(0, 7)}`,
-        },
-      ],
-      activitySubtitle: `by ${commit.data.commit.author.name} [(@${author.login})](${author.html_url}) on ${timestamp}`,
-    },
-  ],
-  potentialAction: [
-    {
-      '@context': 'http://schema.org',
-      target: [`${repoUrl}/actions/runs/${runId}`],
-      '@type': 'ViewAction',
-      name: 'View Workflow Run',
-    },
-    {
-      '@context': 'http://schema.org',
-      target: [commit.data.html_url],
-      '@type': 'ViewAction',
-      name: 'View Commit Changes',
+        body: [
+          {
+            type: 'Container',
+            items: [
+              {
+                type: 'TextBlock',
+                text: title,
+                wrap: true,
+                size: 'Large',
+                weight: 'Bolder',
+              },
+            ],
+            style: color,
+            bleed: true,
+          },
+          {
+            type: 'TextBlock',
+            text: `**Workflow Run #${runNum}** on [${repoName}](${repoUrl})`,
+            wrap: true,
+          },
+          {
+            type: 'FactSet',
+            facts: [
+              {
+                title: 'Branch',
+                value: branch,
+              },
+              {
+                title: 'Commit',
+                value: `${sha.substr(0, 7)}`,
+              },
+            ],
+          },
+          {
+            type: 'TextBlock',
+            text: `by ${commit.data.commit.author.name} (@${author.login}) on ${timestamp}`,
+            wrap: true,
+          },
+          {
+            type: 'ActionSet',
+            actions: [
+              {
+                type: 'Action.OpenUrl',
+                title: 'View Workflow Run',
+                url: `${repoUrl}/actions/runs/${runId}`,
+                style: 'default',
+              },
+              {
+                type: 'Action.OpenUrl',
+                title: 'View Commit Changes',
+                url: commit.data.html_url,
+                style: 'default',
+              },
+            ],
+          },
+        ],
+      },
     },
   ],
 });
@@ -12369,13 +12404,43 @@ exports.populateCard = ({
 /***/ 1076:
 /***/ ((__unused_webpack_module, exports) => {
 
-exports.populateCard = ({ title, message, color }) => ({
-  '@type': 'MessageCard',
-  '@context': 'https://schema.org/extensions',
-  summary: title,
-  themeColor: color,
-  title: title,
-  text: message,
+exports.populateCard = ({ title, text, color = 'emphasis' }) => ({
+  type: 'message',
+  attachments: [
+    {
+      contentType: 'application/vnd.microsoft.card.adaptive',
+      content: {
+        type: 'AdaptiveCard',
+        $schema: 'http://adaptivecards.io/schemas/adaptive-card.json',
+        version: '1.3',
+        msteams: {
+          width: 'Full',
+        },
+        body: [
+          {
+            type: 'Container',
+            items: [
+              {
+                type: 'TextBlock',
+                text: title,
+                wrap: true,
+                size: 'Large',
+                weight: 'Bolder',
+              },
+            ],
+            style: color,
+            bleed: true,
+          },
+          {
+            type: 'TextBlock',
+            text: text,
+            wrap: true,
+            height: 'stretch',
+          },
+        ],
+      },
+    },
+  ],
 });
 
 
@@ -12403,7 +12468,18 @@ exports.getHexForColorString = function (colorString) {
     return colorStrings[colorString] || colorString;
   }
   console.log('Invalid color string, using default color');
-  return '808080'; 
+  return '808080';
+};
+
+exports.getAdaptiveCardColorString = function (colorString) {
+  const colorStrings = {
+    default: 'emphasis', //gray
+    info: 'accent', // blue
+    failure: 'attention', // red
+    success: 'good', // green
+    warning: 'warning', // yellow
+  };
+  return colorStrings[colorString] || 'emphasis';
 };
 
 
@@ -12593,7 +12669,7 @@ const dayjs = __nccwpck_require__(7401);
 const timezone = __nccwpck_require__(4761);
 const utc = __nccwpck_require__(4359);
 
-const { getHexForColorString } = __nccwpck_require__(1414);
+const { getAdaptiveCardColorString } = __nccwpck_require__(1414);
 
 (async () => {
   try {
@@ -12608,7 +12684,7 @@ const { getHexForColorString } = __nccwpck_require__(1414);
       required: true,
       trimWhitespace: true,
     });
-    const teamsWebhoookUrl = core.getInput('webhook-url', {
+    const teamsWebhookUrl = core.getInput('webhook-url', {
       required: true,
       trimWhitespace: true,
     });
@@ -12625,7 +12701,7 @@ const { getHexForColorString } = __nccwpck_require__(1414);
       core.getInput('color', {
         required: false,
         trimWhitespace: true,
-      }) || '808080';
+      }) || 'default';
     const isDeployCard =
       core.getBooleanInput('deploy-card', {
         required: false,
@@ -12637,11 +12713,11 @@ const { getHexForColorString } = __nccwpck_require__(1414);
         trimWhitespace: true,
       }) || 'America/New_York';
 
-    const colorString = getHexForColorString(color);
-
     dayjs.extend(utc);
     dayjs.extend(timezone);
     dayjs.tz.setDefault(timezoneString);
+
+    const colorString = getAdaptiveCardColorString(color);
 
     let messageToPost;
     if (isDeployCard) {
@@ -12678,12 +12754,12 @@ const { getHexForColorString } = __nccwpck_require__(1414);
       const { populateCard } = __nccwpck_require__(1076);
       messageToPost = populateCard({
         title,
-        message,
+        text: message,
         color: colorString,
       });
     }
     await axios
-      .post(teamsWebhoookUrl, messageToPost)
+      .post(teamsWebhookUrl, messageToPost)
       .then(function (response) {
         // console.log(response);
         core.debug(response.data);
