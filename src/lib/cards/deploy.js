@@ -43,6 +43,13 @@ exports.populateCard = ({
             wrap: true,
           },
           {
+            type: 'TextBlock',
+            text: `by ${commit.data.commit.author.name} (@${author.login}) on ${timestamp}`,
+            wrap: true,
+            size: 'Small',
+            spacing: 'None',
+          },
+          {
             type: 'FactSet',
             facts: [
               {
@@ -54,11 +61,6 @@ exports.populateCard = ({
                 value: `${sha.substr(0, 7)}`,
               },
             ],
-          },
-          {
-            type: 'TextBlock',
-            text: `by ${commit.data.commit.author.name} (@${author.login}) on ${timestamp}`,
-            wrap: true,
           },
           {
             type: 'ActionSet',
