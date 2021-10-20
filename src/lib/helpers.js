@@ -17,5 +17,16 @@ exports.getHexForColorString = function (colorString) {
     return colorStrings[colorString] || colorString;
   }
   console.log('Invalid color string, using default color');
-  return '808080'; 
+  return '808080';
+};
+
+exports.getAdaptiveCardColorString = function (colorString) {
+  const colorStrings = {
+    default: 'emphasis', //gray
+    info: 'accent', // blue
+    failure: 'attention', // red
+    success: 'good', // green
+    warning: 'warning', // yellow
+  };
+  return colorStrings[colorString] || 'emphasis';
 };
