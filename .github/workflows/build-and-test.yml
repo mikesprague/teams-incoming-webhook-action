@@ -11,6 +11,7 @@ on:
       - "**.png"
       - ".vscode/**"
       - ".devcontainer/**"
+      - ".github/dependabot.yml"
 
 jobs:
   # test action works running from the graph
