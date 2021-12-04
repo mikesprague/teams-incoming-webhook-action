@@ -35,8 +35,8 @@
   },
   "devDependencies": {
     "@vercel/ncc": "^0.33.0",
-    "eslint": "^8.3.0",
-    "prettier": "^2.5.0",
+    "eslint": "^8.4.0",
+    "prettier": "^2.5.1",
     "prettier-eslint": "^13.0.0"
   },
   "eslintConfig": {
