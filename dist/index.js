@@ -3785,6 +3785,16 @@ module.exports = function httpAdapter(config) {
     var isHttpsRequest = isHttps.test(protocol);
     var agent = isHttpsRequest ? config.httpsAgent : config.httpAgent;
 
+    try {
+      buildURL(parsed.path, config.params, config.paramsSerializer).replace(/^\?/, '');
+    } catch (err) {
+      var customErr = new Error(err.message);
+      customErr.config = config;
+      customErr.url = config.url;
+      customErr.exists = true;
+      reject(customErr);
+    }
+
     var options = {
       path: buildURL(parsed.path, config.params, config.paramsSerializer).replace(/^\?/, ''),
       method: config.method.toUpperCase(),
@@ -3996,9 +4006,15 @@ module.exports = function httpAdapter(config) {
       // ClientRequest.setTimeout will be fired on the specify milliseconds, and can make sure that abort() will be fired after connect.
       req.setTimeout(timeout, function handleRequestTimeout() {
         req.abort();
+        var timeoutErrorMessage = '';
+        if (config.timeoutErrorMessage) {
+          timeoutErrorMessage = config.timeoutErrorMessage;
+        } else {
+          timeoutErrorMessage = 'timeout of ' + config.timeout + 'ms exceeded';
+        }
         var transitional = config.transitional || defaults.transitional;
         reject(createError(
-          'timeout of ' + timeout + 'ms exceeded',
+          timeoutErrorMessage,
           config,
           transitional.clarifyTimeoutError ? 'ETIMEDOUT' : 'ECONNABORTED',
           req
@@ -4531,10 +4547,6 @@ Axios.prototype.request = function request(configOrUrl, config) {
     config = configOrUrl || {};
   }
 
-  if (!config.url) {
-    throw new Error('Provided config url is not valid');
-  }
-
   config = mergeConfig(this.defaults, config);
 
   // Set config.method
@@ -4617,9 +4629,6 @@ Axios.prototype.request = function request(configOrUrl, config) {
 };
 
 Axios.prototype.getUri = function getUri(config) {
-  if (!config.url) {
-    throw new Error('Provided config url is not valid');
-  }
   config = mergeConfig(this.defaults, config);
   return buildURL(config.url, config.params, config.paramsSerializer).replace(/^\?/, '');
 };
@@ -5230,7 +5239,7 @@ module.exports = defaults;
 /***/ ((module) => {
 
 module.exports = {
-  "version": "0.25.0"
+  "version": "0.26.0"
 };
 
 /***/ }),
@@ -7586,8 +7595,9 @@ RedirectableRequest.prototype._processResponse = function (response) {
     var redirectUrlParts = url.parse(redirectUrl);
     Object.assign(this._options, redirectUrlParts);
 
-    // Drop the confidential headers when redirecting to another domain
-    if (!(redirectUrlParts.host === currentHost || isSubdomainOf(redirectUrlParts.host, currentHost))) {
+    // Drop confidential headers when redirecting to another scheme:domain
+    if (redirectUrlParts.protocol !== currentUrlParts.protocol ||
+       !isSameOrSubdomain(redirectUrlParts.host, currentHost)) {
       removeMatchingHeaders(/^(?:authorization|cookie)$/i, this._options.headers);
     }
 
@@ -7753,7 +7763,10 @@ function abortRequest(request) {
   request.abort();
 }
 
-function isSubdomainOf(subdomain, domain) {
+function isSameOrSubdomain(subdomain, domain) {
+  if (subdomain === domain) {
+    return true;
+  }
   const dot = subdomain.length - domain.length - 1;
   return dot > 0 && subdomain[dot] === "." && subdomain.endsWith(domain);
 }
