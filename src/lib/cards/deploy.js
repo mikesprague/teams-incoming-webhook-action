@@ -1,3 +1,5 @@
+const { getEmoji } = require('../helpers');
+
 exports.populateCard = ({
   title,
   color,
@@ -39,7 +41,7 @@ exports.populateCard = ({
           },
           {
             type: 'TextBlock',
-            text: `**Workflow Run #${runNum}** on [${repoName}](${repoUrl})`,
+            text: `${getEmoji(color)}**Workflow Run #${runNum}** on [${repoName}](${repoUrl})`,
             wrap: true,
           },
           {

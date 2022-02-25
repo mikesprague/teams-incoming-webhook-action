@@ -30,3 +30,14 @@ exports.getAdaptiveCardColorString = function (colorString) {
   };
   return colorStrings[colorString] || 'emphasis';
 };
+
+exports.getEmoji = (adaptiveCardColor = 'emphasis') => {
+  const emojiList = {
+    good: '✅ ',
+    accent: 'ℹ️  ',
+    warning: '⚠️  ',
+    attention: '🚨 ',
+    emphasis: '',
+  };
+  return emojiList[adaptiveCardColor] || '';
+};
