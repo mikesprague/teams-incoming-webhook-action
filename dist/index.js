@@ -12415,7 +12415,9 @@ function wrappy (fn, cb) {
 /***/ }),
 
 /***/ 4424:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+const { getEmoji } = __nccwpck_require__(1414);
 
 exports.populateCard = ({
   title,
@@ -12458,7 +12460,7 @@ exports.populateCard = ({
           },
           {
             type: 'TextBlock',
-            text: `**Workflow Run #${runNum}** on [${repoName}](${repoUrl})`,
+            text: `${getEmoji(color)}**Workflow Run #${runNum}** on [${repoName}](${repoUrl})`,
             wrap: true,
           },
           {
@@ -12586,6 +12588,17 @@ exports.getAdaptiveCardColorString = function (colorString) {
     warning: 'warning', // yellow
   };
   return colorStrings[colorString] || 'emphasis';
+};
+
+exports.getEmoji = (adaptiveCardColor = 'emphasis') => {
+  const emojiList = {
+    good: '✅ ',
+    accent: 'ℹ️  ',
+    warning: '⚠️  ',
+    attention: '🚨 ',
+    emphasis: '',
+  };
+  return emojiList[adaptiveCardColor] || '';
 };
 
 
