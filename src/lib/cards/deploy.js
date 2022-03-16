@@ -30,7 +30,7 @@ exports.populateCard = ({
             items: [
               {
                 type: 'TextBlock',
-                text: `${getEmoji(color)}title`,
+                text: `${getEmoji(color)}${title}`,
                 wrap: true,
                 size: 'Large',
                 weight: 'Bolder',
