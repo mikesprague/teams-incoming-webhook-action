@@ -30,7 +30,7 @@ exports.populateCard = ({
             items: [
               {
                 type: 'TextBlock',
-                text: title,
+                text: `${getEmoji(color)}title`,
                 wrap: true,
                 size: 'Large',
                 weight: 'Bolder',
@@ -41,7 +41,7 @@ exports.populateCard = ({
           },
           {
             type: 'TextBlock',
-            text: `${getEmoji(color)}**Workflow Run #${runNum}** on [${repoName}](${repoUrl})`,
+            text: `**Workflow Run #${runNum}** on [${repoName}](${repoUrl})`,
             wrap: true,
           },
           {
