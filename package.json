@@ -28,10 +28,10 @@
   },
   "homepage": "https://github.com/mikesprague/teams-incoming-webhook-action#readme",
   "dependencies": {
-    "@actions/core": "1.7.0",
+    "@actions/core": "1.8.0",
     "@octokit/rest": "18.12.0",
     "axios": "0.27.2",
-    "dayjs": "1.11.1"
+    "dayjs": "1.11.2"
   },
   "devDependencies": {
     "@vercel/ncc": "0.33.4",
