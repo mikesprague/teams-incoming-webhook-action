@@ -2,3 +2,7 @@ command_timeout = 1000
 
 [nodejs]
 symbol = "⬢ "
+
+[package]
+display_private = true
+format = "at [$symbol$version]($style) "

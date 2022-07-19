@@ -3,8 +3,10 @@
   "name": "JavaScript/Node.js",
   "build": {
     "dockerfile": "Dockerfile",
-    // Update 'VARIANT' to pick a Node version: 12, 14, 16
-    "args": { "VARIANT": "16" }
+    // Update 'VARIANT' to pick a Node version: 14, 16, 18
+    "args": {
+      "VARIANT": "18"
+    }
   },
 
   // Set *default* container specific settings.json values on container create.
@@ -17,96 +19,18 @@
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.fontFamily": "Operator Mono Lig, Dank Mono, Cascadia Code, Victor Mono, Fira Code",
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": "active"
   },
 
   // Add the IDs of extensions you want installed when the container is created.
-  "extensions": [
-    "2gua.rainbow-brackets",
-    "aaron-bond.better-comments",
-    "alexdima.copy-relative-path",
-    "Anjali.clipboard-history",
-    "bierner.color-info",
-    "bierner.emojisense",
-    "bierner.markdown-checkbox",
-    "BriteSnow.vscode-toggle-quotes",
-    "bungcip.better-toml",
-    "ChakrounAnas.turbo-console-log",
-    "christian-kohler.npm-intellisense",
-    "christian-kohler.path-intellisense",
-    "chrmarti.regex",
-    "cmstead.jsrefactor",
-    "codezombiech.gitignore",
-    "CoenraadS.bracket-pair-colorizer-2",
-    "CoenraadS.disableligatures",
-    "DavidAnson.vscode-markdownlint",
-    "dbaeumer.jshint",
-    "dbaeumer.vscode-eslint",
-    "devine-davies.make-hidden",
-    "dkundel.vscode-npm-source",
-    "donjayamanne.githistory",
-    "eamodio.toggle-excluded-files",
-    "EditorConfig.EditorConfig",
-    "eg2.vscode-npm-script",
-    "esbenp.prettier-vscode",
-    "foxundermoon.shell-format",
-    "GitHub.vscode-pull-request-github",
-    "Github.copilot",
-    "GitHub.codespaces",
-    "hashicorp.terraform",
-    "HookyQR.beautify",
-    "hoovercj.vscode-power-mode",
-    "jakob101.RelativePath",
-    "jasonnutter.search-node-modules",
-    "letrieu.expand-region",
-    "liamhammett.inline-parameters",
-    "me-dutour-mathieu.vscode-github-actions",
-    "mgmcdermott.vscode-language-babel",
-    "mikestead.dotenv",
-    "mrmlnc.vscode-duplicate",
-    "ms-azuretools.vscode-docker",
-    "ms-vscode.vscode-typescript-next",
-    "ms-vscode.vscode-typescript-tslint-plugin",
-    "ms-vsonline.vsonline",
-    "mutantdino.resourcemonitor",
-    "naumovs.color-highlight",
-    "Orta.vscode-jest",
-    "patbenatar.advanced-new-file",
-    "pflannery.vscode-versionlens",
-    "quicktype.quicktype",
-    "redhat.vscode-yaml",
-    "richie5um2.vscode-sort-json",
-    "rogalmic.bash-debug",
-    "ryu1kn.partial-diff",
-    "ryuta46.multi-command",
-    "sburg.vscode-javascript-booster",
-    "sdras.night-owl",
-    "shd101wyy.markdown-preview-enhanced",
-    "sleistner.vscode-fileutils",
-    "snyk-security.vscode-vuln-cost",
-    "spywhere.guides",
-    "stevencl.adddoccomments",
-    "stkb.rewrap",
-    "streetsidesoftware.code-spell-checker",
-    "timonwong.shellcheck",
-    "tombonnike.vscode-status-bar-format-toggle",
-    "VisualStudioExptTeam.vscodeintellicode",
-    "vscode-icons-team.vscode-icons",
-    "waderyan.gitblame",
-    "WakaTime.vscode-wakatime",
-    "wayou.vscode-todo-highlight",
-    "wiggin77.codedox",
-    "wix.vscode-import-cost",
-    "wmaurer.change-case",
-    "xyz.local-history",
-    "yzhang.markdown-all-in-one",
-    "zh9528.file-size"
-  ],
+  "extensions": ["ms-azuretools.vscode-docker", "mutantdino.resourcemonitor"],
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  // "forwardPorts": [3000],
+  "forwardPorts": [3000],
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "npm install",
+  "postCreateCommand": "npm install"
 
   // Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
   // "remoteUser": "node"
