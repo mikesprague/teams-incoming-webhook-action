@@ -49,7 +49,6 @@ RUN echo '\nalias la="ls -lah"\nalias cl="clear"\nalias npmgls="npm -g ls --dept
   && git config  --global --add alias.st status \
   && git config  --global --add alias.co checkout \
   && git config  --global --add alias.br branch \
-  && git config  --global --add alias.cia commit --amend \
   && git config --global --add alias.lsd 'log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate' \
   && git config --global --add commit.gpgsign true \
   && git config --global --add tag.gpgsign true \
