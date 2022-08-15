@@ -31,7 +31,7 @@
     "@actions/core": "1.9.1",
     "@octokit/rest": "19.0.3",
     "axios": "0.27.2",
-    "dayjs": "1.11.4"
+    "dayjs": "1.11.5"
   },
   "devDependencies": {
     "@vercel/ncc": "0.34.0",
