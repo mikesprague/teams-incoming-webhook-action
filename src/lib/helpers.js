@@ -1,13 +1,13 @@
 // accepts hex code value with optional hashtag (#000000 or 000000)
 // or string of 'success', 'warning', 'info', or 'failure'
-exports.validateColorString = function (colorString) {
+export const validateColorString = function (colorString) {
   return colorString.match(
     /^#?([a-f0-9]{3,4}|[a-f0-9]{4}(?:[a-f0-9]{2}){1,2}|success|info|warning|failure)\b$/i,
   );
 };
 
-exports.getHexForColorString = function (colorString) {
-  if (exports.validateColorString(colorString)) {
+export const getHexForColorString = function (colorString) {
+  if (validateColorString(colorString)) {
     const colorStrings = {
       info: '1919ff',
       failure: 'b20000',
@@ -20,7 +20,7 @@ exports.getHexForColorString = function (colorString) {
   return '808080';
 };
 
-exports.getAdaptiveCardColorString = function (colorString) {
+export const getAdaptiveCardColorString = function (colorString) {
   const colorStrings = {
     default: 'emphasis', //gray
     info: 'accent', // blue
@@ -31,7 +31,7 @@ exports.getAdaptiveCardColorString = function (colorString) {
   return colorStrings[colorString] || 'emphasis';
 };
 
-exports.getEmoji = (adaptiveCardColor = 'emphasis') => {
+export const getEmoji = (adaptiveCardColor = 'emphasis') => {
   const emojiList = {
     good: '✅ ',
     accent: 'ℹ️  ',

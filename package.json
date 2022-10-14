@@ -2,7 +2,9 @@
   "name": "teams-incoming-webhook-action",
   "version": "1.7.16",
   "description": "GitHub Action to send an MS Teams notification via Incoming Webhook",
-  "main": "index.js",
+  "exports": "./src/index.js",
+  "private": "true",
+  "type": "module",
   "scripts": {
     "lint": "eslint ./src",
     "prepare": "rm -rf dist && ncc build ./src/index.js -o dist --source-map --license licenses.txt",
@@ -52,7 +54,8 @@
       "SharedArrayBuffer": "readonly"
     },
     "parserOptions": {
-      "ecmaVersion": 2018
+      "ecmaVersion": 2020,
+      "sourceType": "module"
     },
     "rules": {},
     "ignorePatterns": [

@@ -1,6 +1,6 @@
-const { getEmoji } = require('../helpers');
+import { getEmoji } from '../helpers.js';
 
-exports.populateCard = ({
+export const populateCard = ({
   title,
   color,
   commit,
