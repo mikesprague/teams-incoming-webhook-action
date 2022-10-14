@@ -1,11 +1,11 @@
-const axios = require('axios').default;
-const core = require('@actions/core');
-const { Octokit } = require('@octokit/rest');
-const dayjs = require('dayjs');
-const timezone = require('dayjs/plugin/timezone');
-const utc = require('dayjs/plugin/utc');
+import axios from 'axios';
+import core from '@actions/core';
+import { Octokit } from '@octokit/rest';
+import dayjs from 'dayjs';
+import timezone from 'dayjs/plugin/timezone.js';
+import utc from 'dayjs/plugin/utc.js';
 
-const { getAdaptiveCardColorString } = require('./lib/helpers');
+import { getAdaptiveCardColorString } from './lib/helpers.js';
 
 (async () => {
   try {
@@ -57,7 +57,7 @@ const { getAdaptiveCardColorString } = require('./lib/helpers');
 
     let messageToPost;
     if (isDeployCard) {
-      const { populateCard } = require('./lib/cards/deploy');
+      const { populateCard } = await import('./lib/cards/deploy.js');
       const [owner, repo] = (GITHUB_REPOSITORY || '').split('/');
       const sha = GITHUB_SHA || '';
       const params = { owner, repo, ref: sha };
@@ -87,7 +87,7 @@ const { getAdaptiveCardColorString } = require('./lib/helpers');
         timestamp,
       });
     } else {
-      const { populateCard } = require('./lib/cards/simple');
+      const { populateCard } = await import('./lib/cards/simple.js');
       messageToPost = populateCard({
         title,
         text: message,
@@ -106,6 +106,7 @@ const { getAdaptiveCardColorString } = require('./lib/helpers');
         throw new Error(error);
       });
   } catch (error) {
+    console.error(error);
     core.setFailed(error.message);
   }
 })();

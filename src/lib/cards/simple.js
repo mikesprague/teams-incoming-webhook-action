@@ -1,4 +1,4 @@
-exports.populateCard = ({ title, text, color = 'emphasis' }) => ({
+export const populateCard = ({ title, text, color = 'emphasis' }) => ({
   type: 'message',
   attachments: [
     {
