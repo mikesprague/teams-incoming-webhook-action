@@ -1,8 +1,8 @@
 # teams-incoming-webhook-action
 
-[![Build and Test](https://github.com/mikesprague/teams-incoming-webhook-action/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/mikesprague/teams-incoming-webhook-action/actions/workflows/build-and-test.yml)
+[![Build and Test](https://github.com/mikesprague/teams-incoming-webhook-action/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/mikesprague/teams-incoming-webhook-action/actions/workflows/build-and-test.yml) [![CodeQL](https://github.com/mikesprague/teams-incoming-webhook-action/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/mikesprague/teams-incoming-webhook-action/actions/workflows/codeql-analysis.yml)
 
-[![CodeQL](https://github.com/mikesprague/teams-incoming-webhook-action/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/mikesprague/teams-incoming-webhook-action/actions/workflows/codeql-analysis.yml)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=406118991)
 
 Sends an [AdaptiveCard](https://adaptivecards.io/explorer/) notification to an [MS Teams Incoming Webhook](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook) from a GitHub Action Workflow
 
@@ -74,11 +74,11 @@ The following sends a simple notification with a title and message
   with:
     github-token: ${{ github.token }}
     webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
-    title: "Notification Test"
-    message: "This is an example of a simple notification with a title and a body"
+    title: 'Notification Test'
+    message: 'This is an example of a simple notification with a title and a body'
 ```
 
-![Simple Notification Example](./readme-images/simple-notification.png "Simple Notification Example")
+![Simple Notification Example](./readme-images/simple-notification.png 'Simple Notification Example')
 
 ### Workflow Status Notifications
 
@@ -95,11 +95,11 @@ Include as first step in workflow to notify workflow run has started
     github-token: ${{ github.token }}
     webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
     deploy-card: true
-    title: "Deployment Started"
-    color: "info"
+    title: 'Deployment Started'
+    color: 'info'
 ```
 
-![Deploy Notification Example - Info](./readme-images/deploy-info.png "Deploy Notification Example - Info")
+![Deploy Notification Example - Info](./readme-images/deploy-info.png 'Deploy Notification Example - Info')
 
 #### Cancel Notification
 
@@ -113,11 +113,11 @@ Include anywhere in steps to notify workflow run has been cancelled
     github-token: ${{ github.token }}
     webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
     deploy-card: true
-    title: "Deployment Cancelled"
-    color: "warning"
+    title: 'Deployment Cancelled'
+    color: 'warning'
 ```
 
-![Deploy Notification Example - Info](./readme-images/deploy-cancel.png "Deploy Notification Example - Info")
+![Deploy Notification Example - Info](./readme-images/deploy-cancel.png 'Deploy Notification Example - Info')
 
 #### Failure Notification
 
@@ -131,11 +131,11 @@ Include anywhere in steps to notify when a workflow run fails
     github-token: ${{ github.token }}
     webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
     deploy-card: true
-    title: "Deployment Failed"
-    color: "failure"
+    title: 'Deployment Failed'
+    color: 'failure'
 ```
 
-![Deploy Notification Example - Info](./readme-images/deploy-fail.png "Deploy Notification Example - Info")
+![Deploy Notification Example - Info](./readme-images/deploy-fail.png 'Deploy Notification Example - Info')
 
 #### Success Message
 
@@ -149,14 +149,8 @@ Include anywhere in steps to notify when workflow run is successful
     github-token: ${{ github.token }}
     webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
     deploy-card: true
-    title: "Deployment Successful"
-    color: "success"
+    title: 'Deployment Successful'
+    color: 'success'
 ```
 
-![Deploy Notification Example - Success](./readme-images/deploy-success.png "Deploy Notification Example - Success")
-
-## Possible Future Enhancements
-
-Ideas for future enhancements and improvements
-
-- [ ] Support custom payloads/messages
+![Deploy Notification Example - Success](./readme-images/deploy-success.png 'Deploy Notification Example - Success')
