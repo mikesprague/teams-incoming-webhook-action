@@ -13893,7 +13893,7 @@ function toFormData(obj, formData, options) {
         key = removeBrackets(key);
 
         arr.forEach(function each(el, index) {
-          !utils.isUndefined(el) && formData.append(
+          !(utils.isUndefined(el) || el === null) && formData.append(
             // eslint-disable-next-line no-nested-ternary
             indexes === true ? renderKey([key], index, dots) : (indexes === null ? key : key + '[]'),
             convertValue(el)
@@ -13930,7 +13930,7 @@ function toFormData(obj, formData, options) {
     stack.push(value);
 
     utils.forEach(value, function each(el, key) {
-      const result = !utils.isUndefined(el) && visitor.call(
+      const result = !(utils.isUndefined(el) || el === null) && visitor.call(
         formData, el, utils.isString(key) ? key.trim() : key, path, exposedHelpers
       );
 
@@ -14051,21 +14051,28 @@ function buildURL(url, params, options) {
   if (!params) {
     return url;
   }
-
-  const hashmarkIndex = url.indexOf('#');
-
-  if (hashmarkIndex !== -1) {
-    url = url.slice(0, hashmarkIndex);
-  }
-
+  
   const _encode = options && options.encode || buildURL_encode;
 
-  const serializerParams = utils.isURLSearchParams(params) ?
-    params.toString() :
-    new helpers_AxiosURLSearchParams(params, options).toString(_encode);
+  const serializeFn = options && options.serialize;
 
-  if (serializerParams) {
-    url += (url.indexOf('?') === -1 ? '?' : '&') + serializerParams;
+  let serializedParams;
+
+  if (serializeFn) {
+    serializedParams = serializeFn(params, options);
+  } else {
+    serializedParams = utils.isURLSearchParams(params) ?
+      params.toString() :
+      new helpers_AxiosURLSearchParams(params, options).toString(_encode);
+  }
+
+  if (serializedParams) {
+    const hashmarkIndex = url.indexOf("#");
+
+    if (hashmarkIndex !== -1) {
+      url = url.slice(0, hashmarkIndex);
+    }
+    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
   }
 
   return url;
@@ -14396,7 +14403,7 @@ var follow_redirects = __nccwpck_require__(7707);
 // EXTERNAL MODULE: external "zlib"
 var external_zlib_ = __nccwpck_require__(9796);
 ;// CONCATENATED MODULE: ./node_modules/axios/lib/env/data.js
-const VERSION = "1.1.2";
+const VERSION = "1.1.3";
 ;// CONCATENATED MODULE: ./node_modules/axios/lib/cancel/CanceledError.js
 
 
@@ -14564,7 +14571,7 @@ function normalizeValue(value) {
     return value;
   }
 
-  return String(value);
+  return utils.isArray(value) ? value.map(normalizeValue) : String(value);
 }
 
 function parseTokens(str) {
@@ -14651,13 +14658,7 @@ Object.assign(AxiosHeaders.prototype, {
         return;
       }
 
-      if (utils.isArray(_value)) {
-        _value = _value.map(normalizeValue);
-      } else {
-        _value = normalizeValue(_value);
-      }
-
-      self[key || _header] = _value;
+      self[key || _header] = normalizeValue(_value);
     }
 
     if (utils.isPlainObject(header)) {
@@ -14771,13 +14772,13 @@ Object.assign(AxiosHeaders.prototype, {
     return this;
   },
 
-  toJSON: function() {
+  toJSON: function(asStrings) {
     const obj = Object.create(null);
 
     utils.forEach(Object.assign({}, this[$defaults] || null, this),
       (value, header) => {
         if (value == null || value === false) return;
-        obj[header] = utils.isArray(value) ? value.join(', ') : value;
+        obj[header] = asStrings && utils.isArray(value) ? value.join(', ') : value;
       });
 
     return obj;
@@ -15163,7 +15164,7 @@ function dispatchBeforeRedirect(options) {
  * If the proxy or config afterRedirects functions are defined, call them with the options
  *
  * @param {http.ClientRequestArgs} options
- * @param {AxiosProxyConfig} configProxy
+ * @param {AxiosProxyConfig} configProxy configuration from Axios options object
  * @param {string} location
  *
  * @returns {http.ClientRequestArgs}
@@ -15194,13 +15195,14 @@ function setProxy(options, configProxy, location) {
     }
 
     options.headers.host = options.hostname + (options.port ? ':' + options.port : '');
-    options.hostname = proxy.hostname;
+    const proxyHost = proxy.hostname || proxy.host;
+    options.hostname = proxyHost;
     // Replace 'host' since options is not a URL object
-    options.host = proxy.hostname;
+    options.host = proxyHost;
     options.port = proxy.port;
     options.path = location;
     if (proxy.protocol) {
-      options.protocol = proxy.protocol;
+      options.protocol = proxy.protocol.includes(':') ? proxy.protocol : `${proxy.protocol}:`;
     }
   }
 
@@ -15699,6 +15701,7 @@ function httpAdapter(config) {
   });
 }
 
+const __setProxy = (/* unused pure expression or super */ null && (setProxy));
 ;// CONCATENATED MODULE: ./node_modules/axios/lib/helpers/cookies.js
 
 
@@ -16653,7 +16656,7 @@ class Axios {
 
     config = mergeConfig(this.defaults, config);
 
-    const transitional = config.transitional;
+    const {transitional, paramsSerializer} = config;
 
     if (transitional !== undefined) {
       validator.assertOptions(transitional, {
@@ -16661,6 +16664,13 @@ class Axios {
         forcedJSONParsing: Axios_validators.transitional(Axios_validators.boolean),
         clarifyTimeoutError: Axios_validators.transitional(Axios_validators.boolean)
       }, false);
+    }
+
+    if (paramsSerializer !== undefined) {
+      validator.assertOptions(paramsSerializer, {
+        encode: Axios_validators.function,
+        serialize: Axios_validators.function
+      }, true);
     }
 
     // Set config.method
@@ -17042,7 +17052,25 @@ axios.formToJSON = thing => {
 
 ;// CONCATENATED MODULE: ./node_modules/axios/index.js
 
+
+// Keep top-level export same with static properties
+// so that it can keep same with es module or cjs
+const {
+  Axios: axios_Axios,
+  AxiosError: axios_AxiosError,
+  CanceledError: axios_CanceledError,
+  isCancel: axios_isCancel,
+  CancelToken: axios_CancelToken,
+  VERSION: axios_VERSION,
+  all: axios_all,
+  Cancel,
+  isAxiosError: axios_isAxiosError,
+  spread: axios_spread,
+  toFormData: axios_toFormData
+} = lib_axios;
+
 /* harmony default export */ const node_modules_axios = (lib_axios);
+
 
 // EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js
 var core = __nccwpck_require__(2186);
