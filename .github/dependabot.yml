@@ -7,6 +7,10 @@ updates:
       interval: "daily"
       time: "10:00"
       timezone: "America/New_York"
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore"
+      include: "scope"
   # maintain npm dependencies
   - package-ecosystem: "npm"
     directory: "/"
@@ -14,3 +18,8 @@ updates:
       interval: "daily"
       time: "10:00"
       timezone: "America/New_York"
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore"
+      include: "scope"
+
