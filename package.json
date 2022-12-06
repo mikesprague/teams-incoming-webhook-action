@@ -36,7 +36,7 @@
     "dayjs": "1.11.6"
   },
   "devDependencies": {
-    "@vercel/ncc": "0.34.0",
+    "@vercel/ncc": "0.36.0",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "8.29.0",
     "prettier": "2.8.0",
