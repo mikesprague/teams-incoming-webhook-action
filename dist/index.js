@@ -7054,12 +7054,12 @@ module.exports = function(dst, src) {
 /***/ ((module) => {
 
 
-
-module.exports = (flag, argv = process.argv) => {
+module.exports = (flag, argv) => {
+	argv = argv || process.argv;
 	const prefix = flag.startsWith('-') ? '' : (flag.length === 1 ? '-' : '--');
-	const position = argv.indexOf(prefix + flag);
-	const terminatorPosition = argv.indexOf('--');
-	return position !== -1 && (terminatorPosition === -1 || position < terminatorPosition);
+	const pos = argv.indexOf(prefix + flag);
+	const terminatorPos = argv.indexOf('--');
+	return pos !== -1 && (terminatorPos === -1 ? true : pos < terminatorPos);
 };
 
 
@@ -9366,32 +9366,23 @@ exports.j = getProxyForUrl;
 
 
 const os = __nccwpck_require__(2037);
-const tty = __nccwpck_require__(6224);
 const hasFlag = __nccwpck_require__(1621);
 
-const {env} = process;
+const env = process.env;
 
 let forceColor;
 if (hasFlag('no-color') ||
 	hasFlag('no-colors') ||
-	hasFlag('color=false') ||
-	hasFlag('color=never')) {
-	forceColor = 0;
+	hasFlag('color=false')) {
+	forceColor = false;
 } else if (hasFlag('color') ||
 	hasFlag('colors') ||
 	hasFlag('color=true') ||
 	hasFlag('color=always')) {
-	forceColor = 1;
+	forceColor = true;
 }
-
 if ('FORCE_COLOR' in env) {
-	if (env.FORCE_COLOR === 'true') {
-		forceColor = 1;
-	} else if (env.FORCE_COLOR === 'false') {
-		forceColor = 0;
-	} else {
-		forceColor = env.FORCE_COLOR.length === 0 ? 1 : Math.min(parseInt(env.FORCE_COLOR, 10), 3);
-	}
+	forceColor = env.FORCE_COLOR.length === 0 || parseInt(env.FORCE_COLOR, 10) !== 0;
 }
 
 function translateLevel(level) {
@@ -9407,8 +9398,8 @@ function translateLevel(level) {
 	};
 }
 
-function supportsColor(haveStream, streamIsTTY) {
-	if (forceColor === 0) {
+function supportsColor(stream) {
+	if (forceColor === false) {
 		return 0;
 	}
 
@@ -9422,21 +9413,22 @@ function supportsColor(haveStream, streamIsTTY) {
 		return 2;
 	}
 
-	if (haveStream && !streamIsTTY && forceColor === undefined) {
+	if (stream && !stream.isTTY && forceColor !== true) {
 		return 0;
 	}
 
-	const min = forceColor || 0;
-
-	if (env.TERM === 'dumb') {
-		return min;
-	}
+	const min = forceColor ? 1 : 0;
 
 	if (process.platform === 'win32') {
-		// Windows 10 build 10586 is the first Windows release that supports 256 colors.
-		// Windows 10 build 14931 is the first release that supports 16m/TrueColor.
+		// Node.js 7.5.0 is the first version of Node.js to include a patch to
+		// libuv that enables 256 color output on Windows. Anything earlier and it
+		// won't work. However, here we target Node.js 8 at minimum as it is an LTS
+		// release, and Node.js 7 is not. Windows 10 build 10586 is the first Windows
+		// release that supports 256 colors. Windows 10 build 14931 is the first release
+		// that supports 16m/TrueColor.
 		const osRelease = os.release().split('.');
 		if (
+			Number(process.versions.node.split('.')[0]) >= 8 &&
 			Number(osRelease[0]) >= 10 &&
 			Number(osRelease[2]) >= 10586
 		) {
@@ -9447,7 +9439,7 @@ function supportsColor(haveStream, streamIsTTY) {
 	}
 
 	if ('CI' in env) {
-		if (['TRAVIS', 'CIRCLECI', 'APPVEYOR', 'GITLAB_CI', 'GITHUB_ACTIONS', 'BUILDKITE'].some(sign => sign in env) || env.CI_NAME === 'codeship') {
+		if (['TRAVIS', 'CIRCLECI', 'APPVEYOR', 'GITLAB_CI'].some(sign => sign in env) || env.CI_NAME === 'codeship') {
 			return 1;
 		}
 
@@ -9486,18 +9478,22 @@ function supportsColor(haveStream, streamIsTTY) {
 		return 1;
 	}
 
+	if (env.TERM === 'dumb') {
+		return min;
+	}
+
 	return min;
 }
 
 function getSupportLevel(stream) {
-	const level = supportsColor(stream, stream && stream.isTTY);
+	const level = supportsColor(stream);
 	return translateLevel(level);
 }
 
 module.exports = {
 	supportsColor: getSupportLevel,
-	stdout: translateLevel(supportsColor(true, tty.isatty(1))),
-	stderr: translateLevel(supportsColor(true, tty.isatty(2)))
+	stdout: getSupportLevel(process.stdout),
+	stderr: getSupportLevel(process.stderr)
 };
 
 
@@ -15009,7 +15005,7 @@ var follow_redirects = __nccwpck_require__(7707);
 // EXTERNAL MODULE: external "zlib"
 var external_zlib_ = __nccwpck_require__(9796);
 ;// CONCATENATED MODULE: ./node_modules/axios/lib/env/data.js
-const VERSION = "1.2.0";
+const VERSION = "1.2.1";
 ;// CONCATENATED MODULE: ./node_modules/axios/lib/helpers/parseProtocol.js
 
 
@@ -15161,7 +15157,7 @@ function speedometer(samplesCount, min) {
 
     const passed = startedAt && now - startedAt;
 
-    return  passed ? Math.round(bytesCount * 1000 / passed) : undefined;
+    return passed ? Math.round(bytesCount * 1000 / passed) : undefined;
   };
 }
 
@@ -15384,6 +15380,11 @@ var external_events_ = __nccwpck_require__(2361);
 
 
 
+
+const zlibOptions = {
+  flush: external_zlib_.constants.Z_SYNC_FLUSH,
+  finishFlush: external_zlib_.constants.Z_SYNC_FLUSH
+}
 
 const isBrotliSupported = utils.isFunction(external_zlib_.createBrotliDecompress);
 
@@ -15627,7 +15628,7 @@ const isHttpAdapterSupported = typeof process !== 'undefined' && utils.kindOf(pr
       }
     }
 
-    const contentLength = +headers.getContentLength();
+    const contentLength = utils.toFiniteNumber(headers.getContentLength());
 
     if (utils.isArray(maxRate)) {
       maxUploadRate = maxRate[0];
@@ -15642,7 +15643,7 @@ const isHttpAdapterSupported = typeof process !== 'undefined' && utils.kindOf(pr
       }
 
       data = external_stream_.pipeline([data, new helpers_AxiosTransformStream({
-        length: utils.toFiniteNumber(contentLength),
+        length: contentLength,
         maxRate: utils.toFiniteNumber(maxUploadRate)
       })], utils.noop);
 
@@ -15685,7 +15686,10 @@ const isHttpAdapterSupported = typeof process !== 'undefined' && utils.kindOf(pr
       return reject(customErr);
     }
 
-    headers.set('Accept-Encoding', 'gzip, deflate, br', false);
+    headers.set(
+      'Accept-Encoding',
+      'gzip, compress, deflate' + (isBrotliSupported ? ', br' : ''), false
+      );
 
     const options = {
       path,
@@ -15757,17 +15761,17 @@ const isHttpAdapterSupported = typeof process !== 'undefined' && utils.kindOf(pr
         streams.push(transformStream);
       }
 
-      // uncompress the response body transparently if required
+      // decompress the response body transparently if required
       let responseStream = res;
 
       // return the last request in case of redirects
       const lastRequest = res.req || req;
 
       // if decompress disabled we should not decompress
-      if (config.decompress !== false) {
+      if (config.decompress !== false && res.headers['content-encoding']) {
         // if no content, but headers still say that it is encoded,
         // remove the header not confuse downstream operations
-        if ((!responseLength || res.statusCode === 204) && res.headers['content-encoding']) {
+        if (method === 'HEAD' || res.statusCode === 204) {
           delete res.headers['content-encoding'];
         }
 
@@ -15777,14 +15781,14 @@ const isHttpAdapterSupported = typeof process !== 'undefined' && utils.kindOf(pr
         case 'compress':
         case 'deflate':
           // add the unzipper to the body stream processing pipeline
-          streams.push(external_zlib_.createUnzip());
+          streams.push(external_zlib_.createUnzip(zlibOptions));
 
           // remove the content-encoding in order to not confuse downstream operations
           delete res.headers['content-encoding'];
           break;
         case 'br':
           if (isBrotliSupported) {
-            streams.push(external_zlib_.createBrotliDecompress());
+            streams.push(external_zlib_.createBrotliDecompress(zlibOptions));
             delete res.headers['content-encoding'];
           }
         }
@@ -16144,7 +16148,7 @@ const isXHRAdapterSupported = typeof XMLHttpRequest !== 'undefined';
       }
     }
 
-    if (utils.isFormData(requestData) && node.isStandardBrowserEnv) {
+    if (utils.isFormData(requestData) && (node.isStandardBrowserEnv || node.isStandardBrowserWebWorkerEnv)) {
       requestHeaders.setContentType(false); // Let the browser set it
     }
 
@@ -16172,7 +16176,7 @@ const isXHRAdapterSupported = typeof XMLHttpRequest !== 'undefined';
       const responseHeaders = core_AxiosHeaders.from(
         'getAllResponseHeaders' in request && request.getAllResponseHeaders()
       );
-      const responseData = !responseType || responseType === 'text' ||  responseType === 'json' ?
+      const responseData = !responseType || responseType === 'text' || responseType === 'json' ?
         request.responseText : request.response;
       const response = {
         data: responseData,
@@ -16415,7 +16419,7 @@ function throwIfCancellationRequested(config) {
   }
 
   if (config.signal && config.signal.aborted) {
-    throw new cancel_CanceledError();
+    throw new cancel_CanceledError(null, config);
   }
 }
 
@@ -17115,6 +17119,9 @@ axios.spread = spread;
 
 // Expose isAxiosError
 axios.isAxiosError = isAxiosError;
+
+// Expose mergeConfig
+axios.mergeConfig = mergeConfig;
 
 axios.AxiosHeaders = core_AxiosHeaders;
 
