@@ -7,8 +7,8 @@ on:
       - dependabot/*
 
   push:
-    tags:
-      - "v*"
+    tags-ignore:
+      - "v1"
 
 jobs:
   # test action works running from the graph
