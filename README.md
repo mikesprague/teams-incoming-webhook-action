@@ -16,7 +16,6 @@ This action requires a secret to be set up with your Teams Incoming Webhook URL 
     - [Cancel Notification](#cancel-notification)
     - [Failure Notification](#failure-notification)
     - [Success Message](#success-message)
-- [Possible Future Enhancements](#possible-future-enhancements)
 
 ## Inputs
 
@@ -154,3 +153,4 @@ Include anywhere in steps to notify when workflow run is successful
 ```
 
 ![Deploy Notification Example - Success](./readme-images/deploy-success.png 'Deploy Notification Example - Success')
+
