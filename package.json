@@ -7,7 +7,7 @@
   "type": "module",
   "scripts": {
     "build": "npm run lint && npm run prepare",
-    "changelog": "conventional-changelog -i CHANGELOG.md -s",
+    "changelog": "conventional-changelog -i CHANGELOG.md -s && git add CHANGELOG.md",
     "lint": "eslint ./src",
     "version": "npm run changelog",
     "prepare": "rm -rf dist && ncc build ./src/index.js -o dist --source-map --license licenses.txt",
