@@ -39,7 +39,11 @@
   },
   "devDependencies": {
     "@vercel/ncc": "0.36.0",
+    "commitizen": "4.2.6",
+    "conventional-changelog": "3.1.25",
     "conventional-changelog-cli": "2.2.2",
+    "conventional-changelog-conventionalcommits": "5.0.0",
+    "cross-env": "7.0.3",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "8.29.0",
     "prettier": "2.8.1",
@@ -78,5 +82,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "release": {
+    "preset": "conventionalcommits"
   }
 }
