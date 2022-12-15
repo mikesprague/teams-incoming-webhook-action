@@ -7,25 +7,8 @@ permissions:
   pull-requests: write
 
 jobs:
-  dependabot:
-    runs-on: ubuntu-latest
+  call-auto-merge-workflow:
     if: ${{ github.actor == 'dependabot[bot]' }}
-    steps:
-      - name: 🐕 Fetch Dependabot PR metadata
-        id: metadata
-        uses: dependabot/fetch-metadata@v1
-        with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
-      - name: 🔀 Auto-merge Dependabot PRs if dev dependency and minor release
-        if: ${{steps.metadata.outputs.dependency-type == 'direct:development' && steps.metadata.outputs.update-type == 'version-update:semver-minor'}}
-        run: gh pr merge --auto --rebase "$PR_URL"
-        env:
-          PR_URL: ${{github.event.pull_request.html_url}}
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - name: 🔀 Auto-merge Dependabot PRs if patch release
-        if: ${{steps.metadata.outputs.update-type == 'version-update:semver-patch'}}
-        run: gh pr merge --auto --rebase "$PR_URL"
-        env:
-          PR_URL: ${{github.event.pull_request.html_url}}
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
+    uses: mikesprague/reusable-workflows/.github/workflows/dependabot-auto-merge.yml@main
+    secrets:
+      TOKEN: ${{ secrets.GITHUB_TOKEN}}
