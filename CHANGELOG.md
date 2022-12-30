@@ -1,3 +1,23 @@
+## <small>1.9.3 (2022-12-30)</small>
+
+* chore(deps-dev): add conventional-changelog-cli ([0465b15](https://github.com/mikesprague/teams-incoming-webhook-action/commit/0465b15))
+* chore(deps-dev): bump eslint from 8.29.0 to 8.30.0 [skip actions] ([a46aab1](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a46aab1))
+* chore(deps-dev): bump prettier from 2.8.0 to 2.8.1 ([6a12285](https://github.com/mikesprague/teams-incoming-webhook-action/commit/6a12285))
+* chore(deps): bump axios from 1.2.1 to 1.2.2 ([a16c261](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a16c261))
+* chore(dev-deps): add dev dependencies and release config [skip actions] ([1dfdca0](https://github.com/mikesprague/teams-incoming-webhook-action/commit/1dfdca0))
+* ci(actions): add `tags-ignore` key to workflow ([4aa0a8d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4aa0a8d))
+* ci(actions): use reusable workflow ([d03b6e1](https://github.com/mikesprague/teams-incoming-webhook-action/commit/d03b6e1))
+* build(npm): add .npmrc ([aff5269](https://github.com/mikesprague/teams-incoming-webhook-action/commit/aff5269))
+* build(npm): add changelog script ([adff96d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/adff96d))
+* build(npm): improve changelog script ([1dec83f](https://github.com/mikesprague/teams-incoming-webhook-action/commit/1dec83f))
+* build(npm): tweak message ([e93f381](https://github.com/mikesprague/teams-incoming-webhook-action/commit/e93f381))
+* style(npmrc): remove extraneous line break ([2203caa](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2203caa))
+* docs: add CODE_OF_CONDUCT.md ([112942d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/112942d))
+* docs(changelog): add CHANGELOG.md ([ef1506e](https://github.com/mikesprague/teams-incoming-webhook-action/commit/ef1506e))
+* docs(readme): remove bad link ([9283cc8](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9283cc8))
+
+
+
 ## <small>1.9.2 (2022-12-07)</small>
 
 * chore(cz): 🔧 add config for commitizen cli [skip actions] ([5033b6b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/5033b6b))
