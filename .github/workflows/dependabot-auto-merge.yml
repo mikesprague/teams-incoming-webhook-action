@@ -11,4 +11,4 @@ jobs:
     if: ${{ github.actor == 'dependabot[bot]' }}
     uses: mikesprague/reusable-workflows/.github/workflows/dependabot-auto-merge.yml@main
     secrets:
-      TOKEN: ${{ secrets.GITHUB_TOKEN}}
+      REPO_TOKEN: ${{ secrets.GITHUB_TOKEN}}
