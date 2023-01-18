@@ -1,3 +1,15 @@
+## <small>1.9.4 (2023-01-18)</small>
+
+* chore(deps-dev): bump eslint from 8.30.0 to 8.31.0 ([9391abb](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9391abb))
+* chore(deps-dev): bump eslint from 8.31.0 to 8.32.0 (#85) ([d6de73e](https://github.com/mikesprague/teams-incoming-webhook-action/commit/d6de73e)), closes [#85](https://github.com/mikesprague/teams-incoming-webhook-action/issues/85)
+* chore(deps-dev): bump prettier from 2.8.1 to 2.8.2 (#84) ([823c583](https://github.com/mikesprague/teams-incoming-webhook-action/commit/823c583)), closes [#84](https://github.com/mikesprague/teams-incoming-webhook-action/issues/84)
+* chore(deps-dev): bump prettier from 2.8.2 to 2.8.3 (#86) ([e263fe9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/e263fe9)), closes [#86](https://github.com/mikesprague/teams-incoming-webhook-action/issues/86)
+* chore(deps-dev): cz-conventional-changelog to cz-git [skip actions] ([d39ed4e](https://github.com/mikesprague/teams-incoming-webhook-action/commit/d39ed4e))
+* chore(deps): bump axios from 1.2.2 to 1.2.3 (#87) ([af1455b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/af1455b)), closes [#87](https://github.com/mikesprague/teams-incoming-webhook-action/issues/87)
+* ci(actions): update secret name [skip actions] ([af4c097](https://github.com/mikesprague/teams-incoming-webhook-action/commit/af4c097))
+
+
+
 ## <small>1.9.3 (2022-12-30)</small>
 
 * chore(deps-dev): add conventional-changelog-cli ([0465b15](https://github.com/mikesprague/teams-incoming-webhook-action/commit/0465b15))
