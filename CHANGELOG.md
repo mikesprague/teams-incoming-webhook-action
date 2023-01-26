@@ -1,3 +1,11 @@
+## <small>1.9.5 (2023-01-26)</small>
+
+* chore(deps-dev): bump commitizen from 4.2.6 to 4.3.0 (#89) ([189d719](https://github.com/mikesprague/teams-incoming-webhook-action/commit/189d719)), closes [#89](https://github.com/mikesprague/teams-incoming-webhook-action/issues/89)
+* chore(deps): bump @octokit/rest from 19.0.5 to 19.0.7 (#90) ([f87efdb](https://github.com/mikesprague/teams-incoming-webhook-action/commit/f87efdb)), closes [#90](https://github.com/mikesprague/teams-incoming-webhook-action/issues/90)
+* chore(deps): bump axios from 1.2.3 to 1.2.4 (#91) ([9a9c650](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9a9c650)), closes [#91](https://github.com/mikesprague/teams-incoming-webhook-action/issues/91)
+
+
+
 ## <small>1.9.4 (2023-01-18)</small>
 
 * chore(deps-dev): bump eslint from 8.30.0 to 8.31.0 ([9391abb](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9391abb))
