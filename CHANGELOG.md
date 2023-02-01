@@ -1,3 +1,16 @@
+## <small>1.9.6 (2023-02-01)</small>
+
+* chore: add CODEOWNERS file ([b98d6b8](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b98d6b8))
+* chore(deps-dev): bump @vercel/ncc from 0.36.0 to 0.36.1 (#92) ([4455f54](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4455f54)), closes [#92](https://github.com/mikesprague/teams-incoming-webhook-action/issues/92)
+* chore(deps-dev): bump eslint from 8.32.0 to 8.33.0 (#94) ([eec96da](https://github.com/mikesprague/teams-incoming-webhook-action/commit/eec96da)), closes [#94](https://github.com/mikesprague/teams-incoming-webhook-action/issues/94)
+* chore(deps): bump axios from 1.2.4 to 1.2.5 (#93) ([147f740](https://github.com/mikesprague/teams-incoming-webhook-action/commit/147f740)), closes [#93](https://github.com/mikesprague/teams-incoming-webhook-action/issues/93)
+* chore(deps): bump axios from 1.2.5 to 1.2.6 (#95) ([7b4443d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/7b4443d)), closes [#95](https://github.com/mikesprague/teams-incoming-webhook-action/issues/95)
+* chore(deps): bump axios from 1.2.6 to 1.3.0 (#96) ([29057fc](https://github.com/mikesprague/teams-incoming-webhook-action/commit/29057fc)), closes [#96](https://github.com/mikesprague/teams-incoming-webhook-action/issues/96)
+* docs(README): remove codeql v1 badge ([c571d4a](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c571d4a))
+* ci(actions): remove deprecated codeql v1 workflow ([f269626](https://github.com/mikesprague/teams-incoming-webhook-action/commit/f269626))
+
+
+
 ## <small>1.9.5 (2023-01-26)</small>
 
 * chore(deps-dev): bump commitizen from 4.2.6 to 4.3.0 (#89) ([189d719](https://github.com/mikesprague/teams-incoming-webhook-action/commit/189d719)), closes [#89](https://github.com/mikesprague/teams-incoming-webhook-action/issues/89)
