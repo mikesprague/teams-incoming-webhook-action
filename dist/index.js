@@ -13978,7 +13978,7 @@ function toFormData(obj, formData, options) {
         value = JSON.stringify(value);
       } else if (
         (utils.isArray(value) && isFlatArray(value)) ||
-        (utils.isFileList(value) || utils.endsWith(key, '[]') && (arr = utils.toArray(value))
+        ((utils.isFileList(value) || utils.endsWith(key, '[]')) && (arr = utils.toArray(value))
         )) {
         // eslint-disable-next-line no-param-reassign
         key = removeBrackets(key);
@@ -14648,9 +14648,13 @@ function isValidHeaderName(str) {
   return /^[-_a-zA-Z]+$/.test(str.trim());
 }
 
-function matchHeaderValue(context, value, header, filter) {
+function matchHeaderValue(context, value, header, filter, isHeaderNameFilter) {
   if (utils.isFunction(filter)) {
     return filter.call(this, value, header);
+  }
+
+  if (isHeaderNameFilter) {
+    value = header;
   }
 
   if (!utils.isString(value)) return;
@@ -14756,7 +14760,7 @@ class AxiosHeaders {
     if (header) {
       const key = utils.findKey(this, header);
 
-      return !!(key && (!matcher || matchHeaderValue(this, this[key], key, matcher)));
+      return !!(key && this[key] !== undefined && (!matcher || matchHeaderValue(this, this[key], key, matcher)));
     }
 
     return false;
@@ -14796,7 +14800,7 @@ class AxiosHeaders {
 
     while (i--) {
       const key = keys[i];
-      if(!matcher || matchHeaderValue(this, this[key], key, matcher)) {
+      if(!matcher || matchHeaderValue(this, this[key], key, matcher, true)) {
         delete this[key];
         deleted = true;
       }
@@ -15056,12 +15060,14 @@ var proxy_from_env = __nccwpck_require__(3329);
 var external_http_ = __nccwpck_require__(3685);
 // EXTERNAL MODULE: external "https"
 var external_https_ = __nccwpck_require__(5687);
+// EXTERNAL MODULE: external "util"
+var external_util_ = __nccwpck_require__(3837);
 // EXTERNAL MODULE: ./node_modules/follow-redirects/index.js
 var follow_redirects = __nccwpck_require__(7707);
 // EXTERNAL MODULE: external "zlib"
 var external_zlib_ = __nccwpck_require__(9796);
 ;// CONCATENATED MODULE: ./node_modules/axios/lib/env/data.js
-const VERSION = "1.3.0";
+const VERSION = "1.3.4";
 ;// CONCATENATED MODULE: ./node_modules/axios/lib/helpers/parseProtocol.js
 
 
@@ -15436,9 +15442,10 @@ const readBlob = async function* (blob) {
 
 
 
+
 const BOUNDARY_ALPHABET = utils.ALPHABET.ALPHA_DIGIT + '-_';
 
-const textEncoder = new TextEncoder();
+const textEncoder = new external_util_.TextEncoder();
 
 const CRLF = '\r\n';
 const CRLF_BYTES = textEncoder.encode(CRLF);
@@ -15599,6 +15606,7 @@ class ZlibHeaderTransformStream extends external_stream_.Transform {
 
 
 
+
 const zlibOptions = {
   flush: external_zlib_.constants.Z_SYNC_FLUSH,
   finishFlush: external_zlib_.constants.Z_SYNC_FLUSH
@@ -15691,14 +15699,39 @@ function setProxy(options, configProxy, location) {
 
 const isHttpAdapterSupported = typeof process !== 'undefined' && utils.kindOf(process) === 'process';
 
+// temporary hotfix
+
+const wrapAsync = (asyncExecutor) => {
+  return new Promise((resolve, reject) => {
+    let onDone;
+    let isDone;
+
+    const done = (value, isRejected) => {
+      if (isDone) return;
+      isDone = true;
+      onDone && onDone(value, isRejected);
+    }
+
+    const _resolve = (value) => {
+      done(value);
+      resolve(value);
+    };
+
+    const _reject = (reason) => {
+      done(reason, true);
+      reject(reason);
+    }
+
+    asyncExecutor(_resolve, _reject, (onDoneHandler) => (onDone = onDoneHandler)).catch(_reject);
+  })
+};
+
 /*eslint consistent-return:0*/
 /* harmony default export */ const http = (isHttpAdapterSupported && function httpAdapter(config) {
-  return new Promise(function dispatchHttpRequest(resolvePromise, rejectPromise) {
-    let data = config.data;
-    const responseType = config.responseType;
-    const responseEncoding = config.responseEncoding;
+  return wrapAsync(async function dispatchHttpRequest(resolve, reject, onDone) {
+    let {data} = config;
+    const {responseType, responseEncoding} = config;
     const method = config.method.toUpperCase();
-    let isFinished;
     let isDone;
     let rejected = false;
     let req;
@@ -15706,10 +15739,7 @@ const isHttpAdapterSupported = typeof process !== 'undefined' && utils.kindOf(pr
     // temporary internal emitter until the AxiosRequest class will be implemented
     const emitter = new external_events_();
 
-    function onFinished() {
-      if (isFinished) return;
-      isFinished = true;
-
+    const onFinished = () => {
       if (config.cancelToken) {
         config.cancelToken.unsubscribe(abort);
       }
@@ -15721,26 +15751,13 @@ const isHttpAdapterSupported = typeof process !== 'undefined' && utils.kindOf(pr
       emitter.removeAllListeners();
     }
 
-    function done(value, isRejected) {
-      if (isDone) return;
-
+    onDone((value, isRejected) => {
       isDone = true;
-
       if (isRejected) {
         rejected = true;
         onFinished();
       }
-
-      isRejected ? rejectPromise(value) : resolvePromise(value);
-    }
-
-    const resolve = function resolve(value) {
-      done(value);
-    };
-
-    const reject = function reject(value) {
-      done(value, true);
-    };
+    });
 
     function abort(reason) {
       emitter.emit('abort', !reason || reason.type ? new cancel_CanceledError(null, config, req) : reason);
@@ -15757,7 +15774,7 @@ const isHttpAdapterSupported = typeof process !== 'undefined' && utils.kindOf(pr
 
     // Parse url
     const fullPath = buildFullPath(config.baseURL, config.url);
-    const parsed = new URL(fullPath);
+    const parsed = new URL(fullPath, 'http://localhost');
     const protocol = parsed.protocol || supportedProtocols[0];
 
     if (protocol === 'data:') {
@@ -15784,7 +15801,7 @@ const isHttpAdapterSupported = typeof process !== 'undefined' && utils.kindOf(pr
         convertedData = convertedData.toString(responseEncoding);
 
         if (!responseEncoding || responseEncoding === 'utf8') {
-          data = utils.stripBOM(convertedData);
+          convertedData = utils.stripBOM(convertedData);
         }
       } else if (responseType === 'stream') {
         convertedData = external_stream_.Readable.from(convertedData);
@@ -15834,9 +15851,14 @@ const isHttpAdapterSupported = typeof process !== 'undefined' && utils.kindOf(pr
       // support for https://www.npmjs.com/package/form-data api
     } else if (utils.isFormData(data) && utils.isFunction(data.getHeaders)) {
       headers.set(data.getHeaders());
-      if (utils.isFunction(data.getLengthSync)) { // check if the undocumented API exists
-        const knownLength = data.getLengthSync();
-        !utils.isUndefined(knownLength) && headers.setContentLength(knownLength, false);
+
+      if (!headers.hasContentLength()) {
+        try {
+          const knownLength = await external_util_.promisify(data.getLength).call(data);
+          Number.isFinite(knownLength) && knownLength >= 0 && headers.setContentLength(knownLength);
+          /*eslint no-empty:0*/
+        } catch (e) {
+        }
       }
     } else if (utils.isBlob(data)) {
       data.size && headers.setContentType(data.type || 'application/octet-stream');

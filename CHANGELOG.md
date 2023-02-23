@@ -1,3 +1,15 @@
+## <small>1.9.7 (2023-02-23)</small>
+
+* chore(deps-dev): bump cz-git from 1.4.1 to 1.5.0 (#102) ([1818764](https://github.com/mikesprague/teams-incoming-webhook-action/commit/1818764)), closes [#102](https://github.com/mikesprague/teams-incoming-webhook-action/issues/102)
+* chore(deps-dev): bump eslint from 8.33.0 to 8.34.0 (#100) ([38d210c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/38d210c)), closes [#100](https://github.com/mikesprague/teams-incoming-webhook-action/issues/100)
+* chore(deps-dev): bump prettier from 2.8.3 to 2.8.4 (#99) ([2d04b67](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2d04b67)), closes [#99](https://github.com/mikesprague/teams-incoming-webhook-action/issues/99)
+* chore(deps): bump axios from 1.3.0 to 1.3.1 (#97) ([ab28b17](https://github.com/mikesprague/teams-incoming-webhook-action/commit/ab28b17)), closes [#97](https://github.com/mikesprague/teams-incoming-webhook-action/issues/97)
+* chore(deps): bump axios from 1.3.1 to 1.3.2 (#98) ([0255e3d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/0255e3d)), closes [#98](https://github.com/mikesprague/teams-incoming-webhook-action/issues/98)
+* chore(deps): bump axios from 1.3.2 to 1.3.3 (#101) ([54216be](https://github.com/mikesprague/teams-incoming-webhook-action/commit/54216be)), closes [#101](https://github.com/mikesprague/teams-incoming-webhook-action/issues/101)
+* chore(deps): bump axios from 1.3.3 to 1.3.4 (#104) ([fa51d77](https://github.com/mikesprague/teams-incoming-webhook-action/commit/fa51d77)), closes [#104](https://github.com/mikesprague/teams-incoming-webhook-action/issues/104)
+
+
+
 ## <small>1.9.6 (2023-02-01)</small>
 
 * chore: add CODEOWNERS file ([b98d6b8](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b98d6b8))
