@@ -10,6 +10,15 @@ on:
     tags-ignore:
       - "v1"
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   # test action works running from the graph
   test:
