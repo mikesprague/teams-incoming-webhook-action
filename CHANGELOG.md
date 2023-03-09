@@ -1,3 +1,18 @@
+## 1.10.0 (2023-03-09)
+
+* build(npm): tweak docs scripts ([9594b99](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9594b99))
+* build(npm): tweak scripts ([a87e291](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a87e291))
+* build(typescript): tweak tsconfig ([e68915c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/e68915c))
+* ci(actions): add job to publish auto generated ts docs ([3337c7c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/3337c7c))
+* docs(typescript): add generated docs ([396fe4f](https://github.com/mikesprague/teams-incoming-webhook-action/commit/396fe4f))
+* chore(deps-dev): bump cz-git from 1.5.0 to 1.5.1 (#106) ([788118d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/788118d)), closes [#106](https://github.com/mikesprague/teams-incoming-webhook-action/issues/106)
+* chore(deps-dev): bump cz-git from 1.5.1 to 1.5.3 (#107) ([50b07f5](https://github.com/mikesprague/teams-incoming-webhook-action/commit/50b07f5)), closes [#107](https://github.com/mikesprague/teams-incoming-webhook-action/issues/107)
+* chore(deps-dev): bump eslint from 8.34.0 to 8.35.0 (#105) ([ba06003](https://github.com/mikesprague/teams-incoming-webhook-action/commit/ba06003)), closes [#105](https://github.com/mikesprague/teams-incoming-webhook-action/issues/105)
+* chore(typescript): add declarations ([c9992c9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c9992c9))
+* refactor(typescript): add WIP ([d3ae2c9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/d3ae2c9))
+
+
+
 ## <small>1.9.7 (2023-02-23)</small>
 
 * chore(deps-dev): bump cz-git from 1.4.1 to 1.5.0 (#102) ([1818764](https://github.com/mikesprague/teams-incoming-webhook-action/commit/1818764)), closes [#102](https://github.com/mikesprague/teams-incoming-webhook-action/issues/102)
