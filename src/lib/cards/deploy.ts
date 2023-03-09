@@ -1,5 +1,19 @@
 import { getEmoji } from '../helpers.js';
 
+export interface DeployCardParams {
+  title: string;
+  color: string;
+  commit: any;
+  branch: string | undefined;
+  author: any;
+  runNum: string;
+  runId: string;
+  repoName: string;
+  sha: string;
+  repoUrl: string;
+  timestamp: string;
+}
+
 export const populateCard = ({
   title,
   color,
@@ -12,7 +26,7 @@ export const populateCard = ({
   sha,
   repoUrl,
   timestamp,
-}) => ({
+}: DeployCardParams) => ({
   type: 'message',
   attachments: [
     {

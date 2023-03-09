@@ -1,4 +1,14 @@
-export const populateCard = ({ title, text, color = 'emphasis' }) => ({
+export interface SimpleCardParams {
+  title: string;
+  text: string;
+  color?: string;
+}
+
+export const populateCard = ({
+  title,
+  text,
+  color = 'emphasis',
+}: SimpleCardParams) => ({
   type: 'message',
   attachments: [
     {

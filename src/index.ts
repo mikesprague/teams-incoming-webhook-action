@@ -1,5 +1,5 @@
 import axios from 'axios';
-import core from '@actions/core';
+import * as core from '@actions/core';
 import { Octokit } from '@octokit/rest';
 import dayjs from 'dayjs';
 import timezone from 'dayjs/plugin/timezone.js';
@@ -67,7 +67,7 @@ import { getAdaptiveCardColorString } from './lib/helpers.js';
       const repoUrl = `https://github.com/${repoName}`;
       const octokit = new Octokit({ auth: `token ${githubToken}` });
       const commit = await octokit.repos.getCommit(params);
-      const branch = GITHUB_REF.split('/')[GITHUB_REF.split('/').length - 1];
+      const branch = GITHUB_REF?.split('/')[GITHUB_REF.split('/').length - 1];
       const { author } = commit.data;
       const timestamp = dayjs()
         .tz(timezoneString)
@@ -105,8 +105,9 @@ import { getAdaptiveCardColorString } from './lib/helpers.js';
         core.debug(error);
         throw new Error(error);
       });
-  } catch (error) {
+  } catch (error: any) {
     console.error(error);
-    core.setFailed(error.message);
+    const { message } = error;
+    core.setFailed(message);
   }
 })();
