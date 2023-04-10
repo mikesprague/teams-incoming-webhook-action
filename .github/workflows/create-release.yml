@@ -1,0 +1,27 @@
+name: 'Create Release'
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+  create-github-release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Set Vars
+        run: |
+          echo "NEW_TAG=$(git tag | sort --version-sort -r | head -1)" >> $GITHUB_ENV
+          echo "LAST_TAG=$(git tag | sort --version-sort -r | head -2 | tail -1)" >> $GITHUB_ENV
+      - name: Generate Release via CLI
+        run: |
+          git log  --pretty=format:' * %s - %h' "${{ env.LAST_TAG }}".."${{ env.NEW_TAG }}" | gh release create "${{ env.NEW_TAG }}" --generate-notes -F -
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
