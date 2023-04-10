@@ -58,7 +58,7 @@
     "prettier-eslint": "15.0.1",
     "typedoc": "0.23.28",
     "typedoc-plugin-markdown": "3.14.0",
-    "typescript": "5.0.3"
+    "typescript": "5.0.4"
   },
   "eslintConfig": {
     "root": true,
