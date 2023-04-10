@@ -12695,7 +12695,7 @@ const dayjs_1 = __importDefault(__nccwpck_require__(7401));
 const timezone_js_1 = __importDefault(__nccwpck_require__(4761));
 const utc_js_1 = __importDefault(__nccwpck_require__(4359));
 const helpers_js_1 = __nccwpck_require__(343);
-(() => __awaiter(void 0, void 0, void 0, function* () {
+void (() => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { GITHUB_REPOSITORY, GITHUB_SHA, GITHUB_RUN_ID, GITHUB_RUN_NUMBER, GITHUB_REF, } = process.env;
         const githubToken = core.getInput('github-token', {
@@ -12733,11 +12733,11 @@ const helpers_js_1 = __nccwpck_require__(343);
         let messageToPost;
         if (isDeployCard) {
             const { populateCard } = yield Promise.resolve().then(() => __importStar(__nccwpck_require__(3512)));
-            const [owner, repo] = (GITHUB_REPOSITORY || '').split('/');
-            const sha = GITHUB_SHA || '';
+            const [owner, repo] = (GITHUB_REPOSITORY !== null && GITHUB_REPOSITORY !== void 0 ? GITHUB_REPOSITORY : '').split('/');
+            const sha = GITHUB_SHA !== null && GITHUB_SHA !== void 0 ? GITHUB_SHA : '';
             const params = { owner, repo, ref: sha };
-            const runId = GITHUB_RUN_ID || '';
-            const runNum = GITHUB_RUN_NUMBER || '';
+            const runId = GITHUB_RUN_ID !== null && GITHUB_RUN_ID !== void 0 ? GITHUB_RUN_ID : '';
+            const runNum = GITHUB_RUN_NUMBER !== null && GITHUB_RUN_NUMBER !== void 0 ? GITHUB_RUN_NUMBER : '';
             const repoName = `${owner}/${repo}`;
             const repoUrl = `https://github.com/${repoName}`;
             const octokit = new rest_1.Octokit({ auth: `token ${githubToken}` });
@@ -12939,6 +12939,7 @@ const validateColorString = function (colorString) {
 };
 exports.validateColorString = validateColorString;
 const getHexForColorString = function (colorString) {
+    var _a;
     if ((0, exports.validateColorString)(colorString)) {
         const colorStrings = {
             info: '1919ff',
@@ -12946,13 +12947,14 @@ const getHexForColorString = function (colorString) {
             success: '007300',
             warning: 'ffcc00',
         };
-        return colorStrings[colorString] || colorString;
+        return (_a = colorStrings[colorString]) !== null && _a !== void 0 ? _a : colorString;
     }
     console.log('Invalid color string, using default color');
     return '808080';
 };
 exports.getHexForColorString = getHexForColorString;
 const getAdaptiveCardColorString = function (colorString) {
+    var _a;
     const colorStrings = {
         default: 'emphasis',
         info: 'accent',
@@ -12960,10 +12962,11 @@ const getAdaptiveCardColorString = function (colorString) {
         success: 'good',
         warning: 'warning', // yellow
     };
-    return colorStrings[colorString] || 'emphasis';
+    return (_a = colorStrings[colorString]) !== null && _a !== void 0 ? _a : 'emphasis';
 };
 exports.getAdaptiveCardColorString = getAdaptiveCardColorString;
 const getEmoji = (adaptiveCardColor = 'emphasis') => {
+    var _a;
     const emojiList = {
         good: '✅ ',
         accent: 'ℹ️  ',
@@ -12971,7 +12974,7 @@ const getEmoji = (adaptiveCardColor = 'emphasis') => {
         attention: '🚨 ',
         emphasis: '',
     };
-    return emojiList[adaptiveCardColor] || '';
+    return (_a = emojiList[adaptiveCardColor]) !== null && _a !== void 0 ? _a : '';
 };
 exports.getEmoji = getEmoji;
 

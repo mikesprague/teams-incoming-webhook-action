@@ -1,3 +1,11 @@
+## <small>1.10.2 (2023-04-10)</small>
+
+* build(npm): fix typedoc script due to api changes ([0064539](https://github.com/mikesprague/teams-incoming-webhook-action/commit/0064539))
+* fix(eslint): config ([62c5a53](https://github.com/mikesprague/teams-incoming-webhook-action/commit/62c5a53))
+* style: fix linter warnings ([1085d39](https://github.com/mikesprague/teams-incoming-webhook-action/commit/1085d39))
+
+
+
 ## <small>1.10.1 (2023-04-10)</small>
 
 * ci(actions): add workflow to create releases ([522c863](https://github.com/mikesprague/teams-incoming-webhook-action/commit/522c863))
