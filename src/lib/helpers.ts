@@ -6,9 +6,7 @@ export const validateColorString = function (colorString: string) {
   );
 };
 
-export interface ObjectMap {
-  [name: string]: string | undefined;
-}
+export type ObjectMap = Record<string, string | undefined>;
 
 export interface ColorStrings extends ObjectMap {
   default?: string;
@@ -26,7 +24,7 @@ export const getHexForColorString = function (colorString: string) {
       success: '007300',
       warning: 'ffcc00',
     };
-    return colorStrings[colorString] || colorString;
+    return colorStrings[colorString] ?? colorString;
   }
   console.log('Invalid color string, using default color');
   return '808080';
@@ -40,7 +38,7 @@ export const getAdaptiveCardColorString = function (colorString: string) {
     success: 'good', // green
     warning: 'warning', // yellow
   };
-  return colorStrings[colorString] || 'emphasis';
+  return colorStrings[colorString] ?? 'emphasis';
 };
 
 export interface EmojiStrings extends ObjectMap {
@@ -59,5 +57,5 @@ export const getEmoji = (adaptiveCardColor = 'emphasis') => {
     attention: '🚨 ',
     emphasis: '',
   };
-  return emojiList[adaptiveCardColor] || '';
+  return emojiList[adaptiveCardColor] ?? '';
 };

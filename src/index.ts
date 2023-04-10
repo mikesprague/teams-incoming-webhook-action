@@ -7,7 +7,7 @@ import utc from 'dayjs/plugin/utc.js';
 
 import { getAdaptiveCardColorString } from './lib/helpers.js';
 
-(async () => {
+void (async () => {
   try {
     const {
       GITHUB_REPOSITORY,
@@ -58,11 +58,11 @@ import { getAdaptiveCardColorString } from './lib/helpers.js';
     let messageToPost;
     if (isDeployCard) {
       const { populateCard } = await import('./lib/cards/deploy.js');
-      const [owner, repo] = (GITHUB_REPOSITORY || '').split('/');
-      const sha = GITHUB_SHA || '';
+      const [owner, repo] = (GITHUB_REPOSITORY ?? '').split('/');
+      const sha = GITHUB_SHA ?? '';
       const params = { owner, repo, ref: sha };
-      const runId = GITHUB_RUN_ID || '';
-      const runNum = GITHUB_RUN_NUMBER || '';
+      const runId = GITHUB_RUN_ID ?? '';
+      const runNum = GITHUB_RUN_NUMBER ?? '';
       const repoName = `${owner}/${repo}`;
       const repoUrl = `https://github.com/${repoName}`;
       const octokit = new Octokit({ auth: `token ${githubToken}` });
