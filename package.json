@@ -17,7 +17,7 @@
     "prepare": "rm -rf dist && ncc build --source-map --license licenses.txt",
     "test": "npm run lint && npm run check",
     "typedoc": "typedoc --out ./docs --entryPointStrategy expand ./src --plugin typedoc-plugin-markdown --readme none",
-    "typedoc-html": "typedoc --out ./docs/publish --entryPointStrategy expand ./src --plugin none --readme ./README.md"
+    "typedoc-html": "typedoc --out ./docs/publish --entryPointStrategy expand ./src --readme ./README.md"
   },
   "repository": {
     "type": "git",
