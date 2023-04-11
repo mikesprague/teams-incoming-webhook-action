@@ -30,9 +30,9 @@
 
 | Name | Type |
 | :------ | :------ |
-| `attachments` | { `content`: { `$schema`: `string` = 'http://adaptivecards.io/schemas/adaptive-card.json'; `body`: ({ `bleed`: `boolean` = true; `height`: `undefined` = 'stretch'; `items`: { `size`: `string` = 'Large'; `text`: `string` = title; `type`: `string` = 'TextBlock'; `weight`: `string` = 'Bolder'; `wrap`: `boolean` = true }[] ; `style`: `string` = color; `text`: `undefined` ; `type`: `string` = 'Container'; `wrap`: `undefined` = true } \| { `bleed`: `undefined` = true; `height`: `string` = 'stretch'; `items`: `undefined` ; `style`: `undefined` = color; `text`: `string` = text; `type`: `string` = 'TextBlock'; `wrap`: `boolean` = true })[] ; `msteams`: { `width`: `string` = 'Full' } ; `type`: `string` = 'AdaptiveCard'; `version`: `string` = '1.3' } ; `contentType`: `string` = 'application/vnd.microsoft.card.adaptive' }[] |
+| `attachments` | { `content`: { `$schema`: `string` = 'http://adaptivecards.io/schemas/adaptive-card.json'; `body`: ({ `bleed`: `boolean` = true; `height?`: `undefined` = 'stretch'; `items`: { `size`: `string` = 'Large'; `text`: `string` = title; `type`: `string` = 'TextBlock'; `weight`: `string` = 'Bolder'; `wrap`: `boolean` = true }[] ; `style`: `string` = color; `text?`: `undefined` ; `type`: `string` = 'Container'; `wrap?`: `undefined` = true } \| { `bleed?`: `undefined` = true; `height`: `string` = 'stretch'; `items?`: `undefined` ; `style?`: `undefined` = color; `text`: `string` = text; `type`: `string` = 'TextBlock'; `wrap`: `boolean` = true })[] ; `msteams`: { `width`: `string` = 'Full' } ; `type`: `string` = 'AdaptiveCard'; `version`: `string` = '1.3' } ; `contentType`: `string` = 'application/vnd.microsoft.card.adaptive' }[] |
 | `type` | `string` |
 
 #### Defined in
 
-[lib/cards/simple.ts:7](https://github.com/mikesprague/teams-incoming-webhook-action/blob/c9992c9/src/lib/cards/simple.ts#L7)
+[lib/cards/simple.ts:7](https://github.com/mikesprague/teams-incoming-webhook-action/blob/27ac9e5/src/lib/cards/simple.ts#L7)

@@ -8,7 +8,10 @@
 
 - [ColorStrings](../interfaces/lib_helpers.ColorStrings.md)
 - [EmojiStrings](../interfaces/lib_helpers.EmojiStrings.md)
-- [ObjectMap](../interfaces/lib_helpers.ObjectMap.md)
+
+### Type Aliases
+
+- [ObjectMap](lib_helpers.md#objectmap)
 
 ### Functions
 
@@ -16,6 +19,16 @@
 - [getEmoji](lib_helpers.md#getemoji)
 - [getHexForColorString](lib_helpers.md#gethexforcolorstring)
 - [validateColorString](lib_helpers.md#validatecolorstring)
+
+## Type Aliases
+
+### ObjectMap
+
+Ƭ **ObjectMap**: `Record`<`string`, `string` \| `undefined`\>
+
+#### Defined in
+
+[lib/helpers.ts:9](https://github.com/mikesprague/teams-incoming-webhook-action/blob/27ac9e5/src/lib/helpers.ts#L9)
 
 ## Functions
 
@@ -35,7 +48,7 @@
 
 #### Defined in
 
-[lib/helpers.ts:35](https://github.com/mikesprague/teams-incoming-webhook-action/blob/c9992c9/src/lib/helpers.ts#L35)
+[lib/helpers.ts:33](https://github.com/mikesprague/teams-incoming-webhook-action/blob/27ac9e5/src/lib/helpers.ts#L33)
 
 ___
 
@@ -55,7 +68,7 @@ ___
 
 #### Defined in
 
-[lib/helpers.ts:54](https://github.com/mikesprague/teams-incoming-webhook-action/blob/c9992c9/src/lib/helpers.ts#L54)
+[lib/helpers.ts:52](https://github.com/mikesprague/teams-incoming-webhook-action/blob/27ac9e5/src/lib/helpers.ts#L52)
 
 ___
 
@@ -75,7 +88,7 @@ ___
 
 #### Defined in
 
-[lib/helpers.ts:21](https://github.com/mikesprague/teams-incoming-webhook-action/blob/c9992c9/src/lib/helpers.ts#L21)
+[lib/helpers.ts:19](https://github.com/mikesprague/teams-incoming-webhook-action/blob/27ac9e5/src/lib/helpers.ts#L19)
 
 ___
 
@@ -95,4 +108,4 @@ ___
 
 #### Defined in
 
-[lib/helpers.ts:3](https://github.com/mikesprague/teams-incoming-webhook-action/blob/c9992c9/src/lib/helpers.ts#L3)
+[lib/helpers.ts:3](https://github.com/mikesprague/teams-incoming-webhook-action/blob/27ac9e5/src/lib/helpers.ts#L3)

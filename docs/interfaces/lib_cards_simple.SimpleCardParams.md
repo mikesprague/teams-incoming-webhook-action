@@ -20,7 +20,7 @@
 
 #### Defined in
 
-[lib/cards/simple.ts:4](https://github.com/mikesprague/teams-incoming-webhook-action/blob/c9992c9/src/lib/cards/simple.ts#L4)
+[lib/cards/simple.ts:4](https://github.com/mikesprague/teams-incoming-webhook-action/blob/27ac9e5/src/lib/cards/simple.ts#L4)
 
 ___
 
@@ -30,7 +30,7 @@ ___
 
 #### Defined in
 
-[lib/cards/simple.ts:3](https://github.com/mikesprague/teams-incoming-webhook-action/blob/c9992c9/src/lib/cards/simple.ts#L3)
+[lib/cards/simple.ts:3](https://github.com/mikesprague/teams-incoming-webhook-action/blob/27ac9e5/src/lib/cards/simple.ts#L3)
 
 ___
 
@@ -40,4 +40,4 @@ ___
 
 #### Defined in
 
-[lib/cards/simple.ts:2](https://github.com/mikesprague/teams-incoming-webhook-action/blob/c9992c9/src/lib/cards/simple.ts#L2)
+[lib/cards/simple.ts:2](https://github.com/mikesprague/teams-incoming-webhook-action/blob/27ac9e5/src/lib/cards/simple.ts#L2)

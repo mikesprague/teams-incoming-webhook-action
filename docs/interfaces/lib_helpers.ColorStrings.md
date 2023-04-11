@@ -6,7 +6,7 @@
 
 ## Hierarchy
 
-- [`ObjectMap`](lib_helpers.ObjectMap.md)
+- [`ObjectMap`](../modules/lib_helpers.md#objectmap)
 
   ↳ **`ColorStrings`**
 
@@ -28,7 +28,7 @@
 
 #### Defined in
 
-[lib/helpers.ts:14](https://github.com/mikesprague/teams-incoming-webhook-action/blob/c9992c9/src/lib/helpers.ts#L14)
+[lib/helpers.ts:12](https://github.com/mikesprague/teams-incoming-webhook-action/blob/27ac9e5/src/lib/helpers.ts#L12)
 
 ___
 
@@ -38,7 +38,7 @@ ___
 
 #### Defined in
 
-[lib/helpers.ts:16](https://github.com/mikesprague/teams-incoming-webhook-action/blob/c9992c9/src/lib/helpers.ts#L16)
+[lib/helpers.ts:14](https://github.com/mikesprague/teams-incoming-webhook-action/blob/27ac9e5/src/lib/helpers.ts#L14)
 
 ___
 
@@ -48,7 +48,7 @@ ___
 
 #### Defined in
 
-[lib/helpers.ts:15](https://github.com/mikesprague/teams-incoming-webhook-action/blob/c9992c9/src/lib/helpers.ts#L15)
+[lib/helpers.ts:13](https://github.com/mikesprague/teams-incoming-webhook-action/blob/27ac9e5/src/lib/helpers.ts#L13)
 
 ___
 
@@ -58,7 +58,7 @@ ___
 
 #### Defined in
 
-[lib/helpers.ts:17](https://github.com/mikesprague/teams-incoming-webhook-action/blob/c9992c9/src/lib/helpers.ts#L17)
+[lib/helpers.ts:15](https://github.com/mikesprague/teams-incoming-webhook-action/blob/27ac9e5/src/lib/helpers.ts#L15)
 
 ___
 
@@ -68,4 +68,4 @@ ___
 
 #### Defined in
 
-[lib/helpers.ts:18](https://github.com/mikesprague/teams-incoming-webhook-action/blob/c9992c9/src/lib/helpers.ts#L18)
+[lib/helpers.ts:16](https://github.com/mikesprague/teams-incoming-webhook-action/blob/27ac9e5/src/lib/helpers.ts#L16)
