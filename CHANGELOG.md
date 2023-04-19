@@ -1,3 +1,20 @@
+## <small>1.10.3 (2023-04-19)</small>
+
+* chore: tweak devcopntainer ([fedbf36](https://github.com/mikesprague/teams-incoming-webhook-action/commit/fedbf36))
+* chore(deps-dev): bump @typescript-eslint/eslint-plugin (#132) ([8536f94](https://github.com/mikesprague/teams-incoming-webhook-action/commit/8536f94)), closes [#132](https://github.com/mikesprague/teams-incoming-webhook-action/issues/132)
+* chore(deps-dev): bump @typescript-eslint/eslint-plugin (#135) ([aede5bf](https://github.com/mikesprague/teams-incoming-webhook-action/commit/aede5bf)), closes [#135](https://github.com/mikesprague/teams-incoming-webhook-action/issues/135)
+* chore(deps-dev): bump @typescript-eslint/parser from 5.57.1 to 5.58.0 (#131) ([0806e32](https://github.com/mikesprague/teams-incoming-webhook-action/commit/0806e32)), closes [#131](https://github.com/mikesprague/teams-incoming-webhook-action/issues/131)
+* chore(deps-dev): bump @typescript-eslint/parser from 5.58.0 to 5.59.0 (#134) ([21c5505](https://github.com/mikesprague/teams-incoming-webhook-action/commit/21c5505)), closes [#134](https://github.com/mikesprague/teams-incoming-webhook-action/issues/134)
+* chore(deps-dev): bump typedoc from 0.24.1 to 0.24.4 (#133) ([b561ef8](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b561ef8)), closes [#133](https://github.com/mikesprague/teams-incoming-webhook-action/issues/133)
+* chore(deps-dev): bump typedoc-plugin-markdown from 3.14.0 to 3.15.1 (#130) ([687f43d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/687f43d)), closes [#130](https://github.com/mikesprague/teams-incoming-webhook-action/issues/130)
+* chore(deps): bump axios from 1.3.5 to 1.3.6 ([a4d0d9d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a4d0d9d))
+* ci(actions): improve release notes output ([27ac9e5](https://github.com/mikesprague/teams-incoming-webhook-action/commit/27ac9e5))
+* ci(actions): tweak release notes content ([a7bbf9b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a7bbf9b))
+* ci(actions): tweeak create-release allowed tags ([484b494](https://github.com/mikesprague/teams-incoming-webhook-action/commit/484b494))
+* docs: update auto-generated docs ([726a435](https://github.com/mikesprague/teams-incoming-webhook-action/commit/726a435))
+
+
+
 ## <small>1.10.2 (2023-04-10)</small>
 
 * build(npm): fix typedoc script due to api changes ([0064539](https://github.com/mikesprague/teams-incoming-webhook-action/commit/0064539))
