@@ -54,7 +54,7 @@
     "cross-env": "7.0.3",
     "cz-git": "1.6.1",
     "eslint": "8.38.0",
-    "prettier": "2.8.7",
+    "prettier": "2.8.8",
     "prettier-eslint": "15.0.1",
     "typedoc": "0.24.4",
     "typedoc-plugin-markdown": "3.15.2",
