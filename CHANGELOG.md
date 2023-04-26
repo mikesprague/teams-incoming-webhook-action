@@ -1,3 +1,16 @@
+## <small>1.10.4 (2023-04-26)</small>
+
+* refactor(cards/deploy): allow null author ([e731931](https://github.com/mikesprague/teams-incoming-webhook-action/commit/e731931)), closes [#143](https://github.com/mikesprague/teams-incoming-webhook-action/issues/143)
+* chore(deps-dev): bump @typescript-eslint/eslint-plugin (#140) ([f387e8b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/f387e8b)), closes [#140](https://github.com/mikesprague/teams-incoming-webhook-action/issues/140)
+* chore(deps-dev): bump @typescript-eslint/parser from 5.59.0 to 5.59.1 (#141) ([53c5863](https://github.com/mikesprague/teams-incoming-webhook-action/commit/53c5863)), closes [#141](https://github.com/mikesprague/teams-incoming-webhook-action/issues/141)
+* chore(deps-dev): bump eslint from 8.38.0 to 8.39.0 (#139) ([da535be](https://github.com/mikesprague/teams-incoming-webhook-action/commit/da535be)), closes [#139](https://github.com/mikesprague/teams-incoming-webhook-action/issues/139)
+* chore(deps-dev): bump prettier from 2.8.7 to 2.8.8 (#138) ([790ca73](https://github.com/mikesprague/teams-incoming-webhook-action/commit/790ca73)), closes [#138](https://github.com/mikesprague/teams-incoming-webhook-action/issues/138)
+* chore(deps-dev): bump typedoc from 0.24.4 to 0.24.6 (#137) ([899ea74](https://github.com/mikesprague/teams-incoming-webhook-action/commit/899ea74)), closes [#137](https://github.com/mikesprague/teams-incoming-webhook-action/issues/137)
+* chore(deps-dev): bump typedoc-plugin-markdown from 3.15.1 to 3.15.2 (#136) ([8baed3d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/8baed3d)), closes [#136](https://github.com/mikesprague/teams-incoming-webhook-action/issues/136)
+* chore(deps): bump yaml and @commitlint/load (#142) ([c034297](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c034297)), closes [#142](https://github.com/mikesprague/teams-incoming-webhook-action/issues/142)
+
+
+
 ## <small>1.10.3 (2023-04-19)</small>
 
 * chore: tweak devcopntainer ([fedbf36](https://github.com/mikesprague/teams-incoming-webhook-action/commit/fedbf36))
