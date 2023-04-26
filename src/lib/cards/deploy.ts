@@ -61,7 +61,7 @@ export const populateCard = ({
           {
             type: 'TextBlock',
             text: `by ${commit.data.commit.author.name}${
-              author.login ? ` (@${author.login})` : ''
+              author && author.login ? ` (@${author.login})` : ''
             } on ${timestamp}`,
             wrap: true,
             size: 'Small',
