@@ -1,3 +1,11 @@
+## <small>1.10.5 (2023-04-30)</small>
+
+* chore(deps-dev): bump typedoc-plugin-markdown from 3.15.2 to 3.15.3 ([115f916](https://github.com/mikesprague/teams-incoming-webhook-action/commit/115f916))
+* chore(deps): bump axios from 1.3.6 to 1.4.0 (#144) ([b845050](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b845050)), closes [#144](https://github.com/mikesprague/teams-incoming-webhook-action/issues/144)
+* ci(actions): only create releases for full semver versions ([44e6cc9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/44e6cc9))
+
+
+
 ## <small>1.10.4 (2023-04-26)</small>
 
 * refactor(cards/deploy): allow null author ([e731931](https://github.com/mikesprague/teams-incoming-webhook-action/commit/e731931)), closes [#143](https://github.com/mikesprague/teams-incoming-webhook-action/issues/143)
