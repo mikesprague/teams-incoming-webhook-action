@@ -52,7 +52,7 @@
     "conventional-changelog-cli": "3.0.0",
     "conventional-changelog-conventionalcommits": "6.1.0",
     "cross-env": "7.0.3",
-    "cz-git": "1.6.1",
+    "cz-git": "1.7.0",
     "eslint": "8.44.0",
     "prettier": "3.0.0",
     "prettier-eslint": "15.0.1",
