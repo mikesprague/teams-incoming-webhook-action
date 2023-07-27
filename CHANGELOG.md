@@ -1,3 +1,12 @@
+## 1.11.0 (2023-07-27)
+
+* refactor: update for @octokit/rest v20 changes ([c567817](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c567817))
+* chore(deps-dev): bump @typescript-eslint/eslint-plugin, @typescript-eslint/parser, and typedoc-plugi ([1d173dd](https://github.com/mikesprague/teams-incoming-webhook-action/commit/1d173dd))
+* chore(deps): add node-fetch@3.3.2 as dependency ([1b50ede](https://github.com/mikesprague/teams-incoming-webhook-action/commit/1b50ede))
+* chore(deps): bump @octokit/rest from 19.0.13 to 20.0.1 ([0884e06](https://github.com/mikesprague/teams-incoming-webhook-action/commit/0884e06))
+
+
+
 ## <small>1.10.10 (2023-07-19)</small>
 
 * chore(deps-dev): bump @typescript-eslint/eslint-plugin (#182) ([a6f76eb](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a6f76eb)), closes [#182](https://github.com/mikesprague/teams-incoming-webhook-action/issues/182)
