@@ -1,5 +1,6 @@
 import axios from 'axios';
 import * as core from '@actions/core';
+import fetch from 'node-fetch';
 import { Octokit } from '@octokit/rest';
 import dayjs from 'dayjs';
 import timezone from 'dayjs/plugin/timezone.js';
@@ -65,8 +66,11 @@ void (async () => {
       const runNum = GITHUB_RUN_NUMBER ?? '';
       const repoName = `${owner}/${repo}`;
       const repoUrl = `https://github.com/${repoName}`;
-      const octokit = new Octokit({ auth: `token ${githubToken}` });
-      const commit = await octokit.repos.getCommit(params);
+      const octokit = new Octokit({
+        auth: `token ${githubToken}`,
+        request: { fetch },
+      });
+      const commit = await octokit.rest.repos.getCommit(params);
       const branch = GITHUB_REF?.split('/')[GITHUB_REF.split('/').length - 1];
       const { author } = commit.data;
       const timestamp = dayjs()
