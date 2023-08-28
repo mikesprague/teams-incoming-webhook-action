@@ -51,7 +51,7 @@
     "commitizen": "4.3.0",
     "conventional-changelog": "4.0.0",
     "conventional-changelog-cli": "3.0.0",
-    "conventional-changelog-conventionalcommits": "6.1.0",
+    "conventional-changelog-conventionalcommits": "7.0.1",
     "cross-env": "7.0.3",
     "cz-git": "1.7.1",
     "eslint": "8.47.0",
