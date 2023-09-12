@@ -1,3 +1,23 @@
+## <small>1.11.2 (2023-09-12)</small>
+
+* chore(deps-dev): bump @typescript-eslint/eslint-plugin (#220) ([9595bd6](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9595bd6)), closes [#220](https://github.com/mikesprague/teams-incoming-webhook-action/issues/220)
+* chore(deps-dev): bump @typescript-eslint/eslint-plugin (#223) ([425bf72](https://github.com/mikesprague/teams-incoming-webhook-action/commit/425bf72)), closes [#223](https://github.com/mikesprague/teams-incoming-webhook-action/issues/223)
+* chore(deps-dev): bump @typescript-eslint/eslint-plugin (#231) ([2dae332](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2dae332)), closes [#231](https://github.com/mikesprague/teams-incoming-webhook-action/issues/231)
+* chore(deps-dev): bump @typescript-eslint/parser from 6.4.1 to 6.5.0 (#219) ([52e0fdc](https://github.com/mikesprague/teams-incoming-webhook-action/commit/52e0fdc)), closes [#219](https://github.com/mikesprague/teams-incoming-webhook-action/issues/219)
+* chore(deps-dev): bump @typescript-eslint/parser from 6.5.0 to 6.6.0 (#224) ([48ea470](https://github.com/mikesprague/teams-incoming-webhook-action/commit/48ea470)), closes [#224](https://github.com/mikesprague/teams-incoming-webhook-action/issues/224)
+* chore(deps-dev): bump @typescript-eslint/parser from 6.6.0 to 6.7.0 (#233) ([a3a56ab](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a3a56ab)), closes [#233](https://github.com/mikesprague/teams-incoming-webhook-action/issues/233)
+* chore(deps-dev): bump @vercel/ncc from 0.36.1 to 0.38.0 (#226) ([9598a9d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9598a9d)), closes [#226](https://github.com/mikesprague/teams-incoming-webhook-action/issues/226)
+* chore(deps-dev): bump conventional-changelog from 5.0.0 to 5.1.0 (#230) ([5b13e87](https://github.com/mikesprague/teams-incoming-webhook-action/commit/5b13e87)), closes [#230](https://github.com/mikesprague/teams-incoming-webhook-action/issues/230)
+* chore(deps-dev): bump conventional-changelog-cli from 4.0.0 to 4.1.0 (#228) ([873f8a5](https://github.com/mikesprague/teams-incoming-webhook-action/commit/873f8a5)), closes [#228](https://github.com/mikesprague/teams-incoming-webhook-action/issues/228)
+* chore(deps-dev): bump conventional-changelog-conventionalcommits (#229) ([c68a8a4](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c68a8a4)), closes [#229](https://github.com/mikesprague/teams-incoming-webhook-action/issues/229)
+* chore(deps-dev): bump eslint from 8.48.0 to 8.49.0 (#227) ([48efbf4](https://github.com/mikesprague/teams-incoming-webhook-action/commit/48efbf4)), closes [#227](https://github.com/mikesprague/teams-incoming-webhook-action/issues/227)
+* chore(deps-dev): bump prettier from 3.0.2 to 3.0.3 (#221) ([bfb9497](https://github.com/mikesprague/teams-incoming-webhook-action/commit/bfb9497)), closes [#221](https://github.com/mikesprague/teams-incoming-webhook-action/issues/221)
+* chore(deps-dev): bump typedoc from 0.25.0 to 0.25.1 (#225) ([fe91237](https://github.com/mikesprague/teams-incoming-webhook-action/commit/fe91237)), closes [#225](https://github.com/mikesprague/teams-incoming-webhook-action/issues/225)
+* chore(deps): bump @actions/core from 1.10.0 to 1.10.1 (#232) ([75068e4](https://github.com/mikesprague/teams-incoming-webhook-action/commit/75068e4)), closes [#232](https://github.com/mikesprague/teams-incoming-webhook-action/issues/232)
+* chore(deps): bump actions/checkout from 3 to 4 (#222) ([af68474](https://github.com/mikesprague/teams-incoming-webhook-action/commit/af68474)), closes [#222](https://github.com/mikesprague/teams-incoming-webhook-action/issues/222)
+
+
+
 ## <small>1.11.1 (2023-08-28)</small>
 
 * chore(deps-dev): bump @typescript-eslint/eslint-plugin (#200) ([5f89295](https://github.com/mikesprague/teams-incoming-webhook-action/commit/5f89295)), closes [#200](https://github.com/mikesprague/teams-incoming-webhook-action/issues/200)
