@@ -1,3 +1,10 @@
+## <small>1.11.3 (2023-09-13)</small>
+
+* style(biomejs): fix linter/formatter issues ([5dd4d27](https://github.com/mikesprague/teams-incoming-webhook-action/commit/5dd4d27))
+* chore(deps-dev): replace eslint and prettier with @biomejs/biome ([774ffe9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/774ffe9))
+
+
+
 ## <small>1.11.2 (2023-09-12)</small>
 
 * chore(deps-dev): bump @typescript-eslint/eslint-plugin (#220) ([9595bd6](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9595bd6)), closes [#220](https://github.com/mikesprague/teams-incoming-webhook-action/issues/220)

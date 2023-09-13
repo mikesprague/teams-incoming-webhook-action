@@ -1,6 +1,6 @@
 {
   "name": "teams-incoming-webhook-action",
-  "version": "1.11.2",
+  "version": "1.11.3",
   "description": "GitHub Action to send an MS Teams notification via Incoming Webhook",
   "main": "./src/index.ts",
   "private": "true",
@@ -23,7 +23,11 @@
     "type": "git",
     "url": "git+https://github.com/mikesprague/teams-incoming-webhook-action.git"
   },
-  "keywords": ["GitHub", "Actions", "TypeScript"],
+  "keywords": [
+    "GitHub",
+    "Actions",
+    "TypeScript"
+  ],
   "author": {
     "name": "Michael Sprague",
     "email": "mikesprague@gmail.com"
