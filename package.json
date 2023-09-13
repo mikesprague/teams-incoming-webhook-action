@@ -10,7 +10,7 @@
     "changelog": "conventional-changelog -i CHANGELOG.md -s && git add CHANGELOG.md",
     "check": "tsc --noEmit",
     "declarations": "rm -rf ./types && tsc --emitDeclarationOnly --declaration true --declarationDir './types'",
-    "lint": "eslint ./src",
+    "lint": "npx biome check ./src",
     "version": "npm run changelog",
     "prebuild": "npm run test",
     "postbuild": "npm run typedoc-html",
@@ -23,11 +23,7 @@
     "type": "git",
     "url": "git+https://github.com/mikesprague/teams-incoming-webhook-action.git"
   },
-  "keywords": [
-    "GitHub",
-    "Actions",
-    "TypeScript"
-  ],
+  "keywords": ["GitHub", "Actions", "TypeScript"],
   "author": {
     "name": "Michael Sprague",
     "email": "mikesprague@gmail.com"
@@ -45,8 +41,7 @@
     "node-fetch": "3.3.2"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "6.7.0",
-    "@typescript-eslint/parser": "6.7.0",
+    "@biomejs/biome": "1.1.2",
     "@vercel/ncc": "0.38.0",
     "commitizen": "4.3.0",
     "conventional-changelog": "5.1.0",
@@ -54,58 +49,9 @@
     "conventional-changelog-conventionalcommits": "7.0.2",
     "cross-env": "7.0.3",
     "cz-git": "1.7.1",
-    "eslint": "8.49.0",
-    "prettier": "3.0.3",
-    "prettier-eslint": "15.0.1",
     "typedoc": "0.25.1",
     "typedoc-plugin-markdown": "3.16.0",
     "typescript": "5.2.2"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "commonjs": true,
-      "es6": true,
-      "jest": true,
-      "node": true
-    },
-    "parserOptions": {
-      "parser": "@typescript-eslint/parser",
-      "ecmaVersion": 11,
-      "sourceType": "module",
-      "project": "./tsconfig.json",
-      "ecmaFeatures": {
-        "impliedStrict": true,
-        "modules": true
-      }
-    },
-    "extends": [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:@typescript-eslint/recommended-requiring-type-checking",
-      "plugin:@typescript-eslint/strict"
-    ],
-    "plugins": [
-      "@typescript-eslint"
-    ],
-    "rules": {
-      "@typescript-eslint/no-unsafe-assignment": "warn",
-      "@typescript-eslint/no-unsafe-argument": "warn",
-      "@typescript-eslint/no-explicit-any": "warn",
-      "@typescript-eslint/restrict-template-expressions": "warn",
-      "@typescript-eslint/no-unsafe-member-access": "warn"
-    },
-    "ignorePatterns": [
-      "dist/",
-      ".history/",
-      "node_modules/"
-    ]
-  },
-  "prettier": {
-    "singleQuote": true,
-    "trailingComma": "all",
-    "semi": true,
-    "tabWidth": 2
   },
   "config": {
     "commitizen": {
