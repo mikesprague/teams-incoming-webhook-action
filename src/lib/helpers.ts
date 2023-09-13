@@ -2,7 +2,7 @@
 // or string of 'success', 'warning', 'info', or 'failure'
 export const validateColorString = function (colorString: string) {
   return colorString.match(
-    /^#?([a-f0-9]{3,4}|[a-f0-9]{4}(?:[a-f0-9]{2}){1,2}|success|info|warning|failure)\b$/i,
+    /^#?([a-f0-9]{3,4}|[a-f0-9]{4}(?:[a-f0-9]{2}){1,2}|success|info|warning|failure)\b$/i
   );
 };
 
