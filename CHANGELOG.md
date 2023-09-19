@@ -1,3 +1,11 @@
+## <small>1.11.4 (2023-09-19)</small>
+
+* chore(deps-dev): bump @biomejs/biome from 1.1.2 to 1.2.0 (#234) ([6f71f09](https://github.com/mikesprague/teams-incoming-webhook-action/commit/6f71f09)), closes [#234](https://github.com/mikesprague/teams-incoming-webhook-action/issues/234)
+* chore(deps-dev): bump @biomejs/biome from 1.2.0 to 1.2.2 ([a9a3a67](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a9a3a67))
+* chore(deps): bump dayjs from 1.11.9 to 1.11.10 (#235) ([03ab8c0](https://github.com/mikesprague/teams-incoming-webhook-action/commit/03ab8c0)), closes [#235](https://github.com/mikesprague/teams-incoming-webhook-action/issues/235)
+
+
+
 ## <small>1.11.3 (2023-09-13)</small>
 
 * style(biomejs): fix linter/formatter issues ([5dd4d27](https://github.com/mikesprague/teams-incoming-webhook-action/commit/5dd4d27))
