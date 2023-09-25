@@ -19,6 +19,10 @@
     "typedoc": "typedoc --out ./docs --entryPointStrategy expand ./src --plugin typedoc-plugin-markdown --readme none",
     "typedoc-html": "typedoc --out ./docs/publish --entryPointStrategy expand ./src --readme ./README.md"
   },
+  "engines": {
+    "node": ">= 20.x",
+    "npm": ">= 9.x"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mikesprague/teams-incoming-webhook-action.git"
