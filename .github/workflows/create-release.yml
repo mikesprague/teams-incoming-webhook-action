@@ -22,6 +22,6 @@ jobs:
           echo "LAST_TAG=$(git tag | sort --version-sort -r | head -2 | tail -1)" >> $GITHUB_ENV
       - name: Generate Release via CLI
         run: |
-          echo -e "## What's Changed\n\n$(git log --pretty=format:' * %s - %h' ${{ env.LAST_TAG }}..${{ env.NEW_TAG }} --reverse)\n\n**Full Changelog:** https://github.com/${{ github.repository }}/compare/${{ env.LAST_TAG }}...${{ env.NEW_TAG }}" | gh release create "${{ env.NEW_TAG }}" -F -
+          echo -e "## What's Changed\n\n$(git log --pretty=format:' * %s - %h' ${{ env.LAST_TAG }}..${{ env.NEW_TAG }} --reverse)\n\n**Full Changelog:** https://github.com/${{ github.repository }}/compare/${{ env.LAST_TAG }}...${{ env.NEW_TAG }}" | gh release create "${{ env.NEW_TAG }}" -t "${{ env.NEW_TAG }}" -F -
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
