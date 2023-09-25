@@ -11,11 +11,13 @@ import { getAdaptiveCardColorString } from './lib/helpers.js';
 void (async () => {
   try {
     const {
+      GITHUB_API_URL,
+      GITHUB_REF,
       GITHUB_REPOSITORY,
-      GITHUB_SHA,
       GITHUB_RUN_ID,
       GITHUB_RUN_NUMBER,
-      GITHUB_REF,
+      GITHUB_SERVER_URL,
+      GITHUB_SHA,
     } = process.env;
     const githubToken = core.getInput('github-token', {
       required: true,
@@ -65,9 +67,10 @@ void (async () => {
       const runId = GITHUB_RUN_ID ?? '';
       const runNum = GITHUB_RUN_NUMBER ?? '';
       const repoName = `${owner}/${repo}`;
-      const repoUrl = `https://github.com/${repoName}`;
+      const repoUrl = `${GITHUB_SERVER_URL}/${repoName}`;
       const octokit = new Octokit({
         auth: `token ${githubToken}`,
+        baseUrl: GITHUB_API_URL,
         request: { fetch },
       });
       const commit = await octokit.rest.repos.getCommit(params);
