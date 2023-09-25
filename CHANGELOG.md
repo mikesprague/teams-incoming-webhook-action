@@ -1,3 +1,11 @@
+## 1.12.0 (2023-09-25)
+
+* ci(actions): add title flag to create-release ([8d1e171](https://github.com/mikesprague/teams-incoming-webhook-action/commit/8d1e171))
+* build(action): set to run on node20 ([3aa9b4c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/3aa9b4c))
+* build(npm): add engines section ([409dda1](https://github.com/mikesprague/teams-incoming-webhook-action/commit/409dda1))
+
+
+
 ## <small>1.11.4 (2023-09-19)</small>
 
 * chore(deps-dev): bump @biomejs/biome from 1.1.2 to 1.2.0 (#234) ([6f71f09](https://github.com/mikesprague/teams-incoming-webhook-action/commit/6f71f09)), closes [#234](https://github.com/mikesprague/teams-incoming-webhook-action/issues/234)
