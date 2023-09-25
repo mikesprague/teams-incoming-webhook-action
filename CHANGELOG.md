@@ -1,3 +1,9 @@
+## 1.13.0 (2023-09-25)
+
+* feat: support URLs that don't start with github.com (closes #236) ([1858a77](https://github.com/mikesprague/teams-incoming-webhook-action/commit/1858a77)), closes [#236](https://github.com/mikesprague/teams-incoming-webhook-action/issues/236)
+
+
+
 ## 1.12.0 (2023-09-25)
 
 * ci(actions): add title flag to create-release ([8d1e171](https://github.com/mikesprague/teams-incoming-webhook-action/commit/8d1e171))

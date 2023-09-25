@@ -13250,7 +13250,7 @@ const node_fetch_1 = __importDefault(__nccwpck_require__(4429));
 const helpers_js_1 = __nccwpck_require__(343);
 void (() => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { GITHUB_REPOSITORY, GITHUB_SHA, GITHUB_RUN_ID, GITHUB_RUN_NUMBER, GITHUB_REF, } = process.env;
+        const { GITHUB_API_URL, GITHUB_REF, GITHUB_REPOSITORY, GITHUB_RUN_ID, GITHUB_RUN_NUMBER, GITHUB_SERVER_URL, GITHUB_SHA, } = process.env;
         const githubToken = core.getInput('github-token', {
             required: true,
             trimWhitespace: true,
@@ -13292,9 +13292,10 @@ void (() => __awaiter(void 0, void 0, void 0, function* () {
             const runId = GITHUB_RUN_ID !== null && GITHUB_RUN_ID !== void 0 ? GITHUB_RUN_ID : '';
             const runNum = GITHUB_RUN_NUMBER !== null && GITHUB_RUN_NUMBER !== void 0 ? GITHUB_RUN_NUMBER : '';
             const repoName = `${owner}/${repo}`;
-            const repoUrl = `https://github.com/${repoName}`;
+            const repoUrl = `${GITHUB_SERVER_URL}/${repoName}`;
             const octokit = new rest_1.Octokit({
                 auth: `token ${githubToken}`,
+                baseUrl: GITHUB_API_URL,
                 request: { fetch: node_fetch_1.default },
             });
             const commit = yield octokit.rest.repos.getCommit(params);
