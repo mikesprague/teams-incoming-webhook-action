@@ -28,7 +28,7 @@ inputs:
     required: false
     default: "America/New_York"
 runs:
-  using: "node16"
+  using: "node20"
   main: "dist/index.js"
 branding:
   icon: "alert-octagon"
