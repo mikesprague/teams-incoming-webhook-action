@@ -1,3 +1,9 @@
+## <small>1.13.1 (2023-09-26)</small>
+
+* chore(deps): bump @octokit/rest from 20.0.1 to 20.0.2 (#237) ([47b3ddb](https://github.com/mikesprague/teams-incoming-webhook-action/commit/47b3ddb)), closes [#237](https://github.com/mikesprague/teams-incoming-webhook-action/issues/237)
+
+
+
 ## 1.13.0 (2023-09-25)
 
 * feat: support URLs that don't start with github.com (closes #236) ([1858a77](https://github.com/mikesprague/teams-incoming-webhook-action/commit/1858a77)), closes [#236](https://github.com/mikesprague/teams-incoming-webhook-action/issues/236)
