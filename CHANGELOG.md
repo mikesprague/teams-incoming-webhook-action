@@ -1,3 +1,9 @@
+## <small>1.13.2 (2023-10-08)</small>
+
+* chore(deps): bump axios from 1.5.0 to 1.5.1 (#238) ([4c23a7d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4c23a7d)), closes [#238](https://github.com/mikesprague/teams-incoming-webhook-action/issues/238)
+
+
+
 ## <small>1.13.1 (2023-09-26)</small>
 
 * chore(deps): bump @octokit/rest from 20.0.1 to 20.0.2 (#237) ([47b3ddb](https://github.com/mikesprague/teams-incoming-webhook-action/commit/47b3ddb)), closes [#237](https://github.com/mikesprague/teams-incoming-webhook-action/issues/237)
