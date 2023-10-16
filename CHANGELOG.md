@@ -1,3 +1,10 @@
+## <small>1.13.3 (2023-10-16)</small>
+
+* chore(deps-dev): bump typedoc from 0.25.1 to 0.25.2 (#239) ([bcffc54](https://github.com/mikesprague/teams-incoming-webhook-action/commit/bcffc54)), closes [#239](https://github.com/mikesprague/teams-incoming-webhook-action/issues/239)
+* chore(deps): bump undici from 5.25.4 to 5.26.3 (#240) ([97853f3](https://github.com/mikesprague/teams-incoming-webhook-action/commit/97853f3)), closes [#240](https://github.com/mikesprague/teams-incoming-webhook-action/issues/240)
+
+
+
 ## <small>1.13.2 (2023-10-08)</small>
 
 * chore(deps): bump axios from 1.5.0 to 1.5.1 (#238) ([4c23a7d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4c23a7d)), closes [#238](https://github.com/mikesprague/teams-incoming-webhook-action/issues/238)
