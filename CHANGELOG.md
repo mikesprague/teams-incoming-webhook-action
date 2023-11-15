@@ -1,3 +1,14 @@
+## <small>1.13.5 (2023-11-15)</small>
+
+* chore(deps-dev): bump @biomejs/biome from 1.3.1 to 1.3.3 (#246) ([7917be9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/7917be9)), closes [#246](https://github.com/mikesprague/teams-incoming-webhook-action/issues/246)
+* chore(deps-dev): bump typedoc from 0.25.2 to 0.25.3 (#245) ([43a23e3](https://github.com/mikesprague/teams-incoming-webhook-action/commit/43a23e3)), closes [#245](https://github.com/mikesprague/teams-incoming-webhook-action/issues/245)
+* chore(deps-dev): bump typedoc-plugin-markdown from 3.16.0 to 3.17.0 (#247) ([1973059](https://github.com/mikesprague/teams-incoming-webhook-action/commit/1973059)), closes [#247](https://github.com/mikesprague/teams-incoming-webhook-action/issues/247)
+* chore(deps-dev): bump typedoc-plugin-markdown from 3.17.0 to 3.17.1 (#248) ([6d0da17](https://github.com/mikesprague/teams-incoming-webhook-action/commit/6d0da17)), closes [#248](https://github.com/mikesprague/teams-incoming-webhook-action/issues/248)
+* chore(deps): bump axios from 1.6.0 to 1.6.1 (#249) ([e99e82d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/e99e82d)), closes [#249](https://github.com/mikesprague/teams-incoming-webhook-action/issues/249)
+* chore(deps): bump axios from 1.6.1 to 1.6.2 (#251) ([2be782e](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2be782e)), closes [#251](https://github.com/mikesprague/teams-incoming-webhook-action/issues/251)
+
+
+
 ## <small>1.13.4 (2023-10-27)</small>
 
 * chore(biome): update config ([cfa7ec0](https://github.com/mikesprague/teams-incoming-webhook-action/commit/cfa7ec0))
