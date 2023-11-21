@@ -59,7 +59,7 @@
     "cz-git": "1.7.1",
     "typedoc": "0.25.3",
     "typedoc-plugin-markdown": "3.17.1",
-    "typescript": "5.2.2"
+    "typescript": "5.3.2"
   },
   "config": {
     "commitizen": {
