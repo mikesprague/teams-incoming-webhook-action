@@ -1,6 +1,6 @@
 // accepts hex code value with optional hashtag (#000000 or 000000)
 // or string of 'success', 'warning', 'info', or 'failure'
-export const validateColorString = function (colorString: string) {
+export const validateColorString = (colorString: string) => {
   return colorString.match(
     /^#?([a-f0-9]{3,4}|[a-f0-9]{4}(?:[a-f0-9]{2}){1,2}|success|info|warning|failure)\b$/i
   );
@@ -16,7 +16,7 @@ export interface ColorStrings extends ObjectMap {
   warning: string;
 }
 
-export const getHexForColorString = function (colorString: string) {
+export const getHexForColorString = (colorString: string) => {
   if (validateColorString(colorString)) {
     const colorStrings: ColorStrings = {
       info: '1919ff',
@@ -30,7 +30,7 @@ export const getHexForColorString = function (colorString: string) {
   return '808080';
 };
 
-export const getAdaptiveCardColorString = function (colorString: string) {
+export const getAdaptiveCardColorString = (colorString: string) => {
   const colorStrings: ColorStrings = {
     default: 'emphasis', //gray
     info: 'accent', // blue

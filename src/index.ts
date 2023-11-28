@@ -103,11 +103,11 @@ void (async () => {
     }
     await axios
       .post(teamsWebhookUrl, messageToPost)
-      .then(function (response) {
+      .then((response) => {
         // console.log(response);
         core.debug(response.data);
       })
-      .catch(function (error) {
+      .catch((error) => {
         // console.log(error);
         core.debug(error);
         throw new Error(error);
