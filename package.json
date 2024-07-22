@@ -57,7 +57,7 @@
     "conventional-changelog-conventionalcommits": "8.0.0",
     "cross-env": "7.0.3",
     "cz-git": "1.9.4",
-    "typedoc": "0.26.4",
+    "typedoc": "0.26.5",
     "typedoc-plugin-markdown": "4.2.1",
     "typescript": "5.5.3"
   },
