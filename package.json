@@ -43,7 +43,7 @@
   "homepage": "https://github.com/mikesprague/teams-incoming-webhook-action#readme",
   "dependencies": {
     "@actions/core": "1.11.1",
-    "@octokit/rest": "21.1.1",
+    "@octokit/rest": "22.0.0",
     "axios": "1.9.0",
     "dayjs": "1.11.13",
     "node-fetch": "3.3.2"
