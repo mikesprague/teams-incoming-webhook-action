@@ -44,7 +44,7 @@
   "dependencies": {
     "@actions/core": "1.11.1",
     "@octokit/rest": "22.0.0",
-    "axios": "1.10.0",
+    "axios": "1.11.0",
     "dayjs": "1.11.13",
     "node-fetch": "3.3.2"
   },
