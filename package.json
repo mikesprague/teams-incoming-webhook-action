@@ -58,7 +58,7 @@
     "cross-env": "10.0.0",
     "cz-git": "1.12.0",
     "typedoc": "0.28.10",
-    "typedoc-plugin-markdown": "4.8.0",
+    "typedoc-plugin-markdown": "4.8.1",
     "typescript": "5.9.2"
   },
   "config": {
