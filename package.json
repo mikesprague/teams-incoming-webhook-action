@@ -45,7 +45,7 @@
     "@actions/core": "1.11.1",
     "@octokit/rest": "22.0.0",
     "axios": "1.11.0",
-    "dayjs": "1.11.14",
+    "dayjs": "1.11.15",
     "node-fetch": "3.3.2"
   },
   "devDependencies": {
