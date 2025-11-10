@@ -58,6 +58,7 @@ void (async () => {
 
     const colorString = getAdaptiveCardColorString(color);
 
+    // biome-ignore lint/suspicious/noImplicitAnyLet: TODO: add type(s)
     let messageToPost;
     if (isDeployCard) {
       const { populateCard } = await import('./lib/cards/deploy.js');
@@ -112,9 +113,9 @@ void (async () => {
         core.debug(error);
         throw new Error(error);
       });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error(error);
-    const { message } = error;
+    const { message } = error as Error;
     core.setFailed(message);
   }
 })();
