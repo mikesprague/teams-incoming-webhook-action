@@ -1,11 +1,16 @@
+import type { Endpoints } from '@octokit/types';
+
 import { getEmoji } from '../helpers.js';
+
+type GetCommitResponse =
+  Endpoints['GET /repos/{owner}/{repo}/commits/{ref}']['response'];
 
 export interface DeployCardParams {
   title: string;
   color: string;
-  commit: any;
+  commit: GetCommitResponse;
   branch: string | undefined;
-  author: any;
+  author: GetCommitResponse['data']['author'];
   runNum: string;
   runId: string;
   repoName: string;
@@ -60,7 +65,7 @@ export const populateCard = ({
           },
           {
             type: 'TextBlock',
-            text: `by ${commit.data.commit.author.name}${
+            text: `by ${commit.data.commit.author?.name ?? 'Unknown'}${
               author?.login ? ` (@${author.login})` : ''
             } on ${timestamp}`,
             wrap: true,
