@@ -1,3 +1,10 @@
+## <small>1.14.2 (2026-02-10)</small>
+
+* chore(deps-dev): bump @types/node from 25.2.2 to 25.2.3 (#521) ([6152c0b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/6152c0b)), closes [#521](https://github.com/mikesprague/teams-incoming-webhook-action/issues/521)
+* chore(deps): bump @actions/core to 3.0.0 ([9747ce6](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9747ce6))
+
+
+
 ## <small>1.14.1 (2026-02-10)</small>
 
 * chore(deps-dev): bump @biomejs/biome from 2.3.10 to 2.3.11 (#502) ([436deb6](https://github.com/mikesprague/teams-incoming-webhook-action/commit/436deb6)), closes [#502](https://github.com/mikesprague/teams-incoming-webhook-action/issues/502)
