@@ -10,14 +10,18 @@ on:
     tags-ignore:
       - "v1"
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: ${{ vars.NODE_VERSION }}
+  MS_TEAMS_WEBHOOK_URL: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
+
 permissions:
   contents: read
   pages: write
   id-token: write
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
 
 jobs:
   # test action works running from the graph
@@ -27,14 +31,30 @@ jobs:
       - name: 👷 Checkout repo
         uses: actions/checkout@v6
 
+      - name: 🏗️ Setup Node.js ${{ env.NODE_VERSION }} environment
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          check-latest: true
+
+      - name: ⚡  Cache node_modules
+        uses: actions/cache@v5
+        id: cache
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-node-${{ env.NODE_VERSION }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ env.NODE_VERSION }}-
+
       - name: 🏗️ Install dependencies/prepare action
+        if: steps.cache.outputs.cache-hit != 'true'
         run: npm install && npm run build
 
       - name: ✔️ Test Action
         uses: ./
         with:
           github-token: ${{ github.token }}
-          webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
+          webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
           deploy-card: true
           title: "Starting Notification Tests"
           color: "info"
@@ -43,7 +63,7 @@ jobs:
         uses: ./
         with:
           github-token: ${{ github.token }}
-          webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
+          webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
           deploy-card: false
           title: "Notification Test"
           message: "This is an example of a simple notification with a title and a body"
@@ -52,7 +72,7 @@ jobs:
         uses: ./
         with:
           github-token: ${{ github.token }}
-          webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
+          webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
           deploy-card: true
           title: "Deployment Started"
           color: "info"
@@ -61,7 +81,7 @@ jobs:
         uses: ./
         with:
           github-token: ${{ github.token }}
-          webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
+          webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
           deploy-card: true
           title: "Deployment Cancelled"
           color: "warning"
@@ -70,7 +90,7 @@ jobs:
         uses: ./
         with:
           github-token: ${{ github.token }}
-          webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
+          webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
           deploy-card: true
           title: "Deployment Failed"
           color: "failure"
@@ -79,7 +99,7 @@ jobs:
         uses: ./
         with:
           github-token: ${{ github.token }}
-          webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
+          webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
           deploy-card: true
           title: "Deployment Successful"
           color: "success"
@@ -88,7 +108,7 @@ jobs:
         uses: ./
         with:
           github-token: ${{ github.token }}
-          webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
+          webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
           deploy-card: true
           title: "Notification Tests Complete"
           color: "info"
@@ -104,6 +124,6 @@ jobs:
     needs: [test]
     uses: mikesprague/reusable-workflows/.github/workflows/pages-deploy.yml@main
     secrets:
-      REPO_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+      REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     with:
       artifact-name: typescript-docs-artifact
