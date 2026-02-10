@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
+    "target": "es2020",
+    "esModuleInterop": true,
+    "module": "esnext",
     "outDir": "./dist",
     "rootDir": "./src",
+    "skipLibCheck": true,
     "strict": true,
     "strictNullChecks": true,
     "noImplicitAny": true,
@@ -11,10 +13,11 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "forceConsistentCasingInFileNames": true,
-    "esModuleInterop": true,
     "experimentalDecorators": true,
     "types": ["node"],
-    "moduleResolution": "node"
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true
   },
   "exclude": ["node_modules", "**/*.test.ts", "dist", ".history"]
 }
