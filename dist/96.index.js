@@ -58,7 +58,7 @@ const populateCard = ({ title, color, commit, branch, author, runNum, runId, rep
                             },
                             {
                                 title: 'Commit',
-                                value: `${sha.substr(0, 7)}`,
+                                value: `${sha.slice(0, 7)}`,
                             },
                         ],
                     },
