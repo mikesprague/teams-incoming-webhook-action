@@ -81,7 +81,7 @@ export const populateCard = ({
               },
               {
                 title: 'Commit',
-                value: `${sha.substr(0, 7)}`,
+                value: `${sha.slice(0, 7)}`,
               },
             ],
           },
