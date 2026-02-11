@@ -261,7 +261,7 @@ This creates:
 
 ## AdaptiveCard Structure
 
-Microsoft Teams messages use the [AdaptiveCard](https://adaptivecards.io/) format:
+Microsoft Teams messages use the [AdaptiveCard](https://adaptivecards.microsoft.com/) format:
 
 ```typescript
 {
@@ -336,7 +336,7 @@ The `.github/workflows/build-and-test.yml` workflow runs actual end-to-end tests
 - Check existing tests for patterns
 - Review TypeScript docs for strict mode features
 - Consult [Vitest documentation](https://vitest.dev/)
-- See [AdaptiveCards documentation](https://adaptivecards.io/)
+- See [AdaptiveCards documentation](https://adaptivecards.microsoft.com/)
 - Reference [GitHub Actions toolkit](https://github.com/actions/toolkit)
 
 ---
