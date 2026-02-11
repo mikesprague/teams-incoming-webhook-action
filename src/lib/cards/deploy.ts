@@ -64,7 +64,7 @@ export const populateCard = ({
             },
             {
               type: 'TextBlock',
-              text: `**[Workflow Run #${runNum}](${repoUrl}/actions/runs/${runId})** on [${repoName}](${repoUrl})`,
+              text: `[**Workflow Run #${runNum}**](${repoUrl}/actions/runs/${runId}) on [${repoName}](${repoUrl})`,
               wrap: true,
               size: 'Default',
               spacing: 'Small',
