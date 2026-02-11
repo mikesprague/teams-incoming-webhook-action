@@ -64,18 +64,19 @@ export const populateCard = ({
             },
             {
               type: 'TextBlock',
-              text: `[**Workflow Run #${runNum}**](${repoUrl}/actions/runs/${runId}) on [${repoName}](${repoUrl})`,
+              text: `[**Workflow Run #${runNum}**](${repoUrl}/actions/runs/${runId}) on [**${repoName}**](${repoUrl})`,
               wrap: true,
-              size: 'Default',
+              size: 'Small',
               spacing: 'Small',
+              weight: 'Default',
             },
             {
               type: 'TextBlock',
-              text: `by ${commit.data.commit.author?.name ?? 'Unknown'}${
+              text: `by **${commit.data.commit.author?.name ?? 'Unknown'}**${
                 author?.login
-                  ? ` ([@${author.login}](https://github.com/${author.login}))`
+                  ? ` ([**@${author.login}**](https://github.com/${author.login}))`
                   : ''
-              } on ${timestamp}`,
+              } on **${timestamp}**`,
               wrap: true,
               size: 'Small',
               spacing: 'None',
@@ -120,13 +121,13 @@ export const populateCard = ({
                       items: [
                         {
                           type: 'TextBlock',
-                          text: `[${branch}](${repoUrl}/tree/${branch})`,
+                          text: `[**${branch}**](${repoUrl}/tree/${branch})`,
                           size: 'Small',
                           spacing: 'None',
                         },
                         {
                           type: 'TextBlock',
-                          text: `[${sha.slice(0, 7)}](${commit.data.html_url})`,
+                          text: `[**${sha.slice(0, 7)}**](${commit.data.html_url})`,
                           size: 'Small',
                           spacing: 'None',
                         },
