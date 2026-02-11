@@ -1,61 +1,47 @@
-// accepts hex code value with optional hashtag (#000000 or 000000)
-// or string of 'success', 'warning', 'info', or 'failure'
-export const validateColorString = (colorString: string) => {
-  return colorString.match(
-    /^#?([a-f0-9]{3,4}|[a-f0-9]{4}(?:[a-f0-9]{2}){1,2}|success|info|warning|failure)\b$/i
-  );
-};
-
-export type ObjectMap = Record<string, string | undefined>;
-
-export interface ColorStrings extends ObjectMap {
+export interface ColorStrings extends Record<string, string | undefined> {
+  dark?: string;
   default?: string;
-  info: string;
+  emphasis?: string;
   failure: string;
+  info: string;
+  light?: string;
   success: string;
   warning: string;
 }
 
-export const getHexForColorString = (colorString: string) => {
-  if (validateColorString(colorString)) {
-    const colorStrings: ColorStrings = {
-      info: '1919ff',
-      failure: 'b20000',
-      success: '007300',
-      warning: 'ffcc00',
-    };
-    return colorStrings[colorString] ?? colorString;
-  }
-  console.log('Invalid color string, using default color');
-  return '808080';
-};
-
 export const getAdaptiveCardColorString = (colorString: string) => {
   const colorStrings: ColorStrings = {
-    default: 'emphasis', //gray
-    info: 'accent', // blue
-    failure: 'attention', // red
-    success: 'good', // green
-    warning: 'warning', // yellow
+    dark: 'Dark', // unsure, spec says this is a valid option but doesn't specify the color
+    default: 'Emphasis', //gray
+    emphasis: 'Emphasis', //gray
+    failure: 'Attention', // red
+    info: 'Accent', // blue
+    light: 'Light', // unsure, spec says this is a valid option but doesn't specify the color
+    success: 'Good', // green
+    warning: 'Warning', // yellow
   };
-  return colorStrings[colorString] ?? 'emphasis';
+  return colorStrings[colorString] ?? 'Emphasis';
 };
 
-export interface EmojiStrings extends ObjectMap {
-  good: string;
+export interface EmojiStrings extends Record<string, string | undefined> {
   accent: string;
-  warning: string;
   attention: string;
+  dark?: string;
   emphasis?: string;
+  good: string;
+  light?: string;
+  warning: string;
 }
 
-export const getEmoji = (adaptiveCardColor = 'emphasis') => {
+export const getEmoji = (adaptiveCardColor = 'Emphasis') => {
   const emojiList: EmojiStrings = {
-    good: '✅ ',
     accent: 'ℹ️  ',
-    warning: '⚠️  ',
     attention: '🚨 ',
+    dark: '',
     emphasis: '',
+    good: '✅ ',
+    light: '',
+    warning: '⚠️  ',
   };
-  return emojiList[adaptiveCardColor] ?? '';
+  return emojiList[adaptiveCardColor.toLowerCase() as keyof EmojiStrings] ?? '';
 };
