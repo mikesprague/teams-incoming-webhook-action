@@ -338,6 +338,24 @@ The `.github/workflows/build-and-test.yml` workflow runs actual end-to-end tests
 - See [AdaptiveCards documentation](https://adaptivecards.microsoft.com/)
 - Reference [GitHub Actions toolkit](https://github.com/actions/toolkit)
 
+## Context7 Documentation Access
+
+Context7 tools are available via the local MCP server and can be used to
+resolve and search documentation for many libraries, frameworks, and
+platforms. Always look up and verify the latest documentation for any library
+or framework in use. Never assume model knowledge is current; check docs every
+time.
+
+## Versioning Policy
+
+Always use the latest versions of any current or newly added
+libraries/frameworks unless the user explicitly specifies otherwise. Never use
+outdated technologies.
+
+## Testing New Features
+
+All new features must include corresponding tests with full coverage.
+
 ---
 
 *Last Updated: February 10, 2026*
