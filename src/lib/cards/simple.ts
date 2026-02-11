@@ -1,48 +1,58 @@
 export interface SimpleCardParams {
-  title: string;
-  text: string;
   color?: string;
+  text: string;
+  title: string;
+  titleSize?: 'Default' | 'Large';
 }
 
 export const populateCard = ({
-  title,
+  color = 'Emphasis',
   text,
-  color = 'emphasis',
-}: SimpleCardParams) => ({
-  type: 'message',
-  attachments: [
-    {
-      contentType: 'application/vnd.microsoft.card.adaptive',
-      content: {
-        type: 'AdaptiveCard',
-        $schema: 'http://adaptivecards.io/schemas/adaptive-card.json',
-        version: '1.3',
-        msteams: {
-          width: 'Full',
+  title,
+  titleSize = 'Large',
+}: SimpleCardParams) => {
+  console.log({ color, text, title, titleSize });
+
+  const simpleNotificationCard = {
+    type: 'message',
+    attachments: [
+      {
+        contentType: 'application/vnd.microsoft.card.adaptive',
+        content: {
+          type: 'AdaptiveCard',
+          $schema: 'https://adaptivecards.io/schemas/adaptive-card.json',
+          version: '1.5',
+          msteams: {
+            width: 'Full',
+          },
+          body: [
+            {
+              type: 'Container',
+              targetWidth: 'atLeast:Narrow',
+              items: [
+                {
+                  type: 'TextBlock',
+                  text: title,
+                  wrap: true,
+                  size: titleSize,
+                  weight: 'Bolder',
+                },
+              ],
+              style: 'Emphasis',
+              bleed: true,
+            },
+            {
+              type: 'TextBlock',
+              text: text,
+              wrap: true,
+              size: 'Default',
+              height: 'stretch',
+            },
+          ],
         },
-        body: [
-          {
-            type: 'Container',
-            items: [
-              {
-                type: 'TextBlock',
-                text: title,
-                wrap: true,
-                size: 'Large',
-                weight: 'Bolder',
-              },
-            ],
-            style: color,
-            bleed: true,
-          },
-          {
-            type: 'TextBlock',
-            text: text,
-            wrap: true,
-            height: 'stretch',
-          },
-        ],
       },
-    },
-  ],
-});
+    ],
+  };
+
+  return simpleNotificationCard;
+};
