@@ -3,7 +3,6 @@ import { Octokit } from '@octokit/rest';
 import dayjs from 'dayjs';
 import timezone from 'dayjs/plugin/timezone.js';
 import utc from 'dayjs/plugin/utc.js';
-import fetch from 'node-fetch';
 
 import { getAdaptiveCardColorString } from './lib/helpers.js';
 
