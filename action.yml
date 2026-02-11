@@ -14,7 +14,7 @@ inputs:
   title-size:
     description: "Size of the title text ('Large' | 'Default')"
     required: false
-    default: "Large"
+    default: "Default"
   message:
     description: "Message to be sent"
     required: false
