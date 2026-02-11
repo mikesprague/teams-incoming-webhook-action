@@ -32,7 +32,7 @@ export const populateCard = ({
   sha,
   timestamp,
   title,
-  titleSize = 'Large',
+  titleSize = 'Default',
 }: DeployCardParams) => {
   const workflowStatusCard = {
     type: 'message',
@@ -49,6 +49,7 @@ export const populateCard = ({
           body: [
             {
               type: 'Container',
+              targetWidth: 'atLeast:Narrow',
               items: [
                 {
                   type: 'TextBlock',
@@ -63,45 +64,75 @@ export const populateCard = ({
             },
             {
               type: 'TextBlock',
-              text: `**Workflow Run #${runNum}** on [${repoName}](${repoUrl})`,
+              text: `**[Workflow Run #${runNum}](${repoUrl}/actions/runs/${runId})** on [${repoName}](${repoUrl})`,
               wrap: true,
+              size: 'Default',
+              spacing: 'Small',
             },
             {
               type: 'TextBlock',
               text: `by ${commit.data.commit.author?.name ?? 'Unknown'}${
-                author?.login ? ` (@${author.login})` : ''
+                author?.login
+                  ? ` ([@${author.login}](https://github.com/${author.login}))`
+                  : ''
               } on ${timestamp}`,
               wrap: true,
               size: 'Small',
               spacing: 'None',
             },
             {
-              type: 'FactSet',
-              facts: [
+              type: 'Container',
+              spacing: 'Small',
+              targetWidth: 'atLeast:Narrow',
+              items: [
                 {
-                  title: 'Branch',
-                  value: branch,
-                },
-                {
-                  title: 'Commit',
-                  value: `${sha.slice(0, 7)}`,
-                },
-              ],
-            },
-            {
-              type: 'ActionSet',
-              actions: [
-                {
-                  type: 'Action.OpenUrl',
-                  title: 'View Workflow Run',
-                  url: `${repoUrl}/actions/runs/${runId}`,
-                  style: 'default',
-                },
-                {
-                  type: 'Action.OpenUrl',
-                  title: 'View Commit Changes',
-                  url: commit.data.html_url,
-                  style: 'default',
+                  type: 'ColumnSet',
+                  height: 'auto',
+                  spacing: 'None',
+                  targetWidth: 'atLeast:Narrow',
+                  width: 'auto',
+                  columns: [
+                    {
+                      type: 'Column',
+                      width: 'auto',
+                      verticalContentAlignment: 'Top',
+                      items: [
+                        {
+                          type: 'TextBlock',
+                          text: 'Branch:',
+                          weight: 'Bolder',
+                          size: 'Small',
+                          spacing: 'None',
+                        },
+                        {
+                          type: 'TextBlock',
+                          text: 'Commit:',
+                          weight: 'Bolder',
+                          size: 'Small',
+                          spacing: 'None',
+                        },
+                      ],
+                    },
+                    {
+                      type: 'Column',
+                      width: 'auto',
+                      verticalContentAlignment: 'Top',
+                      items: [
+                        {
+                          type: 'TextBlock',
+                          text: `[${branch}](${repoUrl}/tree/${branch})`,
+                          size: 'Small',
+                          spacing: 'None',
+                        },
+                        {
+                          type: 'TextBlock',
+                          text: `[${sha.slice(0, 7)}](${commit.data.html_url})`,
+                          size: 'Small',
+                          spacing: 'None',
+                        },
+                      ],
+                    },
+                  ],
                 },
               ],
             },
