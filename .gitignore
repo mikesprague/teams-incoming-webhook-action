@@ -1,7 +1,6 @@
 node_modules/
 
 # Editors
-.vscode/
 .idea/
 *.iml
 
@@ -70,4 +69,4 @@ typings/
 ncc-cache
 .history
 workflow
-
+.vitest
