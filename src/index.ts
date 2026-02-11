@@ -37,6 +37,11 @@ try {
     required: true,
     trimWhitespace: true,
   });
+  const titleSize =
+    (core.getInput('title-size', {
+      required: false,
+      trimWhitespace: true,
+    }) as 'Default' | 'Large') || 'Large';
   const message =
     core.getInput('message', {
       required: false,
@@ -103,6 +108,7 @@ try {
     const { populateCard } = await import('./lib/cards/simple.js');
     messageToPost = populateCard({
       title,
+      titleSize,
       text: message,
       color: colorString,
     });
