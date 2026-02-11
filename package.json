@@ -48,8 +48,7 @@
   "dependencies": {
     "@actions/core": "3.0.0",
     "@octokit/rest": "22.0.1",
-    "dayjs": "1.11.19",
-    "node-fetch": "3.3.2"
+    "dayjs": "1.11.19"
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.14",
