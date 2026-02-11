@@ -1,3 +1,22 @@
+## 1.15.0 (2026-02-11)
+
+* style(tests): fix linter warnings ([6ef4cce](https://github.com/mikesprague/teams-incoming-webhook-action/commit/6ef4cce))
+* docs(copilot-instructions): add file ([b93aa2d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b93aa2d))
+* docs(copilot-instructions): fix links ([394d07b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/394d07b))
+* docs(README): update for latest changes ([c790322](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c790322))
+* chore: add latest dist files ([4ef7115](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4ef7115))
+* chore(deps): add vitest related deps; update overrides; remove axios; add test scripts ([82a4d4a](https://github.com/mikesprague/teams-incoming-webhook-action/commit/82a4d4a))
+* chore(gitignore): update entries ([563669b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/563669b))
+* chore(mcp.json): add file with context7 server ([19b95d3](https://github.com/mikesprague/teams-incoming-webhook-action/commit/19b95d3))
+* test: add test files ([c666dd6](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c666dd6))
+* test(vitest): add config ([67e5161](https://github.com/mikesprague/teams-incoming-webhook-action/commit/67e5161))
+* refactor: replace axios with fetch ([bff6488](https://github.com/mikesprague/teams-incoming-webhook-action/commit/bff6488))
+* refactor(lib/cards/deploy): use slice (vs substr) ([2ed1961](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2ed1961))
+* build(action): use node24 ([e435e2f](https://github.com/mikesprague/teams-incoming-webhook-action/commit/e435e2f))
+* build(typescript): update config ([fc401ec](https://github.com/mikesprague/teams-incoming-webhook-action/commit/fc401ec))
+
+
+
 ## <small>1.14.2 (2026-02-10)</small>
 
 * chore(deps-dev): bump @types/node from 25.2.2 to 25.2.3 (#521) ([6152c0b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/6152c0b)), closes [#521](https://github.com/mikesprague/teams-incoming-webhook-action/issues/521)
