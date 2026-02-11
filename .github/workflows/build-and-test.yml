@@ -46,11 +46,17 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-${{ env.NODE_VERSION }}-
 
-      - name: 🏗️ Install dependencies/prepare action
+      - name: 🏗️ Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
-        run: npm install && npm run build
+        run: npm install
 
-      - name: ✔️ Test Action
+      - name: 👷 Prepare action
+        run: npm run build
+
+      - name: 🧪 Run unit tests and linters
+        run: npm test
+
+      - name: ✔️ Send Starting Notification Tests Message
         uses: ./
         with:
           github-token: ${{ github.token }}
@@ -65,7 +71,7 @@ jobs:
           github-token: ${{ github.token }}
           webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
           deploy-card: false
-          title: "Notification Test"
+          title: "Simple Notification Test"
           message: "This is an example of a simple notification with a title and a body"
 
       - name: 📤 Send Test Info Notification
@@ -74,7 +80,7 @@ jobs:
           github-token: ${{ github.token }}
           webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
           deploy-card: true
-          title: "Deployment Started"
+          title: "Deployment Info Notification"
           color: "info"
 
       - name: ⚠️ Send Test Cancelled Notification
@@ -83,7 +89,7 @@ jobs:
           github-token: ${{ github.token }}
           webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
           deploy-card: true
-          title: "Deployment Cancelled"
+          title: "Deployment Cancelled Notification"
           color: "warning"
 
       - name: ⛔ Send Test Failure Notification
@@ -92,7 +98,7 @@ jobs:
           github-token: ${{ github.token }}
           webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
           deploy-card: true
-          title: "Deployment Failed"
+          title: "Deployment Failed Notification"
           color: "failure"
 
       - name: 🎉 Send Test Success Notification
@@ -101,10 +107,10 @@ jobs:
           github-token: ${{ github.token }}
           webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
           deploy-card: true
-          title: "Deployment Successful"
+          title: "Deployment Successful Notification"
           color: "success"
 
-      - name: ✔️ Test Action Complete
+      - name: ✔️ Send Notification Tests Complete Message
         uses: ./
         with:
           github-token: ${{ github.token }}
