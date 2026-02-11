@@ -1,10 +1,10 @@
 # teams-incoming-webhook-action
 
-[![Build and Test](https://github.com/mikesprague/teams-incoming-webhook-action/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/mikesprague/teams-incoming-webhook-action/actions/workflows/build-and-test.yml) 
+[![Build and Test](https://github.com/mikesprague/teams-incoming-webhook-action/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/mikesprague/teams-incoming-webhook-action/actions/workflows/build-and-test.yml)
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=406118991)
 
-Sends an [AdaptiveCard](https://adaptivecards.io/explorer/) notification to an [MS Teams Incoming Webhook](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook) from a GitHub Action Workflow
+Sends an [AdaptiveCard](https://adaptivecards.microsoft.com/) notification to an [MS Teams Incoming Webhook](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook) from a GitHub Action Workflow
 
 This action requires a secret to be set up with your Teams Incoming Webhook URL named `MS_TEAMS_WEBHOOK_URL` ([official docs for creating secrets in your repo](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository))
 
@@ -16,6 +16,12 @@ This action requires a secret to be set up with your Teams Incoming Webhook URL 
     - [Cancel Notification](#cancel-notification)
     - [Failure Notification](#failure-notification)
     - [Success Message](#success-message)
+- [Development](#development)
+  - [Prerequisites](#prerequisites)
+  - [Setup](#setup)
+  - [Testing](#testing)
+  - [Code Quality](#code-quality)
+  - [TypeScript Configuration](#typescript-configuration)
 
 ## Inputs
 
@@ -116,7 +122,7 @@ Include anywhere in steps to notify workflow run has been cancelled
     color: 'warning'
 ```
 
-![Deploy Notification Example - Info](./readme-images/deploy-cancel.png 'Deploy Notification Example - Info')
+![Deploy Notification Example - Cancel](./readme-images/deploy-cancel.png 'Deploy Notification Example - Cancel')
 
 #### Failure Notification
 
@@ -134,7 +140,7 @@ Include anywhere in steps to notify when a workflow run fails
     color: 'failure'
 ```
 
-![Deploy Notification Example - Info](./readme-images/deploy-fail.png 'Deploy Notification Example - Info')
+![Deploy Notification Example - Failure](./readme-images/deploy-fail.png 'Deploy Notification Example - Failure')
 
 #### Success Message
 
@@ -154,3 +160,66 @@ Include anywhere in steps to notify when workflow run is successful
 
 ![Deploy Notification Example - Success](./readme-images/deploy-success.png 'Deploy Notification Example - Success')
 
+## Development
+
+This project uses modern TypeScript with strict type checking and comprehensive test coverage.
+
+### Prerequisites
+
+- Node.js >= 24.x
+- npm >= 11.x
+
+### Setup
+
+```bash
+npm install
+```
+
+### Testing
+
+The project uses [Vitest](https://vitest.dev/) for testing with comprehensive coverage requirements:
+
+```bash
+# Run tests once
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run tests with coverage report
+npm run test:coverage
+
+# Run tests with UI
+npm run test:ui
+```
+
+**Coverage Thresholds:**
+
+- Lines: 98%
+- Functions: 100%
+- Branches: 92%
+- Statements: 98%
+
+### Code Quality
+
+The project uses [Biome](https://biomejs.dev/) for linting and formatting:
+
+```bash
+# Check code quality
+npm run lint
+
+# Type check
+npm run check
+
+# Build the action
+npm run build
+```
+
+### TypeScript Configuration
+
+The project uses TypeScript 5.9+ with:
+
+- ES2023 target for modern JavaScript features
+- Strict mode enabled with balanced strictness flags
+- ESM module system with bundler resolution
+- Top-level await support
