@@ -9,9 +9,9 @@ export const populateCard = ({
   color = 'Emphasis',
   text,
   title,
-  titleSize = 'Large',
+  titleSize = 'Default',
 }: SimpleCardParams) => {
-  console.log({ color, text, title, titleSize });
+  // console.log({ color, text, title, titleSize });
 
   const simpleNotificationCard = {
     type: 'message',
@@ -38,7 +38,7 @@ export const populateCard = ({
                   weight: 'Bolder',
                 },
               ],
-              style: 'Emphasis',
+              style: color,
               bleed: true,
             },
             {
