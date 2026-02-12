@@ -228,7 +228,7 @@ Include anywhere in steps to notify when workflow run is successful
 Sends a deploy card with all options enabled - large title, custom message, color set, and commit message visible
 
 ```yaml
-- name: 🧪 Kitchen Sink Test
+- name: Kitchen Sink Test
   uses: ./
   with:
     github-token: ${{ github.token }}
