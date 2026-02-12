@@ -72,7 +72,7 @@ jobs:
           color: "info"
 
       # send standard simple notification
-      - name: 💬 Send Test Simple Notification
+      - name: 💬 Send Simple Notification
         uses: ./
         with:
           github-token: ${{ github.token }}
@@ -83,55 +83,98 @@ jobs:
           message: "This is an example of a simple notification with a title and a body"
 
       # send simple notification with a large title
-      - name: 💬 Send Test Simple Notification w/ Large Title
+      - name: 💬 Send Simple Notification w/ Large Title
         uses: ./
         with:
           github-token: ${{ github.token }}
           webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
           deploy-card: false
-          title: "Simple Notification"
+          title: "Simple Notification w/ Large Title"
           title-size: "Large"
-          message: "This is an example of a simple notification with a title and a body"
+          message: "This is an example of a simple notification with a large title and a body"
 
-      # send deploy card/workflow status with info status/color
-      - name: 📤 Send Test Info Notification
+      # send workflow status with message
+      - name: 📤 Send Workflow Status Notification w/ Message
         uses: ./
         with:
           github-token: ${{ github.token }}
           webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
           deploy-card: true
-          title: "Deployment Info Notification"
+          title: "Workflow Status w/ Message"
+          message: "This is an example of a workflow notification with a custom message included in the card body"
+
+      # send workflow status and show commit message
+      - name: 📤 Send Workflow Status Notification w/ Commit Message
+        uses: ./
+        with:
+          github-token: ${{ github.token }}
+          webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
+          deploy-card: true
+          title: "Workflow Status w/ Commit Message"
+          show-commit-message: true
+
+      # send deploy card/workflow status with info status/color
+      - name: 📤 Send Workflow Status Notification
+        uses: ./
+        with:
+          github-token: ${{ github.token }}
+          webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
+          deploy-card: true
+          title: "Workflow Status"
+          color: "info"
+
+      # send deploy card/workflow status with info status/color
+      - name: 📤 Send Workflow Status Notification
+        uses: ./
+        with:
+          github-token: ${{ github.token }}
+          webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
+          deploy-card: true
+          title: "Workflow Status"
           color: "info"
 
       # send deploy card/workflow status with warning status/color
-      - name: ⚠️ Send Test Cancelled Notification
+      - name: ⚠️ Send Workflow Cancelled Notification
         uses: ./
         with:
           github-token: ${{ github.token }}
           webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
           deploy-card: true
-          title: "Deployment Cancelled Notification"
+          title: "Workflow Cancelled"
           color: "warning"
 
       # send deploy card/workflow status with failure status/color
-      - name: ⛔ Send Test Failure Notification
+      - name: ⛔ Send Workflow Failed Notification
         uses: ./
         with:
           github-token: ${{ github.token }}
           webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
           deploy-card: true
-          title: "Deployment Failed Notification"
+          title: "Workflow Failed"
           color: "failure"
 
       # send deploy card/workflow status with success status/color
-      - name: 🎉 Send Test Success Notification
+      - name: 🎉 Send Workflow Successful Notification
         uses: ./
         with:
           github-token: ${{ github.token }}
           webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
           deploy-card: true
-          title: "Deployment Successful Notification"
+          title: "Workflow Successful"
           color: "success"
+
+      # kitchen sink test: send deploy card/workflow status with custom title, message, color, and show commit message
+      - name: 🧪 Send Workflow Notification - Kitchen Sink Test
+        uses: ./
+        with:
+          github-token: ${{ github.token }}
+          webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
+          deploy-card: true
+          title: "Workflow Status - Kitchen Sink Test"
+          title-size: "Large"
+          message: "This is a kitchen sink test sending a deploy card with all options set including a custom message, color, large title, and showing the commit message."
+          color: "info"
+          show-commit-message: true
 
       # end functional/end-to-end testing by sending a completion notification with info status/color
       - name: ✔️ Send Notification Tests Complete Message
