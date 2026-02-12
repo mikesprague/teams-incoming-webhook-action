@@ -74,7 +74,10 @@ export const populateCard = ({
               type: 'TextBlock',
               text: `by **${commit.data.commit.author?.name ?? 'Unknown'}**${
                 author?.login
-                  ? ` ([**@${author.login}**](https://github.com/${author.login}))`
+                  ? author.login.includes('dependabot') ||
+                    author.login.includes('github-actions')
+                    ? ` (**@${author.login}**)`
+                    : ` ([**@${author.login}**](https://github.com/${author.login}))`
                   : ''
               } on **${timestamp}**`,
               wrap: true,
