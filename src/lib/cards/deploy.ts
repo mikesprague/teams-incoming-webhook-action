@@ -38,6 +38,8 @@ export const populateCard = ({
   title,
   titleSize = 'Default',
 }: DeployCardParams) => {
+  console.log({ color, message, title, titleSize });
+
   const workflowStatusCard = {
     type: 'message',
     attachments: [
@@ -61,8 +63,10 @@ export const populateCard = ({
                   wrap: true,
                   size: titleSize,
                   weight: 'Bolder',
+                  spacing: 'None',
                 },
               ],
+              spacing: 'None',
               style: color,
               bleed: true,
             },
