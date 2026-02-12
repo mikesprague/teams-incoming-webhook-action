@@ -27650,7 +27650,7 @@ try {
     const titleSize = _actions_core__WEBPACK_IMPORTED_MODULE_0__/* .getInput */ .V4('title-size', {
         required: false,
         trimWhitespace: true,
-    }) || 'Large';
+    }) || 'Default';
     const message = _actions_core__WEBPACK_IMPORTED_MODULE_0__/* .getInput */ .V4('message', {
         required: false,
         trimWhitespace: true,
@@ -27660,6 +27660,10 @@ try {
         trimWhitespace: true,
     }) || 'default';
     const isDeployCard = _actions_core__WEBPACK_IMPORTED_MODULE_0__/* .getBooleanInput */ .Vt('deploy-card', {
+        required: false,
+        trimWhitespace: true,
+    }) || false;
+    const showCommitMessage = _actions_core__WEBPACK_IMPORTED_MODULE_0__/* .getBooleanInput */ .Vt('show-commit-message', {
         required: false,
         trimWhitespace: true,
     }) || false;
@@ -27693,18 +27697,20 @@ try {
             .tz(timezoneString)
             .format('ddd, D MMM YYYY hh:mm:ss Z');
         messageToPost = populateCard({
-            title,
+            author,
+            branch,
             color: colorString,
             commit,
-            branch,
-            author,
             message,
-            runNum,
-            runId,
             repoName,
-            sha,
             repoUrl,
+            runId,
+            runNum,
+            sha,
+            showCommitMessage,
             timestamp,
+            title,
+            titleSize,
         });
     }
     else {

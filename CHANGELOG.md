@@ -1,3 +1,23 @@
+## 1.18.0 (2026-02-12)
+
+* docs(README): add `show-commit-message` input ([2a03fd2](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2a03fd2))
+* docs(README): update coverage info for v1.17.0 ([6806c66](https://github.com/mikesprague/teams-incoming-webhook-action/commit/6806c66))
+* docs(README): update for latest changes ([9c558bc](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9c558bc))
+* style(lib.cards/deploy): remove debug logging ([5004da8](https://github.com/mikesprague/teams-incoming-webhook-action/commit/5004da8))
+* style(lib/cards): minor template tweak ([aa70806](https://github.com/mikesprague/teams-incoming-webhook-action/commit/aa70806))
+* style(lib/cards/deploy): use monospace font for commit hash and message ([4705795](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4705795))
+* ci(build-and-deploy): add missing functional tests; tweak verbiage ([01d1d22](https://github.com/mikesprague/teams-incoming-webhook-action/commit/01d1d22))
+* ci(build-and-deploy): remove extraneous input ([d2053d1](https://github.com/mikesprague/teams-incoming-webhook-action/commit/d2053d1))
+* ci(build-and-deploy): verbiage tweak ([b61e17f](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b61e17f))
+* test: add coverage for `show-commit-message` implementation ([e9e12ba](https://github.com/mikesprague/teams-incoming-webhook-action/commit/e9e12ba))
+* test: update test with correct default ([f118391](https://github.com/mikesprague/teams-incoming-webhook-action/commit/f118391))
+* fix: pass titleSize into deploy cards ([9a15b1e](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9a15b1e))
+* feat: capture `show-commit-message` and pass to deploy cards ([f2f6afd](https://github.com/mikesprague/teams-incoming-webhook-action/commit/f2f6afd))
+* feat(action): add `show-commit-message` input ([3b0ac24](https://github.com/mikesprague/teams-incoming-webhook-action/commit/3b0ac24))
+* feat(lib/cards/deploy): show first line of after hash if option is enabled ([04e3f30](https://github.com/mikesprague/teams-incoming-webhook-action/commit/04e3f30))
+
+
+
 ## 1.17.0 (2026-02-12)
 
 * build(npm): bump packageManager ([a128d62](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a128d62))
