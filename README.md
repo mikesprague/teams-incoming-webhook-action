@@ -13,6 +13,7 @@ This action requires a secret to be set up with your Teams Incoming Webhook URL 
   - [Simple Notification](#simple-notification)
   - [Simple Notification w/ Large Title](#simple-notification-w-large-title)
   - [Workflow Status Notifications](#workflow-status-notifications)
+    - [Notification w/ Message](#notification-w-message)
     - [Info Notification](#info-notification)
     - [Cancel Notification](#cancel-notification)
     - [Failure Notification](#failure-notification)
@@ -51,7 +52,7 @@ This action requires a secret to be set up with your Teams Incoming Webhook URL 
   - **required:** false
   - **type:** string
   - **default:** `""`
-  - **description:** Message to be sent (not used for workflow status notifications)
+  - **description:** Optional message body; when `deploy-card` is `true`, this appears above the deployment details
   - **example:** `message: "This is some test message content for a simple notification"`
 - `color`
   - **required:** false
@@ -86,7 +87,7 @@ The following sends a simple notification with a title and message
   with:
     github-token: ${{ github.token }}
     webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
-    title: 'Notification Test'
+    title: 'Simple Notification'
     message: 'This is an example of a simple notification with a title and a body'
 ```
 
@@ -97,12 +98,12 @@ The following sends a simple notification with a title and message
 The following sends a simple notification with a title and message
 
 ```yaml
-- name: Send simple notification with large title
+- name: Send Test Simple Notification w/ Large Title
   uses: mikesprague/teams-incoming-webhook-action@v1
   with:
     github-token: ${{ github.token }}
     webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
-    title: 'Notification Test'
+    title: 'Simple Notification w/ Large Title'
     title-size: 'Large'
     message: 'This is an example of a simple notification with a large title and a body'
 ```
@@ -113,18 +114,35 @@ The following sends a simple notification with a title and message
 
 The following examples show how to send notifications based on your workflow status
 
-#### Info Notification
+#### Notification w/ Message
 
 Include as first step in workflow to notify workflow run has started
 
 ```yaml
-- name: Deploy Started Notification
+- name: Send Workflow Status Notification w/ Message
   uses: mikesprague/teams-incoming-webhook-action@v1
   with:
     github-token: ${{ github.token }}
     webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
     deploy-card: true
-    title: 'Deployment Started'
+    title: 'Workflow Status w/ Message'
+    message: 'This is an example of a workflow notification with a custom message included in the card body'
+```
+
+![Deploy Notification Example - Info](./readme-images/deploy-with-message.png 'Deploy Notification Example - Info')
+
+#### Info Notification
+
+Include as first step in workflow to notify workflow run has started
+
+```yaml
+- name: Send Workflow Status Notification
+  uses: mikesprague/teams-incoming-webhook-action@v1
+  with:
+    github-token: ${{ github.token }}
+    webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
+    deploy-card: true
+    title: 'Workflow Status'
     color: 'info'
 ```
 
@@ -135,14 +153,14 @@ Include as first step in workflow to notify workflow run has started
 Include anywhere in steps to notify workflow run has been cancelled
 
 ```yaml
-- name: Cancelled Notification
+- name: Send Workflow Cancelled Notification
   if: ${{ cancelled() }}
   uses: mikesprague/teams-incoming-webhook-action@v1
   with:
     github-token: ${{ github.token }}
     webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
     deploy-card: true
-    title: 'Deployment Cancelled'
+    title: 'Workflow Cancelled'
     color: 'warning'
 ```
 
@@ -153,14 +171,14 @@ Include anywhere in steps to notify workflow run has been cancelled
 Include anywhere in steps to notify when a workflow run fails
 
 ```yaml
-- name: Failure Notification
+- name: Send Workflow Failure Notification
   if: ${{ failure() }}
   uses: mikesprague/teams-incoming-webhook-action@v1
   with:
     github-token: ${{ github.token }}
     webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
     deploy-card: true
-    title: 'Deployment Failed'
+    title: 'Workflow Failed'
     color: 'failure'
 ```
 
@@ -171,14 +189,14 @@ Include anywhere in steps to notify when a workflow run fails
 Include anywhere in steps to notify when workflow run is successful
 
 ```yaml
-- name: Success Notification
+- name: Send Workflow Success Notification
   if: ${{ success() }}
   uses: mikesprague/teams-incoming-webhook-action@v1
   with:
     github-token: ${{ github.token }}
     webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
     deploy-card: true
-    title: 'Deployment Successful'
+    title: 'Workflow Successful'
     color: 'success'
 ```
 
