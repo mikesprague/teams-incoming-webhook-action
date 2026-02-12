@@ -13,11 +13,13 @@ This action requires a secret to be set up with your Teams Incoming Webhook URL 
   - [Simple Notification](#simple-notification)
   - [Simple Notification w/ Large Title](#simple-notification-w-large-title)
   - [Workflow Status Notifications](#workflow-status-notifications)
-    - [Notification w/ Message](#notification-w-message)
-    - [Info Notification](#info-notification)
+    - [Workflow Status w/ Message](#workflow-status-w-message)
+    - [Workflow Status w/ Commit Message](#workflow-status-w-commit-message)
+    - [Status Notification](#status-notification)
     - [Cancel Notification](#cancel-notification)
     - [Failure Notification](#failure-notification)
     - [Success Message](#success-message)
+    - [Kitchen Sink Example](#kitchen-sink-example)
 - [Development](#development)
   - [Prerequisites](#prerequisites)
   - [Setup](#setup)
@@ -120,9 +122,7 @@ The following sends a simple notification with a title and message
 
 The following examples show how to send notifications based on your workflow status
 
-#### Notification w/ Message
-
-Include as first step in workflow to notify workflow run has started
+#### Workflow Status w/ Message
 
 ```yaml
 - name: Send Workflow Status Notification w/ Message
@@ -135,9 +135,24 @@ Include as first step in workflow to notify workflow run has started
     message: 'This is an example of a workflow notification with a custom message included in the card body'
 ```
 
-![Deploy Notification Example - Info](./readme-images/deploy-with-message.png 'Deploy Notification Example - Info')
+![Workflow Status w/ Message Example](./readme-images/deploy-with-message.png 'Workflow Status w/ Message Example')
 
-#### Info Notification
+#### Workflow Status w/ Commit Message
+
+```yaml
+- name: 📤 Send Workflow Status Notification w/ Commit Message
+  uses: ./
+  with:
+    github-token: ${{ github.token }}
+    webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
+    deploy-card: true
+    title: "Workflow Status w/ Commit Message"
+    show-commit-message: true
+```
+
+![Workflow Status w/ Commit Message](./readme-images/deploy-with-commit-message.png 'Workflow Status w/ Commit Message Example')
+
+#### Status Notification
 
 Include as first step in workflow to notify workflow run has started
 
@@ -152,7 +167,7 @@ Include as first step in workflow to notify workflow run has started
     color: 'info'
 ```
 
-![Deploy Notification Example - Info](./readme-images/deploy-info.png 'Deploy Notification Example - Info')
+![Workflow Status/Info Example](./readme-images/deploy-info.png 'Workflow Status/Info Example')
 
 #### Cancel Notification
 
@@ -170,7 +185,7 @@ Include anywhere in steps to notify workflow run has been cancelled
     color: 'warning'
 ```
 
-![Deploy Notification Example - Cancel](./readme-images/deploy-cancel.png 'Deploy Notification Example - Cancel')
+![Workflow Cancel Example](./readme-images/deploy-cancel.png 'Workflow Cancel Example')
 
 #### Failure Notification
 
@@ -188,7 +203,7 @@ Include anywhere in steps to notify when a workflow run fails
     color: 'failure'
 ```
 
-![Deploy Notification Example - Failure](./readme-images/deploy-fail.png 'Deploy Notification Example - Failure')
+![Workflow Failure Example](./readme-images/deploy-fail.png 'Workflow Failure Example')
 
 #### Success Message
 
@@ -206,7 +221,27 @@ Include anywhere in steps to notify when workflow run is successful
     color: 'success'
 ```
 
-![Deploy Notification Example - Success](./readme-images/deploy-success.png 'Deploy Notification Example - Success')
+![Workflow Success Example](./readme-images/deploy-success.png 'Workflow Success Example')
+
+#### Kitchen Sink Example
+
+Sends a deploy card with all options enabled - large title, custom message, color set, and commit message visible
+
+```yaml
+- name: 🧪 Kitchen Sink Test
+  uses: ./
+  with:
+    github-token: ${{ github.token }}
+    webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
+    deploy-card: true
+    title: "Kitchen Sink Test"
+    title-size: "Large"
+    message: "This is a kitchen sink test sending a deploy card with all options set including a custom message, color, large title, and showing the commit message."
+    color: "info"
+    show-commit-message: true
+```
+
+![Kitchen Sink Example](./readme-images/kitchen-sink.png 'Kitchen Sink Example')
 
 ## Development
 
