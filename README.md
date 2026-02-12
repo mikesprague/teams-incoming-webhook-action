@@ -66,6 +66,12 @@ This action requires a secret to be set up with your Teams Incoming Webhook URL 
   - **default:** `false`
   - **description:** Sends a workflow notification that is built dynamically from commit and repo info
   - **example:** `deploy-card: true`
+- `show-commit-message`
+  - **required:** false
+  - **type:** boolean
+  - **default:** `false`
+  - **description:** Shows the first line of the commit message after the hash on deploy cards
+  - **example:** `show-commit-message: true`
 - `timezone`
   - **required:** false
   - **type:** string
