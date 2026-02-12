@@ -142,6 +142,7 @@ export const populateCard = ({
                         {
                           type: 'TextBlock',
                           text: `[**${branch}**](${repoUrl}/tree/${branch})`,
+                          fontType: 'Monospace',
                           size: 'Default',
                           spacing: 'None',
                         },
@@ -152,6 +153,7 @@ export const populateCard = ({
                               ? ` - ${commit.data.commit.message.split('\n')[0]}`
                               : ''
                           }`,
+                          fontType: 'Monospace',
                           size: 'Default',
                           spacing: 'None',
                         },
