@@ -96,6 +96,7 @@ try {
       commit,
       branch,
       author,
+      message,
       runNum,
       runId,
       repoName,
