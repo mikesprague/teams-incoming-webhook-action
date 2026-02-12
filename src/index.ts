@@ -40,7 +40,7 @@ try {
     (core.getInput('title-size', {
       required: false,
       trimWhitespace: true,
-    }) as 'Default' | 'Large') || 'Large';
+    }) as 'Default' | 'Large') || 'Default';
   const message =
     core.getInput('message', {
       required: false,
@@ -97,19 +97,20 @@ try {
       .format('ddd, D MMM YYYY hh:mm:ss Z');
 
     messageToPost = populateCard({
-      title,
+      author,
+      branch,
       color: colorString,
       commit,
-      branch,
-      author,
       message,
-      runNum,
-      runId,
       repoName,
       repoUrl,
+      runId,
+      runNum,
       sha,
       showCommitMessage,
       timestamp,
+      title,
+      titleSize,
     });
   } else {
     const { populateCard } = await import('./lib/cards/simple.js');
