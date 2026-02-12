@@ -79,7 +79,6 @@ jobs:
           webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
           deploy-card: false
           title: "Simple Notification"
-          title-size: "Default"
           message: "This is an example of a simple notification with a title and a body"
 
       # send simple notification with a large title
