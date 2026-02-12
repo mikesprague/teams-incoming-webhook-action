@@ -110,7 +110,7 @@ The following sends a simple notification with a title and message
     message: 'This is an example of a simple notification with a large title and a body'
 ```
 
-_Note:_ Screenshot will be added soon
+![Simple Notification w/ Large Title Example](./readme-images/simple-notification-large-title.png 'Simple Notification w/ Large Title Example')
 
 ### Workflow Status Notifications
 
