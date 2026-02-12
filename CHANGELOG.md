@@ -1,3 +1,11 @@
+## <small>1.16.1 (2026-02-12)</small>
+
+* test(lib/cards/deploy): add coverage for logic update ([2490ddc](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2490ddc))
+* refactor(lib/cards/deploy): don't link to bots ([ad33df4](https://github.com/mikesprague/teams-incoming-webhook-action/commit/ad33df4))
+* docs(README): add example with large text; note old screenshots ([9f75d78](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9f75d78))
+
+
+
 ## 1.16.0 (2026-02-12)
 
 * ci(build-and-deploy): add step that tests large title size; add comments ([e600cc5](https://github.com/mikesprague/teams-incoming-webhook-action/commit/e600cc5))
