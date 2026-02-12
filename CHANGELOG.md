@@ -1,3 +1,28 @@
+## 1.16.0 (2026-02-12)
+
+* ci(build-and-deploy): add step that tests large title size; add comments ([e600cc5](https://github.com/mikesprague/teams-incoming-webhook-action/commit/e600cc5))
+* ci(build-and-test): move unit tests and build into own steps ([875c9dd](https://github.com/mikesprague/teams-incoming-webhook-action/commit/875c9dd))
+* test: update tests for latest changes ([5bf2c79](https://github.com/mikesprague/teams-incoming-webhook-action/commit/5bf2c79))
+* style(lib/cards/deploy): fix formatting ([6638e91](https://github.com/mikesprague/teams-incoming-webhook-action/commit/6638e91))
+* style(lib/cards/deploy): increase text size ([4d5b2d5](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4d5b2d5))
+* refactor: remove extraneous import ([cf1bff3](https://github.com/mikesprague/teams-incoming-webhook-action/commit/cf1bff3))
+* refactor(action): default title-size to smaller size ([783f188](https://github.com/mikesprague/teams-incoming-webhook-action/commit/783f188))
+* refactor(devcontainer): remove outdated devcontainer ([ce86514](https://github.com/mikesprague/teams-incoming-webhook-action/commit/ce86514))
+* refactor(lib/cards/deploy): formatting tweaks ([8e87369](https://github.com/mikesprague/teams-incoming-webhook-action/commit/8e87369))
+* refactor(lib/cards/deploy): several tweaks to make more compact ([cacb75c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/cacb75c))
+* refactor(lib/cards/simple): default to smaller title; fix color ([0c6576b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/0c6576b))
+* refactor(lib/helpers): remove unused methods; sort keys; use casing docs suggest ([5b60ad9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/5b60ad9))
+* chore(deps): remove extaneous dependency ([b6259c9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b6259c9))
+* feat: get and use title-size input ([6357975](https://github.com/mikesprague/teams-incoming-webhook-action/commit/6357975))
+* feat(action): add optional title-size ([c2711e5](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c2711e5))
+* feat(lib/cards/deploy): add support for titleSize ([a6e4f96](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a6e4f96))
+* feat(lib/cards/simple): add support for titleSize ([794326b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/794326b))
+* docs(copilot-instructions): add some additional info ([90857c7](https://github.com/mikesprague/teams-incoming-webhook-action/commit/90857c7))
+* docs(copilot-instructions): improve project structure ([eec2508](https://github.com/mikesprague/teams-incoming-webhook-action/commit/eec2508))
+* build(npm): update scripts ([b4b442f](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b4b442f))
+
+
+
 ## 1.15.0 (2026-02-11)
 
 * style(tests): fix linter warnings ([6ef4cce](https://github.com/mikesprague/teams-incoming-webhook-action/commit/6ef4cce))

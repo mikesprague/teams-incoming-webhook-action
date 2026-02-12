@@ -10,80 +10,115 @@ export const modules = {
 /* harmony export */ });
 /* harmony import */ var _helpers_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5358);
 
-const populateCard = ({ title, color, commit, branch, author, runNum, runId, repoName, sha, repoUrl, timestamp, }) => ({
-    type: 'message',
-    attachments: [
-        {
-            contentType: 'application/vnd.microsoft.card.adaptive',
-            content: {
-                type: 'AdaptiveCard',
-                $schema: 'http://adaptivecards.io/schemas/adaptive-card.json',
-                version: '1.3',
-                msteams: {
-                    width: 'Full',
+const populateCard = ({ author, branch, color, commit, repoName, repoUrl, runId, runNum, sha, timestamp, title, titleSize = 'Default', }) => {
+    const workflowStatusCard = {
+        type: 'message',
+        attachments: [
+            {
+                contentType: 'application/vnd.microsoft.card.adaptive',
+                content: {
+                    type: 'AdaptiveCard',
+                    $schema: 'https://adaptivecards.io/schemas/adaptive-card.json',
+                    version: '1.5',
+                    msteams: {
+                        width: 'Full',
+                    },
+                    body: [
+                        {
+                            type: 'Container',
+                            targetWidth: 'atLeast:Narrow',
+                            items: [
+                                {
+                                    type: 'TextBlock',
+                                    text: `${(0,_helpers_js__WEBPACK_IMPORTED_MODULE_0__/* .getEmoji */ .x)(color)}${title}`,
+                                    wrap: true,
+                                    size: titleSize,
+                                    weight: 'Bolder',
+                                },
+                            ],
+                            style: color,
+                            bleed: true,
+                        },
+                        {
+                            type: 'TextBlock',
+                            text: `[**Workflow Run #${runNum}**](${repoUrl}/actions/runs/${runId}) on [**${repoName}**](${repoUrl})`,
+                            wrap: true,
+                            size: 'Default',
+                            spacing: 'Small',
+                            weight: 'Default',
+                        },
+                        {
+                            type: 'TextBlock',
+                            text: `by **${commit.data.commit.author?.name ?? 'Unknown'}**${author?.login
+                                ? ` ([**@${author.login}**](https://github.com/${author.login}))`
+                                : ''} on **${timestamp}**`,
+                            wrap: true,
+                            size: 'Small',
+                            spacing: 'None',
+                        },
+                        {
+                            type: 'Container',
+                            spacing: 'Small',
+                            targetWidth: 'atLeast:Narrow',
+                            items: [
+                                {
+                                    type: 'ColumnSet',
+                                    height: 'auto',
+                                    spacing: 'None',
+                                    targetWidth: 'atLeast:Narrow',
+                                    width: 'auto',
+                                    columns: [
+                                        {
+                                            type: 'Column',
+                                            width: 'auto',
+                                            verticalContentAlignment: 'Top',
+                                            items: [
+                                                {
+                                                    type: 'TextBlock',
+                                                    text: 'Branch:',
+                                                    weight: 'Bolder',
+                                                    size: 'Default',
+                                                    spacing: 'None',
+                                                },
+                                                {
+                                                    type: 'TextBlock',
+                                                    text: 'Commit:',
+                                                    weight: 'Bolder',
+                                                    size: 'Default',
+                                                    spacing: 'None',
+                                                },
+                                            ],
+                                        },
+                                        {
+                                            type: 'Column',
+                                            width: 'auto',
+                                            verticalContentAlignment: 'Top',
+                                            items: [
+                                                {
+                                                    type: 'TextBlock',
+                                                    text: `[**${branch}**](${repoUrl}/tree/${branch})`,
+                                                    size: 'Default',
+                                                    spacing: 'None',
+                                                },
+                                                {
+                                                    type: 'TextBlock',
+                                                    text: `[**${sha.slice(0, 7)}**](${commit.data.html_url})`,
+                                                    size: 'Default',
+                                                    spacing: 'None',
+                                                },
+                                            ],
+                                        },
+                                    ],
+                                },
+                            ],
+                        },
+                    ],
                 },
-                body: [
-                    {
-                        type: 'Container',
-                        items: [
-                            {
-                                type: 'TextBlock',
-                                text: `${(0,_helpers_js__WEBPACK_IMPORTED_MODULE_0__/* .getEmoji */ .xp)(color)}${title}`,
-                                wrap: true,
-                                size: 'Large',
-                                weight: 'Bolder',
-                            },
-                        ],
-                        style: color,
-                        bleed: true,
-                    },
-                    {
-                        type: 'TextBlock',
-                        text: `**Workflow Run #${runNum}** on [${repoName}](${repoUrl})`,
-                        wrap: true,
-                    },
-                    {
-                        type: 'TextBlock',
-                        text: `by ${commit.data.commit.author?.name ?? 'Unknown'}${author?.login ? ` (@${author.login})` : ''} on ${timestamp}`,
-                        wrap: true,
-                        size: 'Small',
-                        spacing: 'None',
-                    },
-                    {
-                        type: 'FactSet',
-                        facts: [
-                            {
-                                title: 'Branch',
-                                value: branch,
-                            },
-                            {
-                                title: 'Commit',
-                                value: `${sha.slice(0, 7)}`,
-                            },
-                        ],
-                    },
-                    {
-                        type: 'ActionSet',
-                        actions: [
-                            {
-                                type: 'Action.OpenUrl',
-                                title: 'View Workflow Run',
-                                url: `${repoUrl}/actions/runs/${runId}`,
-                                style: 'default',
-                            },
-                            {
-                                type: 'Action.OpenUrl',
-                                title: 'View Commit Changes',
-                                url: commit.data.html_url,
-                                style: 'default',
-                            },
-                        ],
-                    },
-                ],
             },
-        },
-    ],
-});
+        ],
+    };
+    return workflowStatusCard;
+};
 
 
 /***/ })

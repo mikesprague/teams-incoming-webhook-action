@@ -1,6 +1,6 @@
 {
   "name": "teams-incoming-webhook-action",
-  "version": "1.15.0",
+  "version": "1.16.0",
   "description": "GitHub Action to send an MS Teams notification via Incoming Webhook",
   "main": "./src/index.ts",
   "private": "true",

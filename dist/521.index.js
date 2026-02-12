@@ -8,44 +8,50 @@ export const modules = {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   populateCard: () => (/* binding */ populateCard)
 /* harmony export */ });
-const populateCard = ({ title, text, color = 'emphasis', }) => ({
-    type: 'message',
-    attachments: [
-        {
-            contentType: 'application/vnd.microsoft.card.adaptive',
-            content: {
-                type: 'AdaptiveCard',
-                $schema: 'http://adaptivecards.io/schemas/adaptive-card.json',
-                version: '1.3',
-                msteams: {
-                    width: 'Full',
+const populateCard = ({ color = 'Emphasis', text, title, titleSize = 'Default', }) => {
+    // console.log({ color, text, title, titleSize });
+    const simpleNotificationCard = {
+        type: 'message',
+        attachments: [
+            {
+                contentType: 'application/vnd.microsoft.card.adaptive',
+                content: {
+                    type: 'AdaptiveCard',
+                    $schema: 'https://adaptivecards.io/schemas/adaptive-card.json',
+                    version: '1.5',
+                    msteams: {
+                        width: 'Full',
+                    },
+                    body: [
+                        {
+                            type: 'Container',
+                            targetWidth: 'atLeast:Narrow',
+                            items: [
+                                {
+                                    type: 'TextBlock',
+                                    text: title,
+                                    wrap: true,
+                                    size: titleSize,
+                                    weight: 'Bolder',
+                                },
+                            ],
+                            style: color,
+                            bleed: true,
+                        },
+                        {
+                            type: 'TextBlock',
+                            text: text,
+                            wrap: true,
+                            size: 'Default',
+                            height: 'stretch',
+                        },
+                    ],
                 },
-                body: [
-                    {
-                        type: 'Container',
-                        items: [
-                            {
-                                type: 'TextBlock',
-                                text: title,
-                                wrap: true,
-                                size: 'Large',
-                                weight: 'Bolder',
-                            },
-                        ],
-                        style: color,
-                        bleed: true,
-                    },
-                    {
-                        type: 'TextBlock',
-                        text: text,
-                        wrap: true,
-                        height: 'stretch',
-                    },
-                ],
             },
-        },
-    ],
-});
+        ],
+    };
+    return simpleNotificationCard;
+};
 
 
 /***/ })
