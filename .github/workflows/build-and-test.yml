@@ -24,19 +24,21 @@ permissions:
   id-token: write
 
 jobs:
-  # test action works running from the graph
   test:
     runs-on: ubuntu-latest
     steps:
+      # checkout the repo to access the action code and test files
       - name: 👷 Checkout repo
         uses: actions/checkout@v6
 
+      # setup node environment
       - name: 🏗️ Setup Node.js ${{ env.NODE_VERSION }} environment
         uses: actions/setup-node@v6
         with:
           node-version: ${{ env.NODE_VERSION }}
           check-latest: true
 
+      # cache node_modules based on package-lock.json hash to speed up builds
       - name: ⚡  Cache node_modules
         uses: actions/cache@v5
         id: cache
@@ -46,16 +48,20 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-${{ env.NODE_VERSION }}-
 
+      # install dependencies if cache is not hit
       - name: 🏗️ Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm install
 
+      # build action
       - name: 👷 Prepare action
         run: npm run build
 
+      # run unit tests and linters (biome and typescript/tsc)
       - name: 🧪 Run unit tests and linters
         run: npm test
 
+      # begin functional/end-to-end tests by sending various test notifications to MS Teams using the action itself
       - name: ✔️ Send Starting Notification Tests Message
         uses: ./
         with:
@@ -65,15 +71,29 @@ jobs:
           title: "Starting Notification Tests"
           color: "info"
 
+      # send standard simple notification
       - name: 💬 Send Test Simple Notification
         uses: ./
         with:
           github-token: ${{ github.token }}
           webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
           deploy-card: false
-          title: "Simple Notification Test"
+          title: "Simple Notification"
+          title-size: "Default"
           message: "This is an example of a simple notification with a title and a body"
 
+      # send simple notification with a large title
+      - name: 💬 Send Test Simple Notification w/ Large Title
+        uses: ./
+        with:
+          github-token: ${{ github.token }}
+          webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
+          deploy-card: false
+          title: "Simple Notification"
+          title-size: "Large"
+          message: "This is an example of a simple notification with a title and a body"
+
+      # send deploy card/workflow status with info status/color
       - name: 📤 Send Test Info Notification
         uses: ./
         with:
@@ -83,6 +103,7 @@ jobs:
           title: "Deployment Info Notification"
           color: "info"
 
+      # send deploy card/workflow status with warning status/color
       - name: ⚠️ Send Test Cancelled Notification
         uses: ./
         with:
@@ -92,6 +113,7 @@ jobs:
           title: "Deployment Cancelled Notification"
           color: "warning"
 
+      # send deploy card/workflow status with failure status/color
       - name: ⛔ Send Test Failure Notification
         uses: ./
         with:
@@ -101,6 +123,7 @@ jobs:
           title: "Deployment Failed Notification"
           color: "failure"
 
+      # send deploy card/workflow status with success status/color
       - name: 🎉 Send Test Success Notification
         uses: ./
         with:
@@ -110,6 +133,7 @@ jobs:
           title: "Deployment Successful Notification"
           color: "success"
 
+      # end functional/end-to-end testing by sending a completion notification with info status/color
       - name: ✔️ Send Notification Tests Complete Message
         uses: ./
         with:
@@ -119,6 +143,7 @@ jobs:
           title: "Notification Tests Complete"
           color: "info"
 
+      # create build artifact of the generated documentation site to be used in the deploy workflow
       - name: 📦 Create and upload build artifact
         uses: actions/upload-artifact@v6
         with:
@@ -126,6 +151,7 @@ jobs:
           path: "docs/publish"
           retention-days: 1
 
+  # use reusable workflow to deploy generated docs to github pages
   call-deploy-workflow:
     needs: [test]
     uses: mikesprague/reusable-workflows/.github/workflows/pages-deploy.yml@main
