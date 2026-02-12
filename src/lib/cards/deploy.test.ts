@@ -82,4 +82,36 @@ describe('deploy card', () => {
     expect(detailsText).toContain('by **Unknown**');
     expect(detailsText).not.toContain('[**@');
   });
+
+  it('renders bot authors without profile links', () => {
+    const commit = {
+      data: {
+        commit: { author: { name: 'Dependabot' } },
+        html_url: 'https://github.com/octo-org/octo-repo/commit/sha123',
+      },
+    } as unknown as GetCommitResponse;
+    const author = {
+      login: 'dependabot[bot]',
+    } as GetCommitResponse['data']['author'];
+
+    const card = populateCard({
+      title: 'Deploy',
+      color: 'good',
+      commit,
+      branch: 'main',
+      author,
+      runNum: '7',
+      runId: '99',
+      repoName: 'octo-org/octo-repo',
+      sha: 'sha123456789',
+      repoUrl: 'https://github.com/octo-org/octo-repo',
+      timestamp: 'Mon, 1 Jan 2024 00:00:00 +0000',
+    });
+
+    const detailsText = card.attachments[0].content.body[2].text as string;
+
+    expect(detailsText).toContain('by **Dependabot**');
+    expect(detailsText).toContain('(**@dependabot[bot]**)');
+    expect(detailsText).not.toContain('https://github.com/dependabot');
+  });
 });
