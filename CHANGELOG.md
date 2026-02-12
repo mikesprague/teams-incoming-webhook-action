@@ -1,3 +1,20 @@
+## 1.17.0 (2026-02-12)
+
+* build(npm): bump packageManager ([a128d62](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a128d62))
+* docs(copilot-instructions): add some more test notes ([feb03e5](https://github.com/mikesprague/teams-incoming-webhook-action/commit/feb03e5))
+* docs(copilot-instructions): misc updates and fixes ([e09ed66](https://github.com/mikesprague/teams-incoming-webhook-action/commit/e09ed66))
+* docs(README): add example deploy card with `message`; refine verbiage ([be0ecee](https://github.com/mikesprague/teams-incoming-webhook-action/commit/be0ecee))
+* docs(README): add test coverage report ([84062aa](https://github.com/mikesprague/teams-incoming-webhook-action/commit/84062aa))
+* docs(README): remove note about outdated screenshots ([15bd662](https://github.com/mikesprague/teams-incoming-webhook-action/commit/15bd662))
+* docs(README): update images ([57025b0](https://github.com/mikesprague/teams-incoming-webhook-action/commit/57025b0))
+* docs(README): update images; add large title image ([bdb3bb1](https://github.com/mikesprague/teams-incoming-webhook-action/commit/bdb3bb1))
+* test(lib/cards/deploy): add coverage for optional `message` ([58f6318](https://github.com/mikesprague/teams-incoming-webhook-action/commit/58f6318))
+* feat: pass `message` into deploy cards ([4ae8727](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4ae8727))
+* feat(lib/cards/deploy): make `message` optional param and output if provided ([be8b714](https://github.com/mikesprague/teams-incoming-webhook-action/commit/be8b714))
+* chore(deps-dev): bump @biomejs/biome from 2.3.14 to 2.3.15 (#523) ([75ba885](https://github.com/mikesprague/teams-incoming-webhook-action/commit/75ba885)), closes [#523](https://github.com/mikesprague/teams-incoming-webhook-action/issues/523)
+
+
+
 ## <small>1.16.1 (2026-02-12)</small>
 
 * test(lib/cards/deploy): add coverage for logic update ([2490ddc](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2490ddc))

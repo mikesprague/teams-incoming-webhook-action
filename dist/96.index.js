@@ -10,7 +10,7 @@ export const modules = {
 /* harmony export */ });
 /* harmony import */ var _helpers_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5358);
 
-const populateCard = ({ author, branch, color, commit, repoName, repoUrl, runId, runNum, sha, timestamp, title, titleSize = 'Default', }) => {
+const populateCard = ({ author, branch, color, commit, message, repoName, repoUrl, runId, runNum, sha, timestamp, title, titleSize = 'Default', }) => {
     const workflowStatusCard = {
         type: 'message',
         attachments: [
@@ -39,6 +39,17 @@ const populateCard = ({ author, branch, color, commit, repoName, repoUrl, runId,
                             style: color,
                             bleed: true,
                         },
+                        ...(message
+                            ? [
+                                {
+                                    type: 'TextBlock',
+                                    text: message,
+                                    wrap: true,
+                                    size: 'Default',
+                                    spacing: 'Small',
+                                },
+                            ]
+                            : []),
                         {
                             type: 'TextBlock',
                             text: `[**Workflow Run #${runNum}**](${repoUrl}/actions/runs/${runId}) on [**${repoName}**](${repoUrl})`,
