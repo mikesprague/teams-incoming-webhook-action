@@ -9,8 +9,8 @@ This document provides context and guidelines for AI-assisted development on thi
 ### Key Technologies
 
 - **TypeScript 5.9+**: ES2023 target with strict type checking
-- **Node.js**: 24.x minimum (Action runs on Node 20)
-- **Vitest 4.x**: Modern test framework with 98%+ coverage
+- **Node.js**: 24.x minimum (Action runs on Node 24)
+- **Vitest 4.x**: Modern test framework with 98%+ minimum coverage
 - **Biome 2.x**: Fast linting and formatting
 - **GitHub Actions**: Custom action using @actions/core
 - **@vercel/ncc**: Bundler for creating single-file distribution
@@ -87,7 +87,7 @@ void (async () => {
 
 2. **Use nullish coalescing with fallbacks**: Provide defaults for optional environment variables
    ```typescript
-   baseUrl: GITHUB_API_URL || 'https://api.github.com'
+   baseUrl: GITHUB_API_URL ?? 'https://api.github.com'
    ```
 
 3. **Handle optional properties explicitly**:
@@ -99,7 +99,7 @@ void (async () => {
 
 ### Test Framework: Vitest
 
-- **Location**: Tests in `__tests__` directories adjacent to source files
+- **Location**: Tests live alongside source files (e.g. `src/**/*.test.ts`)
 - **Naming**: `*.test.ts` files
 - **Coverage Thresholds**:
   - Lines: 98%
@@ -116,7 +116,6 @@ void (async () => {
 1. **Mock External Dependencies**:
    ```typescript
    vi.mock('@actions/core');
-  vi.mock('node-fetch');
    ```
 
 2. **Setup/Teardown with Environment**:
@@ -160,7 +159,7 @@ npm run test:ui         # Interactive UI
 
 ```bash
 npm run lint            # Check code quality
-npm run check           # TypeScript type checking
+npm run typecheck       # TypeScript type checking
 npm test                # Full test suite
 npm run build           # Verify build works
 ```
@@ -175,7 +174,7 @@ npx biome check --write ./src
 
 ### Action Metadata ([action.yml](../action.yml))
 
-- **Runtime**: Node 20 (use compatible features)
+- **Runtime**: Node 24 (use compatible features)
 - **Main**: `dist/index.js` (bundled by ncc)
 - **Inputs**: All defined in action.yml with types and requirements
 
@@ -208,14 +207,13 @@ const isDeployCard = core.getBooleanInput('deploy-card', { required: false });
 ### Building
 
 ```bash
-npm run build           # Runs test + declarations + typedoc + ncc bundle
+npm run build           # Creates the ncc bundle and postbuild generates TypeDoc HTML
 ```
 
 This creates:
 - `dist/index.js`: Bundled action code (committed)
 - `dist/licenses.txt`: License aggregation
-- `types/`: TypeScript declarations
-- `docs/`: TypeDoc HTML documentation
+- `docs/publish`: TypeDoc HTML documentation
 
 ### Dependencies
 
@@ -223,7 +221,6 @@ This creates:
   - `@actions/core`: GitHub Actions API
   - `@octokit/rest`: GitHub API client
   - `dayjs`: Timezone handling
-  - `node-fetch`: Fetch polyfill for Octokit and webhook posting
 
 - **Dev Deps**: Not bundled
   - Build tools, testing, documentation
@@ -238,7 +235,7 @@ This creates:
 
 ### Adding a New Feature
 
-1. Write failing tests in appropriate `__tests__/` directory
+1. Write failing tests in appropriate `*.test.ts` file
 2. Implement feature in source file
 3. Run `npm test` to verify tests pass and coverage maintained
 4. Run `npm run lint` and fix any issues
@@ -247,9 +244,9 @@ This creates:
 
 ### Adding a New Card Type
 
-1. Create new file in `src/lib/cards/`
+1. Create new file in `src/lib/cards/your-card-name.ts`
 2. Export `populateCard` function returning Teams message structure
-3. Create test file in `src/lib/cards/__tests__/`
+3. Create test file in `src/lib/cards/your-card-name.test.ts` with comprehensive tests
 4. Add dynamic import in `src/index.ts`
 5. Update action.yml if new inputs needed
 6. Document in README.md
@@ -305,7 +302,7 @@ Tests run with mocked GitHub Actions context. To test locally:
 1. Set environment variables in test setup
 2. Mock @actions/core functions
 3. Mock external API calls (Octokit, fetch)
-4. Use Vitest's `vi.waitFor()` for async operations
+4. Use await and `vi.mocked` + `vi.waitFor` only if you add a helper that provides it
 
 ### Integration Testing
 
@@ -362,7 +359,7 @@ All new features must include corresponding tests with full coverage.
 
 ---
 
-*Last Updated: February 10, 2026*
+*Last Updated: February 12, 2026*
 *TypeScript Version: 5.9.3*
 *Node Version: 24.x*
 *Vitest Version: 4.0.18*
