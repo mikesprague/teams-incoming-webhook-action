@@ -242,18 +242,18 @@ npm run test:ui
 - Branches: 92%
 - Statements: 98%
 
-**Current Coverage Report (v1.16.1):**
+**Current Coverage Report (v1.17.0):**
 
 ```bash
- ✓ src/lib/cards/simple.test.ts (1 test) 1ms
- ✓ src/lib/helpers.test.ts (2 tests) 1ms
- ✓ src/lib/cards/deploy.test.ts (3 tests) 2ms
- ✓ src/index.test.ts (6 tests) 37ms
+  ✓ src/lib/helpers.test.ts (2 tests) 2ms
+ ✓ src/lib/cards/simple.test.ts (1 test) 3ms
+ ✓ src/lib/cards/deploy.test.ts (4 tests) 4ms
+ ✓ src/index.test.ts (6 tests) 47ms
 
  Test Files  4 passed (4)
-      Tests  12 passed (12)
-   Start at  09:40:18
-   Duration  177ms (transform 105ms, setup 0ms, import 120ms, tests 41ms, environment 0ms)
+      Tests  13 passed (13)
+   Start at  13:43:44
+   Duration  234ms (transform 141ms, setup 0ms, import 162ms, tests 56ms, environment 0ms)
 
  % Coverage report from v8
 ---------------|---------|----------|---------|---------|-------------------
