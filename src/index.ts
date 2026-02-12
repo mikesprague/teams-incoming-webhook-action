@@ -56,6 +56,11 @@ try {
       required: false,
       trimWhitespace: true,
     }) || false;
+  const showCommitMessage =
+    core.getBooleanInput('show-commit-message', {
+      required: false,
+      trimWhitespace: true,
+    }) || false;
   const timezoneString =
     core.getInput('timezone', {
       required: false,
@@ -86,6 +91,7 @@ try {
     const commit = await octokit.rest.repos.getCommit(params);
     const branch = GITHUB_REF?.split('/')[GITHUB_REF.split('/').length - 1];
     const { author } = commit.data;
+
     const timestamp = dayjs()
       .tz(timezoneString)
       .format('ddd, D MMM YYYY hh:mm:ss Z');
@@ -100,8 +106,9 @@ try {
       runNum,
       runId,
       repoName,
-      sha,
       repoUrl,
+      sha,
+      showCommitMessage,
       timestamp,
     });
   } else {
