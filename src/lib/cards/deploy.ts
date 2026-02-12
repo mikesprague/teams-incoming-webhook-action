@@ -16,6 +16,7 @@ export interface DeployCardParams {
   runId: string;
   runNum: string;
   sha: string;
+  showCommitMessage?: boolean;
   timestamp: string;
   title: string;
   titleSize?: 'Default' | 'Large';
@@ -32,6 +33,7 @@ export const populateCard = ({
   runId,
   runNum,
   sha,
+  showCommitMessage = false,
   timestamp,
   title,
   titleSize = 'Default',
@@ -143,7 +145,11 @@ export const populateCard = ({
                         },
                         {
                           type: 'TextBlock',
-                          text: `[**${sha.slice(0, 7)}**](${commit.data.html_url})`,
+                          text: `[**${sha.slice(0, 7)}**](${commit.data.html_url})${
+                            showCommitMessage && commit.data.commit.message
+                              ? ` - ${commit.data.commit.message.split('\n')[0]}`
+                              : ''
+                          }`,
                           size: 'Default',
                           spacing: 'None',
                         },
