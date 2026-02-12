@@ -113,23 +113,13 @@ jobs:
           show-commit-message: true
 
       # send deploy card/workflow status with info status/color
-      - name: 📤 Send Workflow Status Notification
+      - name: 📤 Send Workflow Info Notification
         uses: ./
         with:
           github-token: ${{ github.token }}
           webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
           deploy-card: true
-          title: "Workflow Status"
-          color: "info"
-
-      # send deploy card/workflow status with info status/color
-      - name: 📤 Send Workflow Status Notification
-        uses: ./
-        with:
-          github-token: ${{ github.token }}
-          webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
-          deploy-card: true
-          title: "Workflow Status"
+          title: "Workflow Info"
           color: "info"
 
       # send deploy card/workflow status with warning status/color
