@@ -11,6 +11,7 @@ This action requires a secret to be set up with your Teams Incoming Webhook URL 
 - [Inputs](#inputs)
 - [Example Usage](#example-usage)
   - [Simple Notification](#simple-notification)
+  - [Simple Notification w/ Large Title](#simple-notification-w-large-title)
   - [Workflow Status Notifications](#workflow-status-notifications)
     - [Info Notification](#info-notification)
     - [Cancel Notification](#cancel-notification)
@@ -40,6 +41,12 @@ This action requires a secret to be set up with your Teams Incoming Webhook URL 
   - **type:** string
   - **description:** Message title or heading
   - **example:** `title: "Test Message Heading"`
+- `title-size`
+  - **required:** false
+  - **type:** string
+  - **default:** `"Default"`
+  - **description:** Size of the title text - accepts `Default`, `Large` as values
+  - **example:** `title-size: "Large"`
 - `message`
   - **required:** false
   - **type:** string
@@ -69,6 +76,9 @@ This action requires a secret to be set up with your Teams Incoming Webhook URL 
 
 This action was built with the intention of sending workflow status notifications but also supports a simple message style
 
+> [!NOTE]
+> Screenshots are out of date as of 2026-02-11 and will be updated in the near future - the message formatting has changed slightly since these were taken but the functionality is the same
+
 ### Simple Notification
 
 The following sends a simple notification with a title and message
@@ -84,6 +94,23 @@ The following sends a simple notification with a title and message
 ```
 
 ![Simple Notification Example](./readme-images/simple-notification.png 'Simple Notification Example')
+
+### Simple Notification w/ Large Title
+
+The following sends a simple notification with a title and message
+
+```yaml
+- name: Send simple notification with large title
+  uses: mikesprague/teams-incoming-webhook-action@v1
+  with:
+    github-token: ${{ github.token }}
+    webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
+    title: 'Notification Test'
+    title-size: 'Large'
+    message: 'This is an example of a simple notification with a large title and a body'
+```
+
+_Note:_ Screenshot will be added soon
 
 ### Workflow Status Notifications
 
