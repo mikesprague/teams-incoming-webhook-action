@@ -162,14 +162,14 @@ jobs:
           title: "Workflow Successful"
           color: "success"
 
-      # kitchen sink test: send deploy card/workflow status with custom title, message, color, and show commit message
-      - name: 🧪 Send Workflow Notification - Kitchen Sink Test
+      # kitchen sink test: send deploy card/workflow status with large title, custom message, color, and show commit message options all together
+      - name: 🧪 Kitchen Sink Test
         uses: ./
         with:
           github-token: ${{ github.token }}
           webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
           deploy-card: true
-          title: "Workflow Status - Kitchen Sink Test"
+          title: "Kitchen Sink Test"
           title-size: "Large"
           message: "This is a kitchen sink test sending a deploy card with all options set including a custom message, color, large title, and showing the commit message."
           color: "info"
