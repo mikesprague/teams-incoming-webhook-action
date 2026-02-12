@@ -227,6 +227,34 @@ npm run test:ui
 - Branches: 92%
 - Statements: 98%
 
+**Current Coverage Report (v1.16.1):**
+
+```bash
+ ✓ src/lib/cards/simple.test.ts (1 test) 1ms
+ ✓ src/lib/helpers.test.ts (2 tests) 1ms
+ ✓ src/lib/cards/deploy.test.ts (3 tests) 2ms
+ ✓ src/index.test.ts (6 tests) 37ms
+
+ Test Files  4 passed (4)
+      Tests  12 passed (12)
+   Start at  09:40:18
+   Duration  177ms (transform 105ms, setup 0ms, import 120ms, tests 41ms, environment 0ms)
+
+ % Coverage report from v8
+---------------|---------|----------|---------|---------|-------------------
+File           | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+---------------|---------|----------|---------|---------|-------------------
+All files      |     100 |      100 |     100 |     100 |
+ src           |     100 |      100 |     100 |     100 |
+  index.ts     |     100 |      100 |     100 |     100 |
+ src/lib       |     100 |      100 |     100 |     100 |
+  helpers.ts   |     100 |      100 |     100 |     100 |
+ src/lib/cards |     100 |      100 |     100 |     100 |
+  deploy.ts    |     100 |      100 |     100 |     100 |
+  simple.ts    |     100 |      100 |     100 |     100 |
+---------------|---------|----------|---------|---------|-------------------
+```
+
 ### Code Quality
 
 The project uses [Biome](https://biomejs.dev/) for linting and formatting:
