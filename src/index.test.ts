@@ -84,6 +84,7 @@ const setInputs = (inputs: Record<string, string>) => {
 beforeEach(() => {
   vi.resetModules();
   vi.clearAllMocks();
+  vi.stubGlobal('fetch', mocks.fetch);
   consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
   process.env = {
     ...originalEnv,
@@ -100,6 +101,7 @@ beforeEach(() => {
 afterEach(() => {
   process.env = originalEnv;
   consoleErrorSpy.mockRestore();
+  vi.unstubAllGlobals();
 });
 
 describe('index', () => {
@@ -122,7 +124,8 @@ describe('index', () => {
     expect(mocks.populateSimple).toHaveBeenCalledWith({
       title: 'Hello',
       text: 'World',
-      color: 'good',
+      titleSize: 'Large',
+      color: 'Good',
     });
     expect(mocks.fetch).toHaveBeenCalledWith(
       'https://hooks.example.test',

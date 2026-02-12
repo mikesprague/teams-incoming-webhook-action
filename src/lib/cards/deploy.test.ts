@@ -33,20 +33,25 @@ describe('deploy card', () => {
 
     const body = card.attachments[0].content.body;
     const titleText = body[0].items[0].text;
+    const workflowText = body[1].text as string;
     const detailsText = body[2].text as string;
-    const facts = body[3].facts;
-    const actions = body[4].actions;
+    const branchText = body[3].items[0].columns[1].items[0].text as string;
+    const commitText = body[3].items[0].columns[1].items[1].text as string;
 
     expect(titleText).toBe('✅ Deploy');
-    expect(detailsText).toContain('by Alice (@octo)');
-    expect(detailsText).toContain('Mon, 1 Jan 2024 00:00:00 +0000');
-    expect(facts[0]).toEqual({ title: 'Branch', value: 'main' });
-    expect(facts[1]).toEqual({ title: 'Commit', value: 'sha1234' });
-    expect(actions[0].url).toBe(
-      'https://github.com/octo-org/octo-repo/actions/runs/99'
+    expect(workflowText).toContain('Workflow Run #7');
+    expect(workflowText).toContain(
+      '(https://github.com/octo-org/octo-repo/actions/runs/99)'
     );
-    expect(actions[1].url).toBe(
-      'https://github.com/octo-org/octo-repo/commit/sha123'
+    expect(workflowText).toContain('octo-org/octo-repo');
+    expect(detailsText).toContain('by **Alice**');
+    expect(detailsText).toContain('[**@octo**](https://github.com/octo)');
+    expect(detailsText).toContain('Mon, 1 Jan 2024 00:00:00 +0000');
+    expect(branchText).toBe(
+      '[**main**](https://github.com/octo-org/octo-repo/tree/main)'
+    );
+    expect(commitText).toBe(
+      '[**sha1234**](https://github.com/octo-org/octo-repo/commit/sha123)'
     );
   });
 
@@ -74,7 +79,7 @@ describe('deploy card', () => {
 
     const detailsText = card.attachments[0].content.body[2].text as string;
 
-    expect(detailsText).toContain('by Unknown');
-    expect(detailsText).not.toContain('(@');
+    expect(detailsText).toContain('by **Unknown**');
+    expect(detailsText).not.toContain('[**@');
   });
 });
