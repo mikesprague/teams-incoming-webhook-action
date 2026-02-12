@@ -10,6 +10,7 @@ export interface DeployCardParams {
   branch: string | undefined;
   color: string;
   commit: GetCommitResponse;
+  message?: string;
   repoName: string;
   repoUrl: string;
   runId: string;
@@ -25,6 +26,7 @@ export const populateCard = ({
   branch,
   color,
   commit,
+  message,
   repoName,
   repoUrl,
   runId,
@@ -62,6 +64,17 @@ export const populateCard = ({
               style: color,
               bleed: true,
             },
+            ...(message
+              ? [
+                  {
+                    type: 'TextBlock',
+                    text: message,
+                    wrap: true,
+                    size: 'Default',
+                    spacing: 'Small',
+                  },
+                ]
+              : []),
             {
               type: 'TextBlock',
               text: `[**Workflow Run #${runNum}**](${repoUrl}/actions/runs/${runId}) on [**${repoName}**](${repoUrl})`,
