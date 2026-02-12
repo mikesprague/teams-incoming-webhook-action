@@ -144,6 +144,7 @@ describe('index', () => {
       'webhook-url': 'https://hooks.example.test',
       title: 'Deploy',
       'deploy-card': 'true',
+      'show-commit-message': 'true',
       color: 'accent',
       timezone: 'UTC',
     });
@@ -167,7 +168,11 @@ describe('index', () => {
       repo: 'octo-repo',
       ref: 'sha123',
     });
-    expect(mocks.populateDeploy).toHaveBeenCalled();
+    expect(mocks.populateDeploy).toHaveBeenCalledWith(
+      expect.objectContaining({
+        showCommitMessage: true,
+      })
+    );
     expect(mocks.fetch).toHaveBeenCalledWith(
       'https://hooks.example.test',
       expect.objectContaining({

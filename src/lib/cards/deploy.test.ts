@@ -11,7 +11,10 @@ describe('deploy card', () => {
   it('builds a deploy payload with links and metadata', () => {
     const commit = {
       data: {
-        commit: { author: { name: 'Alice' } },
+        commit: {
+          author: { name: 'Alice' },
+          message: 'Fix deployment\n\nBody text',
+        },
         html_url: 'https://github.com/octo-org/octo-repo/commit/sha123',
       },
     } as unknown as GetCommitResponse;
@@ -29,6 +32,7 @@ describe('deploy card', () => {
       repoName: 'octo-org/octo-repo',
       sha: 'sha123456789',
       repoUrl: 'https://github.com/octo-org/octo-repo',
+      showCommitMessage: true,
       timestamp: 'Mon, 1 Jan 2024 00:00:00 +0000',
     });
 
@@ -53,6 +57,74 @@ describe('deploy card', () => {
     expect(branchText).toBe(
       '[**main**](https://github.com/octo-org/octo-repo/tree/main)'
     );
+    expect(commitText).toBe(
+      '[**sha1234**](https://github.com/octo-org/octo-repo/commit/sha123)' +
+        ' - Fix deployment'
+    );
+  });
+
+  it('omits the commit message when the flag is disabled', () => {
+    const commit = {
+      data: {
+        commit: {
+          author: { name: 'Alice' },
+          message: 'Fix deployment\n\nBody text',
+        },
+        html_url: 'https://github.com/octo-org/octo-repo/commit/sha123',
+      },
+    } as unknown as GetCommitResponse;
+    const author = { login: 'octo' } as GetCommitResponse['data']['author'];
+
+    const card = populateCard({
+      title: 'Deploy',
+      color: 'good',
+      commit,
+      branch: 'main',
+      author,
+      runNum: '7',
+      runId: '99',
+      repoName: 'octo-org/octo-repo',
+      sha: 'sha123456789',
+      repoUrl: 'https://github.com/octo-org/octo-repo',
+      showCommitMessage: false,
+      timestamp: 'Mon, 1 Jan 2024 00:00:00 +0000',
+    });
+
+    const commitText = card.attachments[0].content.body[3].items[0].columns[1]
+      .items[1].text as string;
+
+    expect(commitText).toBe(
+      '[**sha1234**](https://github.com/octo-org/octo-repo/commit/sha123)'
+    );
+  });
+
+  it('omits commit message when it is empty', () => {
+    const commit = {
+      data: {
+        commit: { author: { name: 'Alice' }, message: '' },
+        html_url: 'https://github.com/octo-org/octo-repo/commit/sha123',
+      },
+    } as unknown as GetCommitResponse;
+    const author = { login: 'octo' } as GetCommitResponse['data']['author'];
+
+    const card = populateCard({
+      title: 'Deploy',
+      color: 'good',
+      commit,
+      branch: 'main',
+      author,
+      runNum: '7',
+      runId: '99',
+      repoName: 'octo-org/octo-repo',
+      sha: 'sha123456789',
+      repoUrl: 'https://github.com/octo-org/octo-repo',
+      showCommitMessage: true,
+      timestamp: 'Mon, 1 Jan 2024 00:00:00 +0000',
+    });
+
+    const commitText = card.attachments[0].content.body[3].items[0].columns[1]
+      .items[1].text as string;
+
     expect(commitText).toBe(
       '[**sha1234**](https://github.com/octo-org/octo-repo/commit/sha123)'
     );
