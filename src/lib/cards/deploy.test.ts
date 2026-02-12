@@ -20,6 +20,7 @@ describe('deploy card', () => {
     const card = populateCard({
       title: 'Deploy',
       color: 'good',
+      message: 'Deployment started',
       commit,
       branch: 'main',
       author,
@@ -33,12 +34,14 @@ describe('deploy card', () => {
 
     const body = card.attachments[0].content.body;
     const titleText = body[0].items[0].text;
-    const workflowText = body[1].text as string;
-    const detailsText = body[2].text as string;
-    const branchText = body[3].items[0].columns[1].items[0].text as string;
-    const commitText = body[3].items[0].columns[1].items[1].text as string;
+    const messageText = body[1].text as string;
+    const workflowText = body[2].text as string;
+    const detailsText = body[3].text as string;
+    const branchText = body[4].items[0].columns[1].items[0].text as string;
+    const commitText = body[4].items[0].columns[1].items[1].text as string;
 
     expect(titleText).toBe('✅ Deploy');
+    expect(messageText).toBe('Deployment started');
     expect(workflowText).toContain('Workflow Run #7');
     expect(workflowText).toContain(
       '(https://github.com/octo-org/octo-repo/actions/runs/99)'
@@ -113,5 +116,33 @@ describe('deploy card', () => {
     expect(detailsText).toContain('by **Dependabot**');
     expect(detailsText).toContain('(**@dependabot[bot]**)');
     expect(detailsText).not.toContain('https://github.com/dependabot');
+  });
+
+  it('skips the message block when not provided', () => {
+    const commit = {
+      data: {
+        commit: { author: { name: 'Alice' } },
+        html_url: 'https://github.com/octo-org/octo-repo/commit/sha123',
+      },
+    } as unknown as GetCommitResponse;
+    const author = { login: 'octo' } as GetCommitResponse['data']['author'];
+
+    const card = populateCard({
+      title: 'Deploy',
+      color: 'good',
+      commit,
+      branch: 'main',
+      author,
+      runNum: '7',
+      runId: '99',
+      repoName: 'octo-org/octo-repo',
+      sha: 'sha123456789',
+      repoUrl: 'https://github.com/octo-org/octo-repo',
+      timestamp: 'Mon, 1 Jan 2024 00:00:00 +0000',
+    });
+
+    const workflowText = card.attachments[0].content.body[1].text as string;
+
+    expect(workflowText).toContain('Workflow Run #7');
   });
 });
