@@ -15,7 +15,7 @@ This action requires a secret to be set up with your Teams Incoming Webhook URL 
   - [Workflow Status Notifications](#workflow-status-notifications)
     - [Workflow Status w/ Message](#workflow-status-w-message)
     - [Workflow Status w/ Commit Message](#workflow-status-w-commit-message)
-    - [Status Notification](#status-notification)
+    - [Info Notification](#info-notification)
     - [Cancel Notification](#cancel-notification)
     - [Failure Notification](#failure-notification)
     - [Success Message](#success-message)
@@ -152,7 +152,7 @@ The following examples show how to send notifications based on your workflow sta
 
 ![Workflow Status w/ Commit Message](./readme-images/deploy-with-commit-message.png 'Workflow Status w/ Commit Message Example')
 
-#### Status Notification
+#### Info Notification
 
 Include as first step in workflow to notify workflow run has started
 
@@ -167,7 +167,7 @@ Include as first step in workflow to notify workflow run has started
     color: 'info'
 ```
 
-![Workflow Status/Info Example](./readme-images/deploy-info.png 'Workflow Status/Info Example')
+![Workflow Info Example](./readme-images/deploy-info.png 'Workflow Info Example')
 
 #### Cancel Notification
 
