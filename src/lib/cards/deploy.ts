@@ -38,8 +38,6 @@ export const populateCard = ({
   title,
   titleSize = 'Default',
 }: DeployCardParams) => {
-  console.log({ color, message, title, titleSize });
-
   const workflowStatusCard = {
     type: 'message',
     attachments: [
