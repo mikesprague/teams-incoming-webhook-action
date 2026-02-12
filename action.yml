@@ -27,6 +27,10 @@ inputs:
     description: "Send a GitHub deploy notification"
     required: false
     default: false
+  show-commit-message:
+    description: "Show the first line of the commit message in deploy-card notifications"
+    required: false
+    default: false
   timezone:
     description: "Timezone for message timestamps"
     required: false
