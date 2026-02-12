@@ -76,9 +76,6 @@ This action requires a secret to be set up with your Teams Incoming Webhook URL 
 
 This action was built with the intention of sending workflow status notifications but also supports a simple message style
 
-> [!NOTE]
-> Screenshots are out of date as of 2026-02-11 and will be updated in the near future - the message formatting has changed slightly since these were taken but the functionality is the same
-
 ### Simple Notification
 
 The following sends a simple notification with a title and message
