@@ -124,7 +124,7 @@ describe('index', () => {
     expect(mocks.populateSimple).toHaveBeenCalledWith({
       title: 'Hello',
       text: 'World',
-      titleSize: 'Large',
+      titleSize: 'Default',
       color: 'Good',
     });
     expect(mocks.fetch).toHaveBeenCalledWith(
