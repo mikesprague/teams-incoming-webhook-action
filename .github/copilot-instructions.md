@@ -106,6 +106,10 @@ void (async () => {
   - Functions: 100%
   - Branches: 92%
   - Statements: 98%
+- **Current Coverage**: 100% lines, 100% functions, 100% statements, 100% branches (as of v1.16.1)
+  - always shoot for 100% coverage and fall back on the thresholds if necessary, but never let coverage decrease
+  - always maintain quality of tests and avoid writing superficial tests just to increase coverage numbers
+  - attempt to follow existing test patterns and best practices for consistency unless you spot a clear improvement
 
 ### Testing Patterns
 
