@@ -217,4 +217,53 @@ describe('deploy card', () => {
 
     expect(workflowText).toContain('Workflow Run #7');
   });
+
+  it('adds mention entities and text when provided', () => {
+    const commit = {
+      data: {
+        commit: { author: { name: 'Alice' } },
+        html_url: 'https://github.com/octo-org/octo-repo/commit/sha123',
+      },
+    } as unknown as GetCommitResponse;
+    const author = { login: 'octo' } as GetCommitResponse['data']['author'];
+
+    const card = populateCard({
+      title: 'Deploy',
+      color: 'good',
+      commit,
+      branch: 'main',
+      author,
+      runNum: '7',
+      runId: '99',
+      repoName: 'octo-org/octo-repo',
+      sha: 'sha123456789',
+      repoUrl: 'https://github.com/octo-org/octo-repo',
+      timestamp: 'Mon, 1 Jan 2024 00:00:00 +0000',
+      userMentions: [
+        { name: 'Alice', id: 'alice@example.com' },
+        { name: 'Bob', id: 'bob@example.com' },
+      ],
+    });
+
+    const content = card.attachments[0].content;
+    const entities = content.msteams.entities as Array<{
+      text: string;
+      mentioned: { name: string; id: string };
+    }>;
+    const mentionText = content.body[content.body.length - 1].text as string;
+
+    expect(entities).toEqual([
+      {
+        type: 'mention',
+        text: '<at>Alice</at>',
+        mentioned: { id: 'alice@example.com', name: 'Alice' },
+      },
+      {
+        type: 'mention',
+        text: '<at>Bob</at>',
+        mentioned: { id: 'bob@example.com', name: 'Bob' },
+      },
+    ]);
+    expect(mentionText).toBe('**Mentions:** <at>Alice</at>, <at>Bob</at>');
+  });
 });

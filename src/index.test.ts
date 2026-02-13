@@ -11,6 +11,7 @@ const mocks = vi.hoisted(() => {
   const getBooleanInput = vi.fn();
   const setFailed = vi.fn();
   const debug = vi.fn();
+  const warning = vi.fn();
   const fetch = vi.fn();
   const getCommit = vi.fn();
   const populateSimple = vi.fn();
@@ -27,7 +28,7 @@ const mocks = vi.hoisted(() => {
   });
 
   return {
-    core: { getInput, getBooleanInput, setFailed, debug },
+    core: { getInput, getBooleanInput, setFailed, debug, warning },
     fetch,
     getCommit,
     populateSimple,
@@ -41,6 +42,7 @@ vi.mock('@actions/core', () => ({
   getBooleanInput: mocks.core.getBooleanInput,
   setFailed: mocks.core.setFailed,
   debug: mocks.core.debug,
+  warning: mocks.core.warning,
 }));
 
 vi.mock('node-fetch', () => ({
@@ -126,6 +128,7 @@ describe('index', () => {
       text: 'World',
       titleSize: 'Default',
       color: 'Good',
+      userMentions: [],
     });
     expect(mocks.fetch).toHaveBeenCalledWith(
       'https://hooks.example.test',
@@ -171,6 +174,7 @@ describe('index', () => {
     expect(mocks.populateDeploy).toHaveBeenCalledWith(
       expect.objectContaining({
         showCommitMessage: true,
+        userMentions: [],
       })
     );
     expect(mocks.fetch).toHaveBeenCalledWith(
@@ -215,6 +219,7 @@ describe('index', () => {
         runId: '',
         runNum: '',
         sha: '',
+        userMentions: [],
       })
     );
   });
@@ -236,6 +241,31 @@ describe('index', () => {
     await import('./index.js');
 
     expect(mocks.core.debug).toHaveBeenCalledWith('ok-but-not-json');
+  });
+
+  it('warns on invalid user mention entries', async () => {
+    setInputs({
+      'github-token': 'token',
+      'webhook-url': 'https://hooks.example.test',
+      title: 'Hello',
+      message: 'World',
+      'user-mentions': 'Alice|alice@example.com, NoPipe, |missing',
+    });
+
+    const messageToPost = { type: 'message', attachments: [] };
+    mocks.populateSimple.mockReturnValue(messageToPost);
+    mocks.fetch.mockResolvedValue(makeResponse('ok'));
+
+    await import('./index.js');
+
+    expect(mocks.populateSimple).toHaveBeenCalledWith(
+      expect.objectContaining({
+        userMentions: [{ name: 'Alice', id: 'alice@example.com' }],
+      })
+    );
+    expect(mocks.core.warning).toHaveBeenCalledWith(
+      'Ignoring invalid user-mentions entries: NoPipe, |missing'
+    );
   });
 
   it('fails the action when the webhook responds with an error', async () => {
