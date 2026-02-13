@@ -1,6 +1,11 @@
 import type { Endpoints } from '@octokit/types';
 
-import { getEmoji } from '../helpers.js';
+import {
+  buildMentionEntities,
+  getEmoji,
+  renderMentionsText,
+  type UserMention,
+} from '../helpers.js';
 
 type GetCommitResponse =
   Endpoints['GET /repos/{owner}/{repo}/commits/{ref}']['response'];
@@ -20,6 +25,7 @@ export interface DeployCardParams {
   timestamp: string;
   title: string;
   titleSize?: 'Default' | 'Large';
+  userMentions?: UserMention[];
 }
 
 export const populateCard = ({
@@ -37,6 +43,7 @@ export const populateCard = ({
   timestamp,
   title,
   titleSize = 'Default',
+  userMentions = [],
 }: DeployCardParams) => {
   const workflowStatusCard = {
     type: 'message',
@@ -49,6 +56,11 @@ export const populateCard = ({
           version: '1.5',
           msteams: {
             width: 'Full',
+            ...(userMentions.length > 0
+              ? {
+                  entities: buildMentionEntities(userMentions),
+                }
+              : {}),
           },
           body: [
             {
@@ -163,6 +175,17 @@ export const populateCard = ({
                 },
               ],
             },
+            ...(userMentions.length > 0
+              ? [
+                  {
+                    type: 'TextBlock',
+                    text: renderMentionsText(userMentions),
+                    wrap: true,
+                    size: 'Small',
+                    spacing: 'Small',
+                  },
+                ]
+              : []),
           ],
         },
       },

@@ -1,8 +1,15 @@
+import {
+  buildMentionEntities,
+  renderMentionsText,
+  type UserMention,
+} from '../helpers.js';
+
 export interface SimpleCardParams {
   color?: string;
   text: string;
   title: string;
   titleSize?: 'Default' | 'Large';
+  userMentions?: UserMention[];
 }
 
 export const populateCard = ({
@@ -10,6 +17,7 @@ export const populateCard = ({
   text,
   title,
   titleSize = 'Default',
+  userMentions = [],
 }: SimpleCardParams) => {
   // console.log({ color, text, title, titleSize });
 
@@ -24,6 +32,11 @@ export const populateCard = ({
           version: '1.5',
           msteams: {
             width: 'Full',
+            ...(userMentions.length > 0
+              ? {
+                  entities: buildMentionEntities(userMentions),
+                }
+              : {}),
           },
           body: [
             {
@@ -51,6 +64,17 @@ export const populateCard = ({
               height: 'stretch',
               spacing: 'Small',
             },
+            ...(userMentions.length > 0
+              ? [
+                  {
+                    type: 'TextBlock',
+                    text: renderMentionsText(userMentions),
+                    wrap: true,
+                    size: 'Small',
+                    spacing: 'Small',
+                  },
+                ]
+              : []),
           ],
         },
       },
