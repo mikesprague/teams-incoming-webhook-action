@@ -1,6 +1,7 @@
 name: "MS Teams Incoming Webhook Notification"
 author: "mikesprague"
 description: "GitHub Action to send an MS Teams notification via Incoming Webhook"
+
 inputs:
   github-token:
     description: "GitHub Token"
@@ -35,9 +36,15 @@ inputs:
     description: "Timezone for message timestamps"
     required: false
     default: "America/New_York"
+  user-mentions:
+    description: "Teams user mentions in format 'name|id', comma separated (e.g. 'Alice|alice@example.com,Bob|bob@example.com', invalid entries are ignored). NOTE: id must be Entra ID or UPN/email of the user"
+    required: false
+    default: ""
+
 runs:
   using: "node24"
   main: "dist/index.js"
+
 branding:
   icon: "alert-octagon"
   color: "purple"
