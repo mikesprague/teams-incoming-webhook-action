@@ -9,6 +9,7 @@ on:
   push:
     tags-ignore:
       - "v1"
+      - "v2"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -92,6 +93,17 @@ jobs:
           title-size: "Large"
           message: "This is an example of a simple notification with a large title and a body"
 
+      # send simple notification with user mentions
+      - name: 💬 Send Simple Notification w/ User Mentions
+        uses: ./
+        with:
+          github-token: ${{ github.token }}
+          webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
+          deploy-card: false
+          title: "Simple Notification w/ User Mentions"
+          message: "This is an example of a simple notification that includes user mentions"
+          user-mentions: "Alice|alice@example.com,Bob|bob@example.com"
+
       # send workflow status with message
       - name: 📤 Send Workflow Status Notification w/ Message
         uses: ./
@@ -152,7 +164,7 @@ jobs:
           title: "Workflow Successful"
           color: "success"
 
-      # kitchen sink test: send deploy card/workflow status with large title, custom message, color, and show commit message options all together
+      # kitchen sink test: send deploy card/workflow status with large title, custom message, color, show commit message, and user mentions
       - name: 🧪 Kitchen Sink Test
         uses: ./
         with:
@@ -161,9 +173,10 @@ jobs:
           deploy-card: true
           title: "Kitchen Sink Test"
           title-size: "Large"
-          message: "This is a kitchen sink test sending a deploy card with all options set including a custom message, color, large title, and showing the commit message."
+          message: "This is a kitchen sink test sending a deploy card with all options set including a custom message, color, large title, showing the commit message, and user mentions."
           color: "info"
           show-commit-message: true
+          user-mentions: "Alice|alice@example.com,Bob|bob@example.com"
 
       # end functional/end-to-end testing by sending a completion notification with info status/color
       - name: ✔️ Send Notification Tests Complete Message
