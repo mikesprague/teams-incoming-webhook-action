@@ -106,7 +106,7 @@ void (async () => {
   - Functions: 100%
   - Branches: 92%
   - Statements: 98%
-- **Current Coverage**: 100% lines, 100% functions, 100% statements, 100% branches (as of v1.16.1)
+- **Current Coverage**: 100% lines, 100% functions, 100% statements, 100% branches (as of v2.0.0)
   - always shoot for 100% coverage and fall back on the thresholds if necessary, but never let coverage decrease
   - always maintain quality of tests and avoid writing superficial tests just to increase coverage numbers
   - attempt to follow existing test patterns and best practices for consistency unless you spot a clear improvement
@@ -359,7 +359,7 @@ All new features must include corresponding tests with full coverage.
 
 ---
 
-*Last Updated: February 12, 2026*
+*Last Updated: February 13, 2026*
 *TypeScript Version: 5.9.3*
 *Node Version: 24.x*
 *Vitest Version: 4.0.18*
