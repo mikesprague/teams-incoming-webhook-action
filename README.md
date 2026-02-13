@@ -102,7 +102,7 @@ The following sends a simple notification with a title and message
 
 ```yaml
 - name: Send simple notification
-  uses: mikesprague/teams-incoming-webhook-action@v1
+  uses: mikesprague/teams-incoming-webhook-action@v2
   with:
     github-token: ${{ github.token }}
     webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
@@ -118,7 +118,7 @@ The following sends a simple notification with a title and message
 
 ```yaml
 - name: Send Simple Notification w/ Large Title
-  uses: mikesprague/teams-incoming-webhook-action@v1
+  uses: mikesprague/teams-incoming-webhook-action@v2
   with:
     github-token: ${{ github.token }}
     webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
@@ -135,7 +135,7 @@ The following sends a simple notification with user mentions
 
 ```yaml
 - name: Send Simple Notification w/ User Mentions
-  uses: mikesprague/teams-incoming-webhook-action@v1
+  uses: mikesprague/teams-incoming-webhook-action@v2
   with:
     github-token: ${{ github.token }}
     webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
@@ -154,7 +154,7 @@ The following examples show how to send notifications based on your workflow sta
 
 ```yaml
 - name: Send Workflow Status Notification w/ Message
-  uses: mikesprague/teams-incoming-webhook-action@v1
+  uses: mikesprague/teams-incoming-webhook-action@v2
   with:
     github-token: ${{ github.token }}
     webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
@@ -169,7 +169,7 @@ The following examples show how to send notifications based on your workflow sta
 
 ```yaml
 - name: 📤 Send Workflow Status Notification w/ Commit Message
-  uses: ./
+  uses: mikesprague/teams-incoming-webhook-action@v2
   with:
     github-token: ${{ github.token }}
     webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
@@ -186,7 +186,7 @@ Include as first step in workflow to notify workflow run has started
 
 ```yaml
 - name: Send Workflow Status Notification
-  uses: mikesprague/teams-incoming-webhook-action@v1
+  uses: mikesprague/teams-incoming-webhook-action@v2
   with:
     github-token: ${{ github.token }}
     webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
@@ -204,7 +204,7 @@ Include anywhere in steps to notify workflow run has been cancelled
 ```yaml
 - name: Send Workflow Cancelled Notification
   if: ${{ cancelled() }}
-  uses: mikesprague/teams-incoming-webhook-action@v1
+  uses: mikesprague/teams-incoming-webhook-action@v2
   with:
     github-token: ${{ github.token }}
     webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
@@ -222,7 +222,7 @@ Include anywhere in steps to notify when a workflow run fails
 ```yaml
 - name: Send Workflow Failure Notification
   if: ${{ failure() }}
-  uses: mikesprague/teams-incoming-webhook-action@v1
+  uses: mikesprague/teams-incoming-webhook-action@v2
   with:
     github-token: ${{ github.token }}
     webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
@@ -240,7 +240,7 @@ Include anywhere in steps to notify when workflow run is successful
 ```yaml
 - name: Send Workflow Success Notification
   if: ${{ success() }}
-  uses: mikesprague/teams-incoming-webhook-action@v1
+  uses: mikesprague/teams-incoming-webhook-action@v2
   with:
     github-token: ${{ github.token }}
     webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
@@ -257,7 +257,7 @@ Sends a deploy card with all options enabled - large title, custom message, colo
 
 ```yaml
 - name: Kitchen Sink Test
-  uses: ./
+  uses: mikesprague/teams-incoming-webhook-action@v2
   with:
     github-token: ${{ github.token }}
     webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
