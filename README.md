@@ -12,6 +12,7 @@ This action requires a secret to be set up with your Teams Incoming Webhook URL 
 - [Example Usage](#example-usage)
   - [Simple Notification](#simple-notification)
   - [Simple Notification w/ Large Title](#simple-notification-w-large-title)
+  - [Simple Notification w/ Mentions](#simple-notification-w-mentions)
   - [Workflow Status Notifications](#workflow-status-notifications)
     - [Workflow Status w/ Message](#workflow-status-w-message)
     - [Workflow Status w/ Commit Message](#workflow-status-w-commit-message)
@@ -80,6 +81,16 @@ This action requires a secret to be set up with your Teams Incoming Webhook URL 
   - **default:** `"America/New_York"`
   - **description:** Timezone to use for timestamps in messages
   - **example:** `timezone: "Europe/Rome"`
+- `user-mentions`
+  - **required:** false
+  - **type:** string
+  - **default:** `""`
+  - **description:** Teams user mentions in format `name|id`, comma separated (e.g. `Alice|alice@example.com,Bob|bob@example.com`).
+    - Entries formatted incorrectly or otherwise invalid are ignored with a warning in the logs
+    - `id` should be the user's Entra ID or UPN (email) for the mention to work properly
+    - If user is not in the same tenant as the Team/Teams Channel the mention will not resolve but will still appear as plain text
+    - NOTE: only user mentions are currently supported (no group or channel mentions)
+  - **example:** `user-mentions: "Alice|alice@example.com,Bob|bob@example.com"`
 
 ## Example Usage
 
@@ -117,6 +128,23 @@ The following sends a simple notification with a title and message
 ```
 
 ![Simple Notification w/ Large Title Example](./readme-images/simple-notification-large-title.png 'Simple Notification w/ Large Title Example')
+
+### Simple Notification w/ Mentions
+
+The following sends a simple notification with user mentions
+
+```yaml
+- name: Send simple notification w/ mentions
+  uses: mikesprague/teams-incoming-webhook-action@v1
+  with:
+    github-token: ${{ github.token }}
+    webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
+    title: 'Simple Notification w/ Mentions'
+    message: 'This is an example of a simple notification that includes user mentions'
+    user-mentions: 'Alice|alice@example.com,Bob|bob@example.com'
+```
+
+![Simple Notification w/ User Mentions Example](./readme-images/simple-notification-user-mentions.png 'Simple Notification w/ User Mentions Example')
 
 ### Workflow Status Notifications
 
@@ -225,7 +253,7 @@ Include anywhere in steps to notify when workflow run is successful
 
 #### Kitchen Sink Example
 
-Sends a deploy card with all options enabled - large title, custom message, color set, and commit message visible
+Sends a deploy card with all options enabled - large title, custom message, color, commit message visible, and user mentions
 
 ```yaml
 - name: Kitchen Sink Test
@@ -236,9 +264,10 @@ Sends a deploy card with all options enabled - large title, custom message, colo
     deploy-card: true
     title: "Kitchen Sink Test"
     title-size: "Large"
-    message: "This is a kitchen sink test sending a deploy card with all options set including a custom message, color, large title, and showing the commit message."
+    message: "This is a kitchen sink test sending a deploy card with all options set including a custom message, color, large title, showing the commit message, and user mentions."
     color: "info"
     show-commit-message: true
+    user-mentions: "Alice|alice@example.com,Bob|bob@example.com"
 ```
 
 ![Kitchen Sink Example](./readme-images/kitchen-sink.png 'Kitchen Sink Example')
