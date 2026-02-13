@@ -8,7 +8,9 @@ export const modules = {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   populateCard: () => (/* binding */ populateCard)
 /* harmony export */ });
-const populateCard = ({ color = 'Emphasis', text, title, titleSize = 'Default', }) => {
+/* harmony import */ var _helpers_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5358);
+
+const populateCard = ({ color = 'Emphasis', text, title, titleSize = 'Default', userMentions = [], }) => {
     // console.log({ color, text, title, titleSize });
     const simpleNotificationCard = {
         type: 'message',
@@ -21,6 +23,11 @@ const populateCard = ({ color = 'Emphasis', text, title, titleSize = 'Default', 
                     version: '1.5',
                     msteams: {
                         width: 'Full',
+                        ...(userMentions.length > 0
+                            ? {
+                                entities: (0,_helpers_js__WEBPACK_IMPORTED_MODULE_0__/* .buildMentionEntities */ .G8)(userMentions),
+                            }
+                            : {}),
                     },
                     body: [
                         {
@@ -48,6 +55,17 @@ const populateCard = ({ color = 'Emphasis', text, title, titleSize = 'Default', 
                             height: 'stretch',
                             spacing: 'Small',
                         },
+                        ...(userMentions.length > 0
+                            ? [
+                                {
+                                    type: 'TextBlock',
+                                    text: (0,_helpers_js__WEBPACK_IMPORTED_MODULE_0__/* .renderMentionsText */ .jx)(userMentions),
+                                    wrap: true,
+                                    size: 'Small',
+                                    spacing: 'Small',
+                                },
+                            ]
+                            : []),
                     ],
                 },
             },

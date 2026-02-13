@@ -10,7 +10,7 @@ export const modules = {
 /* harmony export */ });
 /* harmony import */ var _helpers_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5358);
 
-const populateCard = ({ author, branch, color, commit, message, repoName, repoUrl, runId, runNum, sha, showCommitMessage = false, timestamp, title, titleSize = 'Default', }) => {
+const populateCard = ({ author, branch, color, commit, message, repoName, repoUrl, runId, runNum, sha, showCommitMessage = false, timestamp, title, titleSize = 'Default', userMentions = [], }) => {
     const workflowStatusCard = {
         type: 'message',
         attachments: [
@@ -22,6 +22,11 @@ const populateCard = ({ author, branch, color, commit, message, repoName, repoUr
                     version: '1.5',
                     msteams: {
                         width: 'Full',
+                        ...(userMentions.length > 0
+                            ? {
+                                entities: (0,_helpers_js__WEBPACK_IMPORTED_MODULE_0__/* .buildMentionEntities */ .G8)(userMentions),
+                            }
+                            : {}),
                     },
                     body: [
                         {
@@ -30,7 +35,7 @@ const populateCard = ({ author, branch, color, commit, message, repoName, repoUr
                             items: [
                                 {
                                     type: 'TextBlock',
-                                    text: `${(0,_helpers_js__WEBPACK_IMPORTED_MODULE_0__/* .getEmoji */ .x)(color)}${title}`,
+                                    text: `${(0,_helpers_js__WEBPACK_IMPORTED_MODULE_0__/* .getEmoji */ .xp)(color)}${title}`,
                                     wrap: true,
                                     size: titleSize,
                                     weight: 'Bolder',
@@ -132,6 +137,17 @@ const populateCard = ({ author, branch, color, commit, message, repoName, repoUr
                                 },
                             ],
                         },
+                        ...(userMentions.length > 0
+                            ? [
+                                {
+                                    type: 'TextBlock',
+                                    text: (0,_helpers_js__WEBPACK_IMPORTED_MODULE_0__/* .renderMentionsText */ .jx)(userMentions),
+                                    wrap: true,
+                                    size: 'Small',
+                                    spacing: 'Small',
+                                },
+                            ]
+                            : []),
                     ],
                 },
             },

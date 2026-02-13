@@ -1,3 +1,18 @@
+## 2.0.0 (2026-02-13)
+
+* docs(README): remove icon ([f0cf27c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/f0cf27c))
+* docs(README): update with info about user mentions ([23abde8](https://github.com/mikesprague/teams-incoming-webhook-action/commit/23abde8))
+* docs(README): verbiage tweak ([0bb6408](https://github.com/mikesprague/teams-incoming-webhook-action/commit/0bb6408))
+* test: add coverage for user mentions related updates ([8ca07ab](https://github.com/mikesprague/teams-incoming-webhook-action/commit/8ca07ab))
+* feat: add support for user mentions ([fcc72b3](https://github.com/mikesprague/teams-incoming-webhook-action/commit/fcc72b3))
+* feat(action): add `user-mentions` input to metadata ([d31608b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/d31608b))
+* feat(lib/cards/*): add support for user mentions ([36619a4](https://github.com/mikesprague/teams-incoming-webhook-action/commit/36619a4))
+* feat(lib/helpers): add types and helpers related to user mentions ([33abeec](https://github.com/mikesprague/teams-incoming-webhook-action/commit/33abeec))
+* ci(build-and-deploy): add step to test user mentions; add mentions to kitchen sink test ([4c7008e](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4c7008e))
+* ci(build-and-deploy): remove duplicate step ([3c4c827](https://github.com/mikesprague/teams-incoming-webhook-action/commit/3c4c827))
+
+
+
 ## 1.18.0 (2026-02-12)
 
 * docs(README): add `show-commit-message` input ([2a03fd2](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2a03fd2))

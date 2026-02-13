@@ -27671,10 +27671,19 @@ try {
         required: false,
         trimWhitespace: true,
     }) || 'America/New_York';
+    const userMentionsInput = _actions_core__WEBPACK_IMPORTED_MODULE_0__/* .getInput */ .V4('user-mentions', {
+        required: false,
+        trimWhitespace: true,
+    }) || '';
+    const { invalidEntries, mentions: userMentions } = (0,_lib_helpers_js__WEBPACK_IMPORTED_MODULE_4__/* .parseUserMentions */ .IJ)(userMentionsInput);
+    if (invalidEntries.length > 0) {
+        const invalidMessage = `Ignoring invalid user-mentions entries: ${invalidEntries.join(', ')}`;
+        _actions_core__WEBPACK_IMPORTED_MODULE_0__/* .warning */ .$e(invalidMessage);
+    }
     dayjs__WEBPACK_IMPORTED_MODULE_1___default().extend((dayjs_plugin_utc_js__WEBPACK_IMPORTED_MODULE_3___default()));
     dayjs__WEBPACK_IMPORTED_MODULE_1___default().extend((dayjs_plugin_timezone_js__WEBPACK_IMPORTED_MODULE_2___default()));
     dayjs__WEBPACK_IMPORTED_MODULE_1___default().tz.setDefault(timezoneString);
-    const colorString = (0,_lib_helpers_js__WEBPACK_IMPORTED_MODULE_4__/* .getAdaptiveCardColorString */ .d)(color);
+    const colorString = (0,_lib_helpers_js__WEBPACK_IMPORTED_MODULE_4__/* .getAdaptiveCardColorString */ .dL)(color);
     let messageToPost;
     if (isDeployCard) {
         const { populateCard } = await __nccwpck_require__.e(/* import() */ 96).then(__nccwpck_require__.bind(__nccwpck_require__, 9096));
@@ -27711,15 +27720,17 @@ try {
             timestamp,
             title,
             titleSize,
+            userMentions,
         });
     }
     else {
         const { populateCard } = await __nccwpck_require__.e(/* import() */ 521).then(__nccwpck_require__.bind(__nccwpck_require__, 5521));
         messageToPost = populateCard({
+            color: colorString,
+            text: message,
             title,
             titleSize,
-            text: message,
-            color: colorString,
+            userMentions,
         });
     }
     const response = await fetch(teamsWebhookUrl, {
@@ -27760,8 +27771,11 @@ __webpack_async_result__();
 /***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
 
 /* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
-/* harmony export */   d: () => (/* binding */ getAdaptiveCardColorString),
-/* harmony export */   x: () => (/* binding */ getEmoji)
+/* harmony export */   G8: () => (/* binding */ buildMentionEntities),
+/* harmony export */   IJ: () => (/* binding */ parseUserMentions),
+/* harmony export */   dL: () => (/* binding */ getAdaptiveCardColorString),
+/* harmony export */   jx: () => (/* binding */ renderMentionsText),
+/* harmony export */   xp: () => (/* binding */ getEmoji)
 /* harmony export */ });
 const getAdaptiveCardColorString = (colorString) => {
     const colorStrings = {
@@ -27788,6 +27802,39 @@ const getEmoji = (adaptiveCardColor = 'Emphasis') => {
     };
     return emojiList[adaptiveCardColor.toLowerCase()] ?? '';
 };
+const parseUserMentions = (input) => {
+    const entries = input
+        .split(',')
+        .map((entry) => entry.trim())
+        .filter(Boolean);
+    const mentions = [];
+    const invalidEntries = [];
+    for (const entry of entries) {
+        const parts = entry.split('|');
+        if (parts.length !== 2) {
+            invalidEntries.push(entry);
+            continue;
+        }
+        const [name, id] = parts.map((part) => part.trim());
+        if (!name || !id) {
+            invalidEntries.push(entry);
+            continue;
+        }
+        mentions.push({ name, id });
+    }
+    return { mentions, invalidEntries };
+};
+const buildMentionEntities = (mentions) => mentions.map((mention) => ({
+    type: 'mention',
+    text: `<at>${mention.name}</at>`,
+    mentioned: {
+        id: mention.id,
+        name: mention.name,
+    },
+}));
+const renderMentionsText = (mentions) => `**Mentions:** ${mentions
+    .map((mention) => `<at>${mention.name}</at>`)
+    .join(', ')}`;
 
 
 /***/ }),
@@ -28174,10 +28221,11 @@ __nccwpck_require__.d(__webpack_exports__, {
   Yz: () => (/* binding */ core_debug),
   Vt: () => (/* binding */ getBooleanInput),
   V4: () => (/* binding */ getInput),
-  C1: () => (/* binding */ setFailed)
+  C1: () => (/* binding */ setFailed),
+  $e: () => (/* binding */ warning)
 });
 
-// UNUSED EXPORTS: ExitCode, addPath, endGroup, error, exportVariable, getIDToken, getMultilineInput, getState, group, info, isDebug, markdownSummary, notice, platform, saveState, setCommandEcho, setOutput, setSecret, startGroup, summary, toPlatformPath, toPosixPath, toWin32Path, warning
+// UNUSED EXPORTS: ExitCode, addPath, endGroup, error, exportVariable, getIDToken, getMultilineInput, getState, group, info, isDebug, markdownSummary, notice, platform, saveState, setCommandEcho, setOutput, setSecret, startGroup, summary, toPlatformPath, toPosixPath, toWin32Path
 
 ;// CONCATENATED MODULE: external "os"
 const external_os_namespaceObject = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("os");
@@ -31022,7 +31070,7 @@ function error(message, properties = {}) {
  * @param properties optional properties to add to the annotation.
  */
 function warning(message, properties = {}) {
-    issueCommand('warning', toCommandProperties(properties), message instanceof Error ? message.toString() : message);
+    command_issueCommand('warning', utils_toCommandProperties(properties), message instanceof Error ? message.toString() : message);
 }
 /**
  * Adds a notice issue

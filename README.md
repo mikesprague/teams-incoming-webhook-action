@@ -12,7 +12,7 @@ This action requires a secret to be set up with your Teams Incoming Webhook URL 
 - [Example Usage](#example-usage)
   - [Simple Notification](#simple-notification)
   - [Simple Notification w/ Large Title](#simple-notification-w-large-title)
-  - [Simple Notification w/ Mentions](#simple-notification-w-mentions)
+  - [Simple Notification w/ User Mentions](#simple-notification-w-user-mentions)
   - [Workflow Status Notifications](#workflow-status-notifications)
     - [Workflow Status w/ Message](#workflow-status-w-message)
     - [Workflow Status w/ Commit Message](#workflow-status-w-commit-message)
@@ -117,7 +117,7 @@ The following sends a simple notification with a title and message
 The following sends a simple notification with a title and message
 
 ```yaml
-- name: Send Test Simple Notification w/ Large Title
+- name: Send Simple Notification w/ Large Title
   uses: mikesprague/teams-incoming-webhook-action@v1
   with:
     github-token: ${{ github.token }}
@@ -129,17 +129,17 @@ The following sends a simple notification with a title and message
 
 ![Simple Notification w/ Large Title Example](./readme-images/simple-notification-large-title.png 'Simple Notification w/ Large Title Example')
 
-### Simple Notification w/ Mentions
+### Simple Notification w/ User Mentions
 
 The following sends a simple notification with user mentions
 
 ```yaml
-- name: Send simple notification w/ mentions
+- name: Send Simple Notification w/ User Mentions
   uses: mikesprague/teams-incoming-webhook-action@v1
   with:
     github-token: ${{ github.token }}
     webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
-    title: 'Simple Notification w/ Mentions'
+    title: 'Simple Notification w/ User Mentions'
     message: 'This is an example of a simple notification that includes user mentions'
     user-mentions: 'Alice|alice@example.com,Bob|bob@example.com'
 ```
@@ -312,18 +312,18 @@ npm run test:ui
 - Branches: 92%
 - Statements: 98%
 
-**Current Coverage Report (v1.18.0):**
+**Current Coverage Report (v2.0.0):**
 
 ```bash
- ✓ src/lib/cards/simple.test.ts (1 test) 1ms
- ✓ src/lib/helpers.test.ts (2 tests) 1ms
- ✓ src/lib/cards/deploy.test.ts (6 tests) 2ms
- ✓ src/index.test.ts (6 tests) 28ms
+ ✓ src/lib/cards/simple.test.ts (2 tests) 2ms
+ ✓ src/lib/helpers.test.ts (5 tests) 2ms
+ ✓ src/lib/cards/deploy.test.ts (7 tests) 2ms
+ ✓ src/index.test.ts (7 tests) 24ms
 
  Test Files  4 passed (4)
-      Tests  15 passed (15)
-   Start at  15:26:19
-   Duration  172ms (transform 105ms, setup 0ms, import 121ms, tests 33ms, environment 0ms)
+      Tests  21 passed (21)
+   Start at  20:07:40
+   Duration  142ms (transform 101ms, setup 0ms, import 117ms, tests 30ms, environment 0ms)
 
  % Coverage report from v8
 ---------------|---------|----------|---------|---------|-------------------
