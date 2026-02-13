@@ -4,7 +4,10 @@ import dayjs from 'dayjs';
 import timezone from 'dayjs/plugin/timezone.js';
 import utc from 'dayjs/plugin/utc.js';
 
-import { getAdaptiveCardColorString } from './lib/helpers.js';
+import {
+  getAdaptiveCardColorString,
+  parseUserMentions,
+} from './lib/helpers.js';
 
 interface TeamsMessage {
   type: string;
@@ -67,6 +70,20 @@ try {
       trimWhitespace: true,
     }) || 'America/New_York';
 
+  const userMentionsInput =
+    core.getInput('user-mentions', {
+      required: false,
+      trimWhitespace: true,
+    }) || '';
+
+  const { invalidEntries, mentions: userMentions } =
+    parseUserMentions(userMentionsInput);
+
+  if (invalidEntries.length > 0) {
+    const invalidMessage = `Ignoring invalid user-mentions entries: ${invalidEntries.join(', ')}`;
+    core.warning(invalidMessage);
+  }
+
   dayjs.extend(utc);
   dayjs.extend(timezone);
   dayjs.tz.setDefault(timezoneString);
@@ -111,14 +128,16 @@ try {
       timestamp,
       title,
       titleSize,
+      userMentions,
     });
   } else {
     const { populateCard } = await import('./lib/cards/simple.js');
     messageToPost = populateCard({
+      color: colorString,
+      text: message,
       title,
       titleSize,
-      text: message,
-      color: colorString,
+      userMentions,
     });
   }
   const response = await fetch(teamsWebhookUrl, {
