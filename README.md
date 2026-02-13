@@ -4,11 +4,12 @@
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=406118991)
 
-Sends an [AdaptiveCard](https://adaptivecards.microsoft.com/) notification to an [MS Teams Incoming Webhook](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook) from a GitHub Action Workflow
+Sends an [AdaptiveCard](https://adaptivecards.microsoft.com/) notification to an [MS Teams Incoming Webhook](https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=newteams%2Cjavascript) from a GitHub Action Workflow
 
-This action requires a secret to be set up with your Teams Incoming Webhook URL named `MS_TEAMS_WEBHOOK_URL` ([official docs for creating secrets in your repo](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository))
+This action requires a secret to be set up with your Teams Incoming Webhook URL named `MS_TEAMS_WEBHOOK_URL` ([official docs for creating secrets in your repo](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets#creating-secrets-for-a-repository))
 
 - [Inputs](#inputs)
+- [How It Works](#how-it-works)
 - [Example Usage](#example-usage)
   - [Simple Notification](#simple-notification)
   - [Simple Notification w/ Large Title](#simple-notification-w-large-title)
@@ -91,6 +92,25 @@ This action requires a secret to be set up with your Teams Incoming Webhook URL 
     - If user is not in the same tenant as the Team/Teams Channel the mention will not resolve but will still appear as plain text
     - NOTE: only user mentions are currently supported (no group or channel mentions)
   - **example:** `user-mentions: "Alice|alice@example.com,Bob|bob@example.com"`
+
+## How It Works
+
+When the action runs, it takes the inputs provided and constructs an AdaptiveCard payload that is sent to the specified MS Teams Webhook URL. The card can be customized with a title, message body, color, and can optionally include dynamic information about the GitHub workflow run (like commit message and author). See the [Example Usage](#example-usage) section for details on how to customize the card with different inputs.
+
+```mermaid
+flowchart LR
+  subgraph Row1[ ]
+    direction LR
+    A[GitHub Workflow] --> B["mikesprague/teams-incoming-webhook-action"]
+  end
+
+  subgraph Row2[ ]
+    direction LR
+    C[Teams Incoming Webhook] --> D[Teams Channel]
+  end
+
+  B --> C
+```
 
 ## Example Usage
 
@@ -349,7 +369,7 @@ The project uses [Biome](https://biomejs.dev/) for linting and formatting:
 npm run lint
 
 # Type check
-npm run check
+npm run typecheck
 
 # Build the action
 npm run build
