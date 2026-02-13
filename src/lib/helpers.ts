@@ -45,3 +45,56 @@ export const getEmoji = (adaptiveCardColor = 'Emphasis') => {
   };
   return emojiList[adaptiveCardColor.toLowerCase() as keyof EmojiStrings] ?? '';
 };
+
+export type UserMention = {
+  name: string;
+  id: string;
+};
+
+export type ParseUserMentionsResult = {
+  mentions: UserMention[];
+  invalidEntries: string[];
+};
+
+export const parseUserMentions = (input: string): ParseUserMentionsResult => {
+  const entries = input
+    .split(',')
+    .map((entry) => entry.trim())
+    .filter(Boolean);
+
+  const mentions: UserMention[] = [];
+  const invalidEntries: string[] = [];
+
+  for (const entry of entries) {
+    const parts = entry.split('|');
+    if (parts.length !== 2) {
+      invalidEntries.push(entry);
+      continue;
+    }
+
+    const [name, id] = parts.map((part) => part.trim());
+    if (!name || !id) {
+      invalidEntries.push(entry);
+      continue;
+    }
+
+    mentions.push({ name, id });
+  }
+
+  return { mentions, invalidEntries };
+};
+
+export const buildMentionEntities = (mentions: UserMention[]) =>
+  mentions.map((mention) => ({
+    type: 'mention',
+    text: `<at>${mention.name}</at>`,
+    mentioned: {
+      id: mention.id,
+      name: mention.name,
+    },
+  }));
+
+export const renderMentionsText = (mentions: UserMention[]) =>
+  `**Mentions:** ${mentions
+    .map((mention) => `<at>${mention.name}</at>`)
+    .join(', ')}`;
