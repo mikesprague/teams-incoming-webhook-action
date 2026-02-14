@@ -18,6 +18,7 @@
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
+    "test:junit": "vitest run --reporter=junit --outputFile=test-report.junit.xml",
     "typecheck": "tsc --noEmit",
     "typedoc": "typedoc --out ./docs --entryPointStrategy expand ./src --plugin typedoc-plugin-markdown --readme none",
     "typedoc-html": "typedoc --out ./docs/publish --entryPointStrategy expand ./src --readme ./README.md"
