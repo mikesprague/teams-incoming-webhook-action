@@ -58,6 +58,18 @@ jobs:
       - name: 🧪 Run unit tests and linters
         run: npm test
 
+      # run unit test coverage and copy to publish directory
+      - name: 📊 Run test coverage and upload to Codecov
+        run: |
+          npm run test:coverage
+          cp -R ./coverage ./docs/publish/coverage
+
+      # upload coverage reports to Codecov
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
       # begin functional/end-to-end tests by sending various test notifications to MS Teams using the action itself
       - name: ✔️ Send Starting Notification Tests Message
         uses: ./
