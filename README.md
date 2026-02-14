@@ -32,6 +32,7 @@ This action requires a secret to be set up with your Teams Incoming Webhook URL 
   - [Testing](#testing)
   - [Code Quality](#code-quality)
   - [TypeScript Configuration](#typescript-configuration)
+  - [Documentation](#documentation)
 
 ## Inputs
 
@@ -330,7 +331,8 @@ npm run test:ui
 ```
 
 CI also runs `npm run test:coverage`, uploads the report to [Codecov](https://codecov.io/),
-and includes the HTML coverage report in the published docs artifact (`docs/publish/coverage`).
+and includes the HTML coverage report in the published docs artifact (`docs/publish/coverage`)
+which is available to view via GH Pages: <https://mikesprague.github.io/teams-incoming-webhook-action/coverage/>
 
 **Coverage Thresholds:**
 
@@ -341,6 +343,9 @@ and includes the HTML coverage report in the published docs artifact (`docs/publ
 
 For current coverage details, see the Codecov badge above or the project dashboard on
 [Codecov](https://codecov.io/gh/mikesprague/teams-incoming-webhook-action).
+
+> [!NOTE]
+> Latest coverage can always be found at <https://mikesprague.github.io/teams-incoming-webhook-action/coverage/>
 
 ### Code Quality
 
@@ -365,3 +370,8 @@ The project uses TypeScript 5.9+ with:
 - Strict mode enabled with balanced strictness flags
 - ESM module system with bundler resolution
 - Top-level await support
+
+### Documentation
+
+This project uses [TypeDoc](https://typedoc.org/) to generate API documentation during CI (`npm run build`) via the `postbuild` script.
+The generated docs are published to GitHub Pages at <https://mikesprague.github.io/teams-incoming-webhook-action/>.
