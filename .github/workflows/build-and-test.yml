@@ -34,6 +34,7 @@ jobs:
 
       # cache node_modules based on package-lock.json hash to speed up builds
       - name: ⚡  Cache node_modules
+        if: ${{ !cancelled() }}
         uses: actions/cache@v5
         id: cache
         with:
@@ -44,31 +45,43 @@ jobs:
 
       # install dependencies if cache is not hit
       - name: 🏗️ Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache.outputs.cache-hit != 'true' && !cancelled()
         run: npm install
 
       # build action
       - name: 👷 Prepare action
+        if: ${{ !cancelled() }}
         run: npm run build
 
       # run unit tests and linters (biome and typescript/tsc)
       - name: 🧪 Run unit tests and linters
+        if: ${{ !cancelled() }}
         run: npm test
 
       # run unit test coverage and copy to publish directory
-      - name: 📊 Run test coverage and upload to Codecov
+      - name: 📊 Run test coverage and copy to publish directory
+        if: ${{ !cancelled() }}
         run: |
           npm run test:coverage
+          npm run test:junit
           cp -R ./coverage ./docs/publish/coverage
 
       # upload coverage reports to Codecov
-      - name: Upload coverage reports to Codecov
+      - name: ⬆️ Upload coverage reports to Codecov
+        if: ${{ !cancelled() }}
         uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: ⬆️ Upload test results to Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/test-results-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
       # begin functional/end-to-end tests by sending various test notifications to MS Teams using the action itself
       - name: ✔️ Send Starting Notification Tests Message
+        if: ${{ !cancelled() }}
         uses: ./
         with:
           github-token: ${{ github.token }}
@@ -79,6 +92,7 @@ jobs:
 
       # send standard simple notification
       - name: 💬 Send Simple Notification
+        if: ${{ !cancelled() }}
         uses: ./
         with:
           github-token: ${{ github.token }}
@@ -89,6 +103,7 @@ jobs:
 
       # send simple notification with a large title
       - name: 💬 Send Simple Notification w/ Large Title
+        if: ${{ !cancelled() }}
         uses: ./
         with:
           github-token: ${{ github.token }}
@@ -100,6 +115,7 @@ jobs:
 
       # send simple notification with user mentions
       - name: 💬 Send Simple Notification w/ User Mentions
+        if: ${{ !cancelled() }}
         uses: ./
         with:
           github-token: ${{ github.token }}
@@ -111,6 +127,7 @@ jobs:
 
       # send workflow status with message
       - name: 📤 Send Workflow Status Notification w/ Message
+        if: ${{ !cancelled() }}
         uses: ./
         with:
           github-token: ${{ github.token }}
@@ -121,6 +138,7 @@ jobs:
 
       # send workflow status and show commit message
       - name: 📤 Send Workflow Status Notification w/ Commit Message
+        if: ${{ !cancelled() }}
         uses: ./
         with:
           github-token: ${{ github.token }}
@@ -131,6 +149,7 @@ jobs:
 
       # send deploy card/workflow status with info status/color
       - name: 📤 Send Workflow Info Notification
+        if: ${{ !cancelled() }}
         uses: ./
         with:
           github-token: ${{ github.token }}
@@ -141,6 +160,7 @@ jobs:
 
       # send deploy card/workflow status with warning status/color
       - name: ⚠️ Send Workflow Cancelled Notification
+        if: ${{ !cancelled() }}
         uses: ./
         with:
           github-token: ${{ github.token }}
@@ -151,6 +171,7 @@ jobs:
 
       # send deploy card/workflow status with failure status/color
       - name: ⛔ Send Workflow Failed Notification
+        if: ${{ !cancelled() }}
         uses: ./
         with:
           github-token: ${{ github.token }}
@@ -161,6 +182,7 @@ jobs:
 
       # send deploy card/workflow status with success status/color
       - name: 🎉 Send Workflow Successful Notification
+        if: ${{ !cancelled() }}
         uses: ./
         with:
           github-token: ${{ github.token }}
@@ -171,6 +193,7 @@ jobs:
 
       # kitchen sink test: send deploy card/workflow status with large title, custom message, color, show commit message, and user mentions
       - name: 🧪 Kitchen Sink Test
+        if: ${{ !cancelled() }}
         uses: ./
         with:
           github-token: ${{ github.token }}
@@ -185,6 +208,7 @@ jobs:
 
       # end functional/end-to-end testing by sending a completion notification with info status/color
       - name: ✔️ Send Notification Tests Complete Message
+        if: ${{ !cancelled() }}
         uses: ./
         with:
           github-token: ${{ github.token }}
@@ -195,6 +219,7 @@ jobs:
 
       # create build artifact of the generated documentation site to be used in the deploy workflow
       - name: 📦 Create and upload build artifact
+        if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v6
         with:
           name: typescript-docs-artifact
@@ -203,7 +228,7 @@ jobs:
 
   # use reusable workflow to deploy generated docs to github pages
   call-deploy-workflow:
-    if: ${{ github.actor != 'dependabot[bot]' }}
+    if: ${{ github.actor != 'dependabot[bot]' && !cancelled() }}
     needs: [test]
     uses: mikesprague/reusable-workflows/.github/workflows/pages-deploy.yml@main
     secrets:
