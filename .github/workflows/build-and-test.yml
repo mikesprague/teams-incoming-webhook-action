@@ -2,10 +2,6 @@ name: "Build and Test"
 on:
   workflow_dispatch:
 
-  pull_request:
-    branches-ignore:
-      - dependabot/*
-
   push:
     tags-ignore:
       - "v1"
@@ -22,6 +18,7 @@ permissions:
 
 jobs:
   test:
+    if: ${{ github.actor != 'dependabot[bot]' }}
     runs-on: ubuntu-latest
     steps:
       # checkout the repo to access the action code and test files
@@ -206,6 +203,7 @@ jobs:
 
   # use reusable workflow to deploy generated docs to github pages
   call-deploy-workflow:
+    if: ${{ github.actor != 'dependabot[bot]' }}
     needs: [test]
     uses: mikesprague/reusable-workflows/.github/workflows/pages-deploy.yml@main
     secrets:
