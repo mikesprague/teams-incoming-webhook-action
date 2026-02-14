@@ -1,7 +1,7 @@
 # teams-incoming-webhook-action
 
 [![Build and Test](https://github.com/mikesprague/teams-incoming-webhook-action/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/mikesprague/teams-incoming-webhook-action/actions/workflows/build-and-test.yml)
-[![Codecov](https://codecov.io/gh/mikesprague/teams-incoming-webhook-action/branch/main/graph/badge.svg)](https://codecov.io/gh/mikesprague/teams-incoming-webhook-action)
+[![codecov](https://codecov.io/github/mikesprague/teams-incoming-webhook-action/graph/badge.svg?token=YRTYS1BM8S)](https://codecov.io/github/mikesprague/teams-incoming-webhook-action)
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=406118991)
 
@@ -341,11 +341,11 @@ which is available to view via GH Pages: <https://mikesprague.github.io/teams-in
 - Branches: 92%
 - Statements: 98%
 
-For current coverage details, see the Codecov badge above or the project dashboard on
-[Codecov](https://codecov.io/gh/mikesprague/teams-incoming-webhook-action).
+**Current Coverage:**
+[![Codecov Coverage - Icicle Chart](https://codecov.io/github/mikesprague/teams-incoming-webhook-action/graphs/icicle.svg?token=YRTYS1BM8S)](https://codecov.io/github/mikesprague/teams-incoming-webhook-action)
 
 > [!NOTE]
-> Latest coverage can always be found at <https://mikesprague.github.io/teams-incoming-webhook-action/coverage/>
+> Latest Vitest-generated coverage report can always be found at <https://mikesprague.github.io/teams-incoming-webhook-action/coverage/> and latest Codecov report can viewed at <https://codecov.io/github/mikesprague/teams-incoming-webhook-action>
 
 ### Code Quality
 
