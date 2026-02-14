@@ -75,8 +75,9 @@ jobs:
 
       - name: ⬆️ Upload test results to Codecov
         if: ${{ !cancelled() }}
-        uses: codecov/test-results-action@v1
+        uses: codecov/codecov-action@v5
         with:
+          report_type: test_results
           token: ${{ secrets.CODECOV_TOKEN }}
 
       # begin functional/end-to-end tests by sending various test notifications to MS Teams using the action itself
