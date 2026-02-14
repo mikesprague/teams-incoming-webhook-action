@@ -1,12 +1,16 @@
 # teams-incoming-webhook-action
 
 [![Build and Test](https://github.com/mikesprague/teams-incoming-webhook-action/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/mikesprague/teams-incoming-webhook-action/actions/workflows/build-and-test.yml)
+[![Codecov](https://codecov.io/gh/mikesprague/teams-incoming-webhook-action/branch/main/graph/badge.svg)](https://codecov.io/gh/mikesprague/teams-incoming-webhook-action)
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=406118991)
 
 Sends an [AdaptiveCard](https://adaptivecards.microsoft.com/) notification to an [MS Teams Incoming Webhook](https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=newteams%2Cjavascript) from a GitHub Action Workflow
 
 This action requires a secret to be set up with your Teams Incoming Webhook URL named `MS_TEAMS_WEBHOOK_URL` ([official docs for creating secrets in your repo](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets#creating-secrets-for-a-repository))
+
+> [!NOTE]
+> The action also expects a `CODECOV_TOKEN` repository secret for [Codecov](https://codecov.io/) integration. If you do not want to use Codecov, you can comment out the `Upload coverage reports to Codecov` step in `.github/workflows/build-and-test.yml`.
 
 - [Inputs](#inputs)
 - [How It Works](#how-it-works)
@@ -325,6 +329,9 @@ npm run test:coverage
 npm run test:ui
 ```
 
+CI also runs `npm run test:coverage`, uploads the report to [Codecov](https://codecov.io/),
+and includes the HTML coverage report in the published docs artifact (`docs/publish/coverage`).
+
 **Coverage Thresholds:**
 
 - Lines: 98%
@@ -332,33 +339,8 @@ npm run test:ui
 - Branches: 92%
 - Statements: 98%
 
-**Current Coverage Report (v2.0.0):**
-
-```bash
- ✓ src/lib/cards/simple.test.ts (2 tests) 2ms
- ✓ src/lib/helpers.test.ts (5 tests) 2ms
- ✓ src/lib/cards/deploy.test.ts (7 tests) 2ms
- ✓ src/index.test.ts (7 tests) 24ms
-
- Test Files  4 passed (4)
-      Tests  21 passed (21)
-   Start at  20:07:40
-   Duration  142ms (transform 101ms, setup 0ms, import 117ms, tests 30ms, environment 0ms)
-
- % Coverage report from v8
----------------|---------|----------|---------|---------|-------------------
-File           | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
----------------|---------|----------|---------|---------|-------------------
-All files      |     100 |      100 |     100 |     100 |
- src           |     100 |      100 |     100 |     100 |
-  index.ts     |     100 |      100 |     100 |     100 |
- src/lib       |     100 |      100 |     100 |     100 |
-  helpers.ts   |     100 |      100 |     100 |     100 |
- src/lib/cards |     100 |      100 |     100 |     100 |
-  deploy.ts    |     100 |      100 |     100 |     100 |
-  simple.ts    |     100 |      100 |     100 |     100 |
----------------|---------|----------|---------|---------|-------------------
-```
+For current coverage details, see the Codecov badge above or the project dashboard on
+[Codecov](https://codecov.io/gh/mikesprague/teams-incoming-webhook-action).
 
 ### Code Quality
 
