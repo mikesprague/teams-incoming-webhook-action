@@ -2,6 +2,7 @@ version: 2
 updates:
   # maintain GitHub Actions
   - package-ecosystem: "github-actions"
+    target-branch: "dev"
     directory: "/"
     schedule:
       interval: "daily"
@@ -13,6 +14,7 @@ updates:
       include: "scope"
   # maintain npm dependencies
   - package-ecosystem: "npm"
+    target-branch: "dev"
     directory: "/"
     schedule:
       interval: "daily"
@@ -22,4 +24,3 @@ updates:
       prefix: "chore"
       prefix-development: "chore"
       include: "scope"
-
