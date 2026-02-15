@@ -7,7 +7,7 @@
   "type": "module",
   "scripts": {
     "build": "npm run prepare",
-    "changelog": "conventional-changelog -i CHANGELOG.md -s && git add CHANGELOG.md",
+    "changelog": "npx conventional-changelog -p conventionalcommits -n changelog.config.mjs -i CHANGELOG.md -s && git add CHANGELOG.md",
     "declarations": "rm -rf ./types && tsc --emitDeclarationOnly --declaration true --declarationDir './types'",
     "lint": "npx biome check ./src",
     "lint:fix": "npx biome check --write ./src",
@@ -78,9 +78,6 @@
     "commitizen": {
       "path": "./node_modules/cz-git"
     }
-  },
-  "release": {
-    "preset": "conventionalcommits"
   },
   "volta": {
     "node": "25.6.1",
