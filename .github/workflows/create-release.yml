@@ -6,8 +6,11 @@ on:
       - "v[0-9]*.[0-9]*.[0-9]*"
 
 env:
+  # preset for conventional changelog cli
   CHANGELOG_PRESET: conventionalcommits
+  # expected config file for conventional changelog cli
   CHANGELOG_CONFIG_PATH: changelog.config.mjs
+  # fallback config for conventional changelog cli if expected config file is not found
   CHANGELOG_FALLBACK_CONFIG: |
     // Changelog section mapping by Conventional Commit type.
     // - Rename a heading: change `section`.
@@ -21,7 +24,7 @@ env:
       { type: 'perf', section: '⚡ Performance Improvements', hidden: false },
       { type: 'revert', section: '⏪ Reverts', hidden: false },
       { type: 'docs', section: '📚 Documentation', hidden: false },
-      { type: 'chore', section: '🔧 Miscellaneous Chores', hidden: false },
+      { type: 'chore', section: '🔧 Chores', hidden: false },
       { type: 'refactor', section: '🛠️ Code Refactoring', hidden: false },
       { type: 'build', section: '🏗️ Build System', hidden: false },
       { type: 'ci', section: '🔄 Continuous Integration', hidden: false },
@@ -68,6 +71,8 @@ env:
         noteGroupsSort: 'title',
       },
     };
+  # get node version from repo variable or default to 24.x
+  NODE_VERSION: ${{ vars.NODE_VERSION  || '24.x' }}
 
 jobs:
   create-github-release:
@@ -76,21 +81,36 @@ jobs:
     permissions:
       contents: write
     steps:
+      # checkout repo with full history to ensure all tags are available for changelog generation
       - name: Checkout Repo
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
-      - name: Setup Node.js ${{ vars.NODE_VERSION }} environment
+      # setup Node.js environment with npm caching for node modules to speed up changelog generation
+      - name: Setup Node.js ${{ env.NODE_VERSION }} environment
         uses: actions/setup-node@v6
         with:
           cache: "npm"
           check-latest: true
-          node-version: ${{ vars.NODE_VERSION }}
+          node-version: ${{ env.NODE_VERSION }}
 
-      - name: Install dependencies
-        run: npm install
+      # additional caching layer for node_modules to speed up subsequent runs
+      - name: Cache node_modules
+        uses: actions/cache@v5
+        id: cache
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-node-${{ env.NODE_VERSION }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ env.NODE_VERSION }}-
 
+      # install conventional changelog dependencies if not cached
+      - name: Install conventional changelog dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm install conventional-changelog conventional-changelog-cli conventional-changelog-conventionalcommits
+
+      # generate and output data for release creation and changelog generation steps
       - name: Prepare release data
         id: prep_release
         shell: bash
@@ -104,11 +124,15 @@ jobs:
             exit 1
           fi
 
+          echo "new_tag: $new_tag"
+
           last_tag="$(
             git tag --sort=-version:refname \
             | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' \
-            | awk -v new="$new_tag" '$0 != new { print; exit }'
+            | sed -n "/^${new_tag//./\\.}$/d; p; q"
           )"
+
+          echo "last_tag: $last_tag"
 
           if [[ -n "$last_tag" ]]; then
             full_changelog_url="https://github.com/${{ github.repository }}/compare/${last_tag}...${new_tag}"
@@ -116,30 +140,54 @@ jobs:
             full_changelog_url="https://github.com/${{ github.repository }}/releases/tag/${new_tag}"
           fi
 
+          echo "full_changelog_url: $full_changelog_url"
+
           echo "new_tag=$new_tag" >> "$GITHUB_OUTPUT"
           echo "last_tag=$last_tag" >> "$GITHUB_OUTPUT"
           echo "full_changelog_url=$full_changelog_url" >> "$GITHUB_OUTPUT"
 
+      # generate release notes content using conventional changelog cli and create GitHub release via GH CLI
       - name: Generate Release via CLI
         shell: bash
         run: |
           set -euo pipefail
 
-          changelog_config_path="$CHANGELOG_CONFIG_PATH"
+          changelog_config_path="${{ env.CHANGELOG_CONFIG_PATH }}"
+
+          echo "changelog_config_path: $changelog_config_path"
 
           if [[ ! -f "$changelog_config_path" ]]; then
             changelog_config_path="$RUNNER_TEMP/changelog.config.mjs"
-            printf '%s\n' "$CHANGELOG_FALLBACK_CONFIG" > "$changelog_config_path"
+            printf '%s\n' "${{ env.CHANGELOG_FALLBACK_CONFIG }}" > "$changelog_config_path"
+          fi
+
+          echo "FALLBACK changelog_config_path: $changelog_config_path"
+
+          changelog_content="$(npx -y conventional-changelog \
+            -p ${{ env.CHANGELOG_PRESET }} \
+            -n $changelog_config_path \
+            --stdout -u -r 1 -i /dev/null \
+            | sed -n '/^### /,$p')"
+          echo "changelog_content: $changelog_content"
+
+          if [[ -z "$changelog_content" ]]; then
+            changelog_content="$(npx -y conventional-changelog \
+              -p ${{ env.CHANGELOG_PRESET }} \
+              -n $changelog_config_path \
+              --stdout -u -r 2 -i /dev/null \
+              | sed -n '/^### /,$p')"
+          fi
+          echo "FALLBACK changelog_content: $changelog_content"
+
+          if [[ -z "$changelog_content" ]]; then
+              echo "No changelog content generated. Exiting."
+              exit 1
           fi
 
           {
             echo "## What's Changed"
             echo
-            npx -y --silent conventional-changelog \
-              -p "$CHANGELOG_PRESET" \
-              -n "$changelog_config_path" \
-              -u --stdout -r 1 -i /dev/null \
-              | awk 'BEGIN { p = 0 } /^### / { p = 1 } p'
+            echo "$changelog_content"
             echo
             echo "**Full Changelog:** ${{ steps.prep_release.outputs.full_changelog_url }}"
           } | gh release create "${{ steps.prep_release.outputs.new_tag }}" -t "${{ steps.prep_release.outputs.new_tag }}" -F -
