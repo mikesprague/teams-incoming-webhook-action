@@ -5,6 +5,70 @@ on:
     tags:
       - "v[0-9]*.[0-9]*.[0-9]*"
 
+env:
+  CHANGELOG_PRESET: conventionalcommits
+  CHANGELOG_CONFIG_PATH: changelog.config.mjs
+  CHANGELOG_FALLBACK_CONFIG: |
+    // Changelog section mapping by Conventional Commit type.
+    // - Rename a heading: change `section`.
+    // - Hide a heading: set `hidden: true` for that type.
+    // - Show a heading: set `hidden: false` (or remove `hidden`).
+    // - Add support for a new type: add a new object to this array.
+
+    const types = [
+      { type: 'feat', section: '✨ Features', hidden: false },
+      { type: 'fix', section: '🐛 Fixes', hidden: false },
+      { type: 'perf', section: '⚡ Performance Improvements', hidden: false },
+      { type: 'revert', section: '⏪ Reverts', hidden: false },
+      { type: 'docs', section: '📚 Documentation', hidden: false },
+      { type: 'chore', section: '🔧 Miscellaneous Chores', hidden: false },
+      { type: 'refactor', section: '🛠️ Code Refactoring', hidden: false },
+      { type: 'build', section: '🏗️ Build System', hidden: false },
+      { type: 'ci', section: '🔄 Continuous Integration', hidden: false },
+      { type: 'test', section: '🧪 Tests', hidden: false },
+    ];
+
+    const typeMap = new Map(types.map((entry) => [entry.type, entry]));
+
+    export default {
+      writer: {
+        transform(commit) {
+          const commitType = (
+            commit.revert ? 'revert' : commit.type || ''
+          ).toLowerCase();
+          const entry = typeMap.get(commitType);
+
+          if (entry?.hidden) {
+            return undefined;
+          }
+
+          const sectionTitle = entry?.section || commit.type;
+
+          if (!sectionTitle) {
+            return undefined;
+          }
+
+          return {
+            type: sectionTitle,
+            scope: commit.scope === '*' ? '' : commit.scope,
+            subject: commit.subject,
+            shortHash:
+              typeof commit.hash === 'string'
+                ? commit.hash.substring(0, 7)
+                : commit.shortHash,
+            references: commit.references || [],
+            notes: (commit.notes || []).map((note) => ({
+              ...note,
+              title: 'BREAKING CHANGES',
+            })),
+          };
+        },
+        groupBy: 'type',
+        commitsSort: ['scope', 'subject'],
+        noteGroupsSort: 'title',
+      },
+    };
+
 jobs:
   create-github-release:
     name: Create GitHub Release
@@ -20,20 +84,11 @@ jobs:
       - name: Setup Node.js ${{ vars.NODE_VERSION }} environment
         uses: actions/setup-node@v6
         with:
+          cache: "npm"
           check-latest: true
           node-version: ${{ vars.NODE_VERSION }}
 
-      - name: Cache node_modules
-        uses: actions/cache@v5
-        id: cache
-        with:
-          path: ./node_modules
-          key: ${{ runner.os }}-node-${{ vars.NODE_VERSION }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-${{ vars.NODE_VERSION }}-
-
       - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
         run: npm install
 
       - name: Prepare release data
@@ -44,45 +99,49 @@ jobs:
 
           new_tag="${GITHUB_REF_NAME}"
 
+          if ! [[ "$new_tag" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Tag '$new_tag' is not strict semver (vX.Y.Z)."
+            exit 1
+          fi
+
           last_tag="$(
             git tag --sort=-version:refname \
             | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' \
             | awk -v new="$new_tag" '$0 != new { print; exit }'
           )"
 
-          changelog_content="$(
-            npx --silent conventional-changelog \
-              -p conventionalcommits \
-              -n changelog.config.mjs \
-              -u --stdout -r 1 -i /dev/null \
-            | sed -n '/^### /,$p'
-          )"
+          if [[ -n "$last_tag" ]]; then
+            full_changelog_url="https://github.com/${{ github.repository }}/compare/${last_tag}...${new_tag}"
+          else
+            full_changelog_url="https://github.com/${{ github.repository }}/releases/tag/${new_tag}"
+          fi
 
-          {
-            echo "new_tag=$new_tag"
-            echo "last_tag=$last_tag"
-            echo "changelog_content<<EOF"
-            echo "$changelog_content"
-            echo "EOF"
-          } >> "$GITHUB_OUTPUT"
+          echo "new_tag=$new_tag" >> "$GITHUB_OUTPUT"
+          echo "last_tag=$last_tag" >> "$GITHUB_OUTPUT"
+          echo "full_changelog_url=$full_changelog_url" >> "$GITHUB_OUTPUT"
 
       - name: Generate Release via CLI
         shell: bash
         run: |
           set -euo pipefail
 
-          if [[ -n "${{ steps.prep_release.outputs.last_tag }}" ]]; then
-            full_changelog_url="https://github.com/${{ github.repository }}/compare/${{ steps.prep_release.outputs.last_tag }}...${{ steps.prep_release.outputs.new_tag }}"
-          else
-            full_changelog_url="https://github.com/${{ github.repository }}/releases/tag/${{ steps.prep_release.outputs.new_tag }}"
+          changelog_config_path="$CHANGELOG_CONFIG_PATH"
+
+          if [[ ! -f "$changelog_config_path" ]]; then
+            changelog_config_path="$RUNNER_TEMP/changelog.config.mjs"
+            printf '%s\n' "$CHANGELOG_FALLBACK_CONFIG" > "$changelog_config_path"
           fi
 
           {
             echo "## What's Changed"
             echo
-            echo "${{ steps.prep_release.outputs.changelog_content }}"
+            npx -y --silent conventional-changelog \
+              -p "$CHANGELOG_PRESET" \
+              -n "$changelog_config_path" \
+              -u --stdout -r 1 -i /dev/null \
+              | awk 'BEGIN { p = 0 } /^### / { p = 1 } p'
             echo
-            echo "**Full Changelog:** ${full_changelog_url}"
+            echo "**Full Changelog:** ${{ steps.prep_release.outputs.full_changelog_url }}"
           } | gh release create "${{ steps.prep_release.outputs.new_tag }}" -t "${{ steps.prep_release.outputs.new_tag }}" -F -
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
