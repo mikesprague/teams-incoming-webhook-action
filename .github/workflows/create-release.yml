@@ -1,9 +1,9 @@
-name: 'Create Release'
+name: "Create Release"
 
 on:
   push:
     tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+'
+      - "v[0-9]*.[0-9]*.[0-9]*"
 
 jobs:
   create-github-release:
@@ -16,12 +16,73 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
-      - name: Set Vars
+
+      - name: Setup Node.js ${{ vars.NODE_VERSION }} environment
+        uses: actions/setup-node@v6
+        with:
+          check-latest: true
+          node-version: ${{ vars.NODE_VERSION }}
+
+      - name: Cache node_modules
+        uses: actions/cache@v5
+        id: cache
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-node-${{ vars.NODE_VERSION }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ vars.NODE_VERSION }}-
+
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm install
+
+      - name: Prepare release data
+        id: prep_release
+        shell: bash
         run: |
-          echo "NEW_TAG=$(git tag | sort --version-sort -r | head -1)" >> $GITHUB_ENV
-          echo "LAST_TAG=$(git tag | sort --version-sort -r | head -2 | tail -1)" >> $GITHUB_ENV
+          set -euo pipefail
+
+          new_tag="${GITHUB_REF_NAME}"
+
+          last_tag="$(
+            git tag --sort=-version:refname \
+            | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' \
+            | awk -v new="$new_tag" '$0 != new { print; exit }'
+          )"
+
+          changelog_content="$(
+            npx --silent conventional-changelog \
+              -p conventionalcommits \
+              -n changelog.config.mjs \
+              -u --stdout -r 1 -i /dev/null \
+            | sed -n '/^### /,$p'
+          )"
+
+          {
+            echo "new_tag=$new_tag"
+            echo "last_tag=$last_tag"
+            echo "changelog_content<<EOF"
+            echo "$changelog_content"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
       - name: Generate Release via CLI
+        shell: bash
         run: |
-          echo -e "## What's Changed\n\n$(git log --pretty=format:' * %s - %h' ${{ env.LAST_TAG }}..${{ env.NEW_TAG }} --reverse)\n\n**Full Changelog:** https://github.com/${{ github.repository }}/compare/${{ env.LAST_TAG }}...${{ env.NEW_TAG }}" | gh release create "${{ env.NEW_TAG }}" -t "${{ env.NEW_TAG }}" -F -
+          set -euo pipefail
+
+          if [[ -n "${{ steps.prep_release.outputs.last_tag }}" ]]; then
+            full_changelog_url="https://github.com/${{ github.repository }}/compare/${{ steps.prep_release.outputs.last_tag }}...${{ steps.prep_release.outputs.new_tag }}"
+          else
+            full_changelog_url="https://github.com/${{ github.repository }}/releases/tag/${{ steps.prep_release.outputs.new_tag }}"
+          fi
+
+          {
+            echo "## What's Changed"
+            echo
+            echo "${{ steps.prep_release.outputs.changelog_content }}"
+            echo
+            echo "**Full Changelog:** ${full_changelog_url}"
+          } | gh release create "${{ steps.prep_release.outputs.new_tag }}" -t "${{ steps.prep_release.outputs.new_tag }}" -F -
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
