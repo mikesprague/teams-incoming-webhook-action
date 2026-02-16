@@ -1,3 +1,35 @@
+## [2.0.1](https://github.com/mikesprague/teams-incoming-webhook-action/compare/v2.0.0...v2.0.1) (2026-02-16)
+
+### 🔧 Miscellaneous Chores
+
+* **deps-dev:** bump @biomejs/biome to 2.4.0 ([6fa334c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/6fa334c08c655e8b140e37cfbfc5ad132e5f5a30))
+* **deps:** bump typedoc ([9ab01bc](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9ab01bcfdb2791e0396b295b83251a9008dea3a7))
+
+### 🔄 Continuous Integration
+
+* **build-and-deploy:** quiet linter warning (use latest action w/ report_type set) ([24f4fad](https://github.com/mikesprague/teams-incoming-webhook-action/commit/24f4fada2cbc16359cf819b5dd5337566e3d0cd7))
+* **build-and-test:** add step to upload junit report to Codecov; add if !cancelled checks ([c32c295](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c32c295a391fa351f3a721b629301832a87a46b4))
+* **build-and-test:** add steps to write coverage report and upload to codecov ([f9505a1](https://github.com/mikesprague/teams-incoming-webhook-action/commit/f9505a100263b8a3ad55da35fe0b27b337082041))
+* **build-and-test:** don't run workflow if triggered by dependabot updates ([1cc014a](https://github.com/mikesprague/teams-incoming-webhook-action/commit/1cc014a0e51749c6ff26c46262eac03bfdeefcff))
+* **build-and-test:** use secrets/vars directly ([12c88e8](https://github.com/mikesprague/teams-incoming-webhook-action/commit/12c88e854169f96e5b2d124460b769ff586f1465))
+* **create-releae:** fix regex; use local vars (vs env) for tags/content; prepare changelog content with section headings ([35e753d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/35e753d9280567a683c1a4730f7c1625cd4aa468))
+* **dependabot:** target dev branch ([30e5baf](https://github.com/mikesprague/teams-incoming-webhook-action/commit/30e5baf7ee2728d0cf80564112f0e0e3c6b3e228))
+
+### 🏗️ Build System
+
+* **changelog:** add config for conventional-changelog ([3b267ef](https://github.com/mikesprague/teams-incoming-webhook-action/commit/3b267ef6fd9be33ead162e7510e339a7563870d7))
+* **npm:** add `test:junit` script (for Codecov) ([c7a4c93](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c7a4c9308e0b74e28b84b0ace7a2d4e6fd8829df))
+* **npm:** update changelog script to use new config file ([bb21567](https://github.com/mikesprague/teams-incoming-webhook-action/commit/bb2156764a89deecc7916c36ec27c86fa6341309))
+
+### 📚 Documentation
+
+* **copilot-instructions:** update version and last updated dates ([d37842c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/d37842c36e9536aee31d2fe402ae9ac2c7a18269))
+* **README:** add info about generated api docs; link to published docs ([d476066](https://github.com/mikesprague/teams-incoming-webhook-action/commit/d476066f5b989bc593063190a57b2c3059a9c943))
+* **README:** fix action version in examples ([95b73e0](https://github.com/mikesprague/teams-incoming-webhook-action/commit/95b73e0ad8e54ea1712b25b567bf9a812b238d5a))
+* **README:** fix links and add how it works section ([0efbe97](https://github.com/mikesprague/teams-incoming-webhook-action/commit/0efbe9724b2e23159bb7fc3e3a498e5f7b5e2d93))
+* **README:** tweak code coverage info ([f938dd7](https://github.com/mikesprague/teams-incoming-webhook-action/commit/f938dd7b4cd7b649fc3fde9f240623041857bde6))
+* **README:** update coverage section; add Codecov info ([42256f1](https://github.com/mikesprague/teams-incoming-webhook-action/commit/42256f109468f162ffc74cb50cd3b772a7e1d8cd))
+
 ## 2.0.0 (2026-02-13)
 
 * docs(README): remove icon ([f0cf27c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/f0cf27c))
@@ -10,8 +42,6 @@
 * feat(lib/helpers): add types and helpers related to user mentions ([33abeec](https://github.com/mikesprague/teams-incoming-webhook-action/commit/33abeec))
 * ci(build-and-deploy): add step to test user mentions; add mentions to kitchen sink test ([4c7008e](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4c7008e))
 * ci(build-and-deploy): remove duplicate step ([3c4c827](https://github.com/mikesprague/teams-incoming-webhook-action/commit/3c4c827))
-
-
 
 ## 1.18.0 (2026-02-12)
 
@@ -31,8 +61,6 @@
 * feat(action): add `show-commit-message` input ([3b0ac24](https://github.com/mikesprague/teams-incoming-webhook-action/commit/3b0ac24))
 * feat(lib/cards/deploy): show first line of after hash if option is enabled ([04e3f30](https://github.com/mikesprague/teams-incoming-webhook-action/commit/04e3f30))
 
-
-
 ## 1.17.0 (2026-02-12)
 
 * build(npm): bump packageManager ([a128d62](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a128d62))
@@ -48,15 +76,11 @@
 * feat(lib/cards/deploy): make `message` optional param and output if provided ([be8b714](https://github.com/mikesprague/teams-incoming-webhook-action/commit/be8b714))
 * chore(deps-dev): bump @biomejs/biome from 2.3.14 to 2.3.15 (#523) ([75ba885](https://github.com/mikesprague/teams-incoming-webhook-action/commit/75ba885)), closes [#523](https://github.com/mikesprague/teams-incoming-webhook-action/issues/523)
 
-
-
 ## <small>1.16.1 (2026-02-12)</small>
 
 * test(lib/cards/deploy): add coverage for logic update ([2490ddc](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2490ddc))
 * refactor(lib/cards/deploy): don't link to bots ([ad33df4](https://github.com/mikesprague/teams-incoming-webhook-action/commit/ad33df4))
 * docs(README): add example with large text; note old screenshots ([9f75d78](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9f75d78))
-
-
 
 ## 1.16.0 (2026-02-12)
 
@@ -81,8 +105,6 @@
 * docs(copilot-instructions): improve project structure ([eec2508](https://github.com/mikesprague/teams-incoming-webhook-action/commit/eec2508))
 * build(npm): update scripts ([b4b442f](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b4b442f))
 
-
-
 ## 1.15.0 (2026-02-11)
 
 * style(tests): fix linter warnings ([6ef4cce](https://github.com/mikesprague/teams-incoming-webhook-action/commit/6ef4cce))
@@ -100,14 +122,10 @@
 * build(action): use node24 ([e435e2f](https://github.com/mikesprague/teams-incoming-webhook-action/commit/e435e2f))
 * build(typescript): update config ([fc401ec](https://github.com/mikesprague/teams-incoming-webhook-action/commit/fc401ec))
 
-
-
 ## <small>1.14.2 (2026-02-10)</small>
 
 * chore(deps-dev): bump @types/node from 25.2.2 to 25.2.3 (#521) ([6152c0b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/6152c0b)), closes [#521](https://github.com/mikesprague/teams-incoming-webhook-action/issues/521)
 * chore(deps): bump @actions/core to 3.0.0 ([9747ce6](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9747ce6))
-
-
 
 ## <small>1.14.1 (2026-02-10)</small>
 
@@ -148,10 +166,8 @@
 * chore(deps): bump axios from 1.13.2 to 1.13.3 (#509) ([7a81cd9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/7a81cd9)), closes [#509](https://github.com/mikesprague/teams-incoming-webhook-action/issues/509)
 * chore(deps): bump axios from 1.13.3 to 1.13.4 (#511) ([eeb6d8d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/eeb6d8d)), closes [#511](https://github.com/mikesprague/teams-incoming-webhook-action/issues/511)
 * chore(deps): bump axios from 1.13.4 to 1.13.5 (#519) ([bf26742](https://github.com/mikesprague/teams-incoming-webhook-action/commit/bf26742)), closes [#519](https://github.com/mikesprague/teams-incoming-webhook-action/issues/519)
-* chore(deps): update engines; add overrides; downgrade @actions/core (https://github.com/actions/tool ([23f1baa](https://github.com/mikesprague/teams-incoming-webhook-action/commit/23f1baa))
+* chore(deps): update engines; add overrides; downgrade @actions/core (<https://github.com/actions/tool> ([23f1baa](https://github.com/mikesprague/teams-incoming-webhook-action/commit/23f1baa))
 * ci(build-and-test): add setup node and cache steps ([e65125b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/e65125b))
-
-
 
 ## 1.14.0 (2025-11-10)
 
@@ -388,8 +404,6 @@
 * style(biome): fix linter warnings ([331ab6c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/331ab6c))
 * style(biome): update config ([206ef40](https://github.com/mikesprague/teams-incoming-webhook-action/commit/206ef40))
 
-
-
 ## <small>1.13.5 (2023-11-15)</small>
 
 * chore(deps-dev): bump @biomejs/biome from 1.3.1 to 1.3.3 (#246) ([7917be9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/7917be9)), closes [#246](https://github.com/mikesprague/teams-incoming-webhook-action/issues/246)
@@ -399,8 +413,6 @@
 * chore(deps): bump axios from 1.6.0 to 1.6.1 (#249) ([e99e82d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/e99e82d)), closes [#249](https://github.com/mikesprague/teams-incoming-webhook-action/issues/249)
 * chore(deps): bump axios from 1.6.1 to 1.6.2 (#251) ([2be782e](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2be782e)), closes [#251](https://github.com/mikesprague/teams-incoming-webhook-action/issues/251)
 
-
-
 ## <small>1.13.4 (2023-10-27)</small>
 
 * chore(biome): update config ([cfa7ec0](https://github.com/mikesprague/teams-incoming-webhook-action/commit/cfa7ec0))
@@ -409,32 +421,22 @@
 * chore(deps-dev): bump @vercel/ncc from 0.38.0 to 0.38.1 (#242) ([94b04cc](https://github.com/mikesprague/teams-incoming-webhook-action/commit/94b04cc)), closes [#242](https://github.com/mikesprague/teams-incoming-webhook-action/issues/242)
 * chore(deps): bump axios from 1.5.1 to 1.6.0 (#244) ([53e0ddd](https://github.com/mikesprague/teams-incoming-webhook-action/commit/53e0ddd)), closes [#244](https://github.com/mikesprague/teams-incoming-webhook-action/issues/244)
 
-
-
 ## <small>1.13.3 (2023-10-16)</small>
 
 * chore(deps-dev): bump typedoc from 0.25.1 to 0.25.2 (#239) ([bcffc54](https://github.com/mikesprague/teams-incoming-webhook-action/commit/bcffc54)), closes [#239](https://github.com/mikesprague/teams-incoming-webhook-action/issues/239)
 * chore(deps): bump undici from 5.25.4 to 5.26.3 (#240) ([97853f3](https://github.com/mikesprague/teams-incoming-webhook-action/commit/97853f3)), closes [#240](https://github.com/mikesprague/teams-incoming-webhook-action/issues/240)
 
-
-
 ## <small>1.13.2 (2023-10-08)</small>
 
 * chore(deps): bump axios from 1.5.0 to 1.5.1 (#238) ([4c23a7d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4c23a7d)), closes [#238](https://github.com/mikesprague/teams-incoming-webhook-action/issues/238)
-
-
 
 ## <small>1.13.1 (2023-09-26)</small>
 
 * chore(deps): bump @octokit/rest from 20.0.1 to 20.0.2 (#237) ([47b3ddb](https://github.com/mikesprague/teams-incoming-webhook-action/commit/47b3ddb)), closes [#237](https://github.com/mikesprague/teams-incoming-webhook-action/issues/237)
 
-
-
 ## 1.13.0 (2023-09-25)
 
 * feat: support URLs that don't start with github.com (closes #236) ([1858a77](https://github.com/mikesprague/teams-incoming-webhook-action/commit/1858a77)), closes [#236](https://github.com/mikesprague/teams-incoming-webhook-action/issues/236)
-
-
 
 ## 1.12.0 (2023-09-25)
 
@@ -442,22 +444,16 @@
 * build(action): set to run on node20 ([3aa9b4c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/3aa9b4c))
 * build(npm): add engines section ([409dda1](https://github.com/mikesprague/teams-incoming-webhook-action/commit/409dda1))
 
-
-
 ## <small>1.11.4 (2023-09-19)</small>
 
 * chore(deps-dev): bump @biomejs/biome from 1.1.2 to 1.2.0 (#234) ([6f71f09](https://github.com/mikesprague/teams-incoming-webhook-action/commit/6f71f09)), closes [#234](https://github.com/mikesprague/teams-incoming-webhook-action/issues/234)
 * chore(deps-dev): bump @biomejs/biome from 1.2.0 to 1.2.2 ([a9a3a67](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a9a3a67))
 * chore(deps): bump dayjs from 1.11.9 to 1.11.10 (#235) ([03ab8c0](https://github.com/mikesprague/teams-incoming-webhook-action/commit/03ab8c0)), closes [#235](https://github.com/mikesprague/teams-incoming-webhook-action/issues/235)
 
-
-
 ## <small>1.11.3 (2023-09-13)</small>
 
 * style(biomejs): fix linter/formatter issues ([5dd4d27](https://github.com/mikesprague/teams-incoming-webhook-action/commit/5dd4d27))
 * chore(deps-dev): replace eslint and prettier with @biomejs/biome ([774ffe9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/774ffe9))
-
-
 
 ## <small>1.11.2 (2023-09-12)</small>
 
@@ -476,8 +472,6 @@
 * chore(deps-dev): bump typedoc from 0.25.0 to 0.25.1 (#225) ([fe91237](https://github.com/mikesprague/teams-incoming-webhook-action/commit/fe91237)), closes [#225](https://github.com/mikesprague/teams-incoming-webhook-action/issues/225)
 * chore(deps): bump @actions/core from 1.10.0 to 1.10.1 (#232) ([75068e4](https://github.com/mikesprague/teams-incoming-webhook-action/commit/75068e4)), closes [#232](https://github.com/mikesprague/teams-incoming-webhook-action/issues/232)
 * chore(deps): bump actions/checkout from 3 to 4 (#222) ([af68474](https://github.com/mikesprague/teams-incoming-webhook-action/commit/af68474)), closes [#222](https://github.com/mikesprague/teams-incoming-webhook-action/issues/222)
-
-
 
 ## <small>1.11.1 (2023-08-28)</small>
 
@@ -504,16 +498,12 @@
 * chore(deps): bump axios from 1.4.0 to 1.5.0 (#216) ([9c62219](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9c62219)), closes [#216](https://github.com/mikesprague/teams-incoming-webhook-action/issues/216)
 * ci(actions): reverse order of commits in release notes ([d7e00ae](https://github.com/mikesprague/teams-incoming-webhook-action/commit/d7e00ae))
 
-
-
 ## 1.11.0 (2023-07-27)
 
 * refactor: update for @octokit/rest v20 changes ([c567817](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c567817))
 * chore(deps-dev): bump @typescript-eslint/eslint-plugin, @typescript-eslint/parser, and typedoc-plugi ([1d173dd](https://github.com/mikesprague/teams-incoming-webhook-action/commit/1d173dd))
 * chore(deps): add node-fetch@3.3.2 as dependency ([1b50ede](https://github.com/mikesprague/teams-incoming-webhook-action/commit/1b50ede))
 * chore(deps): bump @octokit/rest from 19.0.13 to 20.0.1 ([0884e06](https://github.com/mikesprague/teams-incoming-webhook-action/commit/0884e06))
-
-
 
 ## <small>1.10.10 (2023-07-19)</small>
 
@@ -529,8 +519,6 @@
 * chore(deps-dev): bump word-wrap from 1.2.3 to 1.2.4 (#192) ([ae5d0f5](https://github.com/mikesprague/teams-incoming-webhook-action/commit/ae5d0f5)), closes [#192](https://github.com/mikesprague/teams-incoming-webhook-action/issues/192)
 * chore(deps): bump dayjs from 1.11.8 to 1.11.9 (#181) ([775137c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/775137c)), closes [#181](https://github.com/mikesprague/teams-incoming-webhook-action/issues/181)
 * chore(deps): security update (`semver`) via `npm audit fix` ([e2f93dc](https://github.com/mikesprague/teams-incoming-webhook-action/commit/e2f93dc))
-
-
 
 ## <small>1.10.9 (2023-06-29)</small>
 
@@ -561,8 +549,6 @@
 * chore(release): prepare release v1.10.8 ([eda2e72](https://github.com/mikesprague/teams-incoming-webhook-action/commit/eda2e72))
 * chore(release): prepare release v1.10.9 ([70b0f04](https://github.com/mikesprague/teams-incoming-webhook-action/commit/70b0f04))
 
-
-
 ## <small>1.10.7 (2023-05-22)</small>
 
 * chore(deps-dev): bump @typescript-eslint/eslint-plugin (#153) ([8a79b50](https://github.com/mikesprague/teams-incoming-webhook-action/commit/8a79b50)), closes [#153](https://github.com/mikesprague/teams-incoming-webhook-action/issues/153)
@@ -570,8 +556,6 @@
 * chore(deps-dev): bump eslint from 8.40.0 to 8.41.0 (#155) ([2e2b4ca](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2e2b4ca)), closes [#155](https://github.com/mikesprague/teams-incoming-webhook-action/issues/155)
 * chore(deps): bump @octokit/rest from 19.0.8 to 19.0.11 (#154) ([63daa32](https://github.com/mikesprague/teams-incoming-webhook-action/commit/63daa32)), closes [#154](https://github.com/mikesprague/teams-incoming-webhook-action/issues/154)
 * chore(release): prepare release v1.10.7 ([9abc4b0](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9abc4b0))
-
-
 
 ## <small>1.10.6 (2023-05-16)</small>
 
@@ -584,16 +568,12 @@
 * chore(deps): bump @octokit/rest from 19.0.7 to 19.0.8 (#151) ([a41aee5](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a41aee5)), closes [#151](https://github.com/mikesprague/teams-incoming-webhook-action/issues/151)
 * chore(release): prepare release v1.10.6 ([82cb5a7](https://github.com/mikesprague/teams-incoming-webhook-action/commit/82cb5a7))
 
-
-
 ## <small>1.10.5 (2023-04-30)</small>
 
 * chore(deps-dev): bump typedoc-plugin-markdown from 3.15.2 to 3.15.3 ([115f916](https://github.com/mikesprague/teams-incoming-webhook-action/commit/115f916))
 * chore(deps): bump axios from 1.3.6 to 1.4.0 (#144) ([b845050](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b845050)), closes [#144](https://github.com/mikesprague/teams-incoming-webhook-action/issues/144)
 * chore(release): prepare release v1.10.5 ([1710398](https://github.com/mikesprague/teams-incoming-webhook-action/commit/1710398))
 * ci(actions): only create releases for full semver versions ([44e6cc9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/44e6cc9))
-
-
 
 ## <small>1.10.4 (2023-04-26)</small>
 
@@ -606,8 +586,6 @@
 * chore(deps): bump yaml and @commitlint/load (#142) ([c034297](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c034297)), closes [#142](https://github.com/mikesprague/teams-incoming-webhook-action/issues/142)
 * chore(release): prepare release v1.10.4 ([82495b1](https://github.com/mikesprague/teams-incoming-webhook-action/commit/82495b1))
 * refactor(cards/deploy): allow null author ([e731931](https://github.com/mikesprague/teams-incoming-webhook-action/commit/e731931)), closes [#143](https://github.com/mikesprague/teams-incoming-webhook-action/issues/143)
-
-
 
 ## <small>1.10.3 (2023-04-19)</small>
 
@@ -625,16 +603,12 @@
 * ci(actions): tweeak create-release allowed tags ([484b494](https://github.com/mikesprague/teams-incoming-webhook-action/commit/484b494))
 * docs: update auto-generated docs ([726a435](https://github.com/mikesprague/teams-incoming-webhook-action/commit/726a435))
 
-
-
 ## <small>1.10.2 (2023-04-10)</small>
 
 * chore(release): prepare release v1.10.2 ([c502c1b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c502c1b))
 * build(npm): fix typedoc script due to api changes ([0064539](https://github.com/mikesprague/teams-incoming-webhook-action/commit/0064539))
 * fix(eslint): config ([62c5a53](https://github.com/mikesprague/teams-incoming-webhook-action/commit/62c5a53))
 * style: fix linter warnings ([1085d39](https://github.com/mikesprague/teams-incoming-webhook-action/commit/1085d39))
-
-
 
 ## <small>1.10.1 (2023-04-10)</small>
 
@@ -665,8 +639,6 @@
 * chore(release): prepare release v1.10.1 ([a177c41](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a177c41))
 * ci(actions): add workflow to create releases ([522c863](https://github.com/mikesprague/teams-incoming-webhook-action/commit/522c863))
 
-
-
 ## 1.10.0 (2023-03-09)
 
 * ci(actions): add job to publish auto generated ts docs ([3337c7c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/3337c7c))
@@ -682,8 +654,6 @@
 * docs(typescript): add generated docs ([396fe4f](https://github.com/mikesprague/teams-incoming-webhook-action/commit/396fe4f))
 * refactor(typescript): add WIP ([d3ae2c9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/d3ae2c9))
 
-
-
 ## <small>1.9.7 (2023-02-23)</small>
 
 * chore(deps-dev): bump cz-git from 1.4.1 to 1.5.0 (#102) ([1818764](https://github.com/mikesprague/teams-incoming-webhook-action/commit/1818764)), closes [#102](https://github.com/mikesprague/teams-incoming-webhook-action/issues/102)
@@ -694,8 +664,6 @@
 * chore(deps): bump axios from 1.3.2 to 1.3.3 (#101) ([54216be](https://github.com/mikesprague/teams-incoming-webhook-action/commit/54216be)), closes [#101](https://github.com/mikesprague/teams-incoming-webhook-action/issues/101)
 * chore(deps): bump axios from 1.3.3 to 1.3.4 (#104) ([fa51d77](https://github.com/mikesprague/teams-incoming-webhook-action/commit/fa51d77)), closes [#104](https://github.com/mikesprague/teams-incoming-webhook-action/issues/104)
 * chore(release): prepare release v1.9.7 ([1aa31a6](https://github.com/mikesprague/teams-incoming-webhook-action/commit/1aa31a6))
-
-
 
 ## <small>1.9.6 (2023-02-01)</small>
 
@@ -709,16 +677,12 @@
 * docs(README): remove codeql v1 badge ([c571d4a](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c571d4a))
 * ci(actions): remove deprecated codeql v1 workflow ([f269626](https://github.com/mikesprague/teams-incoming-webhook-action/commit/f269626))
 
-
-
 ## <small>1.9.5 (2023-01-26)</small>
 
 * chore(deps-dev): bump commitizen from 4.2.6 to 4.3.0 (#89) ([189d719](https://github.com/mikesprague/teams-incoming-webhook-action/commit/189d719)), closes [#89](https://github.com/mikesprague/teams-incoming-webhook-action/issues/89)
 * chore(deps): bump @octokit/rest from 19.0.5 to 19.0.7 (#90) ([f87efdb](https://github.com/mikesprague/teams-incoming-webhook-action/commit/f87efdb)), closes [#90](https://github.com/mikesprague/teams-incoming-webhook-action/issues/90)
 * chore(deps): bump axios from 1.2.3 to 1.2.4 (#91) ([9a9c650](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9a9c650)), closes [#91](https://github.com/mikesprague/teams-incoming-webhook-action/issues/91)
 * chore(release): prepare release v1.9.5 ([7f89ba5](https://github.com/mikesprague/teams-incoming-webhook-action/commit/7f89ba5))
-
-
 
 ## <small>1.9.4 (2023-01-18)</small>
 
@@ -730,8 +694,6 @@
 * chore(deps): bump axios from 1.2.2 to 1.2.3 (#87) ([af1455b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/af1455b)), closes [#87](https://github.com/mikesprague/teams-incoming-webhook-action/issues/87)
 * chore(release): prepare release v1.9.4 ([c7be4d9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c7be4d9))
 * ci(actions): update secret name [skip actions] ([af4c097](https://github.com/mikesprague/teams-incoming-webhook-action/commit/af4c097))
-
-
 
 ## <small>1.9.3 (2022-12-30)</small>
 
@@ -752,8 +714,6 @@
 * docs(changelog): add CHANGELOG.md ([ef1506e](https://github.com/mikesprague/teams-incoming-webhook-action/commit/ef1506e))
 * docs(readme): remove bad link ([9283cc8](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9283cc8))
 
-
-
 ## <small>1.9.2 (2022-12-07)</small>
 
 * chore(cz): 🔧 add config for commitizen cli [skip actions] ([5033b6b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/5033b6b))
@@ -769,8 +729,6 @@
 * ci(dependabot): 🏗️ tweak workflow [skip actions] ([600418a](https://github.com/mikesprague/teams-incoming-webhook-action/commit/600418a))
 * ci(dependabot): 🔧 tweak config [skip actions] ([15de437](https://github.com/mikesprague/teams-incoming-webhook-action/commit/15de437))
 
-
-
 ## <small>1.9.1 (2022-11-23)</small>
 
 * :arrow_up: Upgrade dependency (#76) ([2b75c59](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2b75c59)), closes [#76](https://github.com/mikesprague/teams-incoming-webhook-action/issues/76)
@@ -779,21 +737,15 @@
 * :arrow_up: Upgrade dev dependency [skip actions] ([9ccc42b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9ccc42b))
 * :package: Prepare release v1.9.1 ([db2fa49](https://github.com/mikesprague/teams-incoming-webhook-action/commit/db2fa49))
 
-
-
 ## 1.9.0 (2022-10-27)
 
 * :bug: Only show author login if data is available ([b76c30a](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b76c30a))
 * :package: Prepare release v1.9.0 ([37b4be0](https://github.com/mikesprague/teams-incoming-webhook-action/commit/37b4be0))
 
-
-
 ## <small>1.8.2 (2022-10-22)</small>
 
 * :arrow_up: Upgrade dependencies (closes #74) ([b526206](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b526206)), closes [#74](https://github.com/mikesprague/teams-incoming-webhook-action/issues/74)
 * :package: Prepare release v1.8.2 ([051f100](https://github.com/mikesprague/teams-incoming-webhook-action/commit/051f100))
-
-
 
 ## <small>1.8.1 (2022-10-17)</small>
 
@@ -801,16 +753,12 @@
 * :memo: Update README ([4dad526](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4dad526))
 * :package: Prepare release v1.8.1 ([4f54866](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4f54866))
 
-
-
 ## 1.8.0 (2022-10-14)
 
 * :arrow_up: Upgrade dependencies ([2fc06ca](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2fc06ca))
 * :arrow_up: Upgrade dev dependency [skip actions] ([a7c8973](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a7c8973))
 * :package: Prepare release v1.8.0 ([29493f1](https://github.com/mikesprague/teams-incoming-webhook-action/commit/29493f1))
 * :recycle: CommonJS to ESM ([2f9c74f](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2f9c74f))
-
-
 
 ## <small>1.7.16 (2022-09-30)</small>
 
@@ -822,23 +770,17 @@
 * :memo: Update README [skip actions] ([bf93f40](https://github.com/mikesprague/teams-incoming-webhook-action/commit/bf93f40))
 * :package: Prepare release v1.7.16 ([537bd08](https://github.com/mikesprague/teams-incoming-webhook-action/commit/537bd08))
 
-
-
 ## <small>1.7.15 (2022-08-15)</small>
 
 * :arrow_up: Upgrade dependencies (closes #63, #65 ([23beb89](https://github.com/mikesprague/teams-incoming-webhook-action/commit/23beb89)), closes [#63](https://github.com/mikesprague/teams-incoming-webhook-action/issues/63) [#65](https://github.com/mikesprague/teams-incoming-webhook-action/issues/65)
 * :arrow_up: Upgrade dev dependency (closes #64) ([25d9ffb](https://github.com/mikesprague/teams-incoming-webhook-action/commit/25d9ffb)), closes [#64](https://github.com/mikesprague/teams-incoming-webhook-action/issues/64)
 * :package: Prepare release v1.7.15 ([ceb199c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/ceb199c))
 
-
-
 ## <small>1.7.14 (2022-08-11)</small>
 
 * :arrow_up: Upgrade dependency (closes #62) ([a180176](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a180176)), closes [#62](https://github.com/mikesprague/teams-incoming-webhook-action/issues/62)
 * :arrow_up: Upgrade dev dependency (closes #61) [skip actions] ([962038a](https://github.com/mikesprague/teams-incoming-webhook-action/commit/962038a)), closes [#61](https://github.com/mikesprague/teams-incoming-webhook-action/issues/61)
 * :package: Prepare release v1.7.14 ([da95a08](https://github.com/mikesprague/teams-incoming-webhook-action/commit/da95a08))
-
-
 
 ## <small>1.7.13 (2022-07-20)</small>
 
@@ -848,16 +790,12 @@
 * :building_construction: Update devcontainer ([2db1e81](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2db1e81))
 * :package: Prepare release v1.7.13 ([4224914](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4224914))
 
-
-
 ## <small>1.7.12 (2022-07-10)</small>
 
 * :arrow_up: Upgrade dependency (closes #58) ([efd37da](https://github.com/mikesprague/teams-incoming-webhook-action/commit/efd37da)), closes [#58](https://github.com/mikesprague/teams-incoming-webhook-action/issues/58)
 * :arrow_up: Upgrade dev dependency (closes #57) [skip actions] ([09c5da3](https://github.com/mikesprague/teams-incoming-webhook-action/commit/09c5da3)), closes [#57](https://github.com/mikesprague/teams-incoming-webhook-action/issues/57)
 * :arrow_up: Upgrade dev dependency [skip actions] ([6273351](https://github.com/mikesprague/teams-incoming-webhook-action/commit/6273351))
 * :package: Prepare release v1.7.12 ([d506d74](https://github.com/mikesprague/teams-incoming-webhook-action/commit/d506d74))
-
-
 
 ## <small>1.7.11 (2022-06-16)</small>
 
@@ -868,8 +806,6 @@
 * :arrow_up: Upgrade dev dependency (closes #56) ([e2494e1](https://github.com/mikesprague/teams-incoming-webhook-action/commit/e2494e1)), closes [#56](https://github.com/mikesprague/teams-incoming-webhook-action/issues/56)
 * :package: Prepare release v1.7.11 ([81cc653](https://github.com/mikesprague/teams-incoming-webhook-action/commit/81cc653))
 
-
-
 ## <small>1.7.10 (2022-05-28)</small>
 
 * :arrow_up: Upgrade dependency (closes #53) ([b3a7e20](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b3a7e20)), closes [#53](https://github.com/mikesprague/teams-incoming-webhook-action/issues/53)
@@ -877,16 +813,12 @@
 * :arrow_up: Upgrade dev dependency (closes #52) ([353f9fb](https://github.com/mikesprague/teams-incoming-webhook-action/commit/353f9fb)), closes [#52](https://github.com/mikesprague/teams-incoming-webhook-action/issues/52)
 * :package: Prepare release v1.7.10 ([b7157fd](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b7157fd))
 
-
-
 ## <small>1.7.9 (2022-05-16)</small>
 
 * :arrow_up: Upgrade dependency ([8cd1ce5](https://github.com/mikesprague/teams-incoming-webhook-action/commit/8cd1ce5))
 * :arrow_up: Upgrade dev dependency ([25c3b78](https://github.com/mikesprague/teams-incoming-webhook-action/commit/25c3b78))
 * :arrow_up: Upgrade dev dependency (closes #50) [skip actions] ([03faf3f](https://github.com/mikesprague/teams-incoming-webhook-action/commit/03faf3f)), closes [#50](https://github.com/mikesprague/teams-incoming-webhook-action/issues/50)
 * :package: Prepare new version v1.7.9 ([b17794f](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b17794f))
-
-
 
 ## <small>1.7.8 (2022-05-09)</small>
 
@@ -896,14 +828,10 @@
 * :package: Prepare release v1.7.8 ([27e5181](https://github.com/mikesprague/teams-incoming-webhook-action/commit/27e5181))
 * :pushpin: Pin dependencies ([bfbc461](https://github.com/mikesprague/teams-incoming-webhook-action/commit/bfbc461))
 
-
-
 ## <small>1.7.7 (2022-04-27)</small>
 
 * :arrow_up: Upgrade dependency ([84b3ebf](https://github.com/mikesprague/teams-incoming-webhook-action/commit/84b3ebf))
 * :package: Prepare release v1.7.7 ([90db75d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/90db75d))
-
-
 
 ## <small>1.7.6 (2022-04-25)</small>
 
@@ -911,14 +839,10 @@
 * :arrow_up: Upgrade dev dependencies [skip actions] ([b739952](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b739952))
 * :package: Prepeare release v1.7.6 ([5724cb3](https://github.com/mikesprague/teams-incoming-webhook-action/commit/5724cb3))
 
-
-
 ## <small>1.7.5 (2022-04-18)</small>
 
 * :arrow_up: Upgrade dependency (closes dependabot PR #42) ([0a3a4d9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/0a3a4d9)), closes [#42](https://github.com/mikesprague/teams-incoming-webhook-action/issues/42)
 * :package: Prepare release v1.7.5 ([f2cd67c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/f2cd67c))
-
-
 
 ## <small>1.7.4 (2022-04-13)</small>
 
@@ -929,8 +853,6 @@
 * :lock: Ran npm audit fix ([8c65489](https://github.com/mikesprague/teams-incoming-webhook-action/commit/8c65489))
 * :package: Prepare release ([84b05a4](https://github.com/mikesprague/teams-incoming-webhook-action/commit/84b05a4))
 
-
-
 ## <small>1.7.3 (2022-03-16)</small>
 
 * :arrow_up: Upgrade dependency ([41feffb](https://github.com/mikesprague/teams-incoming-webhook-action/commit/41feffb))
@@ -940,8 +862,6 @@
 * :recycle: Move emoji to title block ([b35e482](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b35e482))
 * :speech_balloon: Fix title ([59c844e](https://github.com/mikesprague/teams-incoming-webhook-action/commit/59c844e))
 
-
-
 ## <small>1.7.2 (2022-03-10)</small>
 
 * :arrow_up: Upgrade actions/checkout (closes PR 35) ([bc6c340](https://github.com/mikesprague/teams-incoming-webhook-action/commit/bc6c340))
@@ -949,22 +869,16 @@
 * :arrow_up: Upgrade node version ([77ba2cb](https://github.com/mikesprague/teams-incoming-webhook-action/commit/77ba2cb))
 * :package: Prepare release ([24aa085](https://github.com/mikesprague/teams-incoming-webhook-action/commit/24aa085))
 
-
-
 ## <small>1.7.1 (2022-02-28)</small>
 
 * :arrow_up: Upgrade dependency (closes PR 33) ([78d7f87](https://github.com/mikesprague/teams-incoming-webhook-action/commit/78d7f87))
 * :arrow_up: Upgrade dev dependency (closes PR 32) ([f436256](https://github.com/mikesprague/teams-incoming-webhook-action/commit/f436256))
 * :package: Prepare release ([ae5fe9c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/ae5fe9c))
 
-
-
 ## 1.7.0 (2022-02-25)
 
 * :package: Prepare release ([270aeca](https://github.com/mikesprague/teams-incoming-webhook-action/commit/270aeca))
 * :sparkles: Add emoji to output ([0050762](https://github.com/mikesprague/teams-incoming-webhook-action/commit/0050762))
-
-
 
 ## <small>1.6.8 (2022-02-14)</small>
 
@@ -973,16 +887,12 @@
 * :arrow_up: Upgrade two dev dependencies (closes PRs 29, 30) ([ea66e52](https://github.com/mikesprague/teams-incoming-webhook-action/commit/ea66e52))
 * :package: Prepare release ([ad8040e](https://github.com/mikesprague/teams-incoming-webhook-action/commit/ad8040e))
 
-
-
 ## <small>1.6.7 (2022-02-01)</small>
 
 * :arrow_up: Bump node-fetch from 2.6.6 to 2.6.7 ([2224e01](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2224e01))
 * :arrow_up: Upgrade dev dependency (closes PR 26) ([9cf5fe3](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9cf5fe3))
 * :memo: Update README (add build status) ([3665ac9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/3665ac9))
 * :package: Prepare release (v1.6.7) ([3a00593](https://github.com/mikesprague/teams-incoming-webhook-action/commit/3a00593))
-
-
 
 ## <small>1.6.6 (2022-01-19)</small>
 
@@ -998,21 +908,15 @@
 * :arrow_up: Upgrade two dev dependencies ([4db859b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4db859b))
 * :package: Prepare release v1.6.6 ([f2f8191](https://github.com/mikesprague/teams-incoming-webhook-action/commit/f2f8191))
 
-
-
 ## <small>1.6.5 (2021-11-17)</small>
 
 * :arrow_up: Upgrade dev dependency ([a06c1c2](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a06c1c2))
 * :package: Prepare release v1.6.5 ([7481195](https://github.com/mikesprague/teams-incoming-webhook-action/commit/7481195))
 
-
-
 ## <small>1.6.4 (2021-11-06)</small>
 
 * :arrow_up: Upgrade dev dependency ([71cced7](https://github.com/mikesprague/teams-incoming-webhook-action/commit/71cced7))
 * :package: Prepare release v1.6.4 ([e9bf821](https://github.com/mikesprague/teams-incoming-webhook-action/commit/e9bf821))
-
-
 
 ## <small>1.6.3 (2021-11-05)</small>
 
@@ -1022,8 +926,6 @@
 * :memo: Tweak text ([9ea4ce3](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9ea4ce3))
 * :package: Prepare release v1.6.3 ([8464608](https://github.com/mikesprague/teams-incoming-webhook-action/commit/8464608))
 
-
-
 ## <small>1.6.2 (2021-10-28)</small>
 
 * :arrow_up: Upgrade dependency ([7cff840](https://github.com/mikesprague/teams-incoming-webhook-action/commit/7cff840))
@@ -1031,15 +933,11 @@
 * :memo: Update README ([c83c03c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c83c03c))
 * :package: Prepare release v.1.6.2 ([891414c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/891414c))
 
-
-
 ## <small>1.6.1 (2021-10-20)</small>
 
 * :bento: Update README images again ([82cece8](https://github.com/mikesprague/teams-incoming-webhook-action/commit/82cece8))
 * :package: Prepare release ([dcc19df](https://github.com/mikesprague/teams-incoming-webhook-action/commit/dcc19df))
 * :recycle: Fix order of textblock and factset ([2999e74](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2999e74))
-
-
 
 ## 1.6.0 (2021-10-20)
 
@@ -1058,64 +956,46 @@
 * :recycle: Update description and default for color ([4b95513](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4b95513))
 * :sparkles: Add getAdaptiveCardColorString helper ([c45e9b7](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c45e9b7))
 
-
-
 ## <small>1.5.3 (2021-10-12)</small>
 
 * :arrow_up: Upgrade dependency ([88d84d4](https://github.com/mikesprague/teams-incoming-webhook-action/commit/88d84d4))
 * :package: Prepare release v1.5.3 ([c04225f](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c04225f))
-
-
 
 ## <small>1.5.2 (2021-10-09)</small>
 
 * :arrow_up: Upgrade dev dependency ([fb7c574](https://github.com/mikesprague/teams-incoming-webhook-action/commit/fb7c574))
 * :package: Prepare release v1.5.2 ([fc981f9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/fc981f9))
 
-
-
 ## <small>1.5.1 (2021-10-08)</small>
 
 * :arrow_up: Upgrade @octokit/rest ([6e8b500](https://github.com/mikesprague/teams-incoming-webhook-action/commit/6e8b500))
 * :package: Prepare release v1.5.1 ([fb44089](https://github.com/mikesprague/teams-incoming-webhook-action/commit/fb44089))
-
-
 
 ## 1.5.0 (2021-10-06)
 
 * :fire: Remove unnecessary else ([7b98687](https://github.com/mikesprague/teams-incoming-webhook-action/commit/7b98687))
 * :package: Prepare release ([374360f](https://github.com/mikesprague/teams-incoming-webhook-action/commit/374360f))
 
-
-
 ## <small>1.4.6 (2021-10-01)</small>
 
 * :arrow_up: Upgrade @octokit/rest and axios ([16088e2](https://github.com/mikesprague/teams-incoming-webhook-action/commit/16088e2))
 * :package: Prepare release ([84d9295](https://github.com/mikesprague/teams-incoming-webhook-action/commit/84d9295))
-
-
 
 ## <small>1.4.5 (2021-09-30)</small>
 
 * :arrow_up: Upgrade @octokit/rest ([34b52be](https://github.com/mikesprague/teams-incoming-webhook-action/commit/34b52be))
 * :package: Prepare release ([99ecf8c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/99ecf8c))
 
-
-
 ## <small>1.4.4 (2021-09-29)</small>
 
 * :arrow_up: Upgrade @octokit/core and @octokit/rest ([68026fd](https://github.com/mikesprague/teams-incoming-webhook-action/commit/68026fd))
 * :package: Prepare release ([adc178c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/adc178c))
-
-
 
 ## <small>1.4.3 (2021-09-27)</small>
 
 * :arrow_up: Upgrade @octokoit/rest ([67f6859](https://github.com/mikesprague/teams-incoming-webhook-action/commit/67f6859))
 * :package: Prepare release ([4e6e941](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4e6e941))
 * :recycle: Improve/simplify getHexForColorString ([6da8735](https://github.com/mikesprague/teams-incoming-webhook-action/commit/6da8735))
-
-
 
 ## <small>1.4.2 (2021-09-23)</small>
 
@@ -1126,16 +1006,12 @@
 * :package: Prepare release ([527df1b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/527df1b))
 * :recycle: Use self-running function vs naming and calling ([36681b0](https://github.com/mikesprague/teams-incoming-webhook-action/commit/36681b0))
 
-
-
 ## <small>1.4.1 (2021-09-21)</small>
 
 * :bug: Bugfix (tz was still hardcoded somewhere else) ([58542e3](https://github.com/mikesprague/teams-incoming-webhook-action/commit/58542e3))
 * :memo: Reorganize README ([f7b7867](https://github.com/mikesprague/teams-incoming-webhook-action/commit/f7b7867))
 * :package: Prepare release ([83cbae5](https://github.com/mikesprague/teams-incoming-webhook-action/commit/83cbae5))
 * :speech_balloon: Update name string ([eb529d1](https://github.com/mikesprague/teams-incoming-webhook-action/commit/eb529d1))
-
-
 
 ## 1.4.0 (2021-09-21)
 
@@ -1150,8 +1026,6 @@
 * :sparkles: Add support for custom timezone ([3423e94](https://github.com/mikesprague/teams-incoming-webhook-action/commit/3423e94))
 * :truck: Rename and use modern js ([54f2848](https://github.com/mikesprague/teams-incoming-webhook-action/commit/54f2848))
 * :truck: Rename images -> readme-images ([9dd3a66](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9dd3a66))
-
-
 
 ## 1.3.0 (2021-09-21)
 
@@ -1218,8 +1092,6 @@
 * Bump eslint from 7.17.0 to 7.32.0 ([9ce53c4](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9ce53c4))
 * Bump jest from 26.6.3 to 27.2.0 ([689bf76](https://github.com/mikesprague/teams-incoming-webhook-action/commit/689bf76))
 * Initial commit ([4493582](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4493582))
-
-
 
 ## <small>1.10.9 (2023-06-29)</small>
 
@@ -1249,8 +1121,6 @@
 * chore(deps): bump dayjs from 1.11.7 to 1.11.8 (#161) ([7e965e5](https://github.com/mikesprague/teams-incoming-webhook-action/commit/7e965e5)), closes [#161](https://github.com/mikesprague/teams-incoming-webhook-action/issues/161)
 * chore(release): prepare release v1.10.8 ([eda2e72](https://github.com/mikesprague/teams-incoming-webhook-action/commit/eda2e72))
 
-
-
 ## <small>1.10.7 (2023-05-22)</small>
 
 * chore(deps-dev): bump @typescript-eslint/eslint-plugin (#153) ([8a79b50](https://github.com/mikesprague/teams-incoming-webhook-action/commit/8a79b50)), closes [#153](https://github.com/mikesprague/teams-incoming-webhook-action/issues/153)
@@ -1258,8 +1128,6 @@
 * chore(deps-dev): bump eslint from 8.40.0 to 8.41.0 (#155) ([2e2b4ca](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2e2b4ca)), closes [#155](https://github.com/mikesprague/teams-incoming-webhook-action/issues/155)
 * chore(deps): bump @octokit/rest from 19.0.8 to 19.0.11 (#154) ([63daa32](https://github.com/mikesprague/teams-incoming-webhook-action/commit/63daa32)), closes [#154](https://github.com/mikesprague/teams-incoming-webhook-action/issues/154)
 * chore(release): prepare release v1.10.7 ([9abc4b0](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9abc4b0))
-
-
 
 ## <small>1.10.6 (2023-05-16)</small>
 
@@ -1272,16 +1140,12 @@
 * chore(deps): bump @octokit/rest from 19.0.7 to 19.0.8 (#151) ([a41aee5](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a41aee5)), closes [#151](https://github.com/mikesprague/teams-incoming-webhook-action/issues/151)
 * chore(release): prepare release v1.10.6 ([82cb5a7](https://github.com/mikesprague/teams-incoming-webhook-action/commit/82cb5a7))
 
-
-
 ## <small>1.10.5 (2023-04-30)</small>
 
 * chore(deps-dev): bump typedoc-plugin-markdown from 3.15.2 to 3.15.3 ([115f916](https://github.com/mikesprague/teams-incoming-webhook-action/commit/115f916))
 * chore(deps): bump axios from 1.3.6 to 1.4.0 (#144) ([b845050](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b845050)), closes [#144](https://github.com/mikesprague/teams-incoming-webhook-action/issues/144)
 * chore(release): prepare release v1.10.5 ([1710398](https://github.com/mikesprague/teams-incoming-webhook-action/commit/1710398))
 * ci(actions): only create releases for full semver versions ([44e6cc9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/44e6cc9))
-
-
 
 ## <small>1.10.4 (2023-04-26)</small>
 
@@ -1294,8 +1158,6 @@
 * chore(deps): bump yaml and @commitlint/load (#142) ([c034297](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c034297)), closes [#142](https://github.com/mikesprague/teams-incoming-webhook-action/issues/142)
 * chore(release): prepare release v1.10.4 ([82495b1](https://github.com/mikesprague/teams-incoming-webhook-action/commit/82495b1))
 * refactor(cards/deploy): allow null author ([e731931](https://github.com/mikesprague/teams-incoming-webhook-action/commit/e731931)), closes [#143](https://github.com/mikesprague/teams-incoming-webhook-action/issues/143)
-
-
 
 ## <small>1.10.3 (2023-04-19)</small>
 
@@ -1313,16 +1175,12 @@
 * ci(actions): tweeak create-release allowed tags ([484b494](https://github.com/mikesprague/teams-incoming-webhook-action/commit/484b494))
 * docs: update auto-generated docs ([726a435](https://github.com/mikesprague/teams-incoming-webhook-action/commit/726a435))
 
-
-
 ## <small>1.10.2 (2023-04-10)</small>
 
 * chore(release): prepare release v1.10.2 ([c502c1b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c502c1b))
 * build(npm): fix typedoc script due to api changes ([0064539](https://github.com/mikesprague/teams-incoming-webhook-action/commit/0064539))
 * fix(eslint): config ([62c5a53](https://github.com/mikesprague/teams-incoming-webhook-action/commit/62c5a53))
 * style: fix linter warnings ([1085d39](https://github.com/mikesprague/teams-incoming-webhook-action/commit/1085d39))
-
-
 
 ## <small>1.10.1 (2023-04-10)</small>
 
@@ -1353,8 +1211,6 @@
 * chore(release): prepare release v1.10.1 ([a177c41](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a177c41))
 * ci(actions): add workflow to create releases ([522c863](https://github.com/mikesprague/teams-incoming-webhook-action/commit/522c863))
 
-
-
 ## 1.10.0 (2023-03-09)
 
 * ci(actions): add job to publish auto generated ts docs ([3337c7c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/3337c7c))
@@ -1370,8 +1226,6 @@
 * docs(typescript): add generated docs ([396fe4f](https://github.com/mikesprague/teams-incoming-webhook-action/commit/396fe4f))
 * refactor(typescript): add WIP ([d3ae2c9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/d3ae2c9))
 
-
-
 ## <small>1.9.7 (2023-02-23)</small>
 
 * chore(deps-dev): bump cz-git from 1.4.1 to 1.5.0 (#102) ([1818764](https://github.com/mikesprague/teams-incoming-webhook-action/commit/1818764)), closes [#102](https://github.com/mikesprague/teams-incoming-webhook-action/issues/102)
@@ -1382,8 +1236,6 @@
 * chore(deps): bump axios from 1.3.2 to 1.3.3 (#101) ([54216be](https://github.com/mikesprague/teams-incoming-webhook-action/commit/54216be)), closes [#101](https://github.com/mikesprague/teams-incoming-webhook-action/issues/101)
 * chore(deps): bump axios from 1.3.3 to 1.3.4 (#104) ([fa51d77](https://github.com/mikesprague/teams-incoming-webhook-action/commit/fa51d77)), closes [#104](https://github.com/mikesprague/teams-incoming-webhook-action/issues/104)
 * chore(release): prepare release v1.9.7 ([1aa31a6](https://github.com/mikesprague/teams-incoming-webhook-action/commit/1aa31a6))
-
-
 
 ## <small>1.9.6 (2023-02-01)</small>
 
@@ -1397,16 +1249,12 @@
 * docs(README): remove codeql v1 badge ([c571d4a](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c571d4a))
 * ci(actions): remove deprecated codeql v1 workflow ([f269626](https://github.com/mikesprague/teams-incoming-webhook-action/commit/f269626))
 
-
-
 ## <small>1.9.5 (2023-01-26)</small>
 
 * chore(deps-dev): bump commitizen from 4.2.6 to 4.3.0 (#89) ([189d719](https://github.com/mikesprague/teams-incoming-webhook-action/commit/189d719)), closes [#89](https://github.com/mikesprague/teams-incoming-webhook-action/issues/89)
 * chore(deps): bump @octokit/rest from 19.0.5 to 19.0.7 (#90) ([f87efdb](https://github.com/mikesprague/teams-incoming-webhook-action/commit/f87efdb)), closes [#90](https://github.com/mikesprague/teams-incoming-webhook-action/issues/90)
 * chore(deps): bump axios from 1.2.3 to 1.2.4 (#91) ([9a9c650](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9a9c650)), closes [#91](https://github.com/mikesprague/teams-incoming-webhook-action/issues/91)
 * chore(release): prepare release v1.9.5 ([7f89ba5](https://github.com/mikesprague/teams-incoming-webhook-action/commit/7f89ba5))
-
-
 
 ## <small>1.9.4 (2023-01-18)</small>
 
@@ -1418,8 +1266,6 @@
 * chore(deps): bump axios from 1.2.2 to 1.2.3 (#87) ([af1455b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/af1455b)), closes [#87](https://github.com/mikesprague/teams-incoming-webhook-action/issues/87)
 * chore(release): prepare release v1.9.4 ([c7be4d9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c7be4d9))
 * ci(actions): update secret name [skip actions] ([af4c097](https://github.com/mikesprague/teams-incoming-webhook-action/commit/af4c097))
-
-
 
 ## <small>1.9.3 (2022-12-30)</small>
 
@@ -1440,8 +1286,6 @@
 * docs(changelog): add CHANGELOG.md ([ef1506e](https://github.com/mikesprague/teams-incoming-webhook-action/commit/ef1506e))
 * docs(readme): remove bad link ([9283cc8](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9283cc8))
 
-
-
 ## <small>1.9.2 (2022-12-07)</small>
 
 * chore(cz): 🔧 add config for commitizen cli [skip actions] ([5033b6b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/5033b6b))
@@ -1457,8 +1301,6 @@
 * ci(dependabot): 🏗️ tweak workflow [skip actions] ([600418a](https://github.com/mikesprague/teams-incoming-webhook-action/commit/600418a))
 * ci(dependabot): 🔧 tweak config [skip actions] ([15de437](https://github.com/mikesprague/teams-incoming-webhook-action/commit/15de437))
 
-
-
 ## <small>1.9.1 (2022-11-23)</small>
 
 * :arrow_up: Upgrade dependency (#76) ([2b75c59](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2b75c59)), closes [#76](https://github.com/mikesprague/teams-incoming-webhook-action/issues/76)
@@ -1467,21 +1309,15 @@
 * :arrow_up: Upgrade dev dependency [skip actions] ([9ccc42b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9ccc42b))
 * :package: Prepare release v1.9.1 ([db2fa49](https://github.com/mikesprague/teams-incoming-webhook-action/commit/db2fa49))
 
-
-
 ## 1.9.0 (2022-10-27)
 
 * :bug: Only show author login if data is available ([b76c30a](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b76c30a))
 * :package: Prepare release v1.9.0 ([37b4be0](https://github.com/mikesprague/teams-incoming-webhook-action/commit/37b4be0))
 
-
-
 ## <small>1.8.2 (2022-10-22)</small>
 
 * :arrow_up: Upgrade dependencies (closes #74) ([b526206](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b526206)), closes [#74](https://github.com/mikesprague/teams-incoming-webhook-action/issues/74)
 * :package: Prepare release v1.8.2 ([051f100](https://github.com/mikesprague/teams-incoming-webhook-action/commit/051f100))
-
-
 
 ## <small>1.8.1 (2022-10-17)</small>
 
@@ -1489,16 +1325,12 @@
 * :memo: Update README ([4dad526](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4dad526))
 * :package: Prepare release v1.8.1 ([4f54866](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4f54866))
 
-
-
 ## 1.8.0 (2022-10-14)
 
 * :arrow_up: Upgrade dependencies ([2fc06ca](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2fc06ca))
 * :arrow_up: Upgrade dev dependency [skip actions] ([a7c8973](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a7c8973))
 * :package: Prepare release v1.8.0 ([29493f1](https://github.com/mikesprague/teams-incoming-webhook-action/commit/29493f1))
 * :recycle: CommonJS to ESM ([2f9c74f](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2f9c74f))
-
-
 
 ## <small>1.7.16 (2022-09-30)</small>
 
@@ -1510,23 +1342,17 @@
 * :memo: Update README [skip actions] ([bf93f40](https://github.com/mikesprague/teams-incoming-webhook-action/commit/bf93f40))
 * :package: Prepare release v1.7.16 ([537bd08](https://github.com/mikesprague/teams-incoming-webhook-action/commit/537bd08))
 
-
-
 ## <small>1.7.15 (2022-08-15)</small>
 
 * :arrow_up: Upgrade dependencies (closes #63, #65 ([23beb89](https://github.com/mikesprague/teams-incoming-webhook-action/commit/23beb89)), closes [#63](https://github.com/mikesprague/teams-incoming-webhook-action/issues/63) [#65](https://github.com/mikesprague/teams-incoming-webhook-action/issues/65)
 * :arrow_up: Upgrade dev dependency (closes #64) ([25d9ffb](https://github.com/mikesprague/teams-incoming-webhook-action/commit/25d9ffb)), closes [#64](https://github.com/mikesprague/teams-incoming-webhook-action/issues/64)
 * :package: Prepare release v1.7.15 ([ceb199c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/ceb199c))
 
-
-
 ## <small>1.7.14 (2022-08-11)</small>
 
 * :arrow_up: Upgrade dependency (closes #62) ([a180176](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a180176)), closes [#62](https://github.com/mikesprague/teams-incoming-webhook-action/issues/62)
 * :arrow_up: Upgrade dev dependency (closes #61) [skip actions] ([962038a](https://github.com/mikesprague/teams-incoming-webhook-action/commit/962038a)), closes [#61](https://github.com/mikesprague/teams-incoming-webhook-action/issues/61)
 * :package: Prepare release v1.7.14 ([da95a08](https://github.com/mikesprague/teams-incoming-webhook-action/commit/da95a08))
-
-
 
 ## <small>1.7.13 (2022-07-20)</small>
 
@@ -1536,16 +1362,12 @@
 * :building_construction: Update devcontainer ([2db1e81](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2db1e81))
 * :package: Prepare release v1.7.13 ([4224914](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4224914))
 
-
-
 ## <small>1.7.12 (2022-07-10)</small>
 
 * :arrow_up: Upgrade dependency (closes #58) ([efd37da](https://github.com/mikesprague/teams-incoming-webhook-action/commit/efd37da)), closes [#58](https://github.com/mikesprague/teams-incoming-webhook-action/issues/58)
 * :arrow_up: Upgrade dev dependency (closes #57) [skip actions] ([09c5da3](https://github.com/mikesprague/teams-incoming-webhook-action/commit/09c5da3)), closes [#57](https://github.com/mikesprague/teams-incoming-webhook-action/issues/57)
 * :arrow_up: Upgrade dev dependency [skip actions] ([6273351](https://github.com/mikesprague/teams-incoming-webhook-action/commit/6273351))
 * :package: Prepare release v1.7.12 ([d506d74](https://github.com/mikesprague/teams-incoming-webhook-action/commit/d506d74))
-
-
 
 ## <small>1.7.11 (2022-06-16)</small>
 
@@ -1556,8 +1378,6 @@
 * :arrow_up: Upgrade dev dependency (closes #56) ([e2494e1](https://github.com/mikesprague/teams-incoming-webhook-action/commit/e2494e1)), closes [#56](https://github.com/mikesprague/teams-incoming-webhook-action/issues/56)
 * :package: Prepare release v1.7.11 ([81cc653](https://github.com/mikesprague/teams-incoming-webhook-action/commit/81cc653))
 
-
-
 ## <small>1.7.10 (2022-05-28)</small>
 
 * :arrow_up: Upgrade dependency (closes #53) ([b3a7e20](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b3a7e20)), closes [#53](https://github.com/mikesprague/teams-incoming-webhook-action/issues/53)
@@ -1565,16 +1385,12 @@
 * :arrow_up: Upgrade dev dependency (closes #52) ([353f9fb](https://github.com/mikesprague/teams-incoming-webhook-action/commit/353f9fb)), closes [#52](https://github.com/mikesprague/teams-incoming-webhook-action/issues/52)
 * :package: Prepare release v1.7.10 ([b7157fd](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b7157fd))
 
-
-
 ## <small>1.7.9 (2022-05-16)</small>
 
 * :arrow_up: Upgrade dependency ([8cd1ce5](https://github.com/mikesprague/teams-incoming-webhook-action/commit/8cd1ce5))
 * :arrow_up: Upgrade dev dependency ([25c3b78](https://github.com/mikesprague/teams-incoming-webhook-action/commit/25c3b78))
 * :arrow_up: Upgrade dev dependency (closes #50) [skip actions] ([03faf3f](https://github.com/mikesprague/teams-incoming-webhook-action/commit/03faf3f)), closes [#50](https://github.com/mikesprague/teams-incoming-webhook-action/issues/50)
 * :package: Prepare new version v1.7.9 ([b17794f](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b17794f))
-
-
 
 ## <small>1.7.8 (2022-05-09)</small>
 
@@ -1584,14 +1400,10 @@
 * :package: Prepare release v1.7.8 ([27e5181](https://github.com/mikesprague/teams-incoming-webhook-action/commit/27e5181))
 * :pushpin: Pin dependencies ([bfbc461](https://github.com/mikesprague/teams-incoming-webhook-action/commit/bfbc461))
 
-
-
 ## <small>1.7.7 (2022-04-27)</small>
 
 * :arrow_up: Upgrade dependency ([84b3ebf](https://github.com/mikesprague/teams-incoming-webhook-action/commit/84b3ebf))
 * :package: Prepare release v1.7.7 ([90db75d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/90db75d))
-
-
 
 ## <small>1.7.6 (2022-04-25)</small>
 
@@ -1599,14 +1411,10 @@
 * :arrow_up: Upgrade dev dependencies [skip actions] ([b739952](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b739952))
 * :package: Prepeare release v1.7.6 ([5724cb3](https://github.com/mikesprague/teams-incoming-webhook-action/commit/5724cb3))
 
-
-
 ## <small>1.7.5 (2022-04-18)</small>
 
 * :arrow_up: Upgrade dependency (closes dependabot PR #42) ([0a3a4d9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/0a3a4d9)), closes [#42](https://github.com/mikesprague/teams-incoming-webhook-action/issues/42)
 * :package: Prepare release v1.7.5 ([f2cd67c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/f2cd67c))
-
-
 
 ## <small>1.7.4 (2022-04-13)</small>
 
@@ -1617,8 +1425,6 @@
 * :lock: Ran npm audit fix ([8c65489](https://github.com/mikesprague/teams-incoming-webhook-action/commit/8c65489))
 * :package: Prepare release ([84b05a4](https://github.com/mikesprague/teams-incoming-webhook-action/commit/84b05a4))
 
-
-
 ## <small>1.7.3 (2022-03-16)</small>
 
 * :arrow_up: Upgrade dependency ([41feffb](https://github.com/mikesprague/teams-incoming-webhook-action/commit/41feffb))
@@ -1628,8 +1434,6 @@
 * :recycle: Move emoji to title block ([b35e482](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b35e482))
 * :speech_balloon: Fix title ([59c844e](https://github.com/mikesprague/teams-incoming-webhook-action/commit/59c844e))
 
-
-
 ## <small>1.7.2 (2022-03-10)</small>
 
 * :arrow_up: Upgrade actions/checkout (closes PR 35) ([bc6c340](https://github.com/mikesprague/teams-incoming-webhook-action/commit/bc6c340))
@@ -1637,22 +1441,16 @@
 * :arrow_up: Upgrade node version ([77ba2cb](https://github.com/mikesprague/teams-incoming-webhook-action/commit/77ba2cb))
 * :package: Prepare release ([24aa085](https://github.com/mikesprague/teams-incoming-webhook-action/commit/24aa085))
 
-
-
 ## <small>1.7.1 (2022-02-28)</small>
 
 * :arrow_up: Upgrade dependency (closes PR 33) ([78d7f87](https://github.com/mikesprague/teams-incoming-webhook-action/commit/78d7f87))
 * :arrow_up: Upgrade dev dependency (closes PR 32) ([f436256](https://github.com/mikesprague/teams-incoming-webhook-action/commit/f436256))
 * :package: Prepare release ([ae5fe9c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/ae5fe9c))
 
-
-
 ## 1.7.0 (2022-02-25)
 
 * :package: Prepare release ([270aeca](https://github.com/mikesprague/teams-incoming-webhook-action/commit/270aeca))
 * :sparkles: Add emoji to output ([0050762](https://github.com/mikesprague/teams-incoming-webhook-action/commit/0050762))
-
-
 
 ## <small>1.6.8 (2022-02-14)</small>
 
@@ -1661,16 +1459,12 @@
 * :arrow_up: Upgrade two dev dependencies (closes PRs 29, 30) ([ea66e52](https://github.com/mikesprague/teams-incoming-webhook-action/commit/ea66e52))
 * :package: Prepare release ([ad8040e](https://github.com/mikesprague/teams-incoming-webhook-action/commit/ad8040e))
 
-
-
 ## <small>1.6.7 (2022-02-01)</small>
 
 * :arrow_up: Bump node-fetch from 2.6.6 to 2.6.7 ([2224e01](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2224e01))
 * :arrow_up: Upgrade dev dependency (closes PR 26) ([9cf5fe3](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9cf5fe3))
 * :memo: Update README (add build status) ([3665ac9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/3665ac9))
 * :package: Prepare release (v1.6.7) ([3a00593](https://github.com/mikesprague/teams-incoming-webhook-action/commit/3a00593))
-
-
 
 ## <small>1.6.6 (2022-01-19)</small>
 
@@ -1686,21 +1480,15 @@
 * :arrow_up: Upgrade two dev dependencies ([4db859b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4db859b))
 * :package: Prepare release v1.6.6 ([f2f8191](https://github.com/mikesprague/teams-incoming-webhook-action/commit/f2f8191))
 
-
-
 ## <small>1.6.5 (2021-11-17)</small>
 
 * :arrow_up: Upgrade dev dependency ([a06c1c2](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a06c1c2))
 * :package: Prepare release v1.6.5 ([7481195](https://github.com/mikesprague/teams-incoming-webhook-action/commit/7481195))
 
-
-
 ## <small>1.6.4 (2021-11-06)</small>
 
 * :arrow_up: Upgrade dev dependency ([71cced7](https://github.com/mikesprague/teams-incoming-webhook-action/commit/71cced7))
 * :package: Prepare release v1.6.4 ([e9bf821](https://github.com/mikesprague/teams-incoming-webhook-action/commit/e9bf821))
-
-
 
 ## <small>1.6.3 (2021-11-05)</small>
 
@@ -1710,8 +1498,6 @@
 * :memo: Tweak text ([9ea4ce3](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9ea4ce3))
 * :package: Prepare release v1.6.3 ([8464608](https://github.com/mikesprague/teams-incoming-webhook-action/commit/8464608))
 
-
-
 ## <small>1.6.2 (2021-10-28)</small>
 
 * :arrow_up: Upgrade dependency ([7cff840](https://github.com/mikesprague/teams-incoming-webhook-action/commit/7cff840))
@@ -1719,15 +1505,11 @@
 * :memo: Update README ([c83c03c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c83c03c))
 * :package: Prepare release v.1.6.2 ([891414c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/891414c))
 
-
-
 ## <small>1.6.1 (2021-10-20)</small>
 
 * :bento: Update README images again ([82cece8](https://github.com/mikesprague/teams-incoming-webhook-action/commit/82cece8))
 * :package: Prepare release ([dcc19df](https://github.com/mikesprague/teams-incoming-webhook-action/commit/dcc19df))
 * :recycle: Fix order of textblock and factset ([2999e74](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2999e74))
-
-
 
 ## 1.6.0 (2021-10-20)
 
@@ -1746,64 +1528,46 @@
 * :recycle: Update description and default for color ([4b95513](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4b95513))
 * :sparkles: Add getAdaptiveCardColorString helper ([c45e9b7](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c45e9b7))
 
-
-
 ## <small>1.5.3 (2021-10-12)</small>
 
 * :arrow_up: Upgrade dependency ([88d84d4](https://github.com/mikesprague/teams-incoming-webhook-action/commit/88d84d4))
 * :package: Prepare release v1.5.3 ([c04225f](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c04225f))
-
-
 
 ## <small>1.5.2 (2021-10-09)</small>
 
 * :arrow_up: Upgrade dev dependency ([fb7c574](https://github.com/mikesprague/teams-incoming-webhook-action/commit/fb7c574))
 * :package: Prepare release v1.5.2 ([fc981f9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/fc981f9))
 
-
-
 ## <small>1.5.1 (2021-10-08)</small>
 
 * :arrow_up: Upgrade @octokit/rest ([6e8b500](https://github.com/mikesprague/teams-incoming-webhook-action/commit/6e8b500))
 * :package: Prepare release v1.5.1 ([fb44089](https://github.com/mikesprague/teams-incoming-webhook-action/commit/fb44089))
-
-
 
 ## 1.5.0 (2021-10-06)
 
 * :fire: Remove unnecessary else ([7b98687](https://github.com/mikesprague/teams-incoming-webhook-action/commit/7b98687))
 * :package: Prepare release ([374360f](https://github.com/mikesprague/teams-incoming-webhook-action/commit/374360f))
 
-
-
 ## <small>1.4.6 (2021-10-01)</small>
 
 * :arrow_up: Upgrade @octokit/rest and axios ([16088e2](https://github.com/mikesprague/teams-incoming-webhook-action/commit/16088e2))
 * :package: Prepare release ([84d9295](https://github.com/mikesprague/teams-incoming-webhook-action/commit/84d9295))
-
-
 
 ## <small>1.4.5 (2021-09-30)</small>
 
 * :arrow_up: Upgrade @octokit/rest ([34b52be](https://github.com/mikesprague/teams-incoming-webhook-action/commit/34b52be))
 * :package: Prepare release ([99ecf8c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/99ecf8c))
 
-
-
 ## <small>1.4.4 (2021-09-29)</small>
 
 * :arrow_up: Upgrade @octokit/core and @octokit/rest ([68026fd](https://github.com/mikesprague/teams-incoming-webhook-action/commit/68026fd))
 * :package: Prepare release ([adc178c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/adc178c))
-
-
 
 ## <small>1.4.3 (2021-09-27)</small>
 
 * :arrow_up: Upgrade @octokoit/rest ([67f6859](https://github.com/mikesprague/teams-incoming-webhook-action/commit/67f6859))
 * :package: Prepare release ([4e6e941](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4e6e941))
 * :recycle: Improve/simplify getHexForColorString ([6da8735](https://github.com/mikesprague/teams-incoming-webhook-action/commit/6da8735))
-
-
 
 ## <small>1.4.2 (2021-09-23)</small>
 
@@ -1814,16 +1578,12 @@
 * :package: Prepare release ([527df1b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/527df1b))
 * :recycle: Use self-running function vs naming and calling ([36681b0](https://github.com/mikesprague/teams-incoming-webhook-action/commit/36681b0))
 
-
-
 ## <small>1.4.1 (2021-09-21)</small>
 
 * :bug: Bugfix (tz was still hardcoded somewhere else) ([58542e3](https://github.com/mikesprague/teams-incoming-webhook-action/commit/58542e3))
 * :memo: Reorganize README ([f7b7867](https://github.com/mikesprague/teams-incoming-webhook-action/commit/f7b7867))
 * :package: Prepare release ([83cbae5](https://github.com/mikesprague/teams-incoming-webhook-action/commit/83cbae5))
 * :speech_balloon: Update name string ([eb529d1](https://github.com/mikesprague/teams-incoming-webhook-action/commit/eb529d1))
-
-
 
 ## 1.4.0 (2021-09-21)
 
@@ -1838,8 +1598,6 @@
 * :sparkles: Add support for custom timezone ([3423e94](https://github.com/mikesprague/teams-incoming-webhook-action/commit/3423e94))
 * :truck: Rename and use modern js ([54f2848](https://github.com/mikesprague/teams-incoming-webhook-action/commit/54f2848))
 * :truck: Rename images -> readme-images ([9dd3a66](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9dd3a66))
-
-
 
 ## 1.3.0 (2021-09-21)
 
@@ -1907,8 +1665,6 @@
 * Bump jest from 26.6.3 to 27.2.0 ([689bf76](https://github.com/mikesprague/teams-incoming-webhook-action/commit/689bf76))
 * Initial commit ([4493582](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4493582))
 
-
-
 ## <small>1.10.8 (2023-06-07)</small>
 
 * chore(deps-dev): bump @typescript-eslint/eslint-plugin (#156) ([bc8a117](https://github.com/mikesprague/teams-incoming-webhook-action/commit/bc8a117)), closes [#156](https://github.com/mikesprague/teams-incoming-webhook-action/issues/156)
@@ -1925,16 +1681,12 @@
 * chore(deps-dev): bump typescript from 5.0.4 to 5.1.3 (#160) ([fbdaf06](https://github.com/mikesprague/teams-incoming-webhook-action/commit/fbdaf06)), closes [#160](https://github.com/mikesprague/teams-incoming-webhook-action/issues/160)
 * chore(deps): bump dayjs from 1.11.7 to 1.11.8 (#161) ([7e965e5](https://github.com/mikesprague/teams-incoming-webhook-action/commit/7e965e5)), closes [#161](https://github.com/mikesprague/teams-incoming-webhook-action/issues/161)
 
-
-
 ## <small>1.10.7 (2023-05-22)</small>
 
 * chore(deps-dev): bump @typescript-eslint/eslint-plugin (#153) ([8a79b50](https://github.com/mikesprague/teams-incoming-webhook-action/commit/8a79b50)), closes [#153](https://github.com/mikesprague/teams-incoming-webhook-action/issues/153)
 * chore(deps-dev): bump @typescript-eslint/parser from 5.59.5 to 5.59.6 (#152) ([72a5a2a](https://github.com/mikesprague/teams-incoming-webhook-action/commit/72a5a2a)), closes [#152](https://github.com/mikesprague/teams-incoming-webhook-action/issues/152)
 * chore(deps-dev): bump eslint from 8.40.0 to 8.41.0 (#155) ([2e2b4ca](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2e2b4ca)), closes [#155](https://github.com/mikesprague/teams-incoming-webhook-action/issues/155)
 * chore(deps): bump @octokit/rest from 19.0.8 to 19.0.11 (#154) ([63daa32](https://github.com/mikesprague/teams-incoming-webhook-action/commit/63daa32)), closes [#154](https://github.com/mikesprague/teams-incoming-webhook-action/issues/154)
-
-
 
 ## <small>1.10.6 (2023-05-16)</small>
 
@@ -1946,15 +1698,11 @@
 * chore(deps-dev): bump typedoc from 0.24.6 to 0.24.7 (#147) ([4109518](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4109518)), closes [#147](https://github.com/mikesprague/teams-incoming-webhook-action/issues/147)
 * chore(deps): bump @octokit/rest from 19.0.7 to 19.0.8 (#151) ([a41aee5](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a41aee5)), closes [#151](https://github.com/mikesprague/teams-incoming-webhook-action/issues/151)
 
-
-
 ## <small>1.10.5 (2023-04-30)</small>
 
 * chore(deps-dev): bump typedoc-plugin-markdown from 3.15.2 to 3.15.3 ([115f916](https://github.com/mikesprague/teams-incoming-webhook-action/commit/115f916))
 * chore(deps): bump axios from 1.3.6 to 1.4.0 (#144) ([b845050](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b845050)), closes [#144](https://github.com/mikesprague/teams-incoming-webhook-action/issues/144)
 * ci(actions): only create releases for full semver versions ([44e6cc9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/44e6cc9))
-
-
 
 ## <small>1.10.4 (2023-04-26)</small>
 
@@ -1966,8 +1714,6 @@
 * chore(deps-dev): bump typedoc from 0.24.4 to 0.24.6 (#137) ([899ea74](https://github.com/mikesprague/teams-incoming-webhook-action/commit/899ea74)), closes [#137](https://github.com/mikesprague/teams-incoming-webhook-action/issues/137)
 * chore(deps-dev): bump typedoc-plugin-markdown from 3.15.1 to 3.15.2 (#136) ([8baed3d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/8baed3d)), closes [#136](https://github.com/mikesprague/teams-incoming-webhook-action/issues/136)
 * chore(deps): bump yaml and @commitlint/load (#142) ([c034297](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c034297)), closes [#142](https://github.com/mikesprague/teams-incoming-webhook-action/issues/142)
-
-
 
 ## <small>1.10.3 (2023-04-19)</small>
 
@@ -1984,15 +1730,11 @@
 * ci(actions): tweeak create-release allowed tags ([484b494](https://github.com/mikesprague/teams-incoming-webhook-action/commit/484b494))
 * docs: update auto-generated docs ([726a435](https://github.com/mikesprague/teams-incoming-webhook-action/commit/726a435))
 
-
-
 ## <small>1.10.2 (2023-04-10)</small>
 
 * build(npm): fix typedoc script due to api changes ([0064539](https://github.com/mikesprague/teams-incoming-webhook-action/commit/0064539))
 * fix(eslint): config ([62c5a53](https://github.com/mikesprague/teams-incoming-webhook-action/commit/62c5a53))
 * style: fix linter warnings ([1085d39](https://github.com/mikesprague/teams-incoming-webhook-action/commit/1085d39))
-
-
 
 ## <small>1.10.1 (2023-04-10)</small>
 
@@ -2022,8 +1764,6 @@
 * chore(deps): bump axios from 1.3.4 to 1.3.5 (#126) ([cfa2d9e](https://github.com/mikesprague/teams-incoming-webhook-action/commit/cfa2d9e)), closes [#126](https://github.com/mikesprague/teams-incoming-webhook-action/issues/126)
 * chore(eslint): update config ([25b33b6](https://github.com/mikesprague/teams-incoming-webhook-action/commit/25b33b6))
 
-
-
 ## 1.10.0 (2023-03-09)
 
 * build(npm): tweak docs scripts ([9594b99](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9594b99))
@@ -2037,8 +1777,6 @@
 * chore(typescript): add declarations ([c9992c9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c9992c9))
 * refactor(typescript): add WIP ([d3ae2c9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/d3ae2c9))
 
-
-
 ## <small>1.9.7 (2023-02-23)</small>
 
 * chore(deps-dev): bump cz-git from 1.4.1 to 1.5.0 (#102) ([1818764](https://github.com/mikesprague/teams-incoming-webhook-action/commit/1818764)), closes [#102](https://github.com/mikesprague/teams-incoming-webhook-action/issues/102)
@@ -2048,8 +1786,6 @@
 * chore(deps): bump axios from 1.3.1 to 1.3.2 (#98) ([0255e3d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/0255e3d)), closes [#98](https://github.com/mikesprague/teams-incoming-webhook-action/issues/98)
 * chore(deps): bump axios from 1.3.2 to 1.3.3 (#101) ([54216be](https://github.com/mikesprague/teams-incoming-webhook-action/commit/54216be)), closes [#101](https://github.com/mikesprague/teams-incoming-webhook-action/issues/101)
 * chore(deps): bump axios from 1.3.3 to 1.3.4 (#104) ([fa51d77](https://github.com/mikesprague/teams-incoming-webhook-action/commit/fa51d77)), closes [#104](https://github.com/mikesprague/teams-incoming-webhook-action/issues/104)
-
-
 
 ## <small>1.9.6 (2023-02-01)</small>
 
@@ -2062,15 +1798,11 @@
 * docs(README): remove codeql v1 badge ([c571d4a](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c571d4a))
 * ci(actions): remove deprecated codeql v1 workflow ([f269626](https://github.com/mikesprague/teams-incoming-webhook-action/commit/f269626))
 
-
-
 ## <small>1.9.5 (2023-01-26)</small>
 
 * chore(deps-dev): bump commitizen from 4.2.6 to 4.3.0 (#89) ([189d719](https://github.com/mikesprague/teams-incoming-webhook-action/commit/189d719)), closes [#89](https://github.com/mikesprague/teams-incoming-webhook-action/issues/89)
 * chore(deps): bump @octokit/rest from 19.0.5 to 19.0.7 (#90) ([f87efdb](https://github.com/mikesprague/teams-incoming-webhook-action/commit/f87efdb)), closes [#90](https://github.com/mikesprague/teams-incoming-webhook-action/issues/90)
 * chore(deps): bump axios from 1.2.3 to 1.2.4 (#91) ([9a9c650](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9a9c650)), closes [#91](https://github.com/mikesprague/teams-incoming-webhook-action/issues/91)
-
-
 
 ## <small>1.9.4 (2023-01-18)</small>
 
@@ -2081,8 +1813,6 @@
 * chore(deps-dev): cz-conventional-changelog to cz-git [skip actions] ([d39ed4e](https://github.com/mikesprague/teams-incoming-webhook-action/commit/d39ed4e))
 * chore(deps): bump axios from 1.2.2 to 1.2.3 (#87) ([af1455b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/af1455b)), closes [#87](https://github.com/mikesprague/teams-incoming-webhook-action/issues/87)
 * ci(actions): update secret name [skip actions] ([af4c097](https://github.com/mikesprague/teams-incoming-webhook-action/commit/af4c097))
-
-
 
 ## <small>1.9.3 (2022-12-30)</small>
 
@@ -2102,8 +1832,6 @@
 * docs(changelog): add CHANGELOG.md ([ef1506e](https://github.com/mikesprague/teams-incoming-webhook-action/commit/ef1506e))
 * docs(readme): remove bad link ([9283cc8](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9283cc8))
 
-
-
 ## <small>1.9.2 (2022-12-07)</small>
 
 * chore(cz): 🔧 add config for commitizen cli [skip actions] ([5033b6b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/5033b6b))
@@ -2119,8 +1847,6 @@
 * ci(dependabot): 🏗️ tweak workflow [skip actions] ([600418a](https://github.com/mikesprague/teams-incoming-webhook-action/commit/600418a))
 * ci(dependabot): 🔧 tweak config [skip actions] ([15de437](https://github.com/mikesprague/teams-incoming-webhook-action/commit/15de437))
 
-
-
 ## <small>1.9.1 (2022-11-23)</small>
 
 * :arrow_up: Upgrade dependency (#76) ([2b75c59](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2b75c59)), closes [#76](https://github.com/mikesprague/teams-incoming-webhook-action/issues/76)
@@ -2129,21 +1855,15 @@
 * :arrow_up: Upgrade dev dependency [skip actions] ([9ccc42b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9ccc42b))
 * :package: Prepare release v1.9.1 ([db2fa49](https://github.com/mikesprague/teams-incoming-webhook-action/commit/db2fa49))
 
-
-
 ## 1.9.0 (2022-10-27)
 
 * :bug: Only show author login if data is available ([b76c30a](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b76c30a))
 * :package: Prepare release v1.9.0 ([37b4be0](https://github.com/mikesprague/teams-incoming-webhook-action/commit/37b4be0))
 
-
-
 ## <small>1.8.2 (2022-10-22)</small>
 
 * :arrow_up: Upgrade dependencies (closes #74) ([b526206](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b526206)), closes [#74](https://github.com/mikesprague/teams-incoming-webhook-action/issues/74)
 * :package: Prepare release v1.8.2 ([051f100](https://github.com/mikesprague/teams-incoming-webhook-action/commit/051f100))
-
-
 
 ## <small>1.8.1 (2022-10-17)</small>
 
@@ -2151,16 +1871,12 @@
 * :memo: Update README ([4dad526](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4dad526))
 * :package: Prepare release v1.8.1 ([4f54866](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4f54866))
 
-
-
 ## 1.8.0 (2022-10-14)
 
 * :arrow_up: Upgrade dependencies ([2fc06ca](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2fc06ca))
 * :arrow_up: Upgrade dev dependency [skip actions] ([a7c8973](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a7c8973))
 * :package: Prepare release v1.8.0 ([29493f1](https://github.com/mikesprague/teams-incoming-webhook-action/commit/29493f1))
 * :recycle: CommonJS to ESM ([2f9c74f](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2f9c74f))
-
-
 
 ## <small>1.7.16 (2022-09-30)</small>
 
@@ -2172,23 +1888,17 @@
 * :memo: Update README [skip actions] ([bf93f40](https://github.com/mikesprague/teams-incoming-webhook-action/commit/bf93f40))
 * :package: Prepare release v1.7.16 ([537bd08](https://github.com/mikesprague/teams-incoming-webhook-action/commit/537bd08))
 
-
-
 ## <small>1.7.15 (2022-08-15)</small>
 
 * :arrow_up: Upgrade dependencies (closes #63, #65 ([23beb89](https://github.com/mikesprague/teams-incoming-webhook-action/commit/23beb89)), closes [#63](https://github.com/mikesprague/teams-incoming-webhook-action/issues/63) [#65](https://github.com/mikesprague/teams-incoming-webhook-action/issues/65)
 * :arrow_up: Upgrade dev dependency (closes #64) ([25d9ffb](https://github.com/mikesprague/teams-incoming-webhook-action/commit/25d9ffb)), closes [#64](https://github.com/mikesprague/teams-incoming-webhook-action/issues/64)
 * :package: Prepare release v1.7.15 ([ceb199c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/ceb199c))
 
-
-
 ## <small>1.7.14 (2022-08-11)</small>
 
 * :arrow_up: Upgrade dependency (closes #62) ([a180176](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a180176)), closes [#62](https://github.com/mikesprague/teams-incoming-webhook-action/issues/62)
 * :arrow_up: Upgrade dev dependency (closes #61) [skip actions] ([962038a](https://github.com/mikesprague/teams-incoming-webhook-action/commit/962038a)), closes [#61](https://github.com/mikesprague/teams-incoming-webhook-action/issues/61)
 * :package: Prepare release v1.7.14 ([da95a08](https://github.com/mikesprague/teams-incoming-webhook-action/commit/da95a08))
-
-
 
 ## <small>1.7.13 (2022-07-20)</small>
 
@@ -2198,16 +1908,12 @@
 * :building_construction: Update devcontainer ([2db1e81](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2db1e81))
 * :package: Prepare release v1.7.13 ([4224914](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4224914))
 
-
-
 ## <small>1.7.12 (2022-07-10)</small>
 
 * :arrow_up: Upgrade dependency (closes #58) ([efd37da](https://github.com/mikesprague/teams-incoming-webhook-action/commit/efd37da)), closes [#58](https://github.com/mikesprague/teams-incoming-webhook-action/issues/58)
 * :arrow_up: Upgrade dev dependency (closes #57) [skip actions] ([09c5da3](https://github.com/mikesprague/teams-incoming-webhook-action/commit/09c5da3)), closes [#57](https://github.com/mikesprague/teams-incoming-webhook-action/issues/57)
 * :arrow_up: Upgrade dev dependency [skip actions] ([6273351](https://github.com/mikesprague/teams-incoming-webhook-action/commit/6273351))
 * :package: Prepare release v1.7.12 ([d506d74](https://github.com/mikesprague/teams-incoming-webhook-action/commit/d506d74))
-
-
 
 ## <small>1.7.11 (2022-06-16)</small>
 
@@ -2218,8 +1924,6 @@
 * :arrow_up: Upgrade dev dependency (closes #56) ([e2494e1](https://github.com/mikesprague/teams-incoming-webhook-action/commit/e2494e1)), closes [#56](https://github.com/mikesprague/teams-incoming-webhook-action/issues/56)
 * :package: Prepare release v1.7.11 ([81cc653](https://github.com/mikesprague/teams-incoming-webhook-action/commit/81cc653))
 
-
-
 ## <small>1.7.10 (2022-05-28)</small>
 
 * :arrow_up: Upgrade dependency (closes #53) ([b3a7e20](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b3a7e20)), closes [#53](https://github.com/mikesprague/teams-incoming-webhook-action/issues/53)
@@ -2227,16 +1931,12 @@
 * :arrow_up: Upgrade dev dependency (closes #52) ([353f9fb](https://github.com/mikesprague/teams-incoming-webhook-action/commit/353f9fb)), closes [#52](https://github.com/mikesprague/teams-incoming-webhook-action/issues/52)
 * :package: Prepare release v1.7.10 ([b7157fd](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b7157fd))
 
-
-
 ## <small>1.7.9 (2022-05-16)</small>
 
 * :arrow_up: Upgrade dependency ([8cd1ce5](https://github.com/mikesprague/teams-incoming-webhook-action/commit/8cd1ce5))
 * :arrow_up: Upgrade dev dependency ([25c3b78](https://github.com/mikesprague/teams-incoming-webhook-action/commit/25c3b78))
 * :arrow_up: Upgrade dev dependency (closes #50) [skip actions] ([03faf3f](https://github.com/mikesprague/teams-incoming-webhook-action/commit/03faf3f)), closes [#50](https://github.com/mikesprague/teams-incoming-webhook-action/issues/50)
 * :package: Prepare new version v1.7.9 ([b17794f](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b17794f))
-
-
 
 ## <small>1.7.8 (2022-05-09)</small>
 
@@ -2246,14 +1946,10 @@
 * :package: Prepare release v1.7.8 ([27e5181](https://github.com/mikesprague/teams-incoming-webhook-action/commit/27e5181))
 * :pushpin: Pin dependencies ([bfbc461](https://github.com/mikesprague/teams-incoming-webhook-action/commit/bfbc461))
 
-
-
 ## <small>1.7.7 (2022-04-27)</small>
 
 * :arrow_up: Upgrade dependency ([84b3ebf](https://github.com/mikesprague/teams-incoming-webhook-action/commit/84b3ebf))
 * :package: Prepare release v1.7.7 ([90db75d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/90db75d))
-
-
 
 ## <small>1.7.6 (2022-04-25)</small>
 
@@ -2261,14 +1957,10 @@
 * :arrow_up: Upgrade dev dependencies [skip actions] ([b739952](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b739952))
 * :package: Prepeare release v1.7.6 ([5724cb3](https://github.com/mikesprague/teams-incoming-webhook-action/commit/5724cb3))
 
-
-
 ## <small>1.7.5 (2022-04-18)</small>
 
 * :arrow_up: Upgrade dependency (closes dependabot PR #42) ([0a3a4d9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/0a3a4d9)), closes [#42](https://github.com/mikesprague/teams-incoming-webhook-action/issues/42)
 * :package: Prepare release v1.7.5 ([f2cd67c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/f2cd67c))
-
-
 
 ## <small>1.7.4 (2022-04-13)</small>
 
@@ -2279,8 +1971,6 @@
 * :lock: Ran npm audit fix ([8c65489](https://github.com/mikesprague/teams-incoming-webhook-action/commit/8c65489))
 * :package: Prepare release ([84b05a4](https://github.com/mikesprague/teams-incoming-webhook-action/commit/84b05a4))
 
-
-
 ## <small>1.7.3 (2022-03-16)</small>
 
 * :arrow_up: Upgrade dependency ([41feffb](https://github.com/mikesprague/teams-incoming-webhook-action/commit/41feffb))
@@ -2290,8 +1980,6 @@
 * :recycle: Move emoji to title block ([b35e482](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b35e482))
 * :speech_balloon: Fix title ([59c844e](https://github.com/mikesprague/teams-incoming-webhook-action/commit/59c844e))
 
-
-
 ## <small>1.7.2 (2022-03-10)</small>
 
 * :arrow_up: Upgrade actions/checkout (closes PR 35) ([bc6c340](https://github.com/mikesprague/teams-incoming-webhook-action/commit/bc6c340))
@@ -2299,22 +1987,16 @@
 * :arrow_up: Upgrade node version ([77ba2cb](https://github.com/mikesprague/teams-incoming-webhook-action/commit/77ba2cb))
 * :package: Prepare release ([24aa085](https://github.com/mikesprague/teams-incoming-webhook-action/commit/24aa085))
 
-
-
 ## <small>1.7.1 (2022-02-28)</small>
 
 * :arrow_up: Upgrade dependency (closes PR 33) ([78d7f87](https://github.com/mikesprague/teams-incoming-webhook-action/commit/78d7f87))
 * :arrow_up: Upgrade dev dependency (closes PR 32) ([f436256](https://github.com/mikesprague/teams-incoming-webhook-action/commit/f436256))
 * :package: Prepare release ([ae5fe9c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/ae5fe9c))
 
-
-
 ## 1.7.0 (2022-02-25)
 
 * :package: Prepare release ([270aeca](https://github.com/mikesprague/teams-incoming-webhook-action/commit/270aeca))
 * :sparkles: Add emoji to output ([0050762](https://github.com/mikesprague/teams-incoming-webhook-action/commit/0050762))
-
-
 
 ## <small>1.6.8 (2022-02-14)</small>
 
@@ -2323,16 +2005,12 @@
 * :arrow_up: Upgrade two dev dependencies (closes PRs 29, 30) ([ea66e52](https://github.com/mikesprague/teams-incoming-webhook-action/commit/ea66e52))
 * :package: Prepare release ([ad8040e](https://github.com/mikesprague/teams-incoming-webhook-action/commit/ad8040e))
 
-
-
 ## <small>1.6.7 (2022-02-01)</small>
 
 * :arrow_up: Bump node-fetch from 2.6.6 to 2.6.7 ([2224e01](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2224e01))
 * :arrow_up: Upgrade dev dependency (closes PR 26) ([9cf5fe3](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9cf5fe3))
 * :memo: Update README (add build status) ([3665ac9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/3665ac9))
 * :package: Prepare release (v1.6.7) ([3a00593](https://github.com/mikesprague/teams-incoming-webhook-action/commit/3a00593))
-
-
 
 ## <small>1.6.6 (2022-01-19)</small>
 
@@ -2348,21 +2026,15 @@
 * :arrow_up: Upgrade two dev dependencies ([4db859b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4db859b))
 * :package: Prepare release v1.6.6 ([f2f8191](https://github.com/mikesprague/teams-incoming-webhook-action/commit/f2f8191))
 
-
-
 ## <small>1.6.5 (2021-11-17)</small>
 
 * :arrow_up: Upgrade dev dependency ([a06c1c2](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a06c1c2))
 * :package: Prepare release v1.6.5 ([7481195](https://github.com/mikesprague/teams-incoming-webhook-action/commit/7481195))
 
-
-
 ## <small>1.6.4 (2021-11-06)</small>
 
 * :arrow_up: Upgrade dev dependency ([71cced7](https://github.com/mikesprague/teams-incoming-webhook-action/commit/71cced7))
 * :package: Prepare release v1.6.4 ([e9bf821](https://github.com/mikesprague/teams-incoming-webhook-action/commit/e9bf821))
-
-
 
 ## <small>1.6.3 (2021-11-05)</small>
 
@@ -2372,8 +2044,6 @@
 * :memo: Tweak text ([9ea4ce3](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9ea4ce3))
 * :package: Prepare release v1.6.3 ([8464608](https://github.com/mikesprague/teams-incoming-webhook-action/commit/8464608))
 
-
-
 ## <small>1.6.2 (2021-10-28)</small>
 
 * :arrow_up: Upgrade dependency ([7cff840](https://github.com/mikesprague/teams-incoming-webhook-action/commit/7cff840))
@@ -2381,15 +2051,11 @@
 * :memo: Update README ([c83c03c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c83c03c))
 * :package: Prepare release v.1.6.2 ([891414c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/891414c))
 
-
-
 ## <small>1.6.1 (2021-10-20)</small>
 
 * :bento: Update README images again ([82cece8](https://github.com/mikesprague/teams-incoming-webhook-action/commit/82cece8))
 * :package: Prepare release ([dcc19df](https://github.com/mikesprague/teams-incoming-webhook-action/commit/dcc19df))
 * :recycle: Fix order of textblock and factset ([2999e74](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2999e74))
-
-
 
 ## 1.6.0 (2021-10-20)
 
@@ -2408,64 +2074,46 @@
 * :recycle: Update description and default for color ([4b95513](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4b95513))
 * :sparkles: Add getAdaptiveCardColorString helper ([c45e9b7](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c45e9b7))
 
-
-
 ## <small>1.5.3 (2021-10-12)</small>
 
 * :arrow_up: Upgrade dependency ([88d84d4](https://github.com/mikesprague/teams-incoming-webhook-action/commit/88d84d4))
 * :package: Prepare release v1.5.3 ([c04225f](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c04225f))
-
-
 
 ## <small>1.5.2 (2021-10-09)</small>
 
 * :arrow_up: Upgrade dev dependency ([fb7c574](https://github.com/mikesprague/teams-incoming-webhook-action/commit/fb7c574))
 * :package: Prepare release v1.5.2 ([fc981f9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/fc981f9))
 
-
-
 ## <small>1.5.1 (2021-10-08)</small>
 
 * :arrow_up: Upgrade @octokit/rest ([6e8b500](https://github.com/mikesprague/teams-incoming-webhook-action/commit/6e8b500))
 * :package: Prepare release v1.5.1 ([fb44089](https://github.com/mikesprague/teams-incoming-webhook-action/commit/fb44089))
-
-
 
 ## 1.5.0 (2021-10-06)
 
 * :fire: Remove unnecessary else ([7b98687](https://github.com/mikesprague/teams-incoming-webhook-action/commit/7b98687))
 * :package: Prepare release ([374360f](https://github.com/mikesprague/teams-incoming-webhook-action/commit/374360f))
 
-
-
 ## <small>1.4.6 (2021-10-01)</small>
 
 * :arrow_up: Upgrade @octokit/rest and axios ([16088e2](https://github.com/mikesprague/teams-incoming-webhook-action/commit/16088e2))
 * :package: Prepare release ([84d9295](https://github.com/mikesprague/teams-incoming-webhook-action/commit/84d9295))
-
-
 
 ## <small>1.4.5 (2021-09-30)</small>
 
 * :arrow_up: Upgrade @octokit/rest ([34b52be](https://github.com/mikesprague/teams-incoming-webhook-action/commit/34b52be))
 * :package: Prepare release ([99ecf8c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/99ecf8c))
 
-
-
 ## <small>1.4.4 (2021-09-29)</small>
 
 * :arrow_up: Upgrade @octokit/core and @octokit/rest ([68026fd](https://github.com/mikesprague/teams-incoming-webhook-action/commit/68026fd))
 * :package: Prepare release ([adc178c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/adc178c))
-
-
 
 ## <small>1.4.3 (2021-09-27)</small>
 
 * :arrow_up: Upgrade @octokoit/rest ([67f6859](https://github.com/mikesprague/teams-incoming-webhook-action/commit/67f6859))
 * :package: Prepare release ([4e6e941](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4e6e941))
 * :recycle: Improve/simplify getHexForColorString ([6da8735](https://github.com/mikesprague/teams-incoming-webhook-action/commit/6da8735))
-
-
 
 ## <small>1.4.2 (2021-09-23)</small>
 
@@ -2476,16 +2124,12 @@
 * :package: Prepare release ([527df1b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/527df1b))
 * :recycle: Use self-running function vs naming and calling ([36681b0](https://github.com/mikesprague/teams-incoming-webhook-action/commit/36681b0))
 
-
-
 ## <small>1.4.1 (2021-09-21)</small>
 
 * :bug: Bugfix (tz was still hardcoded somewhere else) ([58542e3](https://github.com/mikesprague/teams-incoming-webhook-action/commit/58542e3))
 * :memo: Reorganize README ([f7b7867](https://github.com/mikesprague/teams-incoming-webhook-action/commit/f7b7867))
 * :package: Prepare release ([83cbae5](https://github.com/mikesprague/teams-incoming-webhook-action/commit/83cbae5))
 * :speech_balloon: Update name string ([eb529d1](https://github.com/mikesprague/teams-incoming-webhook-action/commit/eb529d1))
-
-
 
 ## 1.4.0 (2021-09-21)
 
@@ -2500,8 +2144,6 @@
 * :sparkles: Add support for custom timezone ([3423e94](https://github.com/mikesprague/teams-incoming-webhook-action/commit/3423e94))
 * :truck: Rename and use modern js ([54f2848](https://github.com/mikesprague/teams-incoming-webhook-action/commit/54f2848))
 * :truck: Rename images -> readme-images ([9dd3a66](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9dd3a66))
-
-
 
 ## 1.3.0 (2021-09-21)
 
@@ -2568,6 +2210,3 @@
 * Bump eslint from 7.17.0 to 7.32.0 ([9ce53c4](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9ce53c4))
 * Bump jest from 26.6.3 to 27.2.0 ([689bf76](https://github.com/mikesprague/teams-incoming-webhook-action/commit/689bf76))
 * Initial commit ([4493582](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4493582))
-
-
-
