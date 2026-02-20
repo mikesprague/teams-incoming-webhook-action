@@ -27,7 +27,7 @@
     "node": ">= 24.x",
     "npm": ">= 11.x"
   },
-  "packageManager": "npm@11.10.0",
+  "packageManager": "npm@11.10.1",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mikesprague/teams-incoming-webhook-action.git"
@@ -72,6 +72,7 @@
   "overrides": {
     "@conventional-changelog/git-client": "^2.5.1",
     "lodash": "^4.17.23",
+    "minimatch": "10.2.2",
     "tmp": "^0.2.5"
   },
   "config": {
