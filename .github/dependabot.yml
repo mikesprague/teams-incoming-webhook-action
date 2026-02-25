@@ -1,26 +1,42 @@
 version: 2
+
+multi-ecosystem-groups:
+  all-updates:
+    schedule:
+      interval: "daily"
+      time: "10:00"
+      timezone: "America/New_York"
+    target-branch: "dev"
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore"
+      include: "scope"
+
 updates:
-  # maintain GitHub Actions
   - package-ecosystem: "github-actions"
-    target-branch: "dev"
     directory: "/"
-    schedule:
-      interval: "daily"
-      time: "10:00"
-      timezone: "America/New_York"
-    commit-message:
-      prefix: "chore"
-      prefix-development: "chore"
-      include: "scope"
-  # maintain npm dependencies
+    patterns: ["*"]
+    multi-ecosystem-group: "all-updates"
   - package-ecosystem: "npm"
-    target-branch: "dev"
     directory: "/"
-    schedule:
-      interval: "daily"
-      time: "10:00"
-      timezone: "America/New_York"
-    commit-message:
-      prefix: "chore"
-      prefix-development: "chore"
-      include: "scope"
+    patterns: ["*"]
+    multi-ecosystem-group: "all-updates"
+    groups:
+      conventional-changelog:
+        patterns:
+          - "conventional-changelog*"
+      github:
+        patterns:
+          - "@actions/core"
+          - "@@octokit/rest"
+      types:
+        patterns:
+          - "@types/*"
+          - "@octokit/types"
+      typedoc:
+        patterns:
+          - "typedoc*"
+      vitest:
+        patterns:
+          - "vitest"
+          - "@vitest/*"
