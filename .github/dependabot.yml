@@ -1,26 +1,27 @@
 version: 2
-
-multi-ecosystem-groups:
-  all-updates:
+updates:
+  - package-ecosystem: "github-actions"
+    target-branch: "dev"
+    directory: "/"
     schedule:
       interval: "daily"
       time: "10:00"
       timezone: "America/New_York"
-    target-branch: "dev"
     commit-message:
       prefix: "chore"
       prefix-development: "chore"
       include: "scope"
-
-updates:
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    patterns: ["*"]
-    multi-ecosystem-group: "all-updates"
   - package-ecosystem: "npm"
+    target-branch: "dev"
     directory: "/"
-    patterns: ["*"]
-    multi-ecosystem-group: "all-updates"
+    schedule:
+      interval: "daily"
+      time: "10:00"
+      timezone: "America/New_York"
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore"
+      include: "scope"
     groups:
       conventional-changelog:
         patterns:
