@@ -1,3 +1,28 @@
+## [2.0.2](https://github.com/mikesprague/teams-incoming-webhook-action/compare/v2.0.1...v2.0.2) (2026-02-25)
+
+### 🔄 Continuous Integration
+
+* **changelog:** update config ([a85ba9b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a85ba9b95ecd866a91a827409de5c5437f2dbde7))
+* **create-releae:** refactor to make more reusable ([34f6cf5](https://github.com/mikesprague/teams-incoming-webhook-action/commit/34f6cf5025026f6ef429f7dd76a4f2d152f8a4d3))
+* **create-release:** add comments; add node_modules caching; improve/harden logic ([cdf56cd](https://github.com/mikesprague/teams-incoming-webhook-action/commit/cdf56cd5b48bf4e7c65095ac20c6190383c2f8cd))
+* **create-release:** reduce complexity (remove fallback logic); logic improvements ([ad7deab](https://github.com/mikesprague/teams-incoming-webhook-action/commit/ad7deabf1788f9e9a9855d2838a3fcb0afabeda8))
+* **dependabot:** refactor to use `multi-ecosystem-groups`; add groups ([d84df8b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/d84df8b1312271960f46895c5671c0081fd6a958))
+
+### 🔧 Chores
+
+* **deps-dev:** bump @biomejs/biome from 2.4.0 to 2.4.1 (#525) ([639a055](https://github.com/mikesprague/teams-incoming-webhook-action/commit/639a055623e092c3a619d0b18cc641bd2a964fce)), closes [#525](https://github.com/mikesprague/teams-incoming-webhook-action/issues/525)
+* **deps-dev:** bump @biomejs/biome from 2.4.1 to 2.4.2 (#526) ([0a0c56a](https://github.com/mikesprague/teams-incoming-webhook-action/commit/0a0c56ac38daed75b4d10a368d2f4e737fa07252)), closes [#526](https://github.com/mikesprague/teams-incoming-webhook-action/issues/526)
+* **deps-dev:** bump @biomejs/biome from 2.4.2 to 2.4.3 (#528) ([61607b5](https://github.com/mikesprague/teams-incoming-webhook-action/commit/61607b537fda58e33b408bcfeb8fa490f3ccbdf7)), closes [#528](https://github.com/mikesprague/teams-incoming-webhook-action/issues/528)
+* **deps-dev:** bump @biomejs/biome from 2.4.3 to 2.4.4 (#529) ([c9a282e](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c9a282ecf2164bc12cc5f5be64b453fe59fdc48d)), closes [#529](https://github.com/mikesprague/teams-incoming-webhook-action/issues/529)
+* **deps-dev:** bump @types/node from 25.2.3 to 25.3.0 (#527) ([cafb8a6](https://github.com/mikesprague/teams-incoming-webhook-action/commit/cafb8a6caec5e105692c84400647293675e3f5a5)), closes [#527](https://github.com/mikesprague/teams-incoming-webhook-action/issues/527)
+* **overrides:** add `minimatch` to resolve security alert ([18aa1cc](https://github.com/mikesprague/teams-incoming-webhook-action/commit/18aa1ccd9d97ef46e7c31b6e8a32f5574c1c881e))
+* **overrides:** bump minimatch ([b59ea17](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b59ea17b25d2514fe87c8ce40567f8f4dd8c75a4))
+
+### 🏗️ Build System
+
+* **npm:** bump `packageManager` ([843ecb3](https://github.com/mikesprague/teams-incoming-webhook-action/commit/843ecb3ede4282427e6da8f0588254331ce01f60))
+
+
 ## [2.0.1](https://github.com/mikesprague/teams-incoming-webhook-action/compare/v2.0.0...v2.0.1) (2026-02-16)
 
 ### 🔧 Miscellaneous Chores
