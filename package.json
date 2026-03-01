@@ -27,7 +27,7 @@
     "node": ">= 24.x",
     "npm": ">= 11.x"
   },
-  "packageManager": "npm@11.10.1",
+  "packageManager": "npm@11.11.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mikesprague/teams-incoming-webhook-action.git"
@@ -81,6 +81,6 @@
   },
   "volta": {
     "node": "25.7.0",
-    "npm": "11.10.1"
+    "npm": "11.11.0"
   }
 }
