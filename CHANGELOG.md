@@ -1,3 +1,21 @@
+## [2.0.3](https://github.com/mikesprague/teams-incoming-webhook-action/compare/v2.0.2...v2.0.3) (2026-03-01)
+
+### 🏗️ Build System
+
+* **npm:** bump `packageManager` ([3a7c48f](https://github.com/mikesprague/teams-incoming-webhook-action/commit/3a7c48f9321f0ace2ea06af5020909ba4a32c2be))
+
+### 🔧 Chores
+
+* **deps-dev:** bump @types/node in the types group (#530) ([cc64ce3](https://github.com/mikesprague/teams-incoming-webhook-action/commit/cc64ce3c9f870df60885dab3adf03b6b52c5f00e)), closes [#530](https://github.com/mikesprague/teams-incoming-webhook-action/issues/530)
+* **deps-dev:** bump @types/node in the types group (#532) ([d03ac43](https://github.com/mikesprague/teams-incoming-webhook-action/commit/d03ac4317d462817da91c72d5dbdf10fb908307f)), closes [#532](https://github.com/mikesprague/teams-incoming-webhook-action/issues/532)
+* **deps-dev:** bump @types/node in the types group (#533) ([afa03d4](https://github.com/mikesprague/teams-incoming-webhook-action/commit/afa03d4d3a5258f51857c912d2f146897ea55393)), closes [#533](https://github.com/mikesprague/teams-incoming-webhook-action/issues/533)
+* **deps:** bump actions/upload-artifact from 6 to 7 (#531) ([22c5c68](https://github.com/mikesprague/teams-incoming-webhook-action/commit/22c5c6892fd5e9196c154bcc94ad80fd39de4dd3)), closes [#531](https://github.com/mikesprague/teams-incoming-webhook-action/issues/531)
+
+### ⏪ Reverts
+
+* **dependabot:** multi-ecosystem-config ([be0506b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/be0506ba120fce5d0885c86480027a76872ca3ae))
+
+
 ## [2.0.2](https://github.com/mikesprague/teams-incoming-webhook-action/compare/v2.0.1...v2.0.2) (2026-02-25)
 
 ### 🔄 Continuous Integration
