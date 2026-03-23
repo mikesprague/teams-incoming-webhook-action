@@ -56,8 +56,8 @@
     "@octokit/types": "16.0.0",
     "@types/node": "25.5.0",
     "@vercel/ncc": "0.38.4",
-    "@vitest/coverage-v8": "4.1.0",
-    "@vitest/ui": "4.1.0",
+    "@vitest/coverage-v8": "4.1.1",
+    "@vitest/ui": "4.1.1",
     "commitizen": "4.3.1",
     "conventional-changelog": "7.2.0",
     "conventional-changelog-cli": "5.0.0",
@@ -66,7 +66,7 @@
     "typedoc": "0.28.18",
     "typedoc-plugin-markdown": "4.11.0",
     "typescript": "5.9.3",
-    "vitest": "4.1.0"
+    "vitest": "4.1.1"
   },
   "overrides": {
     "@conventional-changelog/git-client": "^2.5.1",
