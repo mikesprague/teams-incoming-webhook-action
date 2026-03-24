@@ -47,7 +47,7 @@ jobs:
       # install conventional changelog dependencies if not cached
       - name: Install conventional changelog dependencies
         if: steps.cache.outputs.cache-hit != 'true'
-        run: npm install conventional-changelog conventional-changelog-cli conventional-changelog-conventionalcommits
+        run: npm install conventional-changelog conventional-changelog-conventionalcommits
 
       # generate and output data for release creation and changelog generation steps
       - name: Prepare release data
