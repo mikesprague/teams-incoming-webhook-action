@@ -1,26 +1,10 @@
-import { readFileSync } from 'node:fs';
-import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { mainTemplate } from './node_modules/conventional-changelog-conventionalcommits/src/templates.js';
 
 // Changelog section mapping by Conventional Commit type.
 // - Rename a heading: change `section`.
 // - Hide a heading: set `hidden: true` for that type.
 // - Show a heading: set `hidden: false` (or remove `hidden`).
 // - Add support for a new type: add a new object to this array.
-
-// read in this file: node_modules/conventional-changelog-conventionalcommits/src/templates/template.hbs
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const __filename =
-  'node_modules/conventional-changelog-conventionalcommits/src/templates/template.hbs';
-let headerTemplate = '';
-try {
-  headerTemplate = readFileSync(join(__dirname, __filename), 'utf-8');
-} catch (error) {
-  console.error(
-    `Error reading template file at ${join(__dirname, __filename)}:`,
-    error
-  );
-}
 
 const defaultTemplate = `{{> header}}
 {{#if noteGroups}}
@@ -43,12 +27,13 @@ const defaultTemplate = `{{> header}}
 {{> commit root=@root}}
 {{/each}}
 {{/each}}
+{{> footer}}
 
 `;
 
-const mainTemplate =
-  headerTemplate.length > 0 && headerTemplate.includes('{{#each commits}}')
-    ? `${headerTemplate}
+const template =
+  mainTemplate.length > 0 && mainTemplate.includes('{{#each commits}}')
+    ? `;${mainTemplate}
 
 `
     : defaultTemplate;
@@ -72,7 +57,7 @@ const typeMap = new Map(types.map((entry) => [entry.type, entry]));
 
 export default {
   writer: {
-    mainTemplate,
+    template,
     transform(commit) {
       const commitType = (
         commit.revert ? 'revert' : commit.type || ''
