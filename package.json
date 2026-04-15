@@ -27,7 +27,7 @@
     "node": ">= 24.x",
     "npm": ">= 11.x"
   },
-  "packageManager": "npm@11.12.0",
+  "packageManager": "npm@11.12.1",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mikesprague/teams-incoming-webhook-action.git"
@@ -68,12 +68,12 @@
     "vitest": "4.1.4"
   },
   "overrides": {
-    "@conventional-changelog/git-client": "^2.6.0",
+    "@conventional-changelog/git-client": "^2.7.0",
     "flatted": "^3.4.2",
-    "lodash": "^4.17.23",
-    "minimatch": "^10.2.4",
+    "lodash": "^4.18.1",
+    "minimatch": "^10.2.5",
     "tmp": "^0.2.5",
-    "undici": "^7.24.5"
+    "undici": "^8.1.0"
   },
   "config": {
     "commitizen": {
@@ -81,7 +81,7 @@
     }
   },
   "volta": {
-    "node": "25.8.1",
-    "npm": "11.12.0"
+    "node": "25.9.0",
+    "npm": "11.12.1"
   }
 }
