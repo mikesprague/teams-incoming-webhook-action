@@ -52,7 +52,7 @@
     "dayjs": "1.11.20"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.11",
+    "@biomejs/biome": "2.4.12",
     "@octokit/types": "16.0.0",
     "@types/node": "25.6.0",
     "@vercel/ncc": "0.38.4",
