@@ -349,7 +349,7 @@ which is available to view via GH Pages: <https://mikesprague.github.io/teams-in
 
 ### Code Quality
 
-The project uses [Biome](https://biomejs.dev/) for linting and formatting:
+The project uses Oxlint/Oxfmt for [linting](https://oxc.rs/docs/guide/usage/linter.html) and [formatting](https://oxc.rs/docs/guide/usage/formatter.html):
 
 ```bash
 # Check code quality
