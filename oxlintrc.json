@@ -1,0 +1,42 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "ignorePatterns": [
+    ".devcontainer/**",
+    ".git/**",
+    ".github/**",
+    ".history/**",
+    ".vscode/**",
+    "coverage/**",
+    "data/**",
+    "db/**",
+    "dist/**",
+    "docs/**",
+    "generated/**",
+    "node_modules/**",
+    "prisma/**",
+    "repo-test/**",
+    "repos/**",
+    "types/**",
+    "src/index.ts",
+    "src/scratch*.ts"
+  ],
+  "plugins": [
+    "eslint",
+    "react",
+    "typescript",
+    "unicorn"
+  ],
+  "rules": {
+    "curly": "error",
+    "default-param-last": "error",
+    "no-else-return": "error",
+    "no-param-reassign": "error",
+    "react/self-closing-comp": "error",
+    "typescript/no-explicit-any": "warn",
+    "typescript/no-inferrable-types": "error",
+    "typescript/no-unnecessary-template-expression": "error",
+    "typescript/prefer-as-const": "error",
+    "typescript/prefer-enum-initializers": "error",
+    "unicorn/prefer-number-properties": "error"
+  }
+}

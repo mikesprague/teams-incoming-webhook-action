@@ -9,8 +9,9 @@
     "build": "npm run prepare",
     "changelog": "npx conventional-changelog -p conventionalcommits -n changelog.config.mjs -i CHANGELOG.md -s && git add CHANGELOG.md",
     "declarations": "rm -rf ./types && tsc --emitDeclarationOnly --declaration true --declarationDir './types'",
-    "lint": "npx biome check ./src",
-    "lint:fix": "npx biome check --write ./src",
+    "format": "npx oxfmt src",
+    "format:check": "npx oxfmt --check src",
+    "lint": "npx oxlint src",
     "version": "npm run changelog",
     "postbuild": "npm run typedoc-html",
     "prepare": "rm -rf dist && ncc build --source-map --license licenses.txt",
@@ -27,7 +28,7 @@
     "node": ">= 24.x",
     "npm": ">= 11.x"
   },
-  "packageManager": "npm@11.12.1",
+  "packageManager": "npm@11.13.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mikesprague/teams-incoming-webhook-action.git"
@@ -52,7 +53,6 @@
     "dayjs": "1.11.20"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.13",
     "@octokit/types": "16.0.0",
     "@types/node": "25.6.0",
     "@vercel/ncc": "0.38.4",
@@ -62,6 +62,8 @@
     "conventional-changelog": "7.2.0",
     "conventional-changelog-conventionalcommits": "9.3.1",
     "cz-git": "1.12.0",
+    "oxfmt": "0.46.0",
+    "oxlint": "1.61.0",
     "typedoc": "0.28.19",
     "typedoc-plugin-markdown": "4.11.0",
     "typescript": "6.0.3",
@@ -82,6 +84,6 @@
   },
   "volta": {
     "node": "25.9.0",
-    "npm": "11.12.1"
+    "npm": "11.13.0"
   }
 }
