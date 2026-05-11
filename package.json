@@ -61,7 +61,7 @@
     "commitizen": "4.3.1",
     "conventional-changelog": "7.2.0",
     "conventional-changelog-conventionalcommits": "9.3.1",
-    "cz-git": "1.13.0",
+    "cz-git": "1.13.1",
     "oxfmt": "0.48.0",
     "oxlint": "1.64.0",
     "typedoc": "0.28.19",
