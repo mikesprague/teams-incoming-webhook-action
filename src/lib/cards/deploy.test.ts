@@ -1,5 +1,4 @@
 import type { Endpoints } from '@octokit/types';
-
 import { describe, expect, it } from 'vitest';
 
 import { populateCard } from './deploy.js';

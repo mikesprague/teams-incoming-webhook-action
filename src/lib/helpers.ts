@@ -95,6 +95,4 @@ export const buildMentionEntities = (mentions: UserMention[]) =>
   }));
 
 export const renderMentionsText = (mentions: UserMention[]) =>
-  `**Mentions:** ${mentions
-    .map((mention) => `<at>${mention.name}</at>`)
-    .join(', ')}`;
+  `**Mentions:** ${mentions.map((mention) => `<at>${mention.name}</at>`).join(', ')}`;

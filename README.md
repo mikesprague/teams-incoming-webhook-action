@@ -303,34 +303,36 @@ This project uses modern TypeScript with strict type checking and comprehensive 
 
 ### Prerequisites
 
-- Node.js >= 24.x
-- npm >= 11.x
+- Bun >= 1.3.x
 
 ### Setup
 
 ```bash
-npm install
+bun install
 ```
 
 ### Testing
 
 The project uses [Vitest](https://vitest.dev/) for testing with comprehensive coverage requirements:
 
+> [!IMPORTANT]
+> `bun test` uses Bun's built in test runner, we need to explicitly use our test script and Vitest
+
 ```bash
 # Run tests once
-npm test
+bun run test
 
 # Run tests in watch mode
-npm run test:watch
+bun run test:watch
 
 # Run tests with coverage report
-npm run test:coverage
+bun run test:coverage
 
 # Run tests with UI
-npm run test:ui
+bun run test:ui
 ```
 
-CI also runs `npm run test:coverage`, uploads the report to [Codecov](https://codecov.io/),
+CI also runs `bun run test:coverage`, uploads the report to [Codecov](https://codecov.io/),
 and includes the HTML coverage report in the published docs artifact (`docs/publish/coverage`)
 which is available to view via GH Pages: <https://mikesprague.github.io/teams-incoming-webhook-action/coverage/>
 
@@ -353,13 +355,13 @@ The project uses Oxlint/Oxfmt for [linting](https://oxc.rs/docs/guide/usage/lint
 
 ```bash
 # Check code quality
-npm run lint
+bun run lint
 
 # Type check
-npm run typecheck
+bun run typecheck
 
 # Build the action
-npm run build
+bun run build
 ```
 
 ### TypeScript Configuration
@@ -373,5 +375,5 @@ The project uses TypeScript 5.9+ with:
 
 ### Documentation
 
-This project uses [TypeDoc](https://typedoc.org/) to generate API documentation during CI (`npm run build`) via the `postbuild` script.
+This project uses [TypeDoc](https://typedoc.org/) to generate API documentation during CI (`bun run build`) via the `postbuild` script.
 The generated docs are published to GitHub Pages at <https://mikesprague.github.io/teams-incoming-webhook-action/>.

@@ -4,10 +4,7 @@ import dayjs from 'dayjs';
 import timezone from 'dayjs/plugin/timezone.js';
 import utc from 'dayjs/plugin/utc.js';
 
-import {
-  getAdaptiveCardColorString,
-  parseUserMentions,
-} from './lib/helpers.js';
+import { getAdaptiveCardColorString, parseUserMentions } from './lib/helpers.js';
 
 interface TeamsMessage {
   type: string;
@@ -76,8 +73,7 @@ try {
       trimWhitespace: true,
     }) || '';
 
-  const { invalidEntries, mentions: userMentions } =
-    parseUserMentions(userMentionsInput);
+  const { invalidEntries, mentions: userMentions } = parseUserMentions(userMentionsInput);
 
   if (invalidEntries.length > 0) {
     const invalidMessage = `Ignoring invalid user-mentions entries: ${invalidEntries.join(', ')}`;
@@ -109,9 +105,7 @@ try {
     const branch = GITHUB_REF?.split('/')[GITHUB_REF.split('/').length - 1];
     const { author } = commit.data;
 
-    const timestamp = dayjs()
-      .tz(timezoneString)
-      .format('ddd, D MMM YYYY hh:mm:ss Z');
+    const timestamp = dayjs().tz(timezoneString).format('ddd, D MMM YYYY hh:mm:ss Z');
 
     messageToPost = populateCard({
       author,

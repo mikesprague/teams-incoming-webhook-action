@@ -25,45 +25,40 @@ jobs:
       - name: 👷 Checkout repo
         uses: actions/checkout@v6
 
-      # setup node environment
-      - name: 🏗️ Setup Node.js ${{ vars.NODE_VERSION }} environment
-        uses: actions/setup-node@v6
-        with:
-          node-version: ${{ vars.NODE_VERSION }}
-          check-latest: true
+      - name: 🏗️ Setup Bun environment
+        id: setup-bun
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
 
-      # cache node_modules based on package-lock.json hash to speed up builds
       - name: ⚡  Cache node_modules
-        if: ${{ !cancelled() }}
-        uses: actions/cache@v5
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
         id: cache
         with:
-          path: ./node_modules
-          key: ${{ runner.os }}-node-${{ vars.NODE_VERSION }}-${{ hashFiles('**/package-lock.json') }}
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ steps.setup-bun.outputs.bun-version }}-${{ hashFiles('bun.lock') }}
           restore-keys: |
-            ${{ runner.os }}-node-${{ vars.NODE_VERSION }}-
+            ${{ runner.os }}-node-${{ steps.setup-bun.outputs.bun-version }}-
 
       # install dependencies if cache is not hit
       - name: 🏗️ Install dependencies
         if: steps.cache.outputs.cache-hit != 'true' && !cancelled()
-        run: npm install
+        run: bun install
 
       # build action
       - name: 👷 Prepare action
         if: ${{ !cancelled() }}
-        run: npm run build
+        run: bun run build
 
       # run unit tests and linters (biome and typescript/tsc)
       - name: 🧪 Run unit tests and linters
         if: ${{ !cancelled() }}
-        run: npm test
+        run: bun run test
 
       # run unit test coverage and copy to publish directory
       - name: 📊 Run test coverage and copy to publish directory
         if: ${{ !cancelled() }}
         run: |
-          npm run test:coverage
-          npm run test:junit
+          bun run test:coverage
+          bun run test:junit
           cp -R ./coverage ./docs/publish/coverage
 
       # upload coverage reports to Codecov

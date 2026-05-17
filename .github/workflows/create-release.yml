@@ -26,28 +26,23 @@ jobs:
         with:
           fetch-depth: 0
 
-      # setup Node.js environment with npm caching for node modules to speed up changelog generation
-      - name: Setup Node.js ${{ env.NODE_VERSION }} environment
-        uses: actions/setup-node@v6
-        with:
-          cache: "npm"
-          check-latest: true
-          node-version: ${{ env.NODE_VERSION }}
+      - name: 🏗️ Setup Bun environment
+        id: setup-bun
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
 
-      # additional caching layer for node_modules to speed up subsequent runs
-      - name: Cache node_modules
-        uses: actions/cache@v5
+      - name: ⚡  Cache node_modules
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
         id: cache
         with:
-          path: ./node_modules
-          key: ${{ runner.os }}-node-${{ env.NODE_VERSION }}-${{ hashFiles('**/package-lock.json') }}
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ steps.setup-bun.outputs.bun-version }}-${{ hashFiles('bun.lock') }}
           restore-keys: |
-            ${{ runner.os }}-node-${{ env.NODE_VERSION }}-
+            ${{ runner.os }}-node-${{ steps.setup-bun.outputs.bun-version }}-
 
       # install conventional changelog dependencies if not cached
-      - name: Install conventional changelog dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm install conventional-changelog conventional-changelog-conventionalcommits
+      - name: 🏗️ Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true' && !cancelled()
+        run: bun install conventional-changelog conventional-changelog-conventionalcommits
 
       # generate and output data for release creation and changelog generation steps
       - name: Prepare release data

@@ -41,7 +41,7 @@ const template =
 const types = [
   { type: 'build', section: '🏗️ Build System', hidden: false },
   { type: 'chore', section: '🔧 Chores', hidden: false },
-  { type: 'ci', section: '🔄 Continuous Integration', hidden: false },
+  { type: 'ci', section: '🔄 CI/CD', hidden: false },
   { type: 'docs', section: '📚 Documentation', hidden: false },
   { type: 'feat', section: '✨ Features', hidden: false },
   { type: 'fix', section: '🐛 Fixes', hidden: false },
