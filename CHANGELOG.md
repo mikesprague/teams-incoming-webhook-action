@@ -1,3 +1,67 @@
+## [2.1.0](https://github.com/mikesprague/teams-incoming-webhook-action/compare/v2.0.3...v2.1.0) (2026-05-17)
+
+### 🏗️ Build System
+
+* biome -> oxc (oxfmt/oxlint) ([ee5a9ed](https://github.com/mikesprague/teams-incoming-webhook-action/commit/ee5a9ede57f50ca768c352f52938e61573cb5c59))
+* **changelog:** update conventional changelog config ([e479f72](https://github.com/mikesprague/teams-incoming-webhook-action/commit/e479f723429cecb4e07f082854cab31dbaa2f04c))
+* node/npm -> bun ([71df43a](https://github.com/mikesprague/teams-incoming-webhook-action/commit/71df43a21458c0d94e10aa03e180dc749e677444))
+* **npm:** bump packageManager ([2ae5218](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2ae52185dd6af76991416f98c4b1c9d43b373f84))
+* **npm:** bump packageManager (also updates overrides) ([a7705db](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a7705db8fc9b337d5ea8d0727462941a5cf3a04c))
+
+### 🔧 Chores
+
+* **deps-dev:** bump @biomejs/biome from 2.4.10 to 2.4.11 (#562) ([9aeb5bc](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9aeb5bce16632f9ad7e4fde8b6296e615445d033)), closes [#562](https://github.com/mikesprague/teams-incoming-webhook-action/issues/562)
+* **deps-dev:** bump @biomejs/biome from 2.4.11 to 2.4.12 (#564) ([62ca5c1](https://github.com/mikesprague/teams-incoming-webhook-action/commit/62ca5c14bd78d31adca63bf2f6eda157935b5ea5)), closes [#564](https://github.com/mikesprague/teams-incoming-webhook-action/issues/564)
+* **deps-dev:** bump @biomejs/biome from 2.4.12 to 2.4.13 (#568) ([ebd2e92](https://github.com/mikesprague/teams-incoming-webhook-action/commit/ebd2e92323c44f5857f96ea696f2e6ef6977c63f)), closes [#568](https://github.com/mikesprague/teams-incoming-webhook-action/issues/568)
+* **deps-dev:** bump @biomejs/biome from 2.4.4 to 2.4.5 (#535) ([5657d37](https://github.com/mikesprague/teams-incoming-webhook-action/commit/5657d37c97e9555c0999cf836ed868a4a7d2a9d1)), closes [#535](https://github.com/mikesprague/teams-incoming-webhook-action/issues/535)
+* **deps-dev:** bump @biomejs/biome from 2.4.5 to 2.4.6 (#537) ([61f7f57](https://github.com/mikesprague/teams-incoming-webhook-action/commit/61f7f575c2f9a3e1a4dde4cc103d5568ac9db656)), closes [#537](https://github.com/mikesprague/teams-incoming-webhook-action/issues/537)
+* **deps-dev:** bump @biomejs/biome from 2.4.6 to 2.4.7 (#544) ([a03c90f](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a03c90fbb87fbb4b701ee25221f6a6720b9aaf28)), closes [#544](https://github.com/mikesprague/teams-incoming-webhook-action/issues/544)
+* **deps-dev:** bump @biomejs/biome from 2.4.7 to 2.4.8 (#545) ([c620bca](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c620bca3025ecf614172b51bc15ba3ca165113ca)), closes [#545](https://github.com/mikesprague/teams-incoming-webhook-action/issues/545)
+* **deps-dev:** bump @biomejs/biome from 2.4.8 to 2.4.9 (#551) ([6cea91c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/6cea91c0f047fc4edead9e4c2faa3e25ce65f866)), closes [#551](https://github.com/mikesprague/teams-incoming-webhook-action/issues/551)
+* **deps-dev:** bump @biomejs/biome from 2.4.9 to 2.4.10 (#556) ([703226e](https://github.com/mikesprague/teams-incoming-webhook-action/commit/703226ed620f716d08fb6c8856ae06d0c76601e2)), closes [#556](https://github.com/mikesprague/teams-incoming-webhook-action/issues/556)
+* **deps-dev:** bump @types/node in the types group (#538) ([56d49b7](https://github.com/mikesprague/teams-incoming-webhook-action/commit/56d49b7449f6c2b4f643d40c28cae6e5882676e3)), closes [#538](https://github.com/mikesprague/teams-incoming-webhook-action/issues/538)
+* **deps-dev:** bump @types/node in the types group (#539) ([c4fecc7](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c4fecc7428851ae3faeaa4a4d9b2c396fb7e5267)), closes [#539](https://github.com/mikesprague/teams-incoming-webhook-action/issues/539)
+* **deps-dev:** bump @types/node in the types group (#541) ([41daeb2](https://github.com/mikesprague/teams-incoming-webhook-action/commit/41daeb2b5ba170f4943a2977949cd75b5df9dcda)), closes [#541](https://github.com/mikesprague/teams-incoming-webhook-action/issues/541)
+* **deps-dev:** bump @types/node in the types group (#557) ([8610ab1](https://github.com/mikesprague/teams-incoming-webhook-action/commit/8610ab1491893bfeabbb2f0262065d65b389653d)), closes [#557](https://github.com/mikesprague/teams-incoming-webhook-action/issues/557)
+* **deps-dev:** bump @types/node in the types group (#561) ([fe2fc88](https://github.com/mikesprague/teams-incoming-webhook-action/commit/fe2fc88c50e78c0fe55f4d06f5ba21fefb719968)), closes [#561](https://github.com/mikesprague/teams-incoming-webhook-action/issues/561)
+* **deps-dev:** bump @types/node in the types group (#574) ([cea6e98](https://github.com/mikesprague/teams-incoming-webhook-action/commit/cea6e982af21e385e2381f63685574a707cb793a)), closes [#574](https://github.com/mikesprague/teams-incoming-webhook-action/issues/574)
+* **deps-dev:** bump @types/node in the types group (#576) ([82d4a7d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/82d4a7d0072a96b539cb72a7bcb1123c8096d954)), closes [#576](https://github.com/mikesprague/teams-incoming-webhook-action/issues/576)
+* **deps-dev:** bump @types/node in the types group (#581) ([8157896](https://github.com/mikesprague/teams-incoming-webhook-action/commit/8157896789cc3c42e1932b2aa83e0c52817d8ca2)), closes [#581](https://github.com/mikesprague/teams-incoming-webhook-action/issues/581)
+* **deps-dev:** bump conventional-changelog-conventionalcommits (#536) ([2579879](https://github.com/mikesprague/teams-incoming-webhook-action/commit/257987933c0fdb4baf025cfdfd8b543f0d3b6bdd)), closes [#536](https://github.com/mikesprague/teams-incoming-webhook-action/issues/536)
+* **deps-dev:** bump conventional-changelog-conventionalcommits (#555) ([7d8b2ec](https://github.com/mikesprague/teams-incoming-webhook-action/commit/7d8b2ec0c5c5760d1b87769c8650bc0a9acf94e3)), closes [#555](https://github.com/mikesprague/teams-incoming-webhook-action/issues/555)
+* **deps-dev:** bump cz-git from 1.12.0 to 1.13.0 (#570) ([3cd22eb](https://github.com/mikesprague/teams-incoming-webhook-action/commit/3cd22ebaf56bbbfbc8278f9379f21c8fc150da5e)), closes [#570](https://github.com/mikesprague/teams-incoming-webhook-action/issues/570)
+* **deps-dev:** bump cz-git from 1.13.0 to 1.13.1 (#579) ([2797860](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2797860c8c942d5e5d7ab11e1b0271e865d4ec80)), closes [#579](https://github.com/mikesprague/teams-incoming-webhook-action/issues/579)
+* **deps-dev:** bump oxfmt from 0.46.0 to 0.47.0 (#571) ([2bbbca1](https://github.com/mikesprague/teams-incoming-webhook-action/commit/2bbbca143e657693215e20989f2ec5cf8ff1cfa9)), closes [#571](https://github.com/mikesprague/teams-incoming-webhook-action/issues/571)
+* **deps-dev:** bump oxfmt from 0.47.0 to 0.48.0 (#573) ([93766c1](https://github.com/mikesprague/teams-incoming-webhook-action/commit/93766c1bc534fffa4c7cb368a81854ac92b51513)), closes [#573](https://github.com/mikesprague/teams-incoming-webhook-action/issues/573)
+* **deps-dev:** bump oxfmt from 0.48.0 to 0.49.0 (#580) ([977c07f](https://github.com/mikesprague/teams-incoming-webhook-action/commit/977c07ff8252763bf87aa465843844dd24742fe4)), closes [#580](https://github.com/mikesprague/teams-incoming-webhook-action/issues/580)
+* **deps-dev:** bump oxlint from 1.61.0 to 1.62.0 (#569) ([ea09827](https://github.com/mikesprague/teams-incoming-webhook-action/commit/ea098273de0bb6d010d494c4327cd1acc223f732)), closes [#569](https://github.com/mikesprague/teams-incoming-webhook-action/issues/569)
+* **deps-dev:** bump oxlint from 1.62.0 to 1.63.0 (#572) ([ee7a057](https://github.com/mikesprague/teams-incoming-webhook-action/commit/ee7a0570ce1c439f924630fcd6004ac62e7a6e68)), closes [#572](https://github.com/mikesprague/teams-incoming-webhook-action/issues/572)
+* **deps-dev:** bump oxlint from 1.63.0 to 1.64.0 (#578) ([5ad7309](https://github.com/mikesprague/teams-incoming-webhook-action/commit/5ad73094696752493c363642458d80dc8d9e7e28)), closes [#578](https://github.com/mikesprague/teams-incoming-webhook-action/issues/578)
+* **deps-dev:** bump the conventional-changelog group with 2 updates (#534) ([d805b73](https://github.com/mikesprague/teams-incoming-webhook-action/commit/d805b73bc6df47979d101c77b848f75535610db6)), closes [#534](https://github.com/mikesprague/teams-incoming-webhook-action/issues/534)
+* **deps-dev:** bump the vitest group with 3 updates (#542) ([c776a4b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c776a4b9384912d254cd5080e17c0d7d6a6157b3)), closes [#542](https://github.com/mikesprague/teams-incoming-webhook-action/issues/542)
+* **deps-dev:** bump the vitest group with 3 updates (#549) ([1940b11](https://github.com/mikesprague/teams-incoming-webhook-action/commit/1940b1148c30105cc651721e269e4a6cc0052983)), closes [#549](https://github.com/mikesprague/teams-incoming-webhook-action/issues/549)
+* **deps-dev:** bump the vitest group with 3 updates (#553) ([d3a3f30](https://github.com/mikesprague/teams-incoming-webhook-action/commit/d3a3f30d881522c9a55ee0e47320399b468f714d)), closes [#553](https://github.com/mikesprague/teams-incoming-webhook-action/issues/553)
+* **deps-dev:** bump the vitest group with 3 updates (#559) ([11f5f8b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/11f5f8bc75e83dd7d6b2f2079492b907f475581c)), closes [#559](https://github.com/mikesprague/teams-incoming-webhook-action/issues/559)
+* **deps-dev:** bump the vitest group with 3 updates (#560) ([029bf0e](https://github.com/mikesprague/teams-incoming-webhook-action/commit/029bf0e56726e28869bed2ac26270a4334269af0)), closes [#560](https://github.com/mikesprague/teams-incoming-webhook-action/issues/560)
+* **deps-dev:** bump the vitest group with 3 updates (#566) ([25b7ff7](https://github.com/mikesprague/teams-incoming-webhook-action/commit/25b7ff7e9c7765d26f8d951e2bd7435b64f70e7c)), closes [#566](https://github.com/mikesprague/teams-incoming-webhook-action/issues/566)
+* **deps-dev:** bump the vitest group with 3 updates (#577) ([9c9d4aa](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9c9d4aabae418017d628dd1f8c57250117fcdd50)), closes [#577](https://github.com/mikesprague/teams-incoming-webhook-action/issues/577)
+* **deps-dev:** bump typedoc in the typedoc group (#548) ([106fafc](https://github.com/mikesprague/teams-incoming-webhook-action/commit/106fafc3e230efbbdb3b3c0a28880e3cf48bda8b)), closes [#548](https://github.com/mikesprague/teams-incoming-webhook-action/issues/548)
+* **deps-dev:** bump typedoc in the typedoc group (#563) ([a88032c](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a88032c324746a08fe168835dcfd14fde849bb4a)), closes [#563](https://github.com/mikesprague/teams-incoming-webhook-action/issues/563)
+* **deps-dev:** bump typedoc-plugin-markdown in the typedoc group (#546) ([3aac86f](https://github.com/mikesprague/teams-incoming-webhook-action/commit/3aac86fb839af430e2c14ec468e8e1014e140e2c)), closes [#546](https://github.com/mikesprague/teams-incoming-webhook-action/issues/546)
+* **deps-dev:** bump typescript from 5.9.3 to 6.0.2 (#550) ([b796e9b](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b796e9b04505bfe451eca246f4fe9ef629bf943e)), closes [#550](https://github.com/mikesprague/teams-incoming-webhook-action/issues/550)
+* **deps-dev:** bump typescript from 6.0.2 to 6.0.3 (#565) ([10e80f4](https://github.com/mikesprague/teams-incoming-webhook-action/commit/10e80f41b2534ac4243f7764905b053a3d2ec792)), closes [#565](https://github.com/mikesprague/teams-incoming-webhook-action/issues/565)
+* **deps:** bump @actions/core from 3.0.0 to 3.0.1 in the github group (#567) ([3a919aa](https://github.com/mikesprague/teams-incoming-webhook-action/commit/3a919aa83fd3cb70051d179a9f4fbb1d805be48e)), closes [#567](https://github.com/mikesprague/teams-incoming-webhook-action/issues/567)
+* **deps:** bump codecov/codecov-action from 5 to 6 (#552) ([f58bc0d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/f58bc0d0e665f4bc2795ed5bc62016124e6a7787)), closes [#552](https://github.com/mikesprague/teams-incoming-webhook-action/issues/552)
+* **deps:** bump dayjs from 1.11.19 to 1.11.20 (#540) ([cbb7e9a](https://github.com/mikesprague/teams-incoming-webhook-action/commit/cbb7e9ae1f405cc8cd6b7b1edb3bda46424bdb64)), closes [#540](https://github.com/mikesprague/teams-incoming-webhook-action/issues/540)
+
+### 📚 Documentation
+
+* **README:** biome -> oxlint/oxfmt ([e8c5e42](https://github.com/mikesprague/teams-incoming-webhook-action/commit/e8c5e42774650e580c1545b419df1469cedc9fd8))
+
+### 🔄 CI/CD
+
+* **create-release:** remove deprecated dependency ([c009f1e](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c009f1e397ce19ce3c84a7cd81fdcae73598cf68))
+
 ## [2.0.3](https://github.com/mikesprague/teams-incoming-webhook-action/compare/v2.0.2...v2.0.3) (2026-03-01)
 
 ### 🏗️ Build System

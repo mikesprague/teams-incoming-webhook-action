@@ -37738,9 +37738,7 @@ try {
         const commit = await octokit.rest.repos.getCommit(params);
         const branch = GITHUB_REF?.split('/')[GITHUB_REF.split('/').length - 1];
         const { author } = commit.data;
-        const timestamp = dayjs__WEBPACK_IMPORTED_MODULE_1___default()()
-            .tz(timezoneString)
-            .format('ddd, D MMM YYYY hh:mm:ss Z');
+        const timestamp = dayjs__WEBPACK_IMPORTED_MODULE_1___default()().tz(timezoneString).format('ddd, D MMM YYYY hh:mm:ss Z');
         messageToPost = populateCard({
             author,
             branch,
@@ -37868,9 +37866,7 @@ const buildMentionEntities = (mentions) => mentions.map((mention) => ({
         name: mention.name,
     },
 }));
-const renderMentionsText = (mentions) => `**Mentions:** ${mentions
-    .map((mention) => `<at>${mention.name}</at>`)
-    .join(', ')}`;
+const renderMentionsText = (mentions) => `**Mentions:** ${mentions.map((mention) => `<at>${mention.name}</at>`).join(', ')}`;
 
 
 /***/ }),
