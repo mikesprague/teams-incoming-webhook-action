@@ -316,7 +316,7 @@ bun install
 The project uses [Vitest](https://vitest.dev/) for testing with comprehensive coverage requirements:
 
 > [!IMPORTANT]
-> `bun test` uses Bun's built in test runner, we need to explicitly use our test script and Vitest
+> `bun test` uses Bun's built in test runner, we need to explicitly run our test script that uses Vitest with `bun run test`
 
 ```bash
 # Run tests once
