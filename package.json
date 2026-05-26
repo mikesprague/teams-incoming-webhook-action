@@ -51,7 +51,7 @@
   "dependencies": {
     "@actions/core": "3.0.1",
     "@octokit/rest": "22.0.1",
-    "dayjs": "1.11.20"
+    "dayjs": "1.11.21"
   },
   "devDependencies": {
     "@octokit/types": "16.0.0",
