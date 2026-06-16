@@ -1,3 +1,37 @@
+## [2.1.1](https://github.com/mikesprague/teams-incoming-webhook-action/compare/v2.1.0...v2.1.1) (2026-06-16)
+
+### 🔧 Chores
+
+* **deps-dev:** bump @types/node in the types group (#582) ([5ddff7d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/5ddff7d6a7fd1d3fc8cb662963629113f087c401)), closes [#582](https://github.com/mikesprague/teams-incoming-webhook-action/issues/582)
+* **deps-dev:** bump @types/node in the types group (#583) ([baa6f65](https://github.com/mikesprague/teams-incoming-webhook-action/commit/baa6f65b562aacd0c27ea41110da762bda18afc4)), closes [#583](https://github.com/mikesprague/teams-incoming-webhook-action/issues/583)
+* **deps-dev:** bump @types/node in the types group (#595) ([5ff2494](https://github.com/mikesprague/teams-incoming-webhook-action/commit/5ff2494f26d3235a183bef411feeec1059474f26)), closes [#595](https://github.com/mikesprague/teams-incoming-webhook-action/issues/595)
+* **deps-dev:** bump @types/node in the types group (#597) ([04ce084](https://github.com/mikesprague/teams-incoming-webhook-action/commit/04ce08431aefc45619c6e5592827874937453551)), closes [#597](https://github.com/mikesprague/teams-incoming-webhook-action/issues/597)
+* **deps-dev:** bump @vercel/ncc from 0.38.4 to 0.44.0 (#596) ([e2380c7](https://github.com/mikesprague/teams-incoming-webhook-action/commit/e2380c71ee8d44ae9b3d38318e7893a8f826c63f)), closes [#596](https://github.com/mikesprague/teams-incoming-webhook-action/issues/596)
+* **deps-dev:** bump commitizen from 4.3.1 to 4.3.2 (#598) ([598f00d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/598f00d31e49e861c60d615e9c85d6c8959a865c)), closes [#598](https://github.com/mikesprague/teams-incoming-webhook-action/issues/598)
+* **deps-dev:** bump oxfmt from 0.50.0 to 0.51.0 (#585) ([0fc541d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/0fc541dae83882643a2cccbc203b473c5a93689f)), closes [#585](https://github.com/mikesprague/teams-incoming-webhook-action/issues/585)
+* **deps-dev:** bump oxfmt from 0.51.0 to 0.52.0 (#588) ([b68a51d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/b68a51d1116a30943e9756275bc8f83adcbe0dfb)), closes [#588](https://github.com/mikesprague/teams-incoming-webhook-action/issues/588)
+* **deps-dev:** bump oxfmt from 0.52.0 to 0.53.0 (#592) ([1f2cc41](https://github.com/mikesprague/teams-incoming-webhook-action/commit/1f2cc417aab6906312cd3c99e52158e349fce112)), closes [#592](https://github.com/mikesprague/teams-incoming-webhook-action/issues/592)
+* **deps-dev:** bump oxfmt from 0.54.0 to 0.55.0 (#601) ([8157186](https://github.com/mikesprague/teams-incoming-webhook-action/commit/8157186428c6b2e0631e35c5869ac17f5d54cd95)), closes [#601](https://github.com/mikesprague/teams-incoming-webhook-action/issues/601)
+* **deps-dev:** bump oxfmt/oxlint ([0d49ce1](https://github.com/mikesprague/teams-incoming-webhook-action/commit/0d49ce1d1dc7dd78d1ce213c3ac828aa20010db6))
+* **deps-dev:** bump oxlint from 1.65.0 to 1.66.0 (#584) ([5924f2a](https://github.com/mikesprague/teams-incoming-webhook-action/commit/5924f2aab93a0933edc9f4e82db8842dd49920b7)), closes [#584](https://github.com/mikesprague/teams-incoming-webhook-action/issues/584)
+* **deps-dev:** bump oxlint from 1.66.0 to 1.67.0 (#587) ([1cb00e6](https://github.com/mikesprague/teams-incoming-webhook-action/commit/1cb00e614d45032f16cd543554aaadda73c19118)), closes [#587](https://github.com/mikesprague/teams-incoming-webhook-action/issues/587)
+* **deps-dev:** bump oxlint from 1.67.0 to 1.68.0 (#593) ([d51b9ff](https://github.com/mikesprague/teams-incoming-webhook-action/commit/d51b9ff47367f4312767a055c0e2ae413c07f9f2)), closes [#593](https://github.com/mikesprague/teams-incoming-webhook-action/issues/593)
+* **deps-dev:** bump oxlint from 1.69.0 to 1.70.0 (#600) ([3a220a3](https://github.com/mikesprague/teams-incoming-webhook-action/commit/3a220a35f6ea72d1c64875db309f5a29e68f240d)), closes [#600](https://github.com/mikesprague/teams-incoming-webhook-action/issues/600)
+* **deps-dev:** bump the vitest group across 1 directory with 3 updates (#591) ([39090bd](https://github.com/mikesprague/teams-incoming-webhook-action/commit/39090bdffbac27ed668dda766aa374f69053c910)), closes [#591](https://github.com/mikesprague/teams-incoming-webhook-action/issues/591)
+* **deps-dev:** bump the vitest group with 3 updates (#586) ([c3a9034](https://github.com/mikesprague/teams-incoming-webhook-action/commit/c3a9034f3f36f21755b178417c137a257483f4d0)), closes [#586](https://github.com/mikesprague/teams-incoming-webhook-action/issues/586)
+* **deps-dev:** bump the vitest group with 3 updates (#599) ([cabffa8](https://github.com/mikesprague/teams-incoming-webhook-action/commit/cabffa87777c061c10f82189f50bba3756d96eae)), closes [#599](https://github.com/mikesprague/teams-incoming-webhook-action/issues/599)
+* **deps-dev:** bump typedoc-plugin-markdown in the typedoc group (#590) ([347e846](https://github.com/mikesprague/teams-incoming-webhook-action/commit/347e846898812a2b38aaf733c71b8f286fd71472)), closes [#590](https://github.com/mikesprague/teams-incoming-webhook-action/issues/590)
+* **deps:** bump codecov/codecov-action from 6 to 7 (#594) ([7dad1ba](https://github.com/mikesprague/teams-incoming-webhook-action/commit/7dad1ba9032024b7a2a76e25a8da98d4b7c7a449)), closes [#594](https://github.com/mikesprague/teams-incoming-webhook-action/issues/594)
+* **deps:** bump dayjs from 1.11.20 to 1.11.21 (#589) ([e267fef](https://github.com/mikesprague/teams-incoming-webhook-action/commit/e267fefe350d270e57c5f16ec3f2566f062a8122)), closes [#589](https://github.com/mikesprague/teams-incoming-webhook-action/issues/589)
+
+### 🔄 CI/CD
+
+* **build-and-test:** pin actions versions ([6cb57d9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/6cb57d925b07534b0250971f524f12b8f8172edf))
+
+### 📚 Documentation
+
+* **README:** update test note ([f5e0e93](https://github.com/mikesprague/teams-incoming-webhook-action/commit/f5e0e93ea3397910ef792258a3ce9132edf8eabb))
+
 ## [2.1.0](https://github.com/mikesprague/teams-incoming-webhook-action/compare/v2.0.3...v2.1.0) (2026-05-17)
 
 ### 🏗️ Build System
