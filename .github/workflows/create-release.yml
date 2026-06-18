@@ -22,7 +22,7 @@ jobs:
     steps:
       # checkout repo with full history to ensure all tags are available for changelog generation
       - name: Checkout Repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
