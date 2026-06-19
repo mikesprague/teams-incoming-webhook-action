@@ -55,7 +55,7 @@
   },
   "devDependencies": {
     "@octokit/types": "16.0.0",
-    "@types/node": "25.9.3",
+    "@types/node": "26.0.0",
     "@vercel/ncc": "0.44.0",
     "@vitest/coverage-v8": "4.1.9",
     "@vitest/ui": "4.1.9",
