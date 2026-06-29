@@ -1,3 +1,27 @@
+## [2.2.0](https://github.com/mikesprague/teams-incoming-webhook-action/compare/v2.1.1...v2.2.0) (2026-06-29)
+
+### 🏗️ Build System
+
+* **bun:** prune overrides; update lockfile ([50b0652](https://github.com/mikesprague/teams-incoming-webhook-action/commit/50b06520ced6ff8dd77784e57c74e3ba635facee))
+* **conventional-changelog:** update config for v8 api changes ([6491564](https://github.com/mikesprague/teams-incoming-webhook-action/commit/64915648da1a450a0a155c9b5aea8eb4db7e1150))
+
+### 🔧 Chores
+
+* **deps-dev:** bump @types/node in the types group (#603) ([109ff1d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/109ff1d82da14db9e1614a390534a1cfc2fc9566)), references [#603](https://github.com/mikesprague/teams-incoming-webhook-action/issues/603)
+* **deps-dev:** bump @types/node in the types group (#610) ([1c5bf3d](https://github.com/mikesprague/teams-incoming-webhook-action/commit/1c5bf3dba6b81b8bdfdd17665966a22f8d4356a0)), references [#610](https://github.com/mikesprague/teams-incoming-webhook-action/issues/610)
+* **deps-dev:** bump conventional-changelog (#604) ([ea35566](https://github.com/mikesprague/teams-incoming-webhook-action/commit/ea355660c1100cc73bcaefdddeff75c2fb7e05cc)), references [#604](https://github.com/mikesprague/teams-incoming-webhook-action/issues/604)
+* **deps-dev:** bump oxfmt from 0.55.0 to 0.56.0 (#606) ([e38736a](https://github.com/mikesprague/teams-incoming-webhook-action/commit/e38736adc4cd814fce0cf0408feb2b306206998b)), references [#606](https://github.com/mikesprague/teams-incoming-webhook-action/issues/606)
+* **deps-dev:** bump oxlint from 1.70.0 to 1.71.0 (#605) ([0acc7b2](https://github.com/mikesprague/teams-incoming-webhook-action/commit/0acc7b2afe770c90dd6d6b51d8c0dcae0996dcb5)), references [#605](https://github.com/mikesprague/teams-incoming-webhook-action/issues/605)
+* **deps-dev:** bump the conventional-changelog group with 2 updates (#609) ([72dc2a9](https://github.com/mikesprague/teams-incoming-webhook-action/commit/72dc2a9088549ea834f17b8cf4273bd580b57383)), references [#609](https://github.com/mikesprague/teams-incoming-webhook-action/issues/609)
+* **deps:** bump actions/cache from 5.0.5 to 6.0.0 (#607) ([a5c97cb](https://github.com/mikesprague/teams-incoming-webhook-action/commit/a5c97cb550ea060e1bb12549643c692cea3df3f3)), references [#607](https://github.com/mikesprague/teams-incoming-webhook-action/issues/607)
+* **deps:** bump actions/cache from 6.0.0 to 6.1.0 (#608) ([9d3c014](https://github.com/mikesprague/teams-incoming-webhook-action/commit/9d3c014d597a071bc1cbe199c68740c2da07d2ca)), references [#608](https://github.com/mikesprague/teams-incoming-webhook-action/issues/608)
+* **deps:** bump actions/checkout from 6 to 7 (#602) ([88d2da3](https://github.com/mikesprague/teams-incoming-webhook-action/commit/88d2da3821f7538ce15f8ee60438442cdf0317e9)), references [#602](https://github.com/mikesprague/teams-incoming-webhook-action/issues/602)
+* **overrides:** bump undici to fix security warning ([4971479](https://github.com/mikesprague/teams-incoming-webhook-action/commit/4971479d6c9ceb87709feff0043b2d639fbdd48d))
+
+### 🔄 Continuous Integration
+
+* **actions:** pin actions/checkout (missed previously) ([0351e4e](https://github.com/mikesprague/teams-incoming-webhook-action/commit/0351e4e70ae4a500ac8c997f9a825fc27a514c52))
+
 ## [2.1.1](https://github.com/mikesprague/teams-incoming-webhook-action/compare/v2.1.0...v2.1.1) (2026-06-16)
 
 ### 🔧 Chores

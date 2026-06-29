@@ -1,0 +1,266 @@
+<!DOCTYPE html><html class="default" lang="en" data-base="./"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>teams-incoming-webhook-action</title><meta name="description" content="Documentation for teams-incoming-webhook-action"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script defer src="assets/main.js"></script><script async src="assets/icons.js" id="tsd-icons-script"></script><script async src="assets/search.js" id="tsd-search-script"></script><script async src="assets/navigation.js" id="tsd-nav-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="index.html" class="title">teams-incoming-webhook-action</a><div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-menu"></use></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><h1>teams-incoming-webhook-action</h1></div><div class="tsd-panel tsd-typography"><h1 id="teams-incoming-webhook-action" class="tsd-anchor-link">teams-incoming-webhook-action<a href="#teams-incoming-webhook-action" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1>
+<p><a href="https://github.com/mikesprague/teams-incoming-webhook-action/actions/workflows/build-and-test.yml"><img src="https://github.com/mikesprague/teams-incoming-webhook-action/actions/workflows/build-and-test.yml/badge.svg" alt="Build and Test"></a>
+<a href="https://codecov.io/github/mikesprague/teams-incoming-webhook-action"><img src="https://codecov.io/github/mikesprague/teams-incoming-webhook-action/graph/badge.svg?token=YRTYS1BM8S" alt="codecov"></a></p>
+<p><a href="https://github.com/codespaces/new?hide_repo_select=true&amp;ref=main&amp;repo=406118991"><img src="https://github.com/codespaces/badge.svg" alt="Open in GitHub Codespaces"></a></p>
+<p>Sends an <a href="https://adaptivecards.microsoft.com/">AdaptiveCard</a> notification to an <a href="https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=newteams%2Cjavascript">MS Teams Incoming Webhook</a> from a GitHub Action Workflow</p>
+<p>This action requires a secret to be set up with your Teams Incoming Webhook URL named <code>MS_TEAMS_WEBHOOK_URL</code> (<a href="https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets#creating-secrets-for-a-repository">official docs for creating secrets in your repo</a>)</p>
+<div class="tsd-alert tsd-alert-note"><div class="tsd-alert-title"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="assets/icons.svg#icon-alertNote"></use></svg><span>Note</span></div><p>
+The action also expects a <code>CODECOV_TOKEN</code> repository secret for <a href="https://codecov.io/">Codecov</a> integration. If you do not want to use Codecov, you can comment out the <code>Upload coverage reports to Codecov</code> step in <code>.github/workflows/build-and-test.yml</code>.</p>
+</div>
+<ul>
+<li><a href="#inputs">Inputs</a></li>
+<li><a href="#how-it-works">How It Works</a></li>
+<li><a href="#example-usage">Example Usage</a>
+<ul>
+<li><a href="#simple-notification">Simple Notification</a></li>
+<li><a href="#simple-notification-w-large-title">Simple Notification w/ Large Title</a></li>
+<li><a href="#simple-notification-w-user-mentions">Simple Notification w/ User Mentions</a></li>
+<li><a href="#workflow-status-notifications">Workflow Status Notifications</a>
+<ul>
+<li><a href="#workflow-status-w-message">Workflow Status w/ Message</a></li>
+<li><a href="#workflow-status-w-commit-message">Workflow Status w/ Commit Message</a></li>
+<li><a href="#info-notification">Info Notification</a></li>
+<li><a href="#cancel-notification">Cancel Notification</a></li>
+<li><a href="#failure-notification">Failure Notification</a></li>
+<li><a href="#success-message">Success Message</a></li>
+<li><a href="#kitchen-sink-example">Kitchen Sink Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#development">Development</a>
+<ul>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#setup">Setup</a></li>
+<li><a href="#testing">Testing</a></li>
+<li><a href="#code-quality">Code Quality</a></li>
+<li><a href="#typescript-configuration">TypeScript Configuration</a></li>
+<li><a href="#documentation">Documentation</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="inputs" class="tsd-anchor-link">Inputs<a href="#inputs" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<ul>
+<li><code>github-token</code>
+<ul>
+<li><strong>required:</strong> true</li>
+<li><strong>type:</strong> string</li>
+<li><strong>description:</strong> GitHub Token for API operations (see examples for how to reference)</li>
+<li><strong>example:</strong> <code>github-token: ${{ github.token }}</code></li>
+</ul>
+</li>
+<li><code>webhook-url</code>
+<ul>
+<li><strong>required:</strong> true</li>
+<li><strong>type:</strong> string</li>
+<li><strong>description:</strong> MS Teams Incoming Webhook URL</li>
+<li><strong>example:</strong> <code>webhook-url: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}</code></li>
+</ul>
+</li>
+<li><code>title</code>
+<ul>
+<li><strong>required:</strong> true</li>
+<li><strong>type:</strong> string</li>
+<li><strong>description:</strong> Message title or heading</li>
+<li><strong>example:</strong> <code>title: &quot;Test Message Heading&quot;</code></li>
+</ul>
+</li>
+<li><code>title-size</code>
+<ul>
+<li><strong>required:</strong> false</li>
+<li><strong>type:</strong> string</li>
+<li><strong>default:</strong> <code>&quot;Default&quot;</code></li>
+<li><strong>description:</strong> Size of the title text - accepts <code>Default</code>, <code>Large</code> as values</li>
+<li><strong>example:</strong> <code>title-size: &quot;Large&quot;</code></li>
+</ul>
+</li>
+<li><code>message</code>
+<ul>
+<li><strong>required:</strong> false</li>
+<li><strong>type:</strong> string</li>
+<li><strong>default:</strong> <code>&quot;&quot;</code></li>
+<li><strong>description:</strong> Optional message body; when <code>deploy-card</code> is <code>true</code>, this appears above the deployment details</li>
+<li><strong>example:</strong> <code>message: &quot;This is some test message content for a simple notification&quot;</code></li>
+</ul>
+</li>
+<li><code>color</code>
+<ul>
+<li><strong>required:</strong> false</li>
+<li><strong>type:</strong> string</li>
+<li><strong>default:</strong> <code>&quot;default&quot;</code></li>
+<li><strong>description:</strong> Background color of the heading in the message - accepts <code>default</code>, <code>info</code>, <code>success</code>, <code>failure</code>, <code>warning</code> as values</li>
+<li><strong>example:</strong> <code>color: &quot;info&quot;</code></li>
+</ul>
+</li>
+<li><code>deploy-card</code>
+<ul>
+<li><strong>required:</strong> false</li>
+<li><strong>type:</strong> boolean</li>
+<li><strong>default:</strong> <code>false</code></li>
+<li><strong>description:</strong> Sends a workflow notification that is built dynamically from commit and repo info</li>
+<li><strong>example:</strong> <code>deploy-card: true</code></li>
+</ul>
+</li>
+<li><code>show-commit-message</code>
+<ul>
+<li><strong>required:</strong> false</li>
+<li><strong>type:</strong> boolean</li>
+<li><strong>default:</strong> <code>false</code></li>
+<li><strong>description:</strong> Shows the first line of the commit message after the hash on deploy cards</li>
+<li><strong>example:</strong> <code>show-commit-message: true</code></li>
+</ul>
+</li>
+<li><code>timezone</code>
+<ul>
+<li><strong>required:</strong> false</li>
+<li><strong>type:</strong> string</li>
+<li><strong>default:</strong> <code>&quot;America/New_York&quot;</code></li>
+<li><strong>description:</strong> Timezone to use for timestamps in messages</li>
+<li><strong>example:</strong> <code>timezone: &quot;Europe/Rome&quot;</code></li>
+</ul>
+</li>
+<li><code>user-mentions</code>
+<ul>
+<li><strong>required:</strong> false</li>
+<li><strong>type:</strong> string</li>
+<li><strong>default:</strong> <code>&quot;&quot;</code></li>
+<li><strong>description:</strong> Teams user mentions in format <code>name|id</code>, comma separated (e.g. <code>Alice|alice@example.com,Bob|bob@example.com</code>).
+<ul>
+<li>Entries formatted incorrectly or otherwise invalid are ignored with a warning in the logs</li>
+<li><code>id</code> should be the user's Entra ID or UPN (email) for the mention to work properly</li>
+<li>If user is not in the same tenant as the Team/Teams Channel the mention will not resolve but will still appear as plain text</li>
+<li>NOTE: only user mentions are currently supported (no group or channel mentions)</li>
+</ul>
+</li>
+<li><strong>example:</strong> <code>user-mentions: &quot;Alice|alice@example.com,Bob|bob@example.com&quot;</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="how-it-works" class="tsd-anchor-link">How It Works<a href="#how-it-works" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p>When the action runs, it takes the inputs provided and constructs an AdaptiveCard payload that is sent to the specified MS Teams Webhook URL. The card can be customized with a title, message body, color, and can optionally include dynamic information about the GitHub workflow run (like commit message and author). See the <a href="#example-usage">Example Usage</a> section for details on how to customize the card with different inputs.</p>
+<pre><code class="mermaid">flowchart LR
+  subgraph Row1[ ]
+    direction LR
+    A[GitHub Workflow] --> B["mikesprague/teams-incoming-webhook-action"]
+  end
+
+  subgraph Row2[ ]
+    direction LR
+    C[Teams Incoming Webhook] --> D[Teams Channel]
+  end
+
+  B --> C
+</code><button type="button">Copy</button></pre>
+
+<h2 id="example-usage" class="tsd-anchor-link">Example Usage<a href="#example-usage" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p>This action was built with the intention of sending workflow status notifications but also supports a simple message style</p>
+<h3 id="simple-notification" class="tsd-anchor-link">Simple Notification<a href="#simple-notification" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<p>The following sends a simple notification with a title and message</p>
+<pre><code class="yaml"><span class="hl-0">- </span><span class="hl-1">name</span><span class="hl-0">: </span><span class="hl-2">Send simple notification</span><br/><span class="hl-0">  </span><span class="hl-1">uses</span><span class="hl-0">: </span><span class="hl-2">mikesprague/teams-incoming-webhook-action@v2</span><br/><span class="hl-0">  </span><span class="hl-1">with</span><span class="hl-0">:</span><br/><span class="hl-0">    </span><span class="hl-1">github-token</span><span class="hl-0">: </span><span class="hl-2">${{ github.token }}</span><br/><span class="hl-0">    </span><span class="hl-1">webhook-url</span><span class="hl-0">: </span><span class="hl-2">${{ secrets.MS_TEAMS_WEBHOOK_URL }}</span><br/><span class="hl-0">    </span><span class="hl-1">title</span><span class="hl-0">: </span><span class="hl-2">&#39;Simple Notification&#39;</span><br/><span class="hl-0">    </span><span class="hl-1">message</span><span class="hl-0">: </span><span class="hl-2">&#39;This is an example of a simple notification with a title and a body&#39;</span>
+</code><button type="button">Copy</button></pre>
+
+<p><img src="media/simple-notification.png" alt="Simple Notification Example" title="Simple Notification Example"></p>
+<h3 id="simple-notification-w-large-title" class="tsd-anchor-link">Simple Notification w/ Large Title<a href="#simple-notification-w-large-title" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<p>The following sends a simple notification with a title and message</p>
+<pre><code class="yaml"><span class="hl-0">- </span><span class="hl-1">name</span><span class="hl-0">: </span><span class="hl-2">Send Simple Notification w/ Large Title</span><br/><span class="hl-0">  </span><span class="hl-1">uses</span><span class="hl-0">: </span><span class="hl-2">mikesprague/teams-incoming-webhook-action@v2</span><br/><span class="hl-0">  </span><span class="hl-1">with</span><span class="hl-0">:</span><br/><span class="hl-0">    </span><span class="hl-1">github-token</span><span class="hl-0">: </span><span class="hl-2">${{ github.token }}</span><br/><span class="hl-0">    </span><span class="hl-1">webhook-url</span><span class="hl-0">: </span><span class="hl-2">${{ secrets.MS_TEAMS_WEBHOOK_URL }}</span><br/><span class="hl-0">    </span><span class="hl-1">title</span><span class="hl-0">: </span><span class="hl-2">&#39;Simple Notification w/ Large Title&#39;</span><br/><span class="hl-0">    </span><span class="hl-1">title-size</span><span class="hl-0">: </span><span class="hl-2">&#39;Large&#39;</span><br/><span class="hl-0">    </span><span class="hl-1">message</span><span class="hl-0">: </span><span class="hl-2">&#39;This is an example of a simple notification with a large title and a body&#39;</span>
+</code><button type="button">Copy</button></pre>
+
+<p><img src="media/simple-notification-large-title.png" alt="Simple Notification w/ Large Title Example" title="Simple Notification w/ Large Title Example"></p>
+<h3 id="simple-notification-w-user-mentions" class="tsd-anchor-link">Simple Notification w/ User Mentions<a href="#simple-notification-w-user-mentions" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<p>The following sends a simple notification with user mentions</p>
+<pre><code class="yaml"><span class="hl-0">- </span><span class="hl-1">name</span><span class="hl-0">: </span><span class="hl-2">Send Simple Notification w/ User Mentions</span><br/><span class="hl-0">  </span><span class="hl-1">uses</span><span class="hl-0">: </span><span class="hl-2">mikesprague/teams-incoming-webhook-action@v2</span><br/><span class="hl-0">  </span><span class="hl-1">with</span><span class="hl-0">:</span><br/><span class="hl-0">    </span><span class="hl-1">github-token</span><span class="hl-0">: </span><span class="hl-2">${{ github.token }}</span><br/><span class="hl-0">    </span><span class="hl-1">webhook-url</span><span class="hl-0">: </span><span class="hl-2">${{ secrets.MS_TEAMS_WEBHOOK_URL }}</span><br/><span class="hl-0">    </span><span class="hl-1">title</span><span class="hl-0">: </span><span class="hl-2">&#39;Simple Notification w/ User Mentions&#39;</span><br/><span class="hl-0">    </span><span class="hl-1">message</span><span class="hl-0">: </span><span class="hl-2">&#39;This is an example of a simple notification that includes user mentions&#39;</span><br/><span class="hl-0">    </span><span class="hl-1">user-mentions</span><span class="hl-0">: </span><span class="hl-2">&#39;Alice|alice@example.com,Bob|bob@example.com&#39;</span>
+</code><button type="button">Copy</button></pre>
+
+<p><img src="media/simple-notification-user-mentions.png" alt="Simple Notification w/ User Mentions Example" title="Simple Notification w/ User Mentions Example"></p>
+<h3 id="workflow-status-notifications" class="tsd-anchor-link">Workflow Status Notifications<a href="#workflow-status-notifications" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<p>The following examples show how to send notifications based on your workflow status</p>
+<h4 id="workflow-status-w-message" class="tsd-anchor-link">Workflow Status w/ Message<a href="#workflow-status-w-message" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h4>
+<pre><code class="yaml"><span class="hl-0">- </span><span class="hl-1">name</span><span class="hl-0">: </span><span class="hl-2">Send Workflow Status Notification w/ Message</span><br/><span class="hl-0">  </span><span class="hl-1">uses</span><span class="hl-0">: </span><span class="hl-2">mikesprague/teams-incoming-webhook-action@v2</span><br/><span class="hl-0">  </span><span class="hl-1">with</span><span class="hl-0">:</span><br/><span class="hl-0">    </span><span class="hl-1">github-token</span><span class="hl-0">: </span><span class="hl-2">${{ github.token }}</span><br/><span class="hl-0">    </span><span class="hl-1">webhook-url</span><span class="hl-0">: </span><span class="hl-2">${{ secrets.MS_TEAMS_WEBHOOK_URL }}</span><br/><span class="hl-0">    </span><span class="hl-1">deploy-card</span><span class="hl-0">: </span><span class="hl-3">true</span><br/><span class="hl-0">    </span><span class="hl-1">title</span><span class="hl-0">: </span><span class="hl-2">&#39;Workflow Status w/ Message&#39;</span><br/><span class="hl-0">    </span><span class="hl-1">message</span><span class="hl-0">: </span><span class="hl-2">&#39;This is an example of a workflow notification with a custom message included in the card body&#39;</span>
+</code><button type="button">Copy</button></pre>
+
+<p><img src="media/deploy-with-message.png" alt="Workflow Status w/ Message Example" title="Workflow Status w/ Message Example"></p>
+<h4 id="workflow-status-w-commit-message" class="tsd-anchor-link">Workflow Status w/ Commit Message<a href="#workflow-status-w-commit-message" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h4>
+<pre><code class="yaml"><span class="hl-0">- </span><span class="hl-1">name</span><span class="hl-0">: </span><span class="hl-2">📤 Send Workflow Status Notification w/ Commit Message</span><br/><span class="hl-0">  </span><span class="hl-1">uses</span><span class="hl-0">: </span><span class="hl-2">mikesprague/teams-incoming-webhook-action@v2</span><br/><span class="hl-0">  </span><span class="hl-1">with</span><span class="hl-0">:</span><br/><span class="hl-0">    </span><span class="hl-1">github-token</span><span class="hl-0">: </span><span class="hl-2">${{ github.token }}</span><br/><span class="hl-0">    </span><span class="hl-1">webhook-url</span><span class="hl-0">: </span><span class="hl-2">${{ env.MS_TEAMS_WEBHOOK_URL }}</span><br/><span class="hl-0">    </span><span class="hl-1">deploy-card</span><span class="hl-0">: </span><span class="hl-3">true</span><br/><span class="hl-0">    </span><span class="hl-1">title</span><span class="hl-0">: </span><span class="hl-4">&quot;Workflow Status w/ Commit Message&quot;</span><br/><span class="hl-0">    </span><span class="hl-1">show-commit-message</span><span class="hl-0">: </span><span class="hl-3">true</span>
+</code><button type="button">Copy</button></pre>
+
+<p><img src="media/deploy-with-commit-message.png" alt="Workflow Status w/ Commit Message" title="Workflow Status w/ Commit Message Example"></p>
+<h4 id="info-notification" class="tsd-anchor-link">Info Notification<a href="#info-notification" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h4>
+<p>Include as first step in workflow to notify workflow run has started</p>
+<pre><code class="yaml"><span class="hl-0">- </span><span class="hl-1">name</span><span class="hl-0">: </span><span class="hl-2">Send Workflow Status Notification</span><br/><span class="hl-0">  </span><span class="hl-1">uses</span><span class="hl-0">: </span><span class="hl-2">mikesprague/teams-incoming-webhook-action@v2</span><br/><span class="hl-0">  </span><span class="hl-1">with</span><span class="hl-0">:</span><br/><span class="hl-0">    </span><span class="hl-1">github-token</span><span class="hl-0">: </span><span class="hl-2">${{ github.token }}</span><br/><span class="hl-0">    </span><span class="hl-1">webhook-url</span><span class="hl-0">: </span><span class="hl-2">${{ secrets.MS_TEAMS_WEBHOOK_URL }}</span><br/><span class="hl-0">    </span><span class="hl-1">deploy-card</span><span class="hl-0">: </span><span class="hl-3">true</span><br/><span class="hl-0">    </span><span class="hl-1">title</span><span class="hl-0">: </span><span class="hl-2">&#39;Workflow Status&#39;</span><br/><span class="hl-0">    </span><span class="hl-1">color</span><span class="hl-0">: </span><span class="hl-2">&#39;info&#39;</span>
+</code><button type="button">Copy</button></pre>
+
+<p><img src="media/deploy-info.png" alt="Workflow Info Example" title="Workflow Info Example"></p>
+<h4 id="cancel-notification" class="tsd-anchor-link">Cancel Notification<a href="#cancel-notification" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h4>
+<p>Include anywhere in steps to notify workflow run has been cancelled</p>
+<pre><code class="yaml"><span class="hl-0">- </span><span class="hl-1">name</span><span class="hl-0">: </span><span class="hl-2">Send Workflow Cancelled Notification</span><br/><span class="hl-0">  </span><span class="hl-1">if</span><span class="hl-0">: </span><span class="hl-2">${{ cancelled() }}</span><br/><span class="hl-0">  </span><span class="hl-1">uses</span><span class="hl-0">: </span><span class="hl-2">mikesprague/teams-incoming-webhook-action@v2</span><br/><span class="hl-0">  </span><span class="hl-1">with</span><span class="hl-0">:</span><br/><span class="hl-0">    </span><span class="hl-1">github-token</span><span class="hl-0">: </span><span class="hl-2">${{ github.token }}</span><br/><span class="hl-0">    </span><span class="hl-1">webhook-url</span><span class="hl-0">: </span><span class="hl-2">${{ secrets.MS_TEAMS_WEBHOOK_URL }}</span><br/><span class="hl-0">    </span><span class="hl-1">deploy-card</span><span class="hl-0">: </span><span class="hl-3">true</span><br/><span class="hl-0">    </span><span class="hl-1">title</span><span class="hl-0">: </span><span class="hl-2">&#39;Workflow Cancelled&#39;</span><br/><span class="hl-0">    </span><span class="hl-1">color</span><span class="hl-0">: </span><span class="hl-2">&#39;warning&#39;</span>
+</code><button type="button">Copy</button></pre>
+
+<p><img src="media/deploy-cancel.png" alt="Workflow Cancel Example" title="Workflow Cancel Example"></p>
+<h4 id="failure-notification" class="tsd-anchor-link">Failure Notification<a href="#failure-notification" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h4>
+<p>Include anywhere in steps to notify when a workflow run fails</p>
+<pre><code class="yaml"><span class="hl-0">- </span><span class="hl-1">name</span><span class="hl-0">: </span><span class="hl-2">Send Workflow Failure Notification</span><br/><span class="hl-0">  </span><span class="hl-1">if</span><span class="hl-0">: </span><span class="hl-2">${{ failure() }}</span><br/><span class="hl-0">  </span><span class="hl-1">uses</span><span class="hl-0">: </span><span class="hl-2">mikesprague/teams-incoming-webhook-action@v2</span><br/><span class="hl-0">  </span><span class="hl-1">with</span><span class="hl-0">:</span><br/><span class="hl-0">    </span><span class="hl-1">github-token</span><span class="hl-0">: </span><span class="hl-2">${{ github.token }}</span><br/><span class="hl-0">    </span><span class="hl-1">webhook-url</span><span class="hl-0">: </span><span class="hl-2">${{ secrets.MS_TEAMS_WEBHOOK_URL }}</span><br/><span class="hl-0">    </span><span class="hl-1">deploy-card</span><span class="hl-0">: </span><span class="hl-3">true</span><br/><span class="hl-0">    </span><span class="hl-1">title</span><span class="hl-0">: </span><span class="hl-2">&#39;Workflow Failed&#39;</span><br/><span class="hl-0">    </span><span class="hl-1">color</span><span class="hl-0">: </span><span class="hl-2">&#39;failure&#39;</span>
+</code><button type="button">Copy</button></pre>
+
+<p><img src="media/deploy-fail.png" alt="Workflow Failure Example" title="Workflow Failure Example"></p>
+<h4 id="success-message" class="tsd-anchor-link">Success Message<a href="#success-message" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h4>
+<p>Include anywhere in steps to notify when workflow run is successful</p>
+<pre><code class="yaml"><span class="hl-0">- </span><span class="hl-1">name</span><span class="hl-0">: </span><span class="hl-2">Send Workflow Success Notification</span><br/><span class="hl-0">  </span><span class="hl-1">if</span><span class="hl-0">: </span><span class="hl-2">${{ success() }}</span><br/><span class="hl-0">  </span><span class="hl-1">uses</span><span class="hl-0">: </span><span class="hl-2">mikesprague/teams-incoming-webhook-action@v2</span><br/><span class="hl-0">  </span><span class="hl-1">with</span><span class="hl-0">:</span><br/><span class="hl-0">    </span><span class="hl-1">github-token</span><span class="hl-0">: </span><span class="hl-2">${{ github.token }}</span><br/><span class="hl-0">    </span><span class="hl-1">webhook-url</span><span class="hl-0">: </span><span class="hl-2">${{ secrets.MS_TEAMS_WEBHOOK_URL }}</span><br/><span class="hl-0">    </span><span class="hl-1">deploy-card</span><span class="hl-0">: </span><span class="hl-3">true</span><br/><span class="hl-0">    </span><span class="hl-1">title</span><span class="hl-0">: </span><span class="hl-2">&#39;Workflow Successful&#39;</span><br/><span class="hl-0">    </span><span class="hl-1">color</span><span class="hl-0">: </span><span class="hl-2">&#39;success&#39;</span>
+</code><button type="button">Copy</button></pre>
+
+<p><img src="media/deploy-success.png" alt="Workflow Success Example" title="Workflow Success Example"></p>
+<h4 id="kitchen-sink-example" class="tsd-anchor-link">Kitchen Sink Example<a href="#kitchen-sink-example" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h4>
+<p>Sends a deploy card with all options enabled - large title, custom message, color, commit message visible, and user mentions</p>
+<pre><code class="yaml"><span class="hl-0">- </span><span class="hl-1">name</span><span class="hl-0">: </span><span class="hl-2">Kitchen Sink Test</span><br/><span class="hl-0">  </span><span class="hl-1">uses</span><span class="hl-0">: </span><span class="hl-2">mikesprague/teams-incoming-webhook-action@v2</span><br/><span class="hl-0">  </span><span class="hl-1">with</span><span class="hl-0">:</span><br/><span class="hl-0">    </span><span class="hl-1">github-token</span><span class="hl-0">: </span><span class="hl-2">${{ github.token }}</span><br/><span class="hl-0">    </span><span class="hl-1">webhook-url</span><span class="hl-0">: </span><span class="hl-2">${{ env.MS_TEAMS_WEBHOOK_URL }}</span><br/><span class="hl-0">    </span><span class="hl-1">deploy-card</span><span class="hl-0">: </span><span class="hl-3">true</span><br/><span class="hl-0">    </span><span class="hl-1">title</span><span class="hl-0">: </span><span class="hl-4">&quot;Kitchen Sink Test&quot;</span><br/><span class="hl-0">    </span><span class="hl-1">title-size</span><span class="hl-0">: </span><span class="hl-4">&quot;Large&quot;</span><br/><span class="hl-0">    </span><span class="hl-1">message</span><span class="hl-0">: </span><span class="hl-4">&quot;This is a kitchen sink test sending a deploy card with all options set including a custom message, color, large title, showing the commit message, and user mentions.&quot;</span><br/><span class="hl-0">    </span><span class="hl-1">color</span><span class="hl-0">: </span><span class="hl-4">&quot;info&quot;</span><br/><span class="hl-0">    </span><span class="hl-1">show-commit-message</span><span class="hl-0">: </span><span class="hl-3">true</span><br/><span class="hl-0">    </span><span class="hl-1">user-mentions</span><span class="hl-0">: </span><span class="hl-4">&quot;Alice|alice@example.com,Bob|bob@example.com&quot;</span>
+</code><button type="button">Copy</button></pre>
+
+<p><img src="media/kitchen-sink.png" alt="Kitchen Sink Example" title="Kitchen Sink Example"></p>
+<h2 id="development" class="tsd-anchor-link">Development<a href="#development" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p>This project uses modern TypeScript with strict type checking and comprehensive test coverage.</p>
+<h3 id="prerequisites" class="tsd-anchor-link">Prerequisites<a href="#prerequisites" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul>
+<li>Bun &gt;= 1.3.x</li>
+</ul>
+<h3 id="setup" class="tsd-anchor-link">Setup<a href="#setup" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<pre><code class="bash"><span class="hl-5">bun</span><span class="hl-0"> </span><span class="hl-4">install</span>
+</code><button type="button">Copy</button></pre>
+
+<h3 id="testing" class="tsd-anchor-link">Testing<a href="#testing" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<p>The project uses <a href="https://vitest.dev/">Vitest</a> for testing with comprehensive coverage requirements:</p>
+<div class="tsd-alert tsd-alert-important"><div class="tsd-alert-title"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="assets/icons.svg#icon-alertImportant"></use></svg><span>Important</span></div><p>
+<code>bun test</code> uses Bun's built in test runner, we need to explicitly run our test script that uses Vitest with <code>bun run test</code></p>
+</div>
+<pre><code class="bash"><span class="hl-6"># Run tests once</span><br/><span class="hl-5">bun</span><span class="hl-0"> </span><span class="hl-4">run</span><span class="hl-0"> </span><span class="hl-4">test</span><br/><br/><span class="hl-6"># Run tests in watch mode</span><br/><span class="hl-5">bun</span><span class="hl-0"> </span><span class="hl-4">run</span><span class="hl-0"> </span><span class="hl-4">test:watch</span><br/><br/><span class="hl-6"># Run tests with coverage report</span><br/><span class="hl-5">bun</span><span class="hl-0"> </span><span class="hl-4">run</span><span class="hl-0"> </span><span class="hl-4">test:coverage</span><br/><br/><span class="hl-6"># Run tests with UI</span><br/><span class="hl-5">bun</span><span class="hl-0"> </span><span class="hl-4">run</span><span class="hl-0"> </span><span class="hl-4">test:ui</span>
+</code><button type="button">Copy</button></pre>
+
+<p>CI also runs <code>bun run test:coverage</code>, uploads the report to <a href="https://codecov.io/">Codecov</a>,
+and includes the HTML coverage report in the published docs artifact (<code>docs/publish/coverage</code>)
+which is available to view via GH Pages: <a href="https://mikesprague.github.io/teams-incoming-webhook-action/coverage/">https://mikesprague.github.io/teams-incoming-webhook-action/coverage/</a></p>
+<p><strong>Coverage Thresholds:</strong></p>
+<ul>
+<li>Lines: 98%</li>
+<li>Functions: 100%</li>
+<li>Branches: 92%</li>
+<li>Statements: 98%</li>
+</ul>
+<p><strong>Current Coverage:</strong>
+<a href="https://codecov.io/github/mikesprague/teams-incoming-webhook-action"><img src="https://codecov.io/github/mikesprague/teams-incoming-webhook-action/graphs/icicle.svg?token=YRTYS1BM8S" alt="Codecov Coverage - Icicle Chart"></a></p>
+<div class="tsd-alert tsd-alert-note"><div class="tsd-alert-title"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="assets/icons.svg#icon-alertNote"></use></svg><span>Note</span></div><p>
+Latest Vitest-generated coverage report can always be found at <a href="https://mikesprague.github.io/teams-incoming-webhook-action/coverage/">https://mikesprague.github.io/teams-incoming-webhook-action/coverage/</a> and latest Codecov report can viewed at <a href="https://codecov.io/github/mikesprague/teams-incoming-webhook-action">https://codecov.io/github/mikesprague/teams-incoming-webhook-action</a></p>
+</div>
+<h3 id="code-quality" class="tsd-anchor-link">Code Quality<a href="#code-quality" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<p>The project uses Oxlint/Oxfmt for <a href="https://oxc.rs/docs/guide/usage/linter.html">linting</a> and <a href="https://oxc.rs/docs/guide/usage/formatter.html">formatting</a>:</p>
+<pre><code class="bash"><span class="hl-6"># Check code quality</span><br/><span class="hl-5">bun</span><span class="hl-0"> </span><span class="hl-4">run</span><span class="hl-0"> </span><span class="hl-4">lint</span><br/><br/><span class="hl-6"># Type check</span><br/><span class="hl-5">bun</span><span class="hl-0"> </span><span class="hl-4">run</span><span class="hl-0"> </span><span class="hl-4">typecheck</span><br/><br/><span class="hl-6"># Build the action</span><br/><span class="hl-5">bun</span><span class="hl-0"> </span><span class="hl-4">run</span><span class="hl-0"> </span><span class="hl-4">build</span>
+</code><button type="button">Copy</button></pre>
+
+<h3 id="typescript-configuration" class="tsd-anchor-link">TypeScript Configuration<a href="#typescript-configuration" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<p>The project uses TypeScript 5.9+ with:</p>
+<ul>
+<li>ES2023 target for modern JavaScript features</li>
+<li>Strict mode enabled with balanced strictness flags</li>
+<li>ESM module system with bundler resolution</li>
+<li>Top-level await support</li>
+</ul>
+<h3 id="documentation" class="tsd-anchor-link">Documentation<a href="#documentation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<p>This project uses <a href="https://typedoc.org/">TypeDoc</a> to generate API documentation during CI (<code>bun run build</code>) via the <code>postbuild</code> script.
+The generated docs are published to GitHub Pages at <a href="https://mikesprague.github.io/teams-incoming-webhook-action/">https://mikesprague.github.io/teams-incoming-webhook-action/</a>.</p>
+</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#teams-incoming-webhook-action"><span>teams-<wbr/>incoming-<wbr/>webhook-<wbr/>action</span></a><ul><li><a href="#inputs"><span>Inputs</span></a></li><li><a href="#how-it-works"><span>How <wbr/>It <wbr/>Works</span></a></li><li><a href="#example-usage"><span>Example <wbr/>Usage</span></a></li><li><ul><li><a href="#simple-notification"><span>Simple <wbr/>Notification</span></a></li><li><a href="#simple-notification-w-large-title"><span>Simple <wbr/>Notification w/ <wbr/>Large <wbr/>Title</span></a></li><li><a href="#simple-notification-w-user-mentions"><span>Simple <wbr/>Notification w/ <wbr/>User <wbr/>Mentions</span></a></li><li><a href="#workflow-status-notifications"><span>Workflow <wbr/>Status <wbr/>Notifications</span></a></li><li><ul><li><a href="#workflow-status-w-message"><span>Workflow <wbr/>Status w/ <wbr/>Message</span></a></li><li><a href="#workflow-status-w-commit-message"><span>Workflow <wbr/>Status w/ <wbr/>Commit <wbr/>Message</span></a></li><li><a href="#info-notification"><span>Info <wbr/>Notification</span></a></li><li><a href="#cancel-notification"><span>Cancel <wbr/>Notification</span></a></li><li><a href="#failure-notification"><span>Failure <wbr/>Notification</span></a></li><li><a href="#success-message"><span>Success <wbr/>Message</span></a></li><li><a href="#kitchen-sink-example"><span>Kitchen <wbr/>Sink <wbr/>Example</span></a></li></ul></li></ul></li><li><a href="#development"><span>Development</span></a></li><li><ul><li><a href="#prerequisites"><span>Prerequisites</span></a></li><li><a href="#setup"><span>Setup</span></a></li><li><a href="#testing"><span>Testing</span></a></li><li><a href="#code-quality"><span>Code <wbr/>Quality</span></a></li><li><a href="#typescript-configuration"><span>Type<wbr/>Script <wbr/>Configuration</span></a></li><li><a href="#documentation"><span>Documentation</span></a></li></ul></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="modules.html">teams-incoming-webhook-action</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>
