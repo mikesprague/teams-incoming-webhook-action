@@ -54,7 +54,7 @@
     "dayjs": "1.11.21"
   },
   "devDependencies": {
-    "@octokit/types": "16.0.0",
+    "@octokit/types": "17.0.0",
     "@types/node": "26.1.2",
     "@vercel/ncc": "0.44.1",
     "@vitest/coverage-v8": "4.1.10",
