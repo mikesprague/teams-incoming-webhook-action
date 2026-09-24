@@ -66,7 +66,7 @@
     "conventional-changelog-conventionalcommits": "10.4.0",
     "cz-git": "1.14.0",
     "oxfmt": "0.68.0",
-    "oxlint": "1.83.0",
+    "oxlint": "1.84.0",
     "typedoc": "0.28.20",
     "typedoc-plugin-markdown": "4.13.1",
     "typescript": "npm:@typescript/typescript6@6.0.2",
